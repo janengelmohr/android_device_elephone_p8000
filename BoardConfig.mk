@@ -10,8 +10,11 @@ TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv8-a-neon
 TARGET_CPU_VARIANT := cortex-a53
+TARGET_ARCH_VARIANT_CPU := cortex-a53
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
+ARCH_ARM_HAVE_NEON := true
+ARCH_ARM_HAVE_VFP := true
 
 TARGET_BOOTLOADER_BOARD_NAME := k05ts_a
 
@@ -28,7 +31,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 12529958912
 BOARD_CACHEIMAGE_PARTITION_SIZE := 444596224
 #pagesize * 64
 BOARD_FLASH_BLOCK_SIZE := 131072
-BOARD_MKBOOTING_ARGS := --base 0x40078000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --tags_offset 0x0df88000 --board Auxus_PRIME_201 --cmdline bootopt=64S3,32N1,32N1 
+BOARD_MKBOOTING_ARGS := --base 0x40078000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --tags_offset 0x0df88000 --board Auxus_PRIME_201 --cmdline bootopt=64S3,32N2,32N2 
 
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 
