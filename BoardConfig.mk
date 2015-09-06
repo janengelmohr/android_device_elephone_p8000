@@ -30,6 +30,6 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 444596224
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_MKBOOTING_ARGS := --base 0x40078000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --tags_offset 0x0df88000 --board Auxus_PRIME_201 --cmdline bootopt=64S3,32N1,32N1 
 
-TARGET_PREBUILT_KERNEL := device/alps/k05ts_a/kernel
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 
 BOARD_HAS_NO_SELECT_BUTTON := true
