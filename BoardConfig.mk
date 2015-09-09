@@ -37,4 +37,4 @@ TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-TARGET_RECOVERY_INITRC := $(LOCAL_PATH)/recovery/init.recovery.mt6753.rc
+#TARGET_RECOVERY_INITRC := $(LOCAL_PATH)/recovery/init.recovery.mt6753.rc

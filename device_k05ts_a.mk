@@ -15,7 +15,9 @@ else
 endif
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
+    $(LOCAL_KERNEL):kernel \
+    $(LOCAL_PATH)/rootdir/init.recovery.mt6753.rc:root/init.recovery.mt6753.rc
+
 
 $(call inherit-product, build/target/product/full.mk)
 
