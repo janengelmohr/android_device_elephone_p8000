@@ -19,9 +19,17 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.recovery.mt6735.rc:root/init.recovery.mt6735.rc \
     $(LOCAL_PATH)/rootdir/init.usb.rc:root/init.usb.rc \
 
+PRODUCT_COPY_FILES_OVERRIDES += \
+    ramdisk/file_contexts \
+    ramdisk/property_contexts \
+    ramdisk/seapp_contexts \
+    ramdisk/sepolicy \
+    ramdisk/ueventd.rc
 
 $(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_k05ts_a
 PRODUCT_DEVICE := k05ts_a
+PRODUCT_MODEL := P8000
+PRODUCT_BRAND := Elephone
