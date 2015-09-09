@@ -20,6 +20,7 @@ ARCH_ARM_HAVE_VFP := true
 TARGET_BOOTLOADER_BOARD_NAME := k05ts_a
 TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_USERIMAGES_USE_EXT4 := true
 
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
 BOARD_KERNEL_BASE := 0x40078000
@@ -42,4 +43,4 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 
 TARGET_RECOVERY_INITRC := $(LOCAL_PATH)/ramdisk/init.recovery.mt6735.rc
 
-BOARD_CUSTOM_BOOTIMG_MT := $(LOCAL_PATH)/mkmtkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkmtkbootimg.mk
