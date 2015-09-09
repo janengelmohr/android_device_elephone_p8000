@@ -9,7 +9,7 @@ DEVICE_PACKAGE_OVERLAYS += device/alps/k05ts_a/overlay
 
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/alps/k05ts_a/prebuilt/kernel
+	LOCAL_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
