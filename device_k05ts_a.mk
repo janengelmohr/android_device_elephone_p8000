@@ -6,7 +6,7 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 $(call inherit-product-if-exists, vendor/alps/k05ts_a/k05ts_a-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/alps/k05ts_a/overlay
-
+LOCAL_PATH := device/alps/k05ts_a
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
@@ -16,15 +16,14 @@ endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
-    $(LOCAL_PATH)/rootdir/init.recovery.mt6735.rc:root/init.recovery.mt6735.rc \
-    $(LOCAL_PATH)/rootdir/init.usb.rc:root/init.usb.rc \
+    $(LOCAL_PATH)/recovery/root/init.recovery.mt6735.rc:root/init.recovery.mt6735.rc \
 
 PRODUCT_COPY_FILES_OVERRIDES += \
-    ramdisk/file_contexts \
-    ramdisk/property_contexts \
-    ramdisk/seapp_contexts \
-    ramdisk/sepolicy \
-    ramdisk/ueventd.rc
+    recovery/root/file_contexts \
+    recovery/root/property_contexts \
+    recovery/root/seapp_contexts \
+    recovery/root/sepolicy \
+    recovery/root/ueventd.rc
 
 $(call inherit-product, build/target/product/full.mk)
 
