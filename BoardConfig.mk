@@ -41,7 +41,7 @@ TARGET_PREBUILT_KERNEL := device/alps/k05ts_a/prebuilt/kernel
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-TARGET_RECOVERY_INITRC := device/alps/k05ts_a/recovery/root/init.mt6753.rc
+TARGET_RECOVERY_INITRC := device/alps/k05ts_a/recovery/init.mt6753.rc
 TARGET_RECOVERY_FSTAB := device/alps/k05ts_a/recovery/root/mt6753.fstab
 
 BOARD_CUSTOM_BOOTIMG_MK := device/alps/k05ts_a/mkmtkbootimg.mk
