@@ -9,7 +9,7 @@ DEVICE_PACKAGE_OVERLAYS += device/alps/k05ts_a/overlay
 LOCAL_PATH := device/alps/k05ts_a
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
+	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -27,10 +27,6 @@ PRODUCT_COPY_FILES_OVERRIDES += \
 $(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_k05ts_a
-PRODUCT_DEVICE := k05ts_a
-PRODUCT_MODEL := P8000
-PRODUCT_BRAND := Elephone
 
 # Set insecure for root access and device specifics
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0 \

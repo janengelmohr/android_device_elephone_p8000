@@ -16,6 +16,7 @@ TARGET_SCREEN_WIDTH := 1080
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := k05ts_a
 PRODUCT_NAME := cm_k05ts_a
-PRODUCT_BRAND := alps
-PRODUCT_MODEL := k05ts_a
 PRODUCT_MANUFACTURER := alps
+PRODUCT_MODEL := P8000
+PRODUCT_BRAND := Elephone
+
