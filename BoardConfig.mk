@@ -2,24 +2,34 @@ USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
 -include vendor/alps/k05ts_a/BoardConfigVendor.mk
-
-TARGET_ARCH := arm
+#64 bit
+TARGET_ARCH := arm64
 TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := mt6753
-TARGET_CPU_ABI_LIST := arm64-v8a,armeabi-v7a,armeabi
 TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_VARIANT := cortex-a53
+#TARGET_CPU_ABI_LIST := arm64-v8a,armeabi-v7a,armeabi
+#TARGET_CPU_ABI_LIST_32_BIT := armeabi-v7a,armeabi
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_VARIANT := generic
 TARGET_ARCH_VARIANT_CPU := cortex-a53
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_HAVE_NEON := true
 ARCH_ARM_HAVE_VFP := true
 
+TARGET_CPU_CORTEX_A53 := true
+
+#32 bit
+TARGET_2ND_ARCH := arm
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_CPU_VARIANT := cortex-a53
+
+
 TARGET_BOOTLOADER_BOARD_NAME := k05ts_a
-TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+#TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
+#TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_USERIMAGES_USE_EXT4 := true
 
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
@@ -37,7 +47,7 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 444596224
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_MKBOOTING_ARGS := --base 0x40078000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --tags_offset 0x0df88000 --board Auxus_PRIME_201 --cmdline bootopt=64S3,32N2,64N2 
 
-TARGET_PREBUILT_KERNEL := device/alps/k05ts_a/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := device/alps/k05ts_a/kernel
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
