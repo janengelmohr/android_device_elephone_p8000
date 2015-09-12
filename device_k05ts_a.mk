@@ -16,9 +16,16 @@ endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
-    $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
-    $(LOCAL_PATH)/rootdir/init.recovery.mt6753.rc:root/init.recovery.mt6753.rc #\
-#    $(LOCAL_PATH)/rootdir/mt6753.fstab:root/mt6753.fstab
+#    $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
+#    $(LOCAL_PATH)/rootdir/init.recovery.mt6753.rc:root/init.recovery.mt6753.rc \
+#    $(LOCAL_PATH)/rootdir/recovery.fstab:recovery.fstab
+
+PRODUCT_COPY_FILES_OVERRIDES += \
+    recovery/root/file_contexts \
+    recovery/root/property_contexts \
+    recovery/root/seapp_contexts \
+    recovery/root/sepolicy \
+    recovery/root/ueventd.rc
 
 
 $(call inherit-product, build/target/product/full.mk)

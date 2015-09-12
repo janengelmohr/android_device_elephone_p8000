@@ -38,5 +38,5 @@ TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-TARGET_RECOVERY_INITRC := $(LOCAL_PATH)/recovery/init.rc
-#TARGET_RECOVERY_FSTAB :=$(LOCAL_PATH)/mt6753.fstab
+TARGET_RECOVERY_INITRC := device/alps/k05ts_a/recovery/init.rc
+TARGET_RECOVERY_FSTAB := device/alps/k05ts_a/recovery/recovery.fstab
