@@ -16,7 +16,8 @@ endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
-    $(LOCAL_PATH)/rootdir/init.recovery.mt6753.rc:root/init.recovery.mt6753.rc
+    $(LOCAL_PATH)/recovery/init.recovery.mt6753.rc:root/init.recovery.mt6753.rc \
+    $(LOCAL_PATH)/recovery/init.rc:root/init.rc \
 
 PRODUCT_COPY_FILES_OVERRIDES += \
     recovery/root/file_contexts \
