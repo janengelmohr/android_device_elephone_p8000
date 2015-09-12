@@ -1,18 +1,25 @@
+on init
+#	fake to CDP case
+#	write /sys/module/musb_hdrc/parameters/musb_skip_charge_detect 1
 
-on post-fs-data
-# -----------------------
-# Add by MTK
-# Create CIP mount point
-    symlink /dev/block/platform/mtk-msdc.0/by-name/custom /dev/customimg
-    mkdir /custom
-    exec /sbin/e2fsck -p /dev/customimg
-    mount ext4 /dev/customimg /custom
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/custom
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/custom
+# 	set battery thread free
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 0E8D
+    write /sys/class/android_usb/android0/idProduct 2008
+    write /sys/class/android_usb/android0/functions mtp
+    write /sys/class/android_usb/android0/enable 1
 
-#custom the cpuinfo
-    write /sys/custom_date/cpu_name "MT6735"
+#	make this twice to keep following action not race with batyery thread
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 0E8D
+    write /sys/class/android_usb/android0/idProduct 2008
+    write /sys/class/android_usb/android0/functions mtp
+    write /sys/class/android_usb/android0/enable 1
 
-# End of adding by MTK drivers
-# -----------------------
+# 	distinguish USB shoulde connect or not by this, CDP vs SDP
+	write /sys/devices/platform/mt_usb/cmode 2
+
+on property:ro.debuggable=1
+# 	restore cmode to normal for making USB enumeration
+	write /sys/devices/platform/mt_usb/cmode 1
 
