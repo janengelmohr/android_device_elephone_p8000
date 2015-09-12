@@ -16,7 +16,9 @@ endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
-    $(LOCAL_PATH)/rootdir/init.recovery.mt6753.rc:root/init.recovery.mt6753.rc
+    $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
+    $(LOCAL_PATH)/rootdir/init.recovery.mt6753.rc:root/init.recovery.mt6753.rc #\
+#    $(LOCAL_PATH)/rootdir/mt6753.fstab:root/mt6753.fstab
 
 
 $(call inherit-product, build/target/product/full.mk)
