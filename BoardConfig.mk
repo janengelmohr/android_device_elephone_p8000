@@ -41,6 +41,6 @@ TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-TARGET_RECOVERY_INITRC := device/alps/k05ts_a/recovery/init.rc
+TARGET_RECOVERY_INITRC := device/alps/k05ts_a/recovery/init.mt6753.rc
 TARGET_RECOVERY_FSTAB := device/alps/k05ts_a/recovery/recovery.fstab
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
