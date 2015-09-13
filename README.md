@@ -6,4 +6,5 @@ current state:
 
 TODO:
  * get external SD to work
+ * add button to toggle signature verification
  * make tree compatible with CM12.1
