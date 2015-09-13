@@ -2,8 +2,6 @@
 Device repository for Elephone P8000 CM12.1 (WIP)
 
 current state:
- * recovery boots and adb works
-
+ * everything works except external sd mounting
 TODO:
- * mount partitions via fstab
  * make tree compatible with CM12.1
