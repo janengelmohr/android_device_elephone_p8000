@@ -16,6 +16,9 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_HAVE_NEON := true
 ARCH_ARM_HAVE_VFP := true
 
+TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+
 TARGET_BOOTLOADER_BOARD_NAME := Auxus_PRIME_201
 
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
@@ -40,3 +43,4 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 
 TARGET_RECOVERY_INITRC := device/alps/k05ts_a/recovery/init.rc
 TARGET_RECOVERY_FSTAB := device/alps/k05ts_a/recovery/recovery.fstab
+TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
