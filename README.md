@@ -2,7 +2,7 @@
 Device repository for Elephone P8000 CM12.1 (WIP)
 
 current state:
- * everything works except external sd mounting and signature checking
+ * CR works except external sd mounting and signature checking
 
 TODO:
  * get external SD to work

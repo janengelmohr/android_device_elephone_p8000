@@ -1,7 +1,7 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/alps/k05ts_a/BoardConfigVendor.mk
+-include vendor/elephone/p8000/BoardConfigVendor.mk
 #64 bit
 TARGET_ARCH := arm64
 TARGET_NO_BOOTLOADER := true
@@ -46,12 +46,12 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 444596224
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --tags_offset 0x0df88000 
 
-TARGET_PREBUILT_KERNEL := device/alps/k05ts_a/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := device/elephone/p8000/prebuilt/kernel
 #use precompiled bootimage for now
-#DEVICE_BASE_BOOT_IMAGE := device/alps/k05ts_a/prebuilt/boot.img
+#DEVICE_BASE_BOOT_IMAGE := device/elephone/p8000/prebuilt/boot.img
 USE_OPENGL_RENDERER := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 #recovery
-TARGET_RECOVERY_INITRC := device/alps/k05ts_a/recovery/init.mt6753.rc
-TARGET_RECOVERY_FSTAB := device/alps/k05ts_a/recovery/root/fstab.mt6753
+TARGET_RECOVERY_INITRC := device/elephone/p8000/recovery/init.mt6753.rc
+TARGET_RECOVERY_FSTAB := device/elephone/p8000/recovery/root/fstab.mt6753
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"

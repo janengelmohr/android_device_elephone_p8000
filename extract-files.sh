@@ -5,8 +5,8 @@
 ## if $1 = unzip the files will be extracted from zip file (if $1 = anything else 'adb pull' will be used
 ## $2 specifies the zip file to extract from (default = ../../../${DEVICE}_update.zip)
 
-VENDOR=alps
-DEVICE=k05ts_a
+VENDOR=elephone
+DEVICE=p8000
 
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*

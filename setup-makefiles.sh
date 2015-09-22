@@ -1,7 +1,7 @@
 #!/bin/sh
 
-VENDOR=alps
-DEVICE=k05ts_a
+VENDOR=elephone
+DEVICE=p8000
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
 
