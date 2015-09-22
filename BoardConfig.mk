@@ -46,11 +46,12 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 444596224
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --tags_offset 0x0df88000 
 
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
-
-BOARD_HAS_NO_SELECT_BUTTON := true
-
-TARGET_RECOVERY_INITRC := device/alps/k05ts_a/recovery/init.mt6753.rc
-TARGET_RECOVERY_FSTAB := device/alps/k05ts_a/recovery/recovery.fstab
-TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
+TARGET_PREBUILT_KERNEL := device/alps/k05ts_a/prebuilt/kernel
+#use precompiled bootimage for now
+#DEVICE_BASE_BOOT_IMAGE := device/alps/k05ts_a/prebuilt/boot.img
 USE_OPENGL_RENDERER := true
+BOARD_HAS_NO_SELECT_BUTTON := true
+#recovery
+TARGET_RECOVERY_INITRC := device/alps/k05ts_a/recovery/init.mt6753.rc
+TARGET_RECOVERY_FSTAB := device/alps/k05ts_a/recovery/root/fstab.mt6753
+TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
