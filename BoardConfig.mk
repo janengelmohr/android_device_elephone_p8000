@@ -11,6 +11,7 @@ TARGET_CPU_ABI2 :=
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_CORTEX_A53 := true
+TARGET_BOARD_PLATFORM_GPU := Mali-T720
 
 #32 bit
 TARGET_2ND_ARCH := arm
@@ -52,3 +53,4 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_INITRC := device/alps/k05ts_a/recovery/init.mt6753.rc
 TARGET_RECOVERY_FSTAB := device/alps/k05ts_a/recovery/recovery.fstab
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
+USE_OPENGL_RENDERER := true
