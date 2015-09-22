@@ -1,4 +1,4 @@
-import /init.recovery.mt6753.rc
+#import /init.recovery.mt6753.rc
 
 on early-init
     # Apply strict SELinux checking of PROT_EXEC on mmap/mprotect calls.
@@ -73,7 +73,7 @@ on fs
     write /sys/class/android_usb/android0/iProduct ${ro.product.model}
     write /sys/class/android_usb/android0/iSerial ${ro.serialno}
 # mount fstab
-    mount -a
+#    mount -a
 
 on boot
 
