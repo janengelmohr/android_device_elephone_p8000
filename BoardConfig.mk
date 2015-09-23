@@ -30,7 +30,7 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 TARGET_BOOTLOADER_BOARD_NAME := Auxus_PRIME_201
 
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 selinux=0
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 enforcing=0
 BOARD_KERNEL_BASE := 0x40078000
 #extracted from stock recovery
 BOARD_KERNEL_PAGESIZE := 2048
@@ -55,3 +55,15 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_INITRC := device/elephone/p8000/recovery/init.mt6753.rc
 TARGET_RECOVERY_FSTAB := device/elephone/p8000/recovery/root/fstab.mt6753
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
+
+#SELinux
+# SELINUX
+#BOARD_SEPOLICY_DIRS := \
+#       device/elephone/p8000/recovery/root/sepolicy
+#
+#BOARD_SEPOLICY_UNION := \
+#       device.te \
+#       app.te \
+#       netd.te \
+#       system.te \
+#       file_contexts
