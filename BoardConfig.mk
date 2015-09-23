@@ -30,7 +30,7 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 TARGET_BOOTLOADER_BOARD_NAME := Auxus_PRIME_201
 
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 enforcing=0
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 selinux=0
 BOARD_KERNEL_BASE := 0x40078000
 #extracted from stock recovery
 BOARD_KERNEL_PAGESIZE := 2048
