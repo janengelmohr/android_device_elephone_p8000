@@ -21,10 +21,6 @@ PRODUCT_COPY_FILES += \
 #    $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
 
 PRODUCT_COPY_FILES_OVERRIDES += \
-    recovery/root/file_contexts \
-    recovery/root/property_contexts \
-    recovery/root/seapp_contexts \
-    recovery/root/sepolicy \
     recovery/root/ueventd.rc \
     root/fstab.goldfish \
     root/init.goldfish.rc \
