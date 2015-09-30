@@ -31,7 +31,7 @@ TARGET_USERIMAGES_USE_EXT4:=true
 
 TARGET_BOOTLOADER_BOARD_NAME := Auxus_PRIME_201
 
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 selinux=0
 BOARD_KERNEL_BASE := 0x40078000
 #extracted from stock recovery
 BOARD_KERNEL_PAGESIZE := 2048
@@ -52,7 +52,7 @@ TARGET_PREBUILT_KERNEL := device/elephone/p8000/prebuilt/kernel
 #DEVICE_BASE_BOOT_IMAGE := device/elephone/p8000/prebuilt/boot.img
 BOARD_HAS_NO_SELECT_BUTTON := true
 #recovery
-TARGET_RECOVERY_INITRC := device/elephone/p8000/recovery/init.mt6753.rc
+#TARGET_RECOVERY_INITRC := device/elephone/p8000/recovery/init.mt6753.rc
 TARGET_RECOVERY_FSTAB := device/elephone/p8000/recovery/root/fstab.mt6753
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
 
@@ -67,7 +67,7 @@ USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/elephone/p8000/egl.cfg
 
 #SELinux
-# SELINUX
-BOARD_SEPOLICY_DIRS := device/elephone/p8000/sepolicy
+## SELINUX
+#BOARD_SEPOLICY_DIRS := device/elephone/p8000/sepolicy
 
-BOARD_SEPOLICY_UNION := service_contexts
+#BOARD_SEPOLICY_UNION := service_contexts
