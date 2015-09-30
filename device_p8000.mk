@@ -15,16 +15,33 @@ else
 endif
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel \
-    $(LOCAL_PATH)/recovery/init.recovery.mt6753.rc:root/init.recovery.mt6753.rc \
-#    $(LOCAL_PATH)/rootdir/recovery.fstab:recovery.fstab
-#    $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
+	$(LOCAL_KERNEL):kernel \
+	device/elephone/p8000/rootdir/init.rc:root/init.rc \
+	device/elephone/p8000/rootdir/init.mt6735.rc:root/init.mt6735.rc \
+	device/elephone/p8000/rootdir/init.usb.rc:root/init.usb.rc \
+	device/elephone/p8000/rootdir/init.ssd.rc:root/init.ssd.rc \
+	device/elephone/p8000/rootdir/init.trace.rc:root/init.trace.rc \
+	device/elephone/p8000/rootdir/init.xlog.rc:root/init.xlog.rc \
+	device/elephone/p8000/rootdir/init.zygote32.rc:root/init.zygote32.rc \
+	device/elephone/p8000/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc \
+	device/elephone/p8000/rootdir/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
+	device/elephone/p8000/rootdir/init.recovery.mt6735.rc:root/init.recovery.mt6735.rc \
+	device/elephone/p8000/rootdir/init.environ.rc:root/init.environ.rc \
+	device/elephone/p8000/rootdir/init.aee.rc:root/init.aee.rc \
+	device/elephone/p8000/rootdir/init.project.rc:root/init.project.rc \
+	device/elephone/p8000/rootdir/init.modem.rc:root/init.modem.rc \
 
-PRODUCT_COPY_FILES_OVERRIDES += \
-    recovery/root/ueventd.rc \
-    root/fstab.goldfish \
-    root/init.goldfish.rc \
-    recovery/root/fstab.goldfish
+
+
+#    $(LOCAL_PATH)/recovery/init.recovery.mt6753.rc:root/init.recovery.mt6735.rc \
+#    $(LOCAL_PATH)/rootdir/recovery.fstab:recovery.fstab
+
+#PRODUCT_COPY_FILES_OVERRIDES += \
+#    recovery/root/ueventd.rc \
+#    root/fstab.goldfish \
+#    root/init.goldfish.rc \
+#    recovery/root/fstab.goldfish 
+
 
 
 $(call inherit-product, build/target/product/full.mk)
