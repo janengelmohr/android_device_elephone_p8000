@@ -30,10 +30,7 @@ PRODUCT_COPY_FILES += \
 	device/elephone/p8000/rootdir/init.aee.rc:root/init.aee.rc \
 	device/elephone/p8000/rootdir/init.project.rc:root/init.project.rc \
 	device/elephone/p8000/rootdir/init.modem.rc:root/init.modem.rc \
-
-
-
-#    $(LOCAL_PATH)/recovery/init.recovery.mt6753.rc:root/init.recovery.mt6735.rc \
+        device/elephone/p8000/recovery/root/fstab.mt6753:root/fstab.mt6735 
 #    $(LOCAL_PATH)/rootdir/recovery.fstab:recovery.fstab
 
 #PRODUCT_COPY_FILES_OVERRIDES += \
