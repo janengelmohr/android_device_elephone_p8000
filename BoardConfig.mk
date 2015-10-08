@@ -35,7 +35,7 @@ TARGET_USERIMAGES_USE_EXT4:=true
 
 TARGET_BOOTLOADER_BOARD_NAME := Auxus_PRIME_201
 
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 log_buf_len=20 selinux=0
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 log_buf_len=20 androidboot.selinux=permissive 
 BOARD_KERNEL_BASE := 0x40078000
 #extracted from stock recovery
 BOARD_KERNEL_PAGESIZE := 2048
@@ -71,7 +71,7 @@ USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/elephone/p8000/egl.cfg
 
 #SELinux
-## SELINUX
-#BOARD_SEPOLICY_DIRS := device/elephone/p8000/sepolicy
-
-#BOARD_SEPOLICY_UNION := service_contexts
+HAVE_SELINUX := true
+BOARD_SEPOLICY_DIRS := device/elephone/p8000/sepolicy
+BOARD_SEPOLICY_UNION := servicemanager.te \
+			healthd.te
