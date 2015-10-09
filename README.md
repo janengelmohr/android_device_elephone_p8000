@@ -5,5 +5,4 @@ current state:
  * CR works except external sd mounting and signature checking
 
 TODO:
- * make tree compatible with CM12.1
- ** fix binder access errors, looks like an SELinux problem
+ * fix binder access errors, looks like an SELinux problem
