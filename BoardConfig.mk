@@ -70,4 +70,8 @@ BOARD_EGL_CFG := device/elephone/p8000/egl.cfg
 HAVE_SELINUX := true
 BOARD_SEPOLICY_DIRS := device/elephone/p8000/sepolicy
 BOARD_SEPOLICY_UNION := servicemanager.te \
-			healthd.te
+			healthd.te \
+			app.te \
+			system.te \
+			file_contexts \
+			device.te
