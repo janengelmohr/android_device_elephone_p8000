@@ -92,8 +92,8 @@ lib/hw/vibrator.default.so
 lib/egl/libGLES_mali.so
 lib64/egl/libGLES_mali.so
 lib/ssl/engines/libkeystore.so
-lib/libbinder.so
-lib64/libbinder.so
+#lib/libbinder.so
+#lib64/libbinder.so
 etc/firmware/ROMv2_lm_patch_1_0_hdr.bin
 etc/firmware/ROMv2_lm_patch_1_1_hdr.bin
 etc/firmware/S_ANDRO_SFL.ini
@@ -308,8 +308,8 @@ lib64/libJpgDecPipe.so
 lib64/libJpgEncPipe.so
 lib64/libkeystore_binder.so
 lib64/libLLVM.so
-lib64/liblog.so
-lib64/liblogwrap.so
+#lib64/liblog.so
+#lib64/liblogwrap.so
 lib64/libm4u.so
 lib64/libmatv_cust.so
 lib64/libmdloggerrecycle.so
