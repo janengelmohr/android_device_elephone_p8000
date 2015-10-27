@@ -31,7 +31,7 @@ TARGET_USERIMAGES_USE_EXT4:=true
 
 TARGET_BOOTLOADER_BOARD_NAME := Auxus_PRIME_201
 
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 log_buf_len=20 androidboot.selinux=permissive 
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 
 BOARD_KERNEL_BASE := 0x40078000
 #extracted from stock recovery
 BOARD_KERNEL_PAGESIZE := 2048
@@ -47,7 +47,7 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 444596224
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --tags_offset 0x0df88000 
 
-TARGET_PREBUILT_KERNEL := device/elephone/p8000/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := device/elephone/p8000/prebuilt/selinux_permissive
 #use precompiled bootimage for now
 #DEVICE_BASE_BOOT_IMAGE := device/elephone/p8000/prebuilt/boot.img
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -67,11 +67,13 @@ USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/elephone/p8000/egl.cfg
 
 #SELinux
-HAVE_SELINUX := true
-BOARD_SEPOLICY_DIRS := device/elephone/p8000/sepolicy
-BOARD_SEPOLICY_UNION := servicemanager.te \
+BOARD_SEPOLICY_DIRS += device/elephone/p8000/sepolicy
+BOARD_SEPOLICY_UNION += servicemanager.te \
 			healthd.te \
 			app.te \
 			system.te \
 			file_contexts \
-			device.te
+			device.te \
+			seapp_contexts \
+			service_contexts \
+			property_contexts
