@@ -72,7 +72,7 @@ BOARD_SEPOLICY_UNION := \
     device.te \
     domain.te \
     file.te \
-    file_contexts \
+#    file_contexts \
     fs_use \
     installd.te \
     net.te \
@@ -226,6 +226,7 @@ BOARD_SEPOLICY_UNION += \
 	launchpppoe.te \
 	sbchk.te \
 	service_contexts \
+	file_contexts \
 	ril-3gddaemon.te \
 	usbdongled.te \
 	zpppd_gprs.te \
