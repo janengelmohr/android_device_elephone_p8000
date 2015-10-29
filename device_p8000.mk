@@ -7,6 +7,12 @@ $(call inherit-product-if-exists, vendor/elephone/p8000/p8000-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/elephone/p8000/overlay
 
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+	LOCAL_KERNEL := device/elephone/p8000/prebuilt/kernel
+else
+	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
 PRODUCT_COPY_FILES += \
 	device/elephone/p8000/rootdir/init.rc:root/init.rc \
 	device/elephone/p8000/rootdir/init.mt6735.rc:root/init.mt6735.rc \
