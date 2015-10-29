@@ -1,0 +1,7 @@
+# ==============================================
+# MTK Policy Rule
+# ============
+
+allow wpa rild_oem_socket:sock_file write;
+allow wpa rild_oem_md2_socket:sock_file write;
+allow wpa mtkrild:unix_stream_socket connectto;
