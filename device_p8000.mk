@@ -54,4 +54,6 @@ persist.service.acm.enable=0 \
 persist.sys.usb.config=mtp \
 ro.mount.fs=EXT4 \
 ro.persist.partition.support=no \
-ro.cip.partition.support=no
+ro.cip.partition.support=no \
+debug.hwui.render_dirty_regions=false \
+ro.sf.lcd_density=480
