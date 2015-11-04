@@ -116,6 +116,9 @@ bin/test/fpsvcd/fpsvcd_c
 bin/test/fpsvcd/fpsvcd_s
 bin/test/slcryption/sl_sec_encode
 bin/test/slversion/slver
+bin/guiext-server
+bin/MtkCodecService
+bin/AcdApiDaemon
 
 #xbin
 xbin/BGW
@@ -173,6 +176,7 @@ lib/libged.so
 lib64/libged.so
 lib/libgpu_aux.so
 lib64/libgpu_aux.so
+lib64/hw/gralloc.mt6753.so
 
 #generated 64 bit
 lib64/libEGL.so
@@ -209,3 +213,6 @@ lib/libperfservicenative.so
 lib64/libperfservicenative.so
 lib/libui_ext.so
 lib64/libui_ext.so
+lib/libui.so
+lib64/libui.so
+
