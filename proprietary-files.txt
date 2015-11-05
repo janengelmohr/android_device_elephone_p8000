@@ -18,6 +18,7 @@ vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/nose_base-
 vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/left_eye-y0-yi45-p0-pi45-r0-ri20.lg_32-tree7-wmd.bin
 lib/libcamera_client_mtk.so
 lib64/libcamera_client_mtk.so
+lib64/hw/camera.mt6753.so
 
 #DRM
 vendor/lib/drm/libdrmwvmplugin.so
@@ -64,9 +65,18 @@ bin/mtk_setprop
 
 #Sound
 lib64/libbessound_hd_mtk.so
-lib/libaudiomtkdcremoval.so
 lib/libbessound_hd_mtk.so
 lib/libbessurround_mtk.so
+lib/libaudio-resampler.so
+lib/libaudiocompensationfilter.so
+lib/libaudiocomponentengine.so
+lib/libaudiocustparam.so
+lib/libaudiodcrflt.so
+lib/libaudiomtkdcremoval.so
+lib/libaudiosetting.so
+lib/libwebrtc_audio_preprocessing.so
+lib64/hw/audio.primary.mt6753.so
+
 
 #bin
 bin/6620_launcher
@@ -126,6 +136,8 @@ xbin/mnld
 
 
 #Testing
+lib64/hw/memtrack.mt6753.so
+lib64/hw/sensors.mt6753.so
 lib/hw/audio.primary.default.so
 lib/hw/audio.primary.mt6753.so
 lib/hw/audio.r_submix.default.so
