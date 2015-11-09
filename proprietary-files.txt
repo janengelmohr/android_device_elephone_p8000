@@ -30,6 +30,7 @@ lib/libcam.iopipe.so
 lib/libcam.metadataprovider.so
 lib/libcam.paramsmgr.so
 lib/libcam3_hwnode.so
+lib/libcam_hwutils.so
 lib/libcam3_hwpipeline.so
 lib/hw/mmsdk.default.so
 lib64/hw/mmsdk.default.so
@@ -45,6 +46,7 @@ lib64/libcam.iopipe.so
 lib64/libcam.metadataprovider.so
 lib64/libcam.paramsmgr.so
 lib64/libcam3_hwnode.so
+lib64/libcam_hwutils.so
 lib64/libcam3_hwpipeline.so
 lib64/hw/mmsdk.default.so
 
@@ -211,6 +213,9 @@ etc/firmware/mt6627/mt6627_fm_v4_coeff.bin
 etc/firmware/mt6627/mt6627_fm_v4_patch.bin
 etc/firmware/mt6627/mt6627_fm_v5_coeff.bin
 etc/firmware/mt6627/mt6627_fm_v5_patch.bin
+lib/libblisrc.so
+lib64/libblisrc.so
+
 #OpenGL
 lib/libdpframework.so
 lib64/libdpframework.so
