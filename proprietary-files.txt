@@ -19,6 +19,34 @@ vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/left_eye-y
 lib/libcamera_client_mtk.so
 lib64/libcamera_client_mtk.so
 lib64/hw/camera.mt6753.so
+lib/libcam.camadapter.so
+lib/libcam.camnode.so
+lib/libcam.camshot.so
+lib/libcam.device1.so
+lib/libcam.device3.so
+lib/libcam.hal3a.v3.so
+lib/libcam.halsensor.so
+lib/libcam.iopipe.so
+lib/libcam.metadataprovider.so
+lib/libcam.paramsmgr.so
+lib/libcam3_hwnode.so
+lib/libcam3_hwpipeline.so
+lib/hw/mmsdk.default.so
+lib64/hw/mmsdk.default.so
+lib64/libacdk.so
+lib64/libcam.camadapter.so
+lib64/libcam.camnode.so
+lib64/libcam.camshot.so
+lib64/libcam.device1.so
+lib64/libcam.device3.so
+lib64/libcam.hal3a.v3.so
+lib64/libcam.halsensor.so
+lib64/libcam.iopipe.so
+lib64/libcam.metadataprovider.so
+lib64/libcam.paramsmgr.so
+lib64/libcam3_hwnode.so
+lib64/libcam3_hwpipeline.so
+lib64/hw/mmsdk.default.so
 
 #DRM
 vendor/lib/drm/libdrmwvmplugin.so
@@ -76,6 +104,8 @@ lib/libaudiomtkdcremoval.so
 lib/libaudiosetting.so
 lib/libwebrtc_audio_preprocessing.so
 lib64/hw/audio.primary.mt6753.so
+lib64/libaed.so
+lib/libaed.so
 
 
 #bin
