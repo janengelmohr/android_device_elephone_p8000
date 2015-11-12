@@ -54,6 +54,51 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_FSTAB := device/elephone/p8000/recovery/root/fstab.mt6753
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
 
+#twrp ( WIP do not use!!! see comments )
+
+#tw_theme is essential flag
+TW_THEME := portrait_hdpi
+
+#we need a twrp.fstab 
+#TARGET_RECOVERY_FSTAB := device/elephone/p8000/recovery/root/twrp.fstab
+
+#may be usefull if we get graphical glitches
+#RECOVERY_GRAPHICS_USE_LINELENGTH := true
+
+#in case of wrong color this needs modification
+#TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+
+#if sdcard0 is a /data/media emulated one
+#RECOVERY_SDCARD_ON_DATA := true
+
+#ntfs support? (needs much space..)
+#TW_INCLUDE_NTFS_3G := true
+
+#we may need that if sdcard0 dont work
+#TW_FLASH_FROM_STORAGE := true
+#TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+#TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+#TW_DEFAULT_EXTERNAL_STORAGE := true
+
+#from my other devices.... please ignore for now
+#TW_INCLUDE_JB_CRYPTO := true
+#TW_CRYPTO_FS_TYPE := "ext4"
+#TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/msm_sdcc.1/by-name/userdata"
+#TW_CRYPTO_MNT_POINT := "/data"
+#TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,barrier=1,noauto_da_alloc,discard"
+#TW_CRYPTO_FS_FLAGS := "0x00000406"
+#TW_CRYPTO_KEY_LOC := "footer"
+
+#only add if kernel supports
+#TW_INCLUDE_FUSE_EXFAT := true
+
+#F2FS support (only activate if kernel supports)
+#TARGET_USERIMAGES_USE_F2FS:=true
+
+#brightness settings (needs verification)
+TW_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness/
+TW_MAX_BRIGHTNESS := 255
+
 #Mediatek flags
 BOARD_HAS_MTK_HARDWARE := true
 MTK_HARDWARE := true
