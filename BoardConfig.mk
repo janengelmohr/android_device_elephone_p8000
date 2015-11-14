@@ -47,6 +47,11 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 444596224
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --tags_offset 0x0df88000 
 
+#in case we want to build kernel from source
+#TARGET_KERNEL_SOURCE := kernel/elephone/p8000
+#TARGET_KERNEL_CONFIG := cyanogenmod_p8000_defconfig
+
+#for now lets use prebuilt
 TARGET_PREBUILT_KERNEL := device/elephone/p8000/prebuilt/kernel
 BOARD_HAS_NO_SELECT_BUTTON := true
 #recovery
