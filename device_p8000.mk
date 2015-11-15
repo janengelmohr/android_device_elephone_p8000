@@ -16,11 +16,8 @@ endif
 PRODUCT_COPY_FILES += \
 	device/elephone/p8000/rootdir/init.rc:root/init.rc \
 	device/elephone/p8000/rootdir/init.mt6735.rc:root/init.mt6735.rc \
-	device/elephone/p8000/rootdir/init.usb.rc:root/init.usb.rc \
 	device/elephone/p8000/rootdir/init.ssd.rc:root/init.ssd.rc \
-	device/elephone/p8000/rootdir/init.trace.rc:root/init.trace.rc \
 	device/elephone/p8000/rootdir/init.xlog.rc:root/init.xlog.rc \
-	device/elephone/p8000/rootdir/init.zygote32.rc:root/init.zygote32.rc \
 	device/elephone/p8000/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc \
 	device/elephone/p8000/rootdir/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
 	device/elephone/p8000/rootdir/init.recovery.mt6735.rc:root/init.recovery.mt6735.rc \
