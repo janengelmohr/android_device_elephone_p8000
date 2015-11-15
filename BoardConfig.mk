@@ -47,12 +47,51 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 444596224
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --tags_offset 0x0df88000 
 
+#in case we want to build kernel from source
+#TARGET_KERNEL_SOURCE := kernel/elephone/p8000
+#TARGET_KERNEL_CONFIG := cyanogenmod_p8000_defconfig
+
+#for now lets use prebuilt
 TARGET_PREBUILT_KERNEL := device/elephone/p8000/prebuilt/kernel
 BOARD_HAS_NO_SELECT_BUTTON := true
 #recovery
 #TARGET_RECOVERY_INITRC := device/elephone/p8000/recovery/init.mt6753.rc
 TARGET_RECOVERY_FSTAB := device/elephone/p8000/recovery/root/fstab.mt6753
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
+
+#twrp ( WIP do not use!!! see comments )
+
+#tw_theme is essential flag
+TW_THEME := portrait_hdpi
+
+#brightness settings (needs verification)
+TW_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness/
+TW_MAX_BRIGHTNESS := 255
+
+#may be usefull if we get graphical glitches
+#RECOVERY_GRAPHICS_USE_LINELENGTH := true
+
+#in case of wrong color this needs modification
+#TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+
+#if sdcard0 is a /data/media emulated one
+#RECOVERY_SDCARD_ON_DATA := true
+
+#ntfs support? (needs much space..)
+#TW_INCLUDE_NTFS_3G := true
+
+#we may need that if sdcard0 dont work
+#TW_FLASH_FROM_STORAGE := true
+#TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+#TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+#TW_DEFAULT_EXTERNAL_STORAGE := true
+
+#only add if kernel supports
+#TW_INCLUDE_FUSE_EXFAT := true
+
+#F2FS support (only activate if kernel supports)
+#TARGET_USERIMAGES_USE_F2FS:=true
+
 
 #Mediatek flags
 BOARD_HAS_MTK_HARDWARE := true
