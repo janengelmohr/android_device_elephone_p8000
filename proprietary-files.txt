@@ -5,6 +5,8 @@ lib64/libbluetoothem_mtk.so
 lib64/libbluetooth_mtk.so
 lib/libbluetooth_mtk.so
 lib/libbluetoothem_mtk.so
+lib/libbluetoothdrv.so
+lib64/libbluetoothdrv.so
 bin/mtkbt
 
 #Audio over Bluetooth
@@ -33,6 +35,7 @@ lib/libcam3_hwnode.so
 lib/libcam_hwutils.so
 lib/libcam3_hwpipeline.so
 lib/hw/mmsdk.default.so
+lib/libcam_utils.so
 lib64/hw/mmsdk.default.so
 lib64/libacdk.so
 lib64/libcam.camadapter.so
@@ -49,6 +52,7 @@ lib64/libcam3_hwnode.so
 lib64/libcam_hwutils.so
 lib64/libcam3_hwpipeline.so
 lib64/hw/mmsdk.default.so
+lib64/libcam_utils.so
 
 #DRM
 vendor/lib/drm/libdrmwvmplugin.so
