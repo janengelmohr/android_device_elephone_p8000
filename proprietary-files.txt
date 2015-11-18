@@ -269,6 +269,8 @@ lib/libimageio_plat_drv.so
 lib64/libimageio_plat_drv.so
 lib/libmtkjpeg.so
 lib64/libmtkjpeg.so
+lib/libdrmmtkutil.so
+lib64/libdrmmtkutil.so
 
 
 #OpenGL
