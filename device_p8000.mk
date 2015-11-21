@@ -26,22 +26,12 @@ PRODUCT_COPY_FILES += \
 	device/elephone/p8000/rootdir/init.modem.rc:root/init.modem.rc \
     	device/elephone/p8000/recovery/root/fstab.mt6753:root/fstab.mt6735  \
 	device/elephone/p8000/rootdir/ueventd.rc:root/ueventd.rc \
-	device/elephone/p8000/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc \
 	device/elephone/p8000/rootdir/meta_init.rc:root/meta_init.rc \
 	device/elephone/p8000/rootdir/meta_init.project.rc:root/meta_init.project.rc \
 	device/elephone/p8000/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
 	device/elephone/p8000/rootdir/meta_init.modem.rc:root/factory_init.rc \
 	device/elephone/p8000/rootdir/meta_init.modem.rc:root/factory_init.project.rc 
     	#device/elephone/p8000/recovery/root/etc/twrp.fstab:recovery/root/etc/twrp.fstab
-#    $(LOCAL_PATH)/rootdir/recovery.fstab:recovery.fstab
-
-#PRODUCT_COPY_FILES_OVERRIDES += \
-#    recovery/root/ueventd.rc \
-#    root/fstab.goldfish \
-#    root/init.goldfish.rc \
-#    recovery/root/fstab.goldfish 
-
-
 
 $(call inherit-product, build/target/product/full.mk)
 
