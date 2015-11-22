@@ -14,13 +14,12 @@ else
 endif
 
 PRODUCT_COPY_FILES += \
-	device/elephone/p8000/rootdir/init.rc:root/init.rc \
+	device/elephone/p8000/rootdir/init.p8000.rc:root/init.p8000.rc \
 	device/elephone/p8000/rootdir/init.mt6735.rc:root/init.mt6735.rc \
 	device/elephone/p8000/rootdir/init.ssd.rc:root/init.ssd.rc \
 	device/elephone/p8000/rootdir/init.xlog.rc:root/init.xlog.rc \
 	device/elephone/p8000/rootdir/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
 	device/elephone/p8000/rootdir/init.recovery.mt6735.rc:root/init.recovery.mt6735.rc \
-	device/elephone/p8000/rootdir/init.environ.rc:root/init.environ.rc \
 	device/elephone/p8000/rootdir/init.aee.rc:root/init.aee.rc \
 	device/elephone/p8000/rootdir/init.project.rc:root/init.project.rc \
 	device/elephone/p8000/rootdir/init.modem.rc:root/init.modem.rc \
@@ -30,8 +29,9 @@ PRODUCT_COPY_FILES += \
 	device/elephone/p8000/rootdir/meta_init.project.rc:root/meta_init.project.rc \
 	device/elephone/p8000/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
 	device/elephone/p8000/rootdir/meta_init.modem.rc:root/factory_init.rc \
-	device/elephone/p8000/rootdir/meta_init.modem.rc:root/factory_init.project.rc 
-    	#device/elephone/p8000/recovery/root/etc/twrp.fstab:recovery/root/etc/twrp.fstab
+	device/elephone/p8000/rootdir/meta_init.modem.rc:root/factory_init.project.rc \
+	frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml
+
 
 $(call inherit-product, build/target/product/full.mk)
 
