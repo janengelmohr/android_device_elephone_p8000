@@ -10,6 +10,9 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 # Inherit device configuration
 $(call inherit-product, device/elephone/p8000/device_p8000.mk)
 
+# Configure dalvik heap
+$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
+
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
