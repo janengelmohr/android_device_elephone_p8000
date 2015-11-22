@@ -8,6 +8,8 @@ lib/libbluetoothem_mtk.so
 lib/libbluetoothdrv.so
 lib64/libbluetoothdrv.so
 bin/mtkbt
+app/MtkBt/arm64/MtkBt.odex
+app/MtkBt/arm/MtkBt.odex
 
 #Audio over Bluetooth
 vendor/lib/hw/audio.a2dp.blueangel.so
@@ -53,7 +55,14 @@ lib64/libcam_hwutils.so
 lib64/libcam3_hwpipeline.so
 lib64/hw/mmsdk.default.so
 lib64/libcam_utils.so
-
+lib/libcam_platform.so
+lib64/libcam_platform.so
+lib/libcam.client.so
+lib64/libcam.client.so
+lib64/libcam1_utils.so
+lib/libcam1_utils.so
+lib/libcam3_app.so
+lib64/libcam3_app.so
 #DRM
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libWVStreamControlAPI_L3.so
@@ -70,9 +79,11 @@ bin/mtk_agpsd
 
 #Schedule Poweroff/On
 app/SchedulePowerOnOff/SchedulePowerOnOff.apk
+app/SchedulePowerOnOff/arm64/SchedulePowerOnOff.odex
 
 #Thermal
 app/MTKThermalManager/MTKThermalManager.apk
+app/MTKThermalManager/arm64/MTKThermalManager.odex
 
 #RIL
 lib64/mtk-ril.so
@@ -197,8 +208,6 @@ lib/hw/vibrator.default.so
 lib/egl/libGLES_mali.so
 lib64/egl/libGLES_mali.so
 lib/ssl/engines/libkeystore.so
-#lib/libbinder.so
-#lib64/libbinder.so
 etc/firmware/ROMv2_lm_patch_1_0_hdr.bin
 etc/firmware/ROMv2_lm_patch_1_1_hdr.bin
 etc/firmware/S_ANDRO_SFL.ini
@@ -273,7 +282,10 @@ lib/libdrmmtkutil.so
 lib64/libdrmmtkutil.so
 lib/libdrmmtkwhitelist.so
 lib64/libdrmmtkwhitelist.so
-
+lib/libfeatureio.so
+lib64/libfeatureio.so
+lib/libcurl.so
+lib64/libcurl.so
 
 #OpenGL
 lib/libdpframework.so
@@ -319,6 +331,6 @@ lib/libperfservicenative.so
 lib64/libperfservicenative.so
 lib/libui_ext.so
 lib64/libui_ext.so
-#lib/libui.so
-#lib64/libui.so
+lib/libui.so
+lib64/libui.so
 
