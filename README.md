@@ -2,10 +2,20 @@
 Device repository for Elephone P8000 CM12.1 (WIP)
 
 current state:
- * CR works except external sd mounting and signature checking
+ * it boots
+ * it is hardware accelerated
+ * WiFi works
 
 TODO:
- * fix binder access errors, looks like an SELinux problem
+ * RIL
+ * BT
+ * Audio
+ * Camera
+ * GPS
+ * ALS
+ * PS
+ * MTP
+ * Enforcing SELinux
 
 IF you are trying to build TWRP against cm-12.1 you will need this commit:
 * http://review.cyanogenmod.org/#/c/89474/1/recovery.te
