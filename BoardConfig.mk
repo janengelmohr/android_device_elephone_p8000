@@ -11,7 +11,6 @@ TARGET_CPU_ABI2 :=
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_CORTEX_A53 := true
-#TARGET_BOARD_PLATFORM_GPU := Mali-T720
 
 #32 bit
 TARGET_2ND_ARCH := arm
@@ -31,7 +30,7 @@ TARGET_USERIMAGES_USE_EXT4:=true
 
 TARGET_BOOTLOADER_BOARD_NAME := Auxus_PRIME_201
 
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x40078000
 #extracted from stock recovery
 BOARD_KERNEL_PAGESIZE := 2048
@@ -58,6 +57,25 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 #TARGET_RECOVERY_INITRC := device/elephone/p8000/recovery/init.mt6753.rc
 TARGET_RECOVERY_FSTAB := device/elephone/p8000/recovery/root/fstab.mt6753
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
+
+#system.prop
+TARGET_SYSTEM_PROP := device/elephone/p8000/system.prop
+
+# WiFi
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_mt66xx
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_mt66xx
+WIFI_DRIVER_FW_PATH_PARAM:="/dev/wmtWifi"
+WIFI_DRIVER_FW_PATH_STA:=STA
+WIFI_DRIVER_FW_PATH_AP:=AP
+WIFI_DRIVER_FW_PATH_P2P:=P2P
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_MTK := true
+BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
 
 #twrp ( WIP do not use!!! see comments )
 
