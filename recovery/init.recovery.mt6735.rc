@@ -1,0 +1,18 @@
+
+on post-fs-data
+# -----------------------
+# Add by MTK
+# Create CIP mount point
+    symlink /dev/block/platform/mtk-msdc.0/by-name/custom /dev/customimg
+    mkdir /custom
+    exec /sbin/e2fsck -p /dev/customimg
+    mount ext4 /dev/customimg /custom
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/custom
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/custom
+
+#custom the cpuinfo
+    write /sys/custom_date/cpu_name "MT6735"
+
+# End of adding by MTK drivers
+# -----------------------
+

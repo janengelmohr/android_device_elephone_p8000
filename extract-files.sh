@@ -26,9 +26,9 @@ else
             mkdir -p $BASE/$DIR
 	fi
 	if [ "$1" = "unzip" ]; then
-            unzip -j -o $ZIPFILE system/$FILE -d $BASE/$DIR
+            unzip -j -o $ZIPFILE $FILE -d $BASE/$DIR
 	else
-            adb pull /system/$FILE $BASE/$FILE
+            adb pull $FILE $BASE/$FILE
 	fi
     done
 fi

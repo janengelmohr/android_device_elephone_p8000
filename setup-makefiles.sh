@@ -32,7 +32,7 @@ for FILE in `cat proprietary-files.txt | grep -v ^# | grep -v ^$`; do
     if [ $COUNT = "0" ]; then
         LINEEND=""
     fi
-    echo "    $OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> $MAKEFILE
+    echo "    $OUTDIR/proprietary/$FILE:$FILE$LINEEND" >> $MAKEFILE
 
 done
 

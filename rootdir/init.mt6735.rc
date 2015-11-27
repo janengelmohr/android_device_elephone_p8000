@@ -1,16 +1,12 @@
 # MTK platform .rc configure
 
+import factory_init.rc
 import init.project.rc
-import /FWUpgradeInit.rc
 import init.xlog.rc
 import init.aee.rc
 import init.ssd.rc
-import init.no_ssd.rc
-import init.ssd_nomuser.rc
-import init.fon.rc
-import init.volte.rc
-import init.epdg.rc
-import init.trustonic.rc
+import init.modem.rc
+
 
 on init
     export USBOTG_STORAGE /storage/usbotg
@@ -26,6 +22,8 @@ on init
     mkdir /persist 0771 system system
 #Create nvdata mount point
     mkdir /nvdata 0771 system system
+    
+
 # Create CIP mount point
     mkdir /custom
 
@@ -455,7 +453,7 @@ on post-fs-data
 
     # device info /proc interface
     mknod /dev/devmap c 196 0;
-    chmod 0440 /dev/devmap
+    chmod 0770 /dev/devmap
     chown root system /dev/devmap
 
     # BT relayer mode used VCOM
