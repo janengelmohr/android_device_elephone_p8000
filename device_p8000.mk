@@ -14,7 +14,6 @@ else
 endif
 
 PRODUCT_COPY_FILES += \
-	device/elephone/p8000/rootdir/init.p8000.rc:root/init.p8000.rc \
 	device/elephone/p8000/rootdir/init.mt6735.rc:root/init.mt6735.rc \
 	device/elephone/p8000/rootdir/init.ssd.rc:root/init.ssd.rc \
 	device/elephone/p8000/rootdir/init.xlog.rc:root/init.xlog.rc \
