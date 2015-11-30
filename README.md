@@ -1,16 +1,19 @@
 # android_device_alps_k05ts_a
 Device repository for Elephone P8000 CM12.1 (WIP)
 
-current state:
+currently working:
  * it boots
  * it is hardware accelerated
- * WiFi works
+ * WiFi 
+ * Camera works for taking pictures if FlashlightTile is nulled
+ * Vibration
+ * Rotation
 
 TODO:
  * RIL
  * BT
  * Audio
- * Camera
+ * Videorecording
  * GPS
  * ALS
  * PS
