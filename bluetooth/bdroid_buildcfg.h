@@ -1,6 +1,6 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "Wiko Rainbow"
+#define BTM_DEF_LOCAL_NAME   "Elephone P8000"
 
 #endif
