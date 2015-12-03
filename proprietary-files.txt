@@ -113,14 +113,6 @@ system/app/LocationEM2/LocationEM2.apk
 system/app/LocationEM2/arm64/LocationEM2.odex
 system/bin/mtk_agpsd
 
-#Schedule Poweroff/On
-system/app/SchedulePowerOnOff/SchedulePowerOnOff.apk
-system/app/SchedulePowerOnOff/arm64/SchedulePowerOnOff.odex
-
-#Thermal
-#system/app/MTKThermalManager/MTKThermalManager.apk
-#system/app/MTKThermalManager/arm64/MTKThermalManager.odex
-
 #RIL
 system/lib64/mtk-ril.so
 system/lib64/mtk-rilmd2.so
@@ -148,6 +140,20 @@ system/bin/atci_service
 system/bin/netdiag
 system/bin/audiocmdservice_atci
 system/bin/pq
+system/lib/libfmmt6630.so
+system/lib64/libfmmt6630.so
+system/lib/libfmmt6628.so
+system/lib64/libfmmt6628.so
+system/lib/libfmmt6627.so
+system/lib64/libfmmt6627.so
+system/lib/libfmmt6620.so
+system/lib64/libfmmt6620.so
+system/lib/libfmjni.so
+system/lib64/libfmjni.so
+system/lib/libfmcust.so
+system/lib64/libfmcust.so
+system/lib/libccci_util.so
+system/lib64/libccci_util.so
 
 #WiFi
 system/lib64/libwifi-service.so
@@ -177,6 +183,12 @@ system/lib64/libem_support_jni.so
 system/lib/libem_usb_jni.so
 system/lib64/libem_usb_jni.so
 system/bin/em_svr
+
+#NVRAM
+system/lib/libfile_op.so
+system/lib64/libfile_op.so
+system/lib/libhwm.so
+system/lib64/libhwm.so
 
 #Sound
 system/lib64/libbessound_hd_mtk.so
