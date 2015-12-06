@@ -8,15 +8,15 @@ currently working:
  * Camera works for taking pictures if FlashlightTile is nulled
  * Vibration
  * Rotation
+ * BT
+ * Audio
+ * PS
 
 TODO:
  * RIL
- * BT
- * Audio
  * Videorecording
  * GPS
  * ALS
- * PS
  * MTP
  * Enforcing SELinux
 
