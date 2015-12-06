@@ -1,6 +1,5 @@
 #Bluetooth
 system/vendor/lib/hw/bluetooth.blueangel.so
-system/app/MtkBt/MtkBt.apk
 system/lib64/libbluetoothem_mtk.so
 system/lib64/libbluetooth_mtk.so
 system/lib/libbluetooth_mtk.so
@@ -8,15 +7,11 @@ system/lib/libbluetoothem_mtk.so
 system/lib/libbluetoothdrv.so
 system/lib64/libbluetoothdrv.so
 system/bin/mtkbt
-system/app/MtkBt/arm64/MtkBt.odex
-system/app/MtkBt/arm/MtkBt.odex
 system/lib/libem_bt_jni.so
 system/lib64/libem_bt_jni.so
 system/etc/bluetooth/bt_did.conf
 system/etc/bluetooth/btconfig.xml
 system/etc/bluetooth/bt_stack.conf
-system/app/Bluetooth/Bluetooth.apk
-system/app/Bluetooth/arm/Bluetooth.odex
 
 
 #Audio over Bluetooth
@@ -244,8 +239,6 @@ system/bin/ccci_mdinit
 system/bin/dualmdlogger
 system/bin/fsck_msdos_mtk
 system/bin/geomagneticd
-system/bin/gsm0710muxd
-system/bin/gsm0710muxdmd2
 system/bin/lcdc_screen_cap
 system/bin/lsm303md
 system/bin/mc6420d
@@ -290,7 +283,6 @@ system/xbin/mnld
 system/lib64/hw/memtrack.mt6753.so
 system/lib64/hw/sensors.mt6753.so
 system/lib/hw/audio.primary.mt6753.so
-system/lib/hw/bluetooth.default.so
 system/lib/hw/camera.mt6753.so
 system/lib/hw/gps.default.so
 system/lib/hw/gralloc.default.so

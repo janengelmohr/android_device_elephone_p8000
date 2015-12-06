@@ -23,7 +23,7 @@ PRODUCT_COPY_FILES += \
 	device/elephone/p8000/rootdir/init.aee.rc:root/init.aee.rc \
 	device/elephone/p8000/rootdir/init.project.rc:root/init.project.rc \
 	device/elephone/p8000/rootdir/init.modem.rc:root/init.modem.rc \
-    	device/elephone/p8000/recovery/root/fstab.mt6753:root/fstab.mt6735  \
+    device/elephone/p8000/recovery/root/fstab.mt6753:root/fstab.mt6735  \
 	device/elephone/p8000/rootdir/ueventd.mt6735.rc:root/ueventd.rc \
 	device/elephone/p8000/rootdir/factory_init.rc:root/factory_init.rc \
 	device/elephone/p8000/rootdir/factory_init.project.rc:root/factory_init.project.rc \
@@ -37,8 +37,12 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
 	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
 	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
-	frameworks/native/data/etc/android.hardware.camera.full.xml:system/etc/permissions/android.hardware.camera.full.xml \
+	frameworks/native/data/etc/android.hardware.camera.full.xml:system/etc/permissions/android.hardware.camera.full.xml 
 
+    
+# Bluetooth
+PRODUCT_PACKAGES += \
+	libbt-vendor
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -57,19 +61,14 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     libaudio-resampler \
     tinymix \
-    tinycompress
+    libdashplayer
 
 
 PRODUCT_COPY_FILES += \
     device/elephone/p8000/rootdir/etc/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
-	
-	
 
 
 $(call inherit-product, build/target/product/full.mk)
-
-#PRODUCT_NAME := full_k05ts_a
-#PRODUCT_DEVICE := k05ts_a
 
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0 \
 ro.allow.mock.location=1 \
