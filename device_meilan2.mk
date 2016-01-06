@@ -20,15 +20,15 @@ PRODUCT_COPY_FILES += \
 	device/meizu/meilan2/rootdir/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
 	device/meizu/meilan2/rootdir/init.recovery.mt6735.rc:root/init.recovery.mt6735.rc \
 	device/meizu/meilan2/rootdir/init.aee.rc:root/init.aee.rc \
-	device/meizu/p/rootdir/init.project.rc:root/init.project.rc \
-	device/elephone/p8000/rootdir/init.modem.rc:root/init.modem.rc \
-    	device/elephone/p8000/recovery/root/fstab.mt6753:root/fstab.mt6735  \
-	device/elephone/p8000/rootdir/ueventd.rc:root/ueventd.rc \
-	device/elephone/p8000/rootdir/meta_init.rc:root/meta_init.rc \
-	device/elephone/p8000/rootdir/meta_init.project.rc:root/meta_init.project.rc \
-	device/elephone/p8000/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
-	device/elephone/p8000/rootdir/meta_init.modem.rc:root/factory_init.rc \
-	device/elephone/p8000/rootdir/meta_init.modem.rc:root/factory_init.project.rc \
+	device/meizu/meilan2/rootdir/init.project.rc:root/init.project.rc \
+	device/meizu/meilan2/rootdir/init.modem.rc:root/init.modem.rc \
+    	device/meizu/meilan2/recovery/root/fstab.mt6753:root/fstab.mt6735  \
+	device/meizu/meilan2/rootdir/ueventd.rc:root/ueventd.rc \
+	device/meizu/meilan2/rootdir/meta_init.rc:root/meta_init.rc \
+	device/meizu/meilan2/rootdir/meta_init.project.rc:root/meta_init.project.rc \
+	device/meizu/meilan2/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
+	device/meizu/meilan2/rootdir/meta_init.modem.rc:root/factory_init.rc \
+	device/meizu/meilan2/rootdir/meta_init.modem.rc:root/factory_init.project.rc \
 	frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml \
 	frameworks/native/data/etc/android.hardware.audio.output.xml:system/etc/permissions/android.hardware.audio.output.xml \
 	frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
@@ -56,7 +56,7 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
-    device/elephone/p8000/rootdir/etc/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+    device/meizu/meilan2/rootdir/etc/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
 	
 	
 
@@ -77,4 +77,4 @@ ro.mount.fs=EXT4 \
 ro.persist.partition.support=no \
 ro.cip.partition.support=no \
 debug.hwui.render_dirty_regions=false \
-ro.sf.lcd_density=480
+ro.sf.lcd_density=320
