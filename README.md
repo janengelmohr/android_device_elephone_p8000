@@ -1,5 +1,5 @@
 # android_device_alps_k05ts_a
-Device repository for Elephone P8000 CM12.1 (WIP)
+Device repository for Meizu M2 Mini CM12.1 (WIP)
 
 current state:
  * it boots

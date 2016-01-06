@@ -1,11 +1,11 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/elephone/p8000/BoardConfigVendor.mk
+-include vendor/meizu/meilan2/BoardConfigVendor.mk
 #64 bit
 TARGET_ARCH := arm64
 TARGET_NO_BOOTLOADER := true
-TARGET_BOARD_PLATFORM := mt6753
+TARGET_BOARD_PLATFORM := mt6735
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 := 
 TARGET_ARCH_VARIANT := armv8-a
@@ -28,7 +28,7 @@ TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_USERIMAGES_USE_EXT4:=true
 
-TARGET_BOOTLOADER_BOARD_NAME := Auxus_PRIME_201
+TARGET_BOOTLOADER_BOARD_NAME := mt6735
 
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x40078000
@@ -47,19 +47,19 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --tags_offset 0x0df88000 
 
 #in case we want to build kernel from source
-#TARGET_KERNEL_SOURCE := kernel/elephone/p8000
-#TARGET_KERNEL_CONFIG := cyanogenmod_p8000_defconfig
+#TARGET_KERNEL_SOURCE := kernel/meizu/meilan2
+#TARGET_KERNEL_CONFIG := cyanogenmod_meilan2_defconfig
 
 #for now lets use prebuilt
-TARGET_PREBUILT_KERNEL := device/elephone/p8000/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := device/meizu/meilan2/prebuilt/kernel
 BOARD_HAS_NO_SELECT_BUTTON := true
 #recovery
-#TARGET_RECOVERY_INITRC := device/elephone/p8000/recovery/init.mt6753.rc
-TARGET_RECOVERY_FSTAB := device/elephone/p8000/recovery/root/fstab.mt6753
+#TARGET_RECOVERY_INITRC := device/meizu/meilan2/recovery/init.mt6753.rc
+TARGET_RECOVERY_FSTAB := device/meizu/meilan2/recovery/root/fstab.mt6753
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
 
 #system.prop
-TARGET_SYSTEM_PROP := device/elephone/p8000/system.prop
+TARGET_SYSTEM_PROP := device/meizu/meilan2/system.prop
 
 # WiFi
 WPA_SUPPLICANT_VERSION := VER_0_8_X
@@ -119,5 +119,5 @@ COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE -DMTK_AOSP_ENHANCEMENT
 
 #EGL settings
 USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := device/elephone/p8000/egl.cfg
+BOARD_EGL_CFG := device/meizu/meilan2/egl.cfg
 
