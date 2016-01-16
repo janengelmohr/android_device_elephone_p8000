@@ -55,7 +55,7 @@ TARGET_PREBUILT_KERNEL := device/meizu/meilan2/prebuilt/kernel
 BOARD_HAS_NO_SELECT_BUTTON := true
 #recovery
 #TARGET_RECOVERY_INITRC := device/meizu/meilan2/recovery/init.mt6753.rc
-TARGET_RECOVERY_FSTAB := device/meizu/meilan2/recovery/root/fstab.mt6753
+TARGET_RECOVERY_FSTAB := device/meizu/meilan2/recovery/root/fstab.mt6735
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
 
 #system.prop
