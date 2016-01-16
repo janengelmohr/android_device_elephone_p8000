@@ -14,7 +14,11 @@ Create local manifest for meizu meilan2 repositories:
 
 Populate the meizu_m2.xml with the following content:
 
-    <xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <manifest>
+      <project path="device/meizu/meilan2" name="divis1969/android_device_meizu_meilan2" />
+      <project path="vendor/meizu/meilan2" name="divis1969/android_vendor_meizu_meilan2" revision="master" />
+    </manifest>
 
 Build the code:
 
