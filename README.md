@@ -5,15 +5,19 @@ Getting Started
 ---------------
 
 Initialize a repository with CyanogenMode:
+
     repo init -u git://github.com/CyanogenMod/android.git -b cm-12.1
 
 Create local manifest for meizu meilan2 repositories:
+
     mkdir -p .repo/local_manifests/meizu_m2.xml
 
 Populate the meizu_m2.xml with the following content:
+
     <xml
 
 Build the code:
+
     source build/envsetup.sh
     breakfast meilan2
     mka 2>&1 | tee build.log
