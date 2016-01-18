@@ -44,14 +44,15 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 1107296256
 BOARD_CACHEIMAGE_PARTITION_SIZE := 444596224
 #pagesize * 64
 BOARD_FLASH_BLOCK_SIZE := 131072
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --tags_offset 0x0df88000 
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --tags_offset 0x0df88000 --board 1450664547 
 
 #in case we want to build kernel from source
 #TARGET_KERNEL_SOURCE := kernel/meizu/meilan2
 #TARGET_KERNEL_CONFIG := cyanogenmod_meilan2_defconfig
 
 #for now lets use prebuilt
-TARGET_PREBUILT_KERNEL := device/meizu/meilan2/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := device/meizu/meilan2/prebuilt/Image.gz-dtb
+BOARD_CANT_BUILD_RECOVERY_FROM_BOOT_PATCH := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 #recovery
 #TARGET_RECOVERY_INITRC := device/meizu/meilan2/recovery/init.mt6753.rc

@@ -8,7 +8,7 @@ $(call inherit-product-if-exists, vendor/meizu/meilan2/meilan2-vendor.mk)
 DEVICE_PACKAGE_OVERLAYS += device/meizu/meilan2/overlay
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/meizu/meilan2/prebuilt/kernel
+	LOCAL_KERNEL := device/meizu/meilan2/prebuilt/Image.gz-dtb
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
