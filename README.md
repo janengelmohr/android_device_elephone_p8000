@@ -16,6 +16,7 @@ Populate the meizu_m2.xml with the following content:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <manifest>
+      <remove-project name="platform/frameworks/testing" />
       <project path="device/meizu/meilan2" name="divis1969/android_device_meizu_meilan2" />
       <project path="vendor/meizu/meilan2" name="divis1969/android_vendor_meizu_meilan2" revision="master" />
     </manifest>
@@ -28,23 +29,5 @@ Build the code:
 
 Current state
 -------------
-Note: the below is not yet confirmed, copied from original p8000 repo!!!
 
- * it boots
- * it is hardware accelerated
- * WiFi works
-
-TODO:
- * RIL
- * BT
- * Audio
- * Camera
- * GPS
- * ALS
- * PS
- * MTP
- * Enforcing SELinux
-
-IF you are trying to build TWRP against cm-12.1 you will need this commit:
-* http://review.cyanogenmod.org/#/c/89474/1/recovery.te
-* DO NOT INCLUDE THIS COMMIT FOR NORMAL BUILDS!
+Just compiled

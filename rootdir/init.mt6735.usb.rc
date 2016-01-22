@@ -90,7 +90,7 @@ on property:sys.usb.config=mass_storage,adb
 #6.mtp
 on property:sys.usb.config=mtp
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor ${sys.usb.vid}
+    write /sys/class/android_usb/android0/idVendor 2A45
     write /sys/class/android_usb/android0/idProduct 2008
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/enable 1
@@ -99,7 +99,7 @@ on property:sys.usb.config=mtp
 #7.mtp,acm
 on property:sys.usb.config=mtp,acm
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor ${sys.usb.vid}
+    write /sys/class/android_usb/android0/idVendor 2A45
     write /sys/class/android_usb/android0/idProduct 2012
     write /sys/class/android_usb/android0/f_acm/instances 1
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
@@ -109,18 +109,17 @@ on property:sys.usb.config=mtp,acm
 #8.mtp,adb
 on property:sys.usb.config=mtp,adb
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor ${sys.usb.vid}
-    write /sys/class/android_usb/android0/idProduct 201D
+    write /sys/class/android_usb/android0/idVendor 2A45
+    write /sys/class/android_usb/android0/idProduct 0C02
     write /sys/class/android_usb/android0/functions mtp,adb
     write /sys/class/android_usb/android0/enable 1
-    write /sys/class/android_usb/android0/iSerial ${persist.radio.serial}
     start adbd
     setprop sys.usb.state ${sys.usb.config}
 
 #9.mtp,adb,acm
 on property:sys.usb.config=mtp,adb,acm
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor ${sys.usb.vid}
+    write /sys/class/android_usb/android0/idVendor 2A45
     write /sys/class/android_usb/android0/idProduct 200A
     write /sys/class/android_usb/android0/f_acm/instances 1
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
@@ -150,7 +149,7 @@ on property:sys.usb.config=mtp,mass_storage,adb
 #12.ptp
 on property:sys.usb.config=ptp
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor ${sys.usb.vid}
+    write /sys/class/android_usb/android0/idVendor 2A45
     write /sys/class/android_usb/android0/idProduct 200B
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/enable 1
@@ -169,7 +168,7 @@ on property:sys.usb.config=ptp,acm
 #14.ptp,adb
 on property:sys.usb.config=ptp,adb
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor ${sys.usb.vid}
+    write /sys/class/android_usb/android0/idVendor 2A45
     write /sys/class/android_usb/android0/idProduct 200C
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/enable 1
@@ -388,8 +387,8 @@ on property:sys.usb.charging=no
 #35.USB BICR configuration(mass_storage)
 on property:sys.usb.config=bicr
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor ${sys.usb.vid}
-    write /sys/class/android_usb/android0/idProduct 2002
+    write /sys/class/android_usb/android0/idVendor 2A45
+    write /sys/class/android_usb/android0/idProduct 0001
     write /sys/class/android_usb/android0/functions mass_storage
     write /sys/class/android_usb/android0/f_mass_storage/bicr 1
     write /sys/class/android_usb/android0/f_mass_storage/lun/file "/dev/block/loop0"
@@ -399,8 +398,8 @@ on property:sys.usb.config=bicr
 #36.USB BICR configuration(mass_storage+adb)
 on property:sys.usb.config=bicr,adb
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor ${sys.usb.vid}
-    write /sys/class/android_usb/android0/idProduct 2003
+    write /sys/class/android_usb/android0/idVendor 2A45
+    write /sys/class/android_usb/android0/idProduct 0C03
     write /sys/class/android_usb/android0/functions mass_storage,adb
     write /sys/class/android_usb/android0/f_mass_storage/bicr 1
     write /sys/class/android_usb/android0/f_mass_storage/lun/file "/dev/block/loop0"

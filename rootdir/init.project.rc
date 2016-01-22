@@ -49,21 +49,11 @@ on post-fs-data
     chmod 0660 /dev/DW9714AF
     chown system camera /dev/DW9714AF
 
-    chmod 0660 /dev/AD5820AF
-    chown system camera /dev/AD5820AF
+    chmod 0660 /dev/LC898212AF
+    chown system camera /dev/LC898212AF
 
-	chmod 0660 /dev/BU64745GWZAF
+    chmod 0660 /dev/BU64745GWZAF
     chown system camera /dev/BU64745GWZAF
-    
-	chmod 0660 /dev/LC898122AF 
-    chown system camera /dev/LC898122AF 
-
-	chmod 0660 /dev/AK7345AF 
-    chown system camera /dev/AK7345AF 
-   
-   chmod 0660 /dev/DW9761AF 
-    chown system camera /dev/DW9761AF 
-
 
 #SMB
     chown system system /proc/smb/ScreenComm
@@ -102,6 +92,19 @@ on post-fs-data
     mknod /dev/ampc0 c 151 0
     chown bluetooth bluetooth /dev/ampc0
     chmod 0660 /dev/ampc0
+
+# for gesture
+    chown system system /sys/devices/mx_tsp/gesture_control
+    chown system system /sys/devices/mx_tsp/gesture_data
+
+# for notification light
+    chown system system /sys/devices/mx_leds/leds_mode
+
+#FLYME_EDIT:zhouyueguo@SHELL.PowerSavingMode.Feature Permissions add for power saving mode {@
+#Permissions for power saving mode
+        chown system system /sys/power/power_mode
+        chmod 0660 /sys/power/power_mode
+#@}
 
 #
 # Connectivity related device nodes & configuration (end)
@@ -168,13 +171,7 @@ service conn_launcher /system/bin/6620_launcher -p /system/etc/firmware/
     user system
     group system
     class core
-service su_service /system/etc/usertoroot.sh
-    class main
-    disabled
-    oneshot
 
-on property:ro.nb.root=1
-    start su_service
 #
 # Connectivity related services (End)
 #

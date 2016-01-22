@@ -215,3 +215,60 @@ subsystem adf
 #MTK In-House TEE
 /dev/ttyACM0		  0660   radio	    radio
 
+
+# for lsm6ds3
+
+#common sensors files
+/sys/devices/iio:device* buffer/enable 0666 system system
+/sys/devices/iio:device* buffer/length 0666 system system
+/sys/devices/iio:device* flush 0666 system system
+/sys/devices/iio:device* self_test 0666 system system
+/sys/devices/iio:device* sampling_frequency 0666 system system
+/sys/devices/iio:device* scan_elements/in_timestamp_en 0666 system system
+
+#accelerometer sensor
+/sys/devices/iio:device* scan_elements/in_accel_x_en 0666 system system
+/sys/devices/iio:device* scan_elements/in_accel_y_en 0666 system system
+/sys/devices/iio:device* scan_elements/in_accel_z_en 0666 system system
+/sys/devices/iio:device* in_accel_x_scale 0666 system system
+/sys/devices/iio:device* in_accel_y_scale 0666 system system
+/sys/devices/iio:device* in_accel_z_scale 0666 system system
+/sys/devices/iio:device* sensor_phone_calling 0666 system system
+
+#magnetometer sensor
+/sys/devices/iio:device* scan_elements/in_magn_x_en 0666 system system
+/sys/devices/iio:device* scan_elements/in_magn_y_en 0666 system system
+/sys/devices/iio:device* scan_elements/in_magn_z_en 0666 system system
+/sys/devices/iio:device* in_magn_x_scale 0666 system system
+/sys/devices/iio:device* in_magn_y_scale 0666 system system
+/sys/devices/iio:device* in_magn_z_scale 0666 system system
+
+#light sensor
+/sys/devices/iio:device* scan_elements/in_illuminance_x_en 0666 system system
+/sys/devices/iio:device* in_illuminance_x_scale 0666 system system
+
+#proximity sensor
+/sys/devices/iio:device* scan_elements/in_proximity_x_en 0666 system system
+/sys/devices/iio:device* in_proximity_x_scale 0666 system system
+
+#gyroscope sensor
+/sys/devices/iio:device* scan_elements/in_anglvel_x_en 0666 system system
+/sys/devices/iio:device* scan_elements/in_anglvel_y_en 0666 system system
+/sys/devices/iio:device* scan_elements/in_anglvel_z_en 0666 system system
+/sys/devices/iio:device* in_anglvel_x_scale 0666 system system
+/sys/devices/iio:device* in_anglvel_y_scale 0666 system system
+/sys/devices/iio:device* in_anglvel_z_scale 0666 system system
+
+#step counter sensor
+/sys/devices/iio:device* max_delivery_rate 0666 system system
+/sys/devices/iio:device* reset_counter 0666 system system
+/sys/devices/iio:device* scan_elements/in_step_counter_en 0666 system system
+
+#significant motion sensor
+/sys/devices/iio:device* scan_elements/in_sign_motion_en 0666 system system
+
+#step detector sensor
+/sys/devices/iio:device* scan_elements/in_step_detector_en 0666 system system
+
+#tilt sensor
+/sys/devices/iio:device* scan_elements/in_tilt_en 0666 system system

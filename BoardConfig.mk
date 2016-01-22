@@ -52,7 +52,6 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 -
 
 #for now lets use prebuilt
 TARGET_PREBUILT_KERNEL := device/meizu/meilan2/prebuilt/Image.gz-dtb
-BOARD_CANT_BUILD_RECOVERY_FROM_BOOT_PATCH := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 #recovery
 #TARGET_RECOVERY_INITRC := device/meizu/meilan2/recovery/init.mt6753.rc
