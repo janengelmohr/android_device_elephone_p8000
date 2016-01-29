@@ -19,7 +19,6 @@ vendor/lib/hw/audio.a2dp.blueangel.so
 #vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/landmark_group_meta_data.bin
 #vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/left_eye-y0-yi45-p0-pi45-r0-ri20.lg_32-tree7-wmd.bin
 #vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/nose_base-y0-yi45-p0-pi45-r0-ri20.lg_32-tree7-wmd.bin
-#vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/left_eye-y0-yi45-p0-pi45-r0-ri20.lg_32-tree7-wmd.bin
 lib/libcamera_client_mtk.so
 lib64/libcamera_client_mtk.so
 lib64/hw/camera.mt6735.so
@@ -54,7 +53,6 @@ lib64/libcam.paramsmgr.so
 lib64/libcam3_hwnode.so
 lib64/libcam_hwutils.so
 lib64/libcam3_hwpipeline.so
-lib64/hw/mmsdk.default.so
 lib64/libcam_utils.so
 lib/libcam_platform.so
 lib64/libcam_platform.so
@@ -64,6 +62,10 @@ lib64/libcam1_utils.so
 lib/libcam1_utils.so
 lib/libcam3_app.so
 lib64/libcam3_app.so
+lib/libmeizucamera.so
+lib64/libmeizucamera.so
+lib/libcam3_pipeline.so
+lib64/libcam3_pipeline.so
 #DRM
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libWVStreamControlAPI_L3.so
@@ -77,6 +79,7 @@ vendor/lib/mediadrm/libwvdrmengine.so
 app/YGPS/YGPS.apk
 #-app/LocationEM2/LocationEM2.apk
 bin/mtk_agpsd
+etc/agps_profiles_conf2.xml
 
 #Schedule Poweroff/On
 #app/SchedulePowerOnOff/SchedulePowerOnOff.apk
@@ -99,7 +102,11 @@ bin/mtkrild
 bin/mtkrildmd2
 
 #WiFi
-lib64/libwifi-service.so
+#!!! lib64/libwifi-service.so
+etc/wifi/wpa_supplicant.conf
+etc/wifi/wpa_supplicant_overlay.conf
+etc/wifi/p2p_supplicant_overlay.conf
+
 
 #Misc MTK Stuff
 lib64/libmtksqlite3_custom.so
@@ -124,7 +131,8 @@ lib/libwebrtc_audio_preprocessing.so
 lib64/hw/audio.primary.mt6735.so
 lib64/libaed.so
 lib/libaed.so
-
+lib/libtinyalsa.so
+lib64/libtinyalsa.so
 
 #bin
 bin/6620_launcher
@@ -193,7 +201,6 @@ lib/hw/audio.primary.mt6735.so
 #lib/hw/audio_policy.default.so
 #lib/hw/audio_policy.stub.so
 #lib/hw/bluetooth.default.so
-lib/hw/camera.mt6735.so
 lib/hw/gps.default.so
 lib/hw/gralloc.default.so
 lib/hw/gralloc.mt6735.so
@@ -202,7 +209,6 @@ lib/hw/keystore.default.so
 lib/hw/lights.default.so
 lib/hw/local_time.default.so
 lib/hw/memtrack.mt6735.so
-lib/hw/mmsdk.default.so
 lib/hw/power.default.so
 lib/hw/sensors.mt6735.so
 lib/hw/vibrator.default.so
@@ -231,8 +237,6 @@ lib/libblisrc.so
 lib64/libblisrc.so
 lib/libmmsdkservice.so
 lib64/libmmsdkservice.so
-lib/libcustom_nvram.so
-lib64/libcustom_nvram.so
 lib/libcvsd_mtk.so
 lib64/libcvsd_mtk.so
 lib/libcam.metadata.so
@@ -306,18 +310,12 @@ lib64/libGLESv3.so
 lib64/libgralloc_extra.so
 
 #generated 32 bit
-lib/libnvramagentclient.so
-lib/libnvram_daemon_callback.so
-lib/libnvram_platform.so
-lib/libnvram_sec.so
-lib/libnvram.so
 lib/libgralloc_extra.so
 
 lib/libion.so
 lib64/libion.so
 lib/libmtk_drvb.so
 lib64/libmtk_drvb.so
-lib/libion_mtk.so
 lib64/libion_mtk.so
 lib/libm4u.so
 lib64/libm4u.so
@@ -334,4 +332,28 @@ lib/libui_ext.so
 lib64/libui_ext.so
 lib/libui.so
 lib64/libui.so
+
+# Keys
+usr/keylayout/ACCDET.kl
+usr/keylayout/AW9201_ts.kl
+usr/keylayout/mtk-kpd.kl
+usr/keylayout/mtk-tpd.kl
+
+# nvram_daemon depends on
+lib/libhwm.so
+lib64/libhwm.so
+lib/libfile_op.so
+lib64/libfile_op.so
+lib/libnvramagentclient.so
+lib/libnvram_daemon_callback.so
+lib/libnvram_platform.so
+lib/libnvram_sec.so
+lib/libnvram.so
+lib64/libnvramagentclient.so
+lib64/libnvram_daemon_callback.so
+lib64/libnvram_platform.so
+lib64/libnvram_sec.so
+lib64/libnvram.so
+lib/libcustom_nvram.so
+lib64/libcustom_nvram.so
 
