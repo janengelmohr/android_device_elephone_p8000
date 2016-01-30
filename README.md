@@ -25,9 +25,21 @@ Build the code:
 
     source build/envsetup.sh
     breakfast meilan2
-    mka 2>&1 | tee build.log
+    mka bacon 2>&1 | tee build.log
 
 Current state
 -------------
 
-Just compiled
+- Recovery is fully functional
+- Update package (OTA) generation
+- Cyanogen boots
+- Touch, screen, keyboard, central key are working
+- Wifi working
+
+Issues
+-------------
+- Bluetooth is not functional
+- Audio is not functional
+- Radio (modem) is not functional
+- USB (ADB+MTP) is re-connecting after ~60 seconds
+
