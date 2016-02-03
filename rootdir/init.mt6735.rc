@@ -11,6 +11,7 @@ import init.fon.rc
 import init.volte.rc
 import init.epdg.rc
 import init.trustonic.rc
+import init.modem.rc
 
 on init
     export USBOTG_STORAGE /storage/usbotg

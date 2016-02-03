@@ -66,6 +66,33 @@ lib/libmeizucamera.so
 lib64/libmeizucamera.so
 lib/libcam3_pipeline.so
 lib64/libcam3_pipeline.so
+lib/libcam3_utils.so
+lib64/libcam3_utils.so
+lib/libcam.common.meizu.so
+lib64/libcam.common.meizu.so
+lib/libcam.exif.v3.so
+lib64/libcam.exif.v3.so
+lib/libcam.utils.cpuctrl.so
+lib64/libcam.utils.cpuctrl.so
+lib/libmpo.so
+lib64/libmpo.so
+lib/libmpoencoder.so
+lib64/libmpoencoder.so
+lib/lib3a.so
+lib64/lib3a.so
+lib/lib3a_sample.so
+lib64/lib3a_sample.so
+lib/libcam.utils.sensorlistener.so
+lib64/libcam.utils.sensorlistener.so
+lib/libcamalgo.so
+lib64/libcamalgo.so
+lib/libn3d3a.so
+lib64/libn3d3a.so
+lib/libsfb.so
+lib64/libsfb.so
+lib/libdngop.so
+lib64/libdngop.so
+etc/permissions/android.hardware.camera.xml
 #DRM
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libWVStreamControlAPI_L3.so
@@ -133,6 +160,7 @@ lib64/libaed.so
 lib/libaed.so
 lib/libtinyalsa.so
 lib64/libtinyalsa.so
+etc/audio_device.xml
 
 #bin
 bin/6620_launcher
@@ -357,3 +385,6 @@ lib64/libnvram.so
 lib/libcustom_nvram.so
 lib64/libcustom_nvram.so
 
+# ccci_ dependancy
+lib/libccci_util.so
+lib64/libccci_util.so
