@@ -68,6 +68,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/meizu/meilan2/rootdir/etc/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
 
+PRODUCT_EXTRA_RECOVERY_KEYS += device/meizu/meilan2/meizu
 
 #$(call inherit-product, build/target/product/full.mk)
 $(call inherit-product, build/target/product/aosp_arm64.mk)
