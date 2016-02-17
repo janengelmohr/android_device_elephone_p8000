@@ -92,7 +92,6 @@ lib/libsfb.so
 lib64/libsfb.so
 lib/libdngop.so
 lib64/libdngop.so
-etc/permissions/android.hardware.camera.xml
 #DRM
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libWVStreamControlAPI_L3.so
