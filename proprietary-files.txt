@@ -234,6 +234,7 @@ lib/hw/gralloc.mt6735.so
 lib/hw/hwcomposer.mt6735.so
 lib/hw/keystore.default.so
 lib/hw/lights.default.so
+lib64/hw/lights.default.so
 lib/hw/local_time.default.so
 lib/hw/memtrack.mt6735.so
 lib/hw/power.default.so
