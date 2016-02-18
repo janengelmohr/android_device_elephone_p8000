@@ -388,3 +388,5 @@ lib64/libcustom_nvram.so
 # ccci_ dependancy
 lib/libccci_util.so
 lib64/libccci_util.so
+
+etc/audio_policy.conf

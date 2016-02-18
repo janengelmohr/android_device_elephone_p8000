@@ -28,22 +28,22 @@ Current state
 - Update package (OTA) generation
 - Cyanogen boots
 - Touch, screen, keyboard, central key are working
-- Wifi working
-- Camera is working (see Known Issues)
-- Audio is working (see Known Issues)
+- Wifi is working
+- Camera is working
+- Audio is working
 - MTK RILD starts, comminicate to modem, SIM
 
 Known Issues
 -------------
 - Bluetooth is not functional
 - Radio (modem) is not functional (cannot register in network)
-- Camera viewfinder freeze if USB detached
-- Headphone is not functional
 
 Change log
 ----------
 
 ### v0.1
-- Added few feature xmls to match the stock build 
 - Fixed an issue with USB/ADB
 - Fixed brightness control and wakeup (screen on) after sleep (with USB detached)
+- Fixed headphone is not recognized issue
+- Fixed camera freeze when no USB is connected
+
