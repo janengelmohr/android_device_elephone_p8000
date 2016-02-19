@@ -44,10 +44,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	libbt-vendor
 
-# RIL
-PRODUCT_PACKAGES += \
-    gsm0710muxd
-
 # Wifi
 PRODUCT_PACKAGES += \
     libwpa_client \
