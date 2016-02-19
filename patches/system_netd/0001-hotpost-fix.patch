@@ -1,0 +1,30 @@
+diff -ur netd/server/SoftapController.cpp netd_mtk/server/SoftapController.cpp
+--- netd/server/SoftapController.cpp	2016-01-22 15:55:47.409331000 -0800
++++ netd_mtk/server/SoftapController.cpp	2016-01-23 05:24:28.098782000 -0800
+@@ -48,7 +48,7 @@
+ #endif
+ 
+ #ifdef LIBWPA_CLIENT_EXISTS
+-static const char HOSTAPD_UNIX_FILE[]    = "/data/misc/wifi/hostapd/wlan0";
++static const char HOSTAPD_UNIX_FILE[]    = "/data/misc/wifi/hostapd/ap0";
+ static const char HOSTAPD_SOCKETS_DIR[]    = "/data/misc/wifi/sockets";
+ static const char HOSTAPD_DHCP_DIR[]    = "/data/misc/dhcp";
+ #endif
+@@ -161,7 +161,7 @@
+ 
+     if (!pid) {
+         ensure_entropy_file_exists();
+-        if (execl(HOSTAPD_BIN_FILE, HOSTAPD_BIN_FILE,
++        if (execl(HOSTAPD_BIN_FILE, HOSTAPD_BIN_FILE, "-d",
+                   "-e", WIFI_ENTROPY_FILE,
+                   HOSTAPD_CONF_FILE, (char *) NULL)) {
+             ALOGE("execl failed (%s)", strerror(errno));
+@@ -246,7 +246,7 @@
+     asprintf(&wbuf, "interface=%s\ndriver=nl80211\nctrl_interface="
+             "/data/misc/wifi/hostapd\nssid=%s\nchannel=%d\nieee80211n=1\n"
+             "hw_mode=g\nignore_broadcast_ssid=%d\nwowlan_triggers=any\n",
+-            argv[2], argv[3], channel, hidden);
++            /*argv[2]*/"ap0", argv[3], channel, hidden);
+ 
+     if (argc > 7) {
+         if (!strcmp(argv[6], "wpa-psk")) {

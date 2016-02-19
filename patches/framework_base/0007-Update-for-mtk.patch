@@ -1,0 +1,1451 @@
+From f4b0c7903dd5cacd929e1c006cb9467ec647e7fa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=E7=A7=8B=E5=8F=B6=E9=9A=8F=E9=A3=8Eivan?=
+ <yanziily@gmail.com>
+Date: Sun, 3 Jan 2016 21:29:16 +0800
+Subject: [PATCH 2/2] Update for mtk
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Change-Id: I0318ed975caeb595db3efd1dd4b87a9729167bcd
+Signed-off-by: 秋叶随风ivan <yanziily@gmail.com>
+---
+ .../java/android/telephony/PhoneNumberUtils.java   | 280 ++++++++++++++++++
+ .../java/android/telephony/PhoneRatFamily.aidl     |  19 ++
+ .../java/android/telephony/PhoneRatFamily.java     | 114 ++++++++
+ telephony/java/android/telephony/ServiceState.java | 190 +++++++++++-
+ .../internal/telephony/IccCardConstants.java       |  12 +
+ .../android/internal/telephony/RILConstants.java   | 324 ++++++++++++++++++++-
+ .../internal/telephony/TelephonyIntents.java       | 255 ++++++++++++++++
+ .../internal/telephony/TelephonyProperties.java    |  35 +++
+ 8 files changed, 1226 insertions(+), 3 deletions(-)
+ create mode 100755 telephony/java/android/telephony/PhoneRatFamily.aidl
+ create mode 100755 telephony/java/android/telephony/PhoneRatFamily.java
+
+diff --git a/telephony/java/android/telephony/PhoneNumberUtils.java b/telephony/java/android/telephony/PhoneNumberUtils.java
+index 3d0a553..8bd60b0 100644
+--- a/telephony/java/android/telephony/PhoneNumberUtils.java
++++ b/telephony/java/android/telephony/PhoneNumberUtils.java
+@@ -47,6 +47,14 @@ import java.util.Locale;
+ import java.util.regex.Matcher;
+ import java.util.regex.Pattern;
+ 
++import java.util.ArrayList;
++import java.util.HashMap;
++import org.xmlpull.v1.XmlPullParser;
++import org.xmlpull.v1.XmlPullParserException;
++import org.xmlpull.v1.XmlPullParserFactory;
++import java.io.FileReader;
++import java.io.IOException;
++
+ /**
+  * Various utilities for dealing with phone number strings.
+  */
+@@ -89,6 +97,78 @@ public class PhoneNumberUtils
+     private static final Pattern GLOBAL_PHONE_NUMBER_PATTERN =
+             Pattern.compile("[\\+]?[0-9.-]+");
+ 
++    // MTK
++
++    /** @hide */
++    public static class EccEntry {
++        public static final String ECC_LIST_PATH = "/system/etc/ecc_list.xml";
++        public static final String ECC_ENTRY_TAG = "EccEntry";
++        public static final String ECC_ATTR = "Ecc";
++        public static final String CATEGORY_ATTR = "Category";
++        public static final String CONDITION_ATTR = "Condition";
++
++        public static final String ECC_NO_SIM = "0";
++        public static final String ECC_ALWAYS = "1";
++        public static final String ECC_FOR_MMI = "2";
++
++        private String mEcc;
++        private String mCategory;
++        private String mCondition; // ECC_NO_SIM, ECC_ALWAYS, or ECC_FOR_MMI
++
++        public EccEntry() {
++            mEcc = new String("");
++            mCategory = new String("");
++            mCondition = new String("");
++        }
++
++        public void setEcc(String strEcc) {
++            mEcc = strEcc;
++        }
++        public void setCategory(String strCategory) {
++            mCategory = strCategory;
++        }
++        public void setCondition(String strCondition) {
++            mCondition = strCondition;
++        }
++
++        public String getEcc() {
++            return mEcc;
++        }
++        public String getCategory() {
++            return mCategory;
++        }
++        public String getCondition() {
++            return mCondition;
++        }
++
++        @Override
++        public String toString() {
++            return ("\n" + ECC_ATTR + "=" + getEcc() + ", " + CATEGORY_ATTR + "="
++                    + getCategory() + ", " + CONDITION_ATTR + "=" + getCondition());
++        }
++    }
++
++    private static ArrayList<EccEntry> mCustomizedEccList = null;
++    private static HashMap<String, Integer> mHashMapForNetworkEccCategory = null;
++
++    // private static IPhoneNumberExt sPhoneNumberExt = null;
++
++    private static boolean sIsCtaSupport = false;
++    private static boolean sIsCtaSet = false;
++
++    static {
++        sIsCtaSupport = "1".equals(SystemProperties.get("persist.mtk_cta_support"));
++        sIsCtaSet = "1".equals(SystemProperties.get("ro.mtk_cta_set"));
++        /*
++        if (!SystemProperties.get("ro.mtk_bsp_package").equals("1")) {
++            sPhoneNumberExt = MPlugin.createInstance(IPhoneNumberExt.class.getName());
++        }
++        */
++        mCustomizedEccList = new ArrayList<EccEntry>();
++        parseEccList();
++        mHashMapForNetworkEccCategory = new HashMap<String, Integer>();
++    }
++
+     /** True if c is ISO-LATIN characters 0-9 */
+     public static boolean
+     isISODigit (char c) {
+@@ -1855,6 +1935,8 @@ public class PhoneNumberUtils
+     private static boolean isEmergencyNumberInternal(int subId, String number,
+                                                      String defaultCountryIso,
+                                                      boolean useExactMatch) {
++        boolean bSIMInserted = false;
++
+         // If the number passed in is null, just return false:
+         if (number == null) return false;
+ 
+@@ -1876,6 +1958,28 @@ public class PhoneNumberUtils
+         Rlog.d(LOG_TAG, "subId:" + subId + ", number: " +  number + ", defaultCountryIso:" +
+                 ((defaultCountryIso == null) ? "NULL" : defaultCountryIso));
+ 
++        // MTK
++        // 1. Check ECCs updated by network
++        mHashMapForNetworkEccCategory.clear();
++        String strEccCategoryList = SystemProperties.get("ril.ecc.service.category.list");
++        if (!TextUtils.isEmpty(strEccCategoryList)) {
++            for (String strEccCategory : strEccCategoryList.split(";")) {
++                if (!strEccCategory.isEmpty()) {
++                    String[] strEccCategoryAry = strEccCategory.split(",");
++                    if (2 == strEccCategoryAry.length)
++                        mHashMapForNetworkEccCategory.put(strEccCategoryAry[0], Integer.parseInt(strEccCategoryAry[1]));
++                }
++            }
++        }
++        for (String emergencyNum : mHashMapForNetworkEccCategory.keySet()) {
++            String numberPlus = emergencyNum + "+";
++            if (emergencyNum.equals(number)
++                 || numberPlus.equals(number)) {
++                Rlog.d(LOG_TAG, "[isEmergencyNumber] match network ecc list");
++                return true;
++            }
++        }
++
+         String emergencyNumbers = "";
+         int slotId = SubscriptionManager.getSlotId(subId);
+ 
+@@ -1885,6 +1989,7 @@ public class PhoneNumberUtils
+             String ecclist = (slotId == 0) ? "ril.ecclist" : ("ril.ecclist" + slotId);
+ 
+             emergencyNumbers = SystemProperties.get(ecclist, "");
++            bSIMInserted = true;
+         }
+ 
+         Rlog.d(LOG_TAG, "slotId:" + slotId + ", emergencyNumbers: " +  emergencyNumbers);
+@@ -1914,6 +2019,36 @@ public class PhoneNumberUtils
+             return false;
+         }
+ 
++        // MTK
++        // 3. Check ECCs customized by user
++        if (bSIMInserted) {
++            if (mCustomizedEccList != null) {
++                for (EccEntry eccEntry : mCustomizedEccList) {
++                    if (!eccEntry.getCondition().equals(EccEntry.ECC_NO_SIM)) {
++                        String ecc = eccEntry.getEcc();
++                        String numberPlus = ecc + "+";
++                        if (ecc.equals(number)
++                             || numberPlus.equals(number)) {
++                            Rlog.d(LOG_TAG, "[isEmergencyNumber] match customized ecc list");
++                            return true;
++                        }
++                    }
++                }
++            }
++        } else {
++            if (mCustomizedEccList != null) {
++                for (EccEntry eccEntry : mCustomizedEccList) {
++                    String ecc = eccEntry.getEcc();
++                    String numberPlus = ecc + "+";
++                    if (ecc.equals(number)
++                         || numberPlus.equals(number)) {
++                        Rlog.d(LOG_TAG, "[isEmergencyNumber] match customized ecc list when no sim");
++                        return true;
++                    }
++                }
++            }
++        }
++
+         Rlog.d(LOG_TAG, "System property doesn't provide any emergency numbers."
+                 + " Use embedded logic for determining ones.");
+ 
+@@ -2961,4 +3096,149 @@ public class PhoneNumberUtils
+         return SubscriptionManager.getDefaultVoiceSubId();
+     }
+     //==== End of utility methods used only in compareStrictly() =====
++
++    // MTK
++
++    /**
++     * Parse Ecc List From XML File
++     *
++     * @param none.
++     * @return none.
++     * @hide
++     */
++    private static void parseEccList() {
++        mCustomizedEccList.clear();
++
++        try {
++            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
++            XmlPullParser parser = factory.newPullParser();
++            if (parser == null) {
++                Rlog.d(LOG_TAG, "XmlPullParserFactory.newPullParser() return null");
++                return;
++            }
++            FileReader fileReader = new FileReader(EccEntry.ECC_LIST_PATH);
++            parser.setInput(fileReader);
++            int eventType = parser.getEventType();
++            EccEntry record = null;
++
++            while (eventType != XmlPullParser.END_DOCUMENT) {
++                switch (eventType) {
++                    case XmlPullParser.START_TAG:
++                        if (parser.getName().equals(EccEntry.ECC_ENTRY_TAG)) {
++                            record = new EccEntry();
++                            int attrNum = parser.getAttributeCount();
++                            for (int i = 0; i < attrNum; ++i) {
++                                String name = parser.getAttributeName(i);
++                                String value = parser.getAttributeValue(i);
++                                if (name.equals(EccEntry.ECC_ATTR))
++                                    record.setEcc(value);
++                                else if (name.equals(EccEntry.CATEGORY_ATTR))
++                                    record.setCategory(value);
++                                else if (name.equals(EccEntry.CONDITION_ATTR))
++                                    record.setCondition(value);
++                            }
++                        }
++                        break;
++                    case XmlPullParser.END_TAG:
++                        if (parser.getName().equals(EccEntry.ECC_ENTRY_TAG) && record != null)
++                            mCustomizedEccList.add(record);
++                        break;
++                }
++                eventType = parser.next();
++            }
++            fileReader.close();
++
++            if (sIsCtaSet) {
++                String [] emergencyCTAList = {"120", "122"};
++                for (String emergencyNum : emergencyCTAList) {
++                    record = new EccEntry();
++                    record.setEcc(emergencyNum);
++                    record.setCategory("0");
++                    record.setCondition(EccEntry.ECC_FOR_MMI);
++
++                    boolean bFound = false;
++                    int nIndex = 0;
++                    for (EccEntry eccEntry : mCustomizedEccList) {
++                        String ecc = eccEntry.getEcc();
++                        if (ecc.equals(emergencyNum)) {
++                            bFound = true;
++                            Rlog.d(LOG_TAG, "[parseEccList]"
++                                    + "CTA ecc match customized ecc list, ecc=" + ecc);
++                            break;
++                        }
++                        nIndex++;
++                    }
++
++                    if (bFound)
++                        mCustomizedEccList.set(nIndex, record);
++                    else
++                        mCustomizedEccList.add(record);
++                }
++            }
++        } catch (XmlPullParserException e) {
++            e.printStackTrace();
++        } catch (IOException e) {
++            e.printStackTrace();
++        } catch (Exception e) {
++            e.printStackTrace();
++        }
++
++        Rlog.d(LOG_TAG, "parseEccList: " + mCustomizedEccList);
++    }
++
++    /**
++     * Get Ecc List
++     *
++     * @param none.
++     * @return Ecc List with type ArrayList<EccEntry>.
++     * @hide
++     */
++    public static ArrayList<EccEntry> getEccList() {
++        return mCustomizedEccList;
++    }
++
++    /**
++     * Get the service category for the given ECC number.
++     * @param number The ECC number.
++     * @return The service category for the given number.
++     * @hide
++     */
++    public static int getServiceCategoryFromEcc(String number) {
++        String numberPlus = null;
++
++        // 1. Get category from network
++        for (String emergencyNum : mHashMapForNetworkEccCategory.keySet()) {
++            numberPlus = emergencyNum + "+";
++            if (emergencyNum.equals(number)
++                 || numberPlus.equals(number)) {
++                Integer nSC = mHashMapForNetworkEccCategory.get(emergencyNum);
++                if (nSC != null) {
++                    Rlog.d(LOG_TAG, "[getServiceCategoryFromEcc] match network ecc list, "
++                            + "Ecc= " + number + ", Category= " + nSC);
++                    return nSC;
++                }
++            }
++        }
++
++        // 2. Get category from sim
++        // ToDo: EF_Ecc will convey service category later
++
++        // 3. Get category from user-customized
++        if (mCustomizedEccList != null) {
++            for (EccEntry eccEntry : mCustomizedEccList) {
++                String ecc = eccEntry.getEcc();
++                numberPlus = ecc + "+";
++                if (ecc.equals(number)
++                     || numberPlus.equals(number)) {
++                    Rlog.d(LOG_TAG, "[getServiceCategoryFromEcc] match customized ecc list, "
++                            + "Ecc= " + ecc + ", Category= " + eccEntry.getCategory());
++                    return Integer.parseInt(eccEntry.getCategory());
++                }
++            }
++        }
++
++        Rlog.d(LOG_TAG, "[getServiceCategoryFromEcc] no matched for Ecc =" + number + ", return 0");
++        return 0;
++    }
++
+ }
+diff --git a/telephony/java/android/telephony/PhoneRatFamily.aidl b/telephony/java/android/telephony/PhoneRatFamily.aidl
+new file mode 100755
+index 0000000..dd7132c
+--- /dev/null
++++ b/telephony/java/android/telephony/PhoneRatFamily.aidl
+@@ -0,0 +1,19 @@
++/*
++ * Copyright (C) 2014 MediaTek Inc.
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++package android.telephony;
++
++parcelable PhoneRatFamily;
+\ No newline at end of file
+diff --git a/telephony/java/android/telephony/PhoneRatFamily.java b/telephony/java/android/telephony/PhoneRatFamily.java
+new file mode 100755
+index 0000000..158dcca
+--- /dev/null
++++ b/telephony/java/android/telephony/PhoneRatFamily.java
+@@ -0,0 +1,114 @@
++/*
++ * Copyright (C) 2014 MediaTek Inc.
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++package android.telephony;
++
++import android.os.Parcel;
++import android.os.Parcelable;
++
++/**
++ * Object to indicate the phone RAT family.
++ *
++ * @hide
++ */
++public class PhoneRatFamily implements Parcelable {
++    /* Phone ID of phone */
++    private int mPhoneId;
++    /* New phone rat family */
++    private int mRatFamily;
++
++    public static final int PHONE_RAT_FAMILY_NONE = 0x00;
++    public static final int PHONE_RAT_FAMILY_2G = 0x01;
++    public static final int PHONE_RAT_FAMILY_3G = 0x02;
++    public static final int PHONE_RAT_FAMILY_4G = 0x04;
++
++    /**
++     * Constructor.
++     *
++     * @param phoneId the phone ID
++     * @param ratFamily the new RAT family
++     */
++    public PhoneRatFamily(int phoneId, int ratFamily) {
++        mPhoneId = phoneId;
++        mRatFamily = ratFamily;
++    }
++
++    /**
++     * Get phone ID.
++     *
++     * @return phone ID
++     */
++    public int getPhoneId() {
++        return mPhoneId;
++    }
++
++    /**
++     * Get RAT family.
++     *
++     * @return phone RAT family
++     */
++    public int getRatFamily() {
++        return mRatFamily;
++    }
++
++    @Override
++    public String toString() {
++        String ret = "{ mPhoneId = " + mPhoneId
++                + ", mRatFamily = " + mRatFamily
++                + "}";
++        return ret;
++    }
++
++    /**
++     * Implement the Parcelable interface.
++     *
++     * @return describe content
++     */
++    @Override
++    public int describeContents() {
++        return 0;
++    }
++
++    /**
++     * Implement the Parcelable interface.
++     *
++     * @param outParcel The Parcel in which the object should be written.
++     * @param flags Additional flags about how the object should be written.
++     */
++    public void writeToParcel(Parcel outParcel, int flags) {
++        outParcel.writeInt(mPhoneId);
++        outParcel.writeInt(mRatFamily);
++    }
++
++    /**
++     * Implement the Parcelable interface.
++     */
++    public static final Creator<PhoneRatFamily> CREATOR = new Creator<PhoneRatFamily>() {
++        @Override
++        public PhoneRatFamily createFromParcel(Parcel in) {
++            int phoneId = in.readInt();
++            int ratFamily = in.readInt();
++
++            return new PhoneRatFamily(phoneId, ratFamily);
++        }
++
++        @Override
++        public PhoneRatFamily[] newArray(int size) {
++            return new PhoneRatFamily[size];
++        }
++    };
++}
++
+diff --git a/telephony/java/android/telephony/ServiceState.java b/telephony/java/android/telephony/ServiceState.java
+index 2d72c2b..5f5377f 100644
+--- a/telephony/java/android/telephony/ServiceState.java
++++ b/telephony/java/android/telephony/ServiceState.java
+@@ -154,6 +154,30 @@ public class ServiceState implements Parcelable {
+      * @hide
+      */
+     public static final int RIL_RADIO_TECHNOLOGY_IWLAN = 18;
++    // MTK-specific HSPAP radio technologies
++    /** @hide */
++    public static final int RIL_RADIO_TECHNOLOGY_MTK = 128;
++    /** @hide */
++    public static final int RIL_RADIO_TECHNOLOGY_HSDPAP = RIL_RADIO_TECHNOLOGY_MTK + 1;
++    /** @hide */
++    public static final int RIL_RADIO_TECHNOLOGY_HSDPAP_UPA = RIL_RADIO_TECHNOLOGY_MTK + 2;
++    /** @hide */
++    public static final int RIL_RADIO_TECHNOLOGY_HSUPAP = RIL_RADIO_TECHNOLOGY_MTK + 3;
++    /** @hide */
++    public static final int RIL_RADIO_TECHNOLOGY_HSUPAP_DPA = RIL_RADIO_TECHNOLOGY_MTK + 4;
++    /** @hide */
++    public static final int RIL_RADIO_TECHNOLOGY_DC_DPA = RIL_RADIO_TECHNOLOGY_MTK + 5;
++    /** @hide */
++    public static final int RIL_RADIO_TECHNOLOGY_DC_UPA = RIL_RADIO_TECHNOLOGY_MTK + 6;
++    /** @hide */
++    public static final int RIL_RADIO_TECHNOLOGY_DC_HSDPAP = RIL_RADIO_TECHNOLOGY_MTK + 7;
++    /** @hide */
++    public static final int RIL_RADIO_TECHNOLOGY_DC_HSDPAP_UPA = RIL_RADIO_TECHNOLOGY_MTK + 8;
++    /** @hide */
++    public static final int RIL_RADIO_TECHNOLOGY_DC_HSDPAP_DPA = RIL_RADIO_TECHNOLOGY_MTK + 9;
++    /** @hide */
++    public static final int RIL_RADIO_TECHNOLOGY_DC_HSPAP = RIL_RADIO_TECHNOLOGY_MTK + 10;
++
+     /**
+      * Available registration states for GSM, UMTS and CDMA.
+      */
+@@ -221,6 +245,25 @@ public class ServiceState implements Parcelable {
+     private int mCdmaEriIconIndex = 1; //EriInfo.ROAMING_INDICATOR_OFF;;
+     private int mCdmaEriIconMode;
+ 
++    // MTK
++    private int mRilVoiceRegState = REGISTRATION_STATE_NOT_REGISTERED_AND_NOT_SEARCHING;
++    private int mRilDataRegState  = REGISTRATION_STATE_NOT_REGISTERED_AND_NOT_SEARCHING;
++    //[ALPS01675318] -START
++    private int mProprietaryDataRadioTechnology;
++    //[ALPS01675318] -END
++
++    // MTK CDMA
++    /** @hide */
++    public static final int RIL_CDMA_NETWORK_MODE_UNKOWN    = 0;
++    /** @hide */
++    public static final int RIL_CDMA_NETWORK_MODE_1X_ONLY   = 2;
++    /** @hide */
++    public static final int RIL_CDMA_NETWORK_MODE_EVDO_ONLY = 4;
++    /** @hide */
++    public static final int RIL_CDMA_NETWORK_MODE_1X_EVDO   = 8;
++    /** @hide */
++    protected int mCdmaNetWorkMode = RIL_CDMA_NETWORK_MODE_UNKOWN;
++
+     /**
+      * get String description of roaming type
+      * @hide
+@@ -298,6 +341,12 @@ public class ServiceState implements Parcelable {
+         mCdmaEriIconIndex = s.mCdmaEriIconIndex;
+         mCdmaEriIconMode = s.mCdmaEriIconMode;
+         mIsEmergencyOnly = s.mIsEmergencyOnly;
++
++        // MTK
++        mRilVoiceRegState = s.mRilVoiceRegState;
++        mRilDataRegState = s.mRilDataRegState;
++        mProprietaryDataRadioTechnology = s.mProprietaryDataRadioTechnology;
++        mCdmaNetWorkMode = s.mCdmaNetWorkMode;
+     }
+ 
+     /**
+@@ -325,6 +374,12 @@ public class ServiceState implements Parcelable {
+         mCdmaEriIconIndex = in.readInt();
+         mCdmaEriIconMode = in.readInt();
+         mIsEmergencyOnly = in.readInt() != 0;
++
++        // MTK
++        mRilVoiceRegState = in.readInt();
++        mRilDataRegState = in.readInt();
++        mProprietaryDataRadioTechnology = in.readInt();
++        mCdmaNetWorkMode = in.readInt();
+     }
+ 
+     public void writeToParcel(Parcel out, int flags) {
+@@ -349,6 +404,12 @@ public class ServiceState implements Parcelable {
+         out.writeInt(mCdmaEriIconIndex);
+         out.writeInt(mCdmaEriIconMode);
+         out.writeInt(mIsEmergencyOnly ? 1 : 0);
++
++        // MTK
++        out.writeInt(mRilVoiceRegState);
++        out.writeInt(mRilDataRegState);
++        out.writeInt(mProprietaryDataRadioTechnology);
++        out.writeInt(mCdmaNetWorkMode);
+     }
+ 
+     public int describeContents() {
+@@ -636,7 +697,12 @@ public class ServiceState implements Parcelable {
+                 && equalsHandlesNulls(mCdmaRoamingIndicator, s.mCdmaRoamingIndicator)
+                 && equalsHandlesNulls(mCdmaDefaultRoamingIndicator,
+                         s.mCdmaDefaultRoamingIndicator)
+-                && mIsEmergencyOnly == s.mIsEmergencyOnly);
++                && mIsEmergencyOnly == s.mIsEmergencyOnly
++                // MTK
++                && mRilVoiceRegState == s.mRilVoiceRegState
++                && mRilDataRegState == s.mRilDataRegState
++                && equalsHandlesNulls(mProprietaryDataRadioTechnology, s.mProprietaryDataRadioTechnology)
++                && mCdmaNetWorkMode == s.mCdmaNetWorkMode);
+     }
+ 
+     /**
+@@ -740,7 +806,12 @@ public class ServiceState implements Parcelable {
+                 + " " + mSystemId
+                 + " RoamInd=" + mCdmaRoamingIndicator
+                 + " DefRoamInd=" + mCdmaDefaultRoamingIndicator
+-                + " EmergOnly=" + mIsEmergencyOnly);
++                + " EmergOnly=" + mIsEmergencyOnly
++                // MTK
++                + " RilVoiceRegState=" + mRilVoiceRegState
++                + " RilDataRegState=" + mRilDataRegState
++                + " ProprietaryDataRadioTechnology=" + mProprietaryDataRadioTechnology
++                + " CdmaNetWorkMode=" + mCdmaNetWorkMode);
+     }
+ 
+     private void setNullState(int state) {
+@@ -766,6 +837,11 @@ public class ServiceState implements Parcelable {
+         mCdmaEriIconIndex = -1;
+         mCdmaEriIconMode = -1;
+         mIsEmergencyOnly = false;
++
++        // MTK
++        mRilVoiceRegState = REGISTRATION_STATE_NOT_REGISTERED_AND_NOT_SEARCHING;
++        mRilDataRegState  = REGISTRATION_STATE_NOT_REGISTERED_AND_NOT_SEARCHING;
++        mProprietaryDataRadioTechnology = 0;
+     }
+ 
+     public void setStateOutOfService() {
+@@ -938,6 +1014,12 @@ public class ServiceState implements Parcelable {
+         mCdmaRoamingIndicator = m.getInt("cdmaRoamingIndicator");
+         mCdmaDefaultRoamingIndicator = m.getInt("cdmaDefaultRoamingIndicator");
+         mIsEmergencyOnly = m.getBoolean("emergencyOnly");
++
++        // MTK
++        mRilVoiceRegState = m.getInt("RilVoiceRegState");
++        mRilDataRegState = m.getInt("RilDataRegState");
++        mProprietaryDataRadioTechnology = m.getInt("proprietaryDataRadioTechnology");
++        mCdmaNetWorkMode = m.getInt("cdmaNetWorkMode");
+     }
+ 
+     /**
+@@ -966,6 +1048,12 @@ public class ServiceState implements Parcelable {
+         m.putInt("cdmaRoamingIndicator", mCdmaRoamingIndicator);
+         m.putInt("cdmaDefaultRoamingIndicator", mCdmaDefaultRoamingIndicator);
+         m.putBoolean("emergencyOnly", Boolean.valueOf(mIsEmergencyOnly));
++
++        // MTK
++        m.putInt("RilVoiceRegState", mRilVoiceRegState);
++        m.putInt("RilDataRegState", mRilDataRegState);
++        m.putInt("proprietaryDataRadioTechnology", mProprietaryDataRadioTechnology);
++        m.putInt("cdmaNetWorkMode", mCdmaNetWorkMode);
+     }
+ 
+     /** @hide */
+@@ -975,6 +1063,15 @@ public class ServiceState implements Parcelable {
+ 
+     /** @hide */
+     public void setRilDataRadioTechnology(int rt) {
++        // redirect MTK-specific RATs
++        if (rt > ServiceState.RIL_RADIO_TECHNOLOGY_MTK) {
++            if (DBG) Rlog.d(LOG_TAG, "[ServiceState] setDataRadioTechnology mProprietaryDataRadioTechnology=" + rt);
++            mProprietaryDataRadioTechnology = rt;
++            rt = ServiceState.RIL_RADIO_TECHNOLOGY_HSPAP;
++        } else {
++            mProprietaryDataRadioTechnology = 0;
++        }
++
+         this.mRilDataRadioTechnology = rt;
+         if (DBG) Rlog.d(LOG_TAG, "[ServiceState] setDataRadioTechnology=" + mRilDataRadioTechnology);
+     }
+@@ -1128,4 +1225,93 @@ public class ServiceState implements Parcelable {
+ 
+         return newSs;
+     }
++
++    // MTK
++
++    /** @hide */
++    public int getRegState() {
++        return getRilVoiceRegState();
++    }
++
++    /** @hide */
++    public int getRilVoiceRegState() {
++        return mRilVoiceRegState;
++    }
++
++    /** @hide */
++    public int getRilDataRegState() {
++        return mRilDataRegState;
++    }
++
++    /**
++     * @hide
++     */
++    public void setRegState(int nRegState) {
++        setRilVoiceRegState(nRegState);
++    }
++
++    /**
++     * @hide
++     */
++    public void setRilVoiceRegState(int nRegState) {
++        mRilVoiceRegState = nRegState;
++    }
++
++    /**
++     * @hide
++     */
++    public void setRilDataRegState(int nDataRegState) {
++        mRilDataRegState = nDataRegState;
++    }
++
++    /**
++     * @hide
++     */
++    public boolean isVoiceRadioTechnologyHigher(int nRadioTechnology) {
++        return compareTwoRadioTechnology(mRilVoiceRadioTechnology, nRadioTechnology);
++    }
++
++    /**
++     * @hide
++     */
++     public boolean isDataRadioTechnologyHigher(int nRadioTechnology) {
++        return compareTwoRadioTechnology(mRilDataRadioTechnology, nRadioTechnology);
++    }
++
++    /**
++     * @hide
++     */
++    public boolean compareTwoRadioTechnology(int nRadioTechnology1, int nRadioTechnology2) {
++        if (nRadioTechnology1 == nRadioTechnology2) {
++            return false;
++        } else if (nRadioTechnology1 == RIL_RADIO_TECHNOLOGY_LTE) {
++            return true;
++        } else if (nRadioTechnology2 == RIL_RADIO_TECHNOLOGY_LTE) {
++            return false;
++        } else if (nRadioTechnology1 == RIL_RADIO_TECHNOLOGY_GSM) {
++            return false;
++        } else if (nRadioTechnology2 == RIL_RADIO_TECHNOLOGY_GSM) {
++            return true;
++        } else if (nRadioTechnology1 > nRadioTechnology2) {
++            return true;
++        } else {
++            return false;
++        }
++    }
++
++    // MTK CDMA
++
++    /**
++     * @hide
++     */
++    public int getCdmaNetworkMode() {
++        return mCdmaNetWorkMode;
++    }
++
++    /**
++     * @hide
++     */
++    public void setCdmaNetworkMode(int networkMode) {
++        mCdmaNetWorkMode = networkMode;
++    }
+ }
+diff --git a/telephony/java/com/android/internal/telephony/IccCardConstants.java b/telephony/java/com/android/internal/telephony/IccCardConstants.java
+index e24664b..79063f5 100644
+--- a/telephony/java/com/android/internal/telephony/IccCardConstants.java
++++ b/telephony/java/com/android/internal/telephony/IccCardConstants.java
+@@ -51,6 +51,18 @@ public class IccCardConstants {
+     /* PERM_DISABLED means ICC is permanently disabled due to puk fails */
+     public static final String INTENT_VALUE_ABSENT_ON_PERM_DISABLED = "PERM_DISABLED";
+ 
++    // MTK ICC lock reasons
++    /* NETWORK means ICC is locked on NETWORK PERSONALIZATION */
++    public static final String INTENT_VALUE_LOCKED_NETWORK = "NETWORK";
++    /* NETWORK_SUBSET means ICC is locked on NETWORK SUBSET PERSONALIZATION */
++    public static final String INTENT_VALUE_LOCKED_NETWORK_SUBSET = "NETWORK_SUBSET";
++    /* CORPORATE means ICC is locked on CORPORATE PERSONALIZATION */
++    public static final String INTENT_VALUE_LOCKED_CORPORATE = "CORPORATE";
++    /* SERVICE_PROVIDER means ICC is locked on SERVICE_PROVIDER PERSONALIZATION */
++    public static final String INTENT_VALUE_LOCKED_SERVICE_PROVIDER = "SERVICE_PROVIDER";
++    /* SIM means ICC is locked on SIM PERSONALIZATION */
++    public static final String INTENT_VALUE_LOCKED_SIM = "SIM";
++
+     /**
+      * This is combination of IccCardStatus.CardState and IccCardApplicationStatus.AppState
+      * for external apps (like PhoneApp) to use
+diff --git a/telephony/java/com/android/internal/telephony/RILConstants.java b/telephony/java/com/android/internal/telephony/RILConstants.java
+index b87cfac..d9f6323 100644
+--- a/telephony/java/com/android/internal/telephony/RILConstants.java
++++ b/telephony/java/com/android/internal/telephony/RILConstants.java
+@@ -323,7 +323,8 @@ cat include/telephony/ril.h | \
+     int RIL_REQUEST_GET_RADIO_CAPABILITY = 130;
+     int RIL_REQUEST_SET_RADIO_CAPABILITY = 131;
+     int RIL_REQUEST_GET_DATA_CALL_PROFILE = 132;
+-    int RIL_REQUEST_SIM_GET_ATR = 133;
++    // MTK please
++    // int RIL_REQUEST_SIM_GET_ATR = 133;
+ 
+     int RIL_UNSOL_RESPONSE_BASE = 1000;
+     int RIL_UNSOL_RESPONSE_RADIO_STATE_CHANGED = 1000;
+@@ -373,4 +374,325 @@ cat include/telephony/ril.h | \
+     int RIL_UNSOL_STK_CC_ALPHA_NOTIFY = 1044;
+ 
+     int RIL_UNSOL_STK_SEND_SMS_RESULT = 11002; /* Samsung STK */
++
++    // MediaTek Custom States
++    // oh no
++    static final int RIL_REQUEST_GET_PHONE_RAT_FAMILY = 130;
++    static final int RIL_REQUEST_SET_PHONE_RAT_FAMILY = 131;
++
++    static final int RIL_REQUEST_MTK_BASE = 2000;
++    static final int RIL_REQUEST_GET_COLP = (RIL_REQUEST_MTK_BASE + 0);
++    static final int RIL_REQUEST_SET_COLP = (RIL_REQUEST_MTK_BASE + 1);
++    static final int RIL_REQUEST_GET_COLR = (RIL_REQUEST_MTK_BASE + 2);
++    static final int RIL_REQUEST_GET_CCM = (RIL_REQUEST_MTK_BASE + 3);
++    static final int RIL_REQUEST_GET_ACM = (RIL_REQUEST_MTK_BASE + 4);
++    static final int RIL_REQUEST_GET_ACMMAX = (RIL_REQUEST_MTK_BASE + 5);
++    static final int RIL_REQUEST_GET_PPU_AND_CURRENCY = (RIL_REQUEST_MTK_BASE + 6);
++    static final int RIL_REQUEST_SET_ACMMAX = (RIL_REQUEST_MTK_BASE + 7);
++    static final int RIL_REQUEST_RESET_ACM = (RIL_REQUEST_MTK_BASE + 8);
++    static final int RIL_REQUEST_SET_PPU_AND_CURRENCY = (RIL_REQUEST_MTK_BASE + 9);
++    static final int RIL_REQUEST_MODEM_POWEROFF = (RIL_REQUEST_MTK_BASE + 10);
++    static final int RIL_REQUEST_DUAL_SIM_MODE_SWITCH = (RIL_REQUEST_MTK_BASE + 11);
++    static final int RIL_REQUEST_QUERY_PHB_STORAGE_INFO = (RIL_REQUEST_MTK_BASE + 12);
++    static final int RIL_REQUEST_WRITE_PHB_ENTRY = (RIL_REQUEST_MTK_BASE + 13);
++    static final int RIL_REQUEST_READ_PHB_ENTRY = (RIL_REQUEST_MTK_BASE + 14);
++    static final int RIL_REQUEST_SET_GPRS_CONNECT_TYPE = (RIL_REQUEST_MTK_BASE + 15);
++    static final int RIL_REQUEST_SET_GPRS_TRANSFER_TYPE = (RIL_REQUEST_MTK_BASE + 16);
++    static final int RIL_REQUEST_MOBILEREVISION_AND_IMEI = (RIL_REQUEST_MTK_BASE + 17); //Add by mtk80372 for Barcode Number
++    static final int RIL_REQUEST_QUERY_SIM_NETWORK_LOCK = (RIL_REQUEST_MTK_BASE + 18);
++    static final int RIL_REQUEST_SET_SIM_NETWORK_LOCK = (RIL_REQUEST_MTK_BASE + 19);
++    static final int RIL_REQUEST_SET_SCRI = (RIL_REQUEST_MTK_BASE + 20);
++    static final int RIL_REQUEST_BTSIM_CONNECT = (RIL_REQUEST_MTK_BASE + 21);
++    static final int RIL_REQUEST_BTSIM_DISCONNECT_OR_POWEROFF = (RIL_REQUEST_MTK_BASE + 22);
++    static final int RIL_REQUEST_BTSIM_POWERON_OR_RESETSIM = (RIL_REQUEST_MTK_BASE + 23);
++    static final int RIL_REQUEST_BTSIM_TRANSFERAPDU = (RIL_REQUEST_MTK_BASE + 24);
++    static final int RIL_REQUEST_SET_NETWORK_SELECTION_MANUAL_WITH_ACT = (RIL_REQUEST_MTK_BASE + 25);
++    static final int RIL_REQUEST_QUERY_ICCID = (RIL_REQUEST_MTK_BASE + 26);
++    static final int RIL_REQUEST_USIM_AUTHENTICATION = (RIL_REQUEST_MTK_BASE + 27);
++    static final int RIL_REQUEST_MODEM_POWERON = (RIL_REQUEST_MTK_BASE + 28);
++    static final int RIL_REQUEST_GET_SMS_SIM_MEM_STATUS = (RIL_REQUEST_MTK_BASE + 29);
++    /* 3G switch start */
++    static final int RIL_REQUEST_GET_PHONE_CAPABILITY = (RIL_REQUEST_MTK_BASE + 30);
++    static final int RIL_REQUEST_SET_PHONE_CAPABILITY = (RIL_REQUEST_MTK_BASE + 31);
++    /* 3G switch end */
++    /* User controlled PLMN selector with Access Technology  begin */
++    static final int RIL_REQUEST_GET_POL_CAPABILITY = (RIL_REQUEST_MTK_BASE + 32);
++    static final int RIL_REQUEST_GET_POL_LIST = (RIL_REQUEST_MTK_BASE + 33);
++    static final int RIL_REQUEST_SET_POL_ENTRY = (RIL_REQUEST_MTK_BASE + 34);
++    /* User controlled PLMN selector with Access Technology  end */
++    /* UPB start */
++    static final int RIL_REQUEST_QUERY_UPB_CAPABILITY = (RIL_REQUEST_MTK_BASE + 35);
++    static final int RIL_REQUEST_EDIT_UPB_ENTRY = (RIL_REQUEST_MTK_BASE + 36);
++    static final int RIL_REQUEST_DELETE_UPB_ENTRY = (RIL_REQUEST_MTK_BASE + 37);
++    static final int RIL_REQUEST_READ_UPB_GAS_LIST = (RIL_REQUEST_MTK_BASE + 38);
++    static final int RIL_REQUEST_READ_UPB_GRP = (RIL_REQUEST_MTK_BASE + 39);
++    static final int RIL_REQUEST_WRITE_UPB_GRP = (RIL_REQUEST_MTK_BASE + 40);
++    /* UPB end */
++    static final int RIL_REQUEST_SET_SIM_RECOVERY_ON = (RIL_REQUEST_MTK_BASE + 41);
++    static final int RIL_REQUEST_GET_SIM_RECOVERY_ON = (RIL_REQUEST_MTK_BASE + 42);
++    static final int RIL_REQUEST_SET_TRM = (RIL_REQUEST_MTK_BASE + 43);
++    static final int RIL_REQUEST_DETECT_SIM_MISSING = (RIL_REQUEST_MTK_BASE + 44);
++    static final int RIL_REQUEST_GET_CALIBRATION_DATA = (RIL_REQUEST_MTK_BASE + 45);
++
++     //For LGE APIs start
++    static final int RIL_REQUEST_GET_PHB_STRING_LENGTH = (RIL_REQUEST_MTK_BASE + 46);
++    static final int RIL_REQUEST_GET_PHB_MEM_STORAGE = (RIL_REQUEST_MTK_BASE + 47);
++    static final int RIL_REQUEST_SET_PHB_MEM_STORAGE = (RIL_REQUEST_MTK_BASE + 48);
++    static final int RIL_REQUEST_READ_PHB_ENTRY_EXT = (RIL_REQUEST_MTK_BASE + 49);
++    static final int RIL_REQUEST_WRITE_PHB_ENTRY_EXT = (RIL_REQUEST_MTK_BASE + 50);
++
++    // requests for read/write EFsmsp
++    static final int RIL_REQUEST_GET_SMS_PARAMS = (RIL_REQUEST_MTK_BASE + 51);
++    static final int RIL_REQUEST_SET_SMS_PARAMS = (RIL_REQUEST_MTK_BASE + 52);
++
++    // NFC SEEK start
++    static final int RIL_REQUEST_SIM_TRANSMIT_BASIC = (RIL_REQUEST_MTK_BASE + 53);
++    static final int RIL_REQUEST_SIM_TRANSMIT_CHANNEL = (RIL_REQUEST_MTK_BASE + 54);
++    static final int RIL_REQUEST_SIM_GET_ATR = (RIL_REQUEST_MTK_BASE + 55);
++    // NFC SEEK end
++
++    // MTK-START, SMS part, CB extension
++    static final int RIL_REQUEST_SET_CB_CHANNEL_CONFIG_INFO = (RIL_REQUEST_MTK_BASE + 56);
++    static final int RIL_REQUEST_SET_CB_LANGUAGE_CONFIG_INFO = (RIL_REQUEST_MTK_BASE + 57);
++    static final int RIL_REQUEST_GET_CB_CONFIG_INFO = (RIL_REQUEST_MTK_BASE + 58);
++    static final int RIL_REQUEST_SET_ALL_CB_LANGUAGE_ON = (RIL_REQUEST_MTK_BASE + 59);
++    // MTK-END, SMS part, CB extension
++
++    static final int RIL_REQUEST_SET_ETWS = (RIL_REQUEST_MTK_BASE + 60);
++
++    // [New R8 modem FD]
++    static final int RIL_REQUEST_SET_FD_MODE = (RIL_REQUEST_MTK_BASE + 61);
++
++    // detach PS service request
++    static final int RIL_REQUEST_DETACH_PS = (RIL_REQUEST_MTK_BASE + 62);
++
++    static final int RIL_REQUEST_SIM_OPEN_CHANNEL_WITH_SW = (RIL_REQUEST_MTK_BASE + 63); // NFC SEEK
++
++    static final int RIL_REQUEST_SET_REG_SUSPEND_ENABLED  = (RIL_REQUEST_MTK_BASE + 64);
++    static final int RIL_REQUEST_RESUME_REGISTRATION  = (RIL_REQUEST_MTK_BASE + 65);
++    static final int RIL_REQUEST_STORE_MODEM_TYPE = (RIL_REQUEST_MTK_BASE + 66);
++    static final int RIL_REQUEST_QUERY_MODEM_TYPE = (RIL_REQUEST_MTK_BASE + 67);
++    static final int RIL_REQUEST_SIM_INTERFACE_SWITCH = (RIL_REQUEST_MTK_BASE + 68);
++
++    //MTK-START [mtk80776] WiFi Calling
++    static final int RIL_REQUEST_UICC_SELECT_APPLICATION = (RIL_REQUEST_MTK_BASE + 69);
++    static final int RIL_REQUEST_UICC_DEACTIVATE_APPLICATION = (RIL_REQUEST_MTK_BASE + 70);
++    static final int RIL_REQUEST_UICC_APPLICATION_IO = (RIL_REQUEST_MTK_BASE + 71);
++    static final int RIL_REQUEST_UICC_AKA_AUTHENTICATE = (RIL_REQUEST_MTK_BASE + 72);
++    static final int RIL_REQUEST_UICC_GBA_AUTHENTICATE_BOOTSTRAP = (RIL_REQUEST_MTK_BASE + 73);
++    static final int RIL_REQUEST_UICC_GBA_AUTHENTICATE_NAF = (RIL_REQUEST_MTK_BASE + 74);
++    //MTK-END [mtk80776] WiFi Calling
++    static final int RIL_REQUEST_STK_EVDL_CALL_BY_AP = (RIL_REQUEST_MTK_BASE + 75);
++
++    // Femtocell (CSG)
++    static final int RIL_REQUEST_GET_FEMTOCELL_LIST  = (RIL_REQUEST_MTK_BASE + 76);
++    static final int RIL_REQUEST_ABORT_FEMTOCELL_LIST = (RIL_REQUEST_MTK_BASE + 77);
++    static final int RIL_REQUEST_SELECT_FEMTOCELL = (RIL_REQUEST_MTK_BASE + 78);
++
++    // For OPLMN update
++    static final int RIL_REQUEST_SEND_OPLMN = (RIL_REQUEST_MTK_BASE + 79);
++    static final int RIL_REQUEST_GET_OPLMN_VERSION = (RIL_REQUEST_MTK_BASE + 80);
++
++    // For PLMN List abort
++    static final int RIL_REQUEST_ABORT_QUERY_AVAILABLE_NETWORKS = (RIL_REQUEST_MTK_BASE + 81);
++    // CSD
++    static final int RIL_REQUEST_DIAL_UP_CSD = (RIL_REQUEST_MTK_BASE + 82);
++
++    // M: For telephony modes update
++    static final int RIL_REQUEST_SET_TELEPHONY_MODE = (RIL_REQUEST_MTK_BASE + 83);
++
++    /* M: call control part start */
++    static final int RIL_REQUEST_HANGUP_ALL = (RIL_REQUEST_MTK_BASE + 84);
++    static final int RIL_REQUEST_FORCE_RELEASE_CALL = (RIL_REQUEST_MTK_BASE + 85);
++    static final int RIL_REQUEST_SET_CALL_INDICATION = (RIL_REQUEST_MTK_BASE + 86);
++    static final int RIL_REQUEST_EMERGENCY_DIAL = (RIL_REQUEST_MTK_BASE + 87);
++    static final int RIL_REQUEST_SET_ECC_SERVICE_CATEGORY = (RIL_REQUEST_MTK_BASE + 88);
++    static final int RIL_REQUEST_SET_ECC_LIST = (RIL_REQUEST_MTK_BASE + 89);
++    /* M: call control part end */
++
++
++    //New SIM Authentication
++    static final int RIL_REQUEST_GENERAL_SIM_AUTH = (RIL_REQUEST_MTK_BASE + 90);
++    //ISIM
++    static final int RIL_REQUEST_OPEN_ICC_APPLICATION = (RIL_REQUEST_MTK_BASE + 91);
++    static final int RIL_REQUEST_GET_ICC_APPLICATION_STATUS = (RIL_REQUEST_MTK_BASE + 92);
++    //SIM_IO_EX
++    static final int RIL_REQUEST_SIM_IO_EX = (RIL_REQUEST_MTK_BASE + 93);
++
++    // IMS
++    static final int RIL_REQUEST_SET_IMS_ENABLE = (RIL_REQUEST_MTK_BASE + 94);
++    static final int RIL_REQUEST_QUERY_AVAILABLE_NETWORKS_WITH_ACT = (RIL_REQUEST_MTK_BASE + 95);
++
++    /* M: SS part */
++    ///M: For query CNAP
++    static final int RIL_REQUEST_SEND_CNAP = (RIL_REQUEST_MTK_BASE + 96);
++    static final int RIL_REQUEST_SET_CLIP = (RIL_REQUEST_MTK_BASE + 97);
++    /* M: SS part end */
++
++    /** M: VoLTE data start */
++    static final int RIL_REQUEST_SETUP_DEDICATE_DATA_CALL = (RIL_REQUEST_MTK_BASE + 98);
++    static final int RIL_REQUEST_DEACTIVATE_DEDICATE_DATA_CALL = (RIL_REQUEST_MTK_BASE + 99);
++    static final int RIL_REQUEST_MODIFY_DATA_CALL = (RIL_REQUEST_MTK_BASE + 100);
++    static final int RIL_REQUEST_ABORT_SETUP_DATA_CALL = (RIL_REQUEST_MTK_BASE + 101);
++    static final int RIL_REQUEST_PCSCF_DISCOVERY_PCO = (RIL_REQUEST_MTK_BASE + 102);
++    static final int RIL_REQUEST_CLEAR_DATA_BEARER = (RIL_REQUEST_MTK_BASE + 103);
++    /** M: VoLTE end */
++
++    // MTK-START, SMS part, CB extension
++    static final int RIL_REQUEST_REMOVE_CB_MESSAGE = (RIL_REQUEST_MTK_BASE + 104);
++    // MTK-END, SMS part, CB extension
++
++    // NAS configuration for voice call
++    // 0: voice centric
++    // 1: data centric
++    static final int RIL_REQUEST_SET_DATA_CENTRIC = (RIL_REQUEST_MTK_BASE + 105);
++
++    /// M: IMS feature. @{
++    static final int RIL_REQUEST_ADD_IMS_CONFERENCE_CALL_MEMBER = (RIL_REQUEST_MTK_BASE + 106);
++    static final int RIL_REQUEST_REMOVE_IMS_CONFERENCE_CALL_MEMBER = (RIL_REQUEST_MTK_BASE + 107);
++    static final int RIL_REQUEST_DIAL_WITH_SIP_URI = (RIL_REQUEST_MTK_BASE + 108);
++    static final int RIL_REQUEST_RETRIEVE_HELD_CALL = (RIL_REQUEST_MTK_BASE + 109);
++    /// @}
++
++    /* M: call control part start */
++    static final int RIL_REQUEST_SET_SPEECH_CODEC_INFO = (RIL_REQUEST_MTK_BASE + 110);
++    /* M: call control part end */
++    /// M: CC33 LTE
++    static final int RIL_REQUEST_SET_DATA_ON_TO_MD = (RIL_REQUEST_MTK_BASE + 111);
++    static final int RIL_REQUEST_SET_REMOVE_RESTRICT_EUTRAN_MODE = (RIL_REQUEST_MTK_BASE + 112);
++
++    /* M: call control part start */
++    static final int RIL_REQUEST_SET_IMS_CALL_STATUS = (RIL_REQUEST_MTK_BASE + 113);
++    /* M: call control part end */
++
++    static final int RIL_REQUEST_EVDO_SUPPORT_BASE = 2100;
++    static final int RIL_REQUEST_RADIO_POWER_CARD_SWITCH = (RIL_REQUEST_EVDO_SUPPORT_BASE + 0);
++
++    // oh no again
++    static final int RIL_UNSOL_SET_PHONE_RAT_FAMILY_COMPLETE = 1042;
++
++    static final int RIL_UNSOL_MTK_BASE = 3000;
++    static final int RIL_UNSOL_NEIGHBORING_CELL_INFO = (RIL_UNSOL_MTK_BASE + 0);
++    static final int RIL_UNSOL_NETWORK_INFO = (RIL_UNSOL_MTK_BASE + 1);
++    static final int RIL_UNSOL_PHB_READY_NOTIFICATION = (RIL_UNSOL_MTK_BASE + 2);
++    static final int RIL_UNSOL_SIM_INSERTED_STATUS = (RIL_UNSOL_MTK_BASE + 3);
++    static final int RIL_UNSOL_RADIO_TEMPORARILY_UNAVAILABLE = (RIL_UNSOL_MTK_BASE + 4);
++    static final int RIL_UNSOL_ME_SMS_STORAGE_FULL = (RIL_UNSOL_MTK_BASE + 5);
++    static final int RIL_UNSOL_SMS_READY_NOTIFICATION = (RIL_UNSOL_MTK_BASE + 6);
++    static final int RIL_UNSOL_SCRI_RESULT = (RIL_UNSOL_MTK_BASE + 7);
++    static final int RIL_UNSOL_SIM_MISSING = (RIL_UNSOL_MTK_BASE + 8);
++    static final int RIL_UNSOL_GPRS_DETACH = (RIL_UNSOL_MTK_BASE + 9);
++    //MTK-START [mtk04070][120208][ALPS00233196] ATCI for unsolicited response
++    static final int RIL_UNSOL_ATCI_RESPONSE = (RIL_UNSOL_MTK_BASE + 10);
++    //MTK-END [mtk04070][120208][ALPS00233196] ATCI for unsolicited response
++    static final int RIL_UNSOL_SIM_RECOVERY = (RIL_UNSOL_MTK_BASE + 11);
++    static final int RIL_UNSOL_VIRTUAL_SIM_ON = (RIL_UNSOL_MTK_BASE + 12);
++    static final int RIL_UNSOL_VIRTUAL_SIM_OFF = (RIL_UNSOL_MTK_BASE + 13);
++    static final int RIL_UNSOL_INVALID_SIM = (RIL_UNSOL_MTK_BASE + 14);
++    static final int RIL_UNSOL_RESPONSE_PS_NETWORK_STATE_CHANGED = (RIL_UNSOL_MTK_BASE + 15);
++    static final int RIL_UNSOL_RESPONSE_ACMT = (RIL_UNSOL_MTK_BASE + 16);
++    static final int RIL_UNSOL_EF_CSP_PLMN_MODE_BIT = (RIL_UNSOL_MTK_BASE + 17);
++    static final int RIL_UNSOL_IMEI_LOCK = (RIL_UNSOL_MTK_BASE + 18);
++    static final int RIL_UNSOL_RESPONSE_MMRR_STATUS_CHANGED = (RIL_UNSOL_MTK_BASE + 19);
++    static final int RIL_UNSOL_SIM_PLUG_OUT = (RIL_UNSOL_MTK_BASE + 20);
++    static final int RIL_UNSOL_SIM_PLUG_IN = (RIL_UNSOL_MTK_BASE + 21);
++    static final int RIL_UNSOL_RESPONSE_ETWS_NOTIFICATION = (RIL_UNSOL_MTK_BASE + 22);
++    static final int RIL_UNSOL_RESPONSE_PLMN_CHANGED = (RIL_UNSOL_MTK_BASE + 23);
++    static final int RIL_UNSOL_RESPONSE_REGISTRATION_SUSPENDED = (RIL_UNSOL_MTK_BASE + 24);
++    static final int RIL_UNSOL_STK_EVDL_CALL = (RIL_UNSOL_MTK_BASE + 25);
++    static final int RIL_UNSOL_DATA_PACKETS_FLUSH = (RIL_UNSOL_MTK_BASE + 26);
++    static final int RIL_UNSOL_FEMTOCELL_INFO = (RIL_UNSOL_MTK_BASE + 27);
++    static final int RIL_UNSOL_STK_SETUP_MENU_RESET = (RIL_UNSOL_MTK_BASE + 28);
++    static final int RIL_UNSOL_APPLICATION_SESSION_ID_CHANGED = (RIL_UNSOL_MTK_BASE + 29);
++    /// M: For updating call ids for conference call after SRVCC is done.
++    static final int RIL_UNSOL_ECONF_SRVCC_INDICATION = (RIL_UNSOL_MTK_BASE + 30);
++    // IMS
++    static final int RIL_UNSOL_IMS_ENABLE_DONE = (RIL_UNSOL_MTK_BASE + 31);
++    static final int RIL_UNSOL_IMS_DISABLE_DONE = (RIL_UNSOL_MTK_BASE + 32);
++    static final int RIL_UNSOL_IMS_REGISTRATION_INFO = (RIL_UNSOL_MTK_BASE + 33);
++    //VoLTE
++    static final int RIL_UNSOL_DEDICATE_BEARER_ACTIVATED = (RIL_UNSOL_MTK_BASE + 34);
++    static final int RIL_UNSOL_DEDICATE_BEARER_MODIFIED = (RIL_UNSOL_MTK_BASE + 35);
++    static final int RIL_UNSOL_DEDICATE_BEARER_DEACTIVATED = (RIL_UNSOL_MTK_BASE + 36);
++
++    //sm cause rac
++    static final int RIL_UNSOL_RAC_UPDATE = (RIL_UNSOL_MTK_BASE + 37);
++
++    //[VoLTE]Conf. call merged/added result
++    static final int RIL_UNSOL_ECONF_RESULT_INDICATION = (RIL_UNSOL_MTK_BASE + 38);
++
++    //Remote SIM ME lock related APIs [Start]
++    static final int RIL_UNSOL_MELOCK_NOTIFICATION = (RIL_UNSOL_MTK_BASE + 39);
++    //Remote SIM ME lock related APIs [END]
++
++    /* M: call control part start */
++    static final int RIL_UNSOL_CALL_FORWARDING = (RIL_UNSOL_MTK_BASE + 40);
++    static final int RIL_UNSOL_CRSS_NOTIFICATION = (RIL_UNSOL_MTK_BASE + 41);
++    static final int RIL_UNSOL_INCOMING_CALL_INDICATION = (RIL_UNSOL_MTK_BASE + 42);
++    static final int RIL_UNSOL_CIPHER_INDICATION = (RIL_UNSOL_MTK_BASE + 43);
++    static final int RIL_UNSOL_CNAP = (RIL_UNSOL_MTK_BASE + 44);
++    /* M: call control part end */
++    static final int RIL_UNSOL_SIM_COMMON_SLOT_NO_CHANGED = (RIL_UNSOL_MTK_BASE + 45);
++    //Combine attach
++    static final int RIL_UNSOL_DATA_ALLOWED = (RIL_UNSOL_MTK_BASE + 46);
++    static final int RIL_UNSOL_STK_CALL_CTRL = (RIL_UNSOL_MTK_BASE + 47);
++    static final int RIL_UNSOL_VOLTE_EPS_NETWORK_FEATURE_SUPPORT = (RIL_UNSOL_MTK_BASE + 48);
++
++    /// M: IMS feature. @{
++    static final int RIL_UNSOL_CALL_INFO_INDICATION = (RIL_UNSOL_MTK_BASE + 49);
++    /// @}
++
++    static final int RIL_UNSOL_VOLTE_EPS_NETWORK_FEATURE_INFO = (RIL_UNSOL_MTK_BASE + 50);
++    static final int RIL_UNSOL_SRVCC_HANDOVER_INFO_INDICATION = (RIL_UNSOL_MTK_BASE + 51);
++    /* M: call control part start */
++    static final int RIL_UNSOL_SPEECH_CODEC_INFO = (RIL_UNSOL_MTK_BASE + 52);
++    /* M: call control part end */
++
++    //MTK-START for MD state change
++    static final int RIL_UNSOL_MD_STATE_CHANGE = (RIL_UNSOL_MTK_BASE + 53);
++    //MTK-END for MD state change
++    // M: CC33 URC
++    static final int RIL_UNSOL_REMOVE_RESTRICT_EUTRAN = (RIL_UNSOL_MTK_BASE + 54);
++
++    // IMS client on AP shall get the information of MO Data Barring and SSAC barring
++    static final int RIL_UNSOL_MO_DATA_BARRING_INFO = (RIL_UNSOL_MTK_BASE + 55);
++    static final int RIL_UNSOL_SSAC_BARRING_INFO = (RIL_UNSOL_MTK_BASE + 56);
++
++//MTK_TC1_FEATURE for LGE CSMCC_MO_CALL_MODIFIED {
++    static final int RIL_UNSOL_RESPONSE_MO_CALL_STATE_CHANGED = (RIL_UNSOL_MTK_BASE + 57);
++//}
++
++    /* M: Add C2K proprietary start */
++    static final int RIL_REQUEST_C2K_BASE = 4000;
++    static final int RIL_REQUEST_GET_NITZ_TIME = (RIL_REQUEST_C2K_BASE + 0);
++    static final int RIL_REQUEST_QUERY_UIM_INSERTED = (RIL_REQUEST_C2K_BASE + 1);
++    static final int RIL_REQUEST_SWITCH_HPF = (RIL_REQUEST_C2K_BASE + 2);
++    static final int RIL_REQUEST_SET_AVOID_SYS = (RIL_REQUEST_C2K_BASE + 3);
++    static final int RIL_REQUEST_QUERY_AVOID_SYS = (RIL_REQUEST_C2K_BASE + 4);
++    static final int RIL_REQUEST_QUERY_CDMA_NETWORK_INFO = (RIL_REQUEST_C2K_BASE + 5);
++    static final int RIL_REQUEST_GET_LOCAL_INFO =  (RIL_REQUEST_C2K_BASE + 6);
++    static final int RIL_REQUEST_UTK_REFRESH = (RIL_REQUEST_C2K_BASE + 7);
++    static final int RIL_REQUEST_QUERY_SMS_AND_PHONEBOOK_STATUS = (RIL_REQUEST_C2K_BASE + 8);
++    static final int RIL_REQUEST_QUERY_NETWORK_REGISTRATION = (RIL_REQUEST_C2K_BASE + 9);
++    static final int RIL_REQUEST_AGPS_TCP_CONNIND = (RIL_REQUEST_C2K_BASE + 10);
++    static final int RIL_REQUEST_AGPS_SET_MPC_IPPORT = (RIL_REQUEST_C2K_BASE + 11);
++    static final int RIL_REQUEST_AGPS_GET_MPC_IPPORT = (RIL_REQUEST_C2K_BASE + 12);
++    static final int RIL_REQUEST_SET_MEID = (RIL_REQUEST_C2K_BASE + 13);
++    static final int RIL_REQUEST_SET_REG_RESUME = (RIL_REQUEST_C2K_BASE + 14);
++    static final int RIL_REQUEST_ENABLE_REG_PAUSE = (RIL_REQUEST_C2K_BASE + 15);
++    static final int RIL_REQUEST_SET_ETS_DEV = (RIL_REQUEST_C2K_BASE + 16);
++    static final int RIL_REQUEST_WRITE_MDN = (RIL_REQUEST_C2K_BASE + 17);
++    static final int RIL_REQUEST_SET_VIA_TRM = (RIL_REQUEST_C2K_BASE + 18);
++    static final int RIL_REQUEST_SET_ARSI_THRESHOLD = (RIL_REQUEST_C2K_BASE + 19);
++
++    static final int RIL_UNSOL_C2K_BASE = 5000;
++    static final int RIL_UNSOL_CDMA_CALL_ACCEPTED = (RIL_UNSOL_C2K_BASE + 0);
++    static final int RIL_UNSOL_UTK_SESSION_END = (RIL_UNSOL_C2K_BASE + 1);
++    static final int RIL_UNSOL_UTK_PROACTIVE_COMMAND = (RIL_UNSOL_C2K_BASE + 2);
++    static final int RIL_UNSOL_UTK_EVENT_NOTIFY = (RIL_UNSOL_C2K_BASE + 3);
++    static final int RIL_UNSOL_VIA_GPS_EVENT = (RIL_UNSOL_C2K_BASE + 4);
++    static final int RIL_UNSOL_VIA_NETWORK_TYPE_CHANGE = (RIL_UNSOL_C2K_BASE + 5);
++    static final int RIL_UNSOL_VIA_PLMN_CHANGE_REG_PAUSE = (RIL_UNSOL_C2K_BASE + 6);
++    static final int RIL_UNSOL_VIA_INVALID_SIM_DETECTED = (RIL_UNSOL_C2K_BASE + 7);
++    /* M: Add C2K proprietary end */
+ }
+diff --git a/telephony/java/com/android/internal/telephony/TelephonyIntents.java b/telephony/java/com/android/internal/telephony/TelephonyIntents.java
+index 99f262a..4f07228 100644
+--- a/telephony/java/com/android/internal/telephony/TelephonyIntents.java
++++ b/telephony/java/com/android/internal/telephony/TelephonyIntents.java
+@@ -424,4 +424,259 @@ public class TelephonyIntents {
+     public static final String ACTION_CAPABILITY_SWITCH_DONE
+             = "com.android.phone.ACTION_CAPABILITY_SWITCH_DONE";
+ 
++    // MTK additions
++
++    /**
++     * Broadcast Action: An attempt to set phone RAT family has changed.  This has the following
++     * extra values:</p>
++     * <ul>
++     *   <li><em>phones RAT family</em> - A PhoneRatFamily array,
++     *          contain phone ID and new RAT family for each phone.</li>
++     * </ul>
++     * @internal
++     */
++    public static final String ACTION_SET_PHONE_RAT_FAMILY_DONE =
++            "android.intent.action.ACTION_SET_PHONE_RAT_FAMILY_DONE";
++    /**
++     * @internal
++     */
++    public static final String EXTRA_PHONES_RAT_FAMILY = "phonesRatFamily";
++
++    /**
++     * Broadcast Action: An attempt to set phone RAT family has failed.
++     * <ul>
++     *   <li><em>phone ID</em> - A int, indicates the failed phone.</li>
++     * </ul>
++     * @internal
++     */
++    public static final String ACTION_SET_PHONE_RAT_FAMILY_FAILED =
++            "android.intent.action.ACTION_SET_PHONE_RAT_FAMILY_FAILED";
++    /**
++     * @internal
++     */
++    public static final String EXTRA_PHONES_ID = "phoneId";
++
++    // Added by M begin
++
++    /**
++     * <p>Broadcast Action: To activate an application to unlock SIM lock.
++     * The intent will have the following extra value:</p>
++     * <dl>
++     *   <dt>reason</dt><dd>The reason why ss is {@code LOCKED}; null otherwise.</dd>
++     *   <dl>
++     *       <dt>{@code PIN}</dt><dd>locked on PIN1</dd>
++     *       <dt>{@code PUK}</dt><dd>locked on PUK1</dd>
++     *       <dt>{@code NETWORK}</dt><dd>locked on network personalization</dd>
++     *       <dt>{@code NETWORK_SUBSET}</dt><dd>locked on network subset personalization</dd>
++     *       <dt>{@code CORPORATE}</dt><dd>locked on corporate personalization</dd>
++     *       <dt>{@code SERVICE_PROVIDER}</dt><dd>locked on service proiver personalization</dd>
++     *       <dt>{@code SIM}</dt><dd>locked on SIM personalization</dd>
++     *   </dl>
++     * </dl>
++     * @internal
++     */
++     // FIXME: need to add subId, slotId, phoneId extra value comments.
++     public static final String ACTION_UNLOCK_SIM_LOCK
++            = "mediatek.intent.action.ACTION_UNLOCK_SIM_LOCK";
++
++
++     /**
++      * Broadcast Action: The sim card application state has changed. (only support ISIM currently)
++      * The intent will have the following extra values:</p>
++      * <dl>
++      *   <dt>phoneName</dt><dd>A string version of the phone name.</dd>
++      *   <dt>ss</dt><dd>The sim state. One of:
++      *     <dl>
++      *       <dt>{@code ABSENT}</dt><dd>SIM card not found</dd>
++      *       <dt>{@code LOCKED}</dt><dd>SIM card locked (see {@code reason})</dd>
++      *       <dt>{@code READY}</dt><dd>SIM card ready</dd>
++      *       <dt>{@code IMSI}</dt><dd>FIXME: what is this state?</dd>
++      *       <dt>{@code LOADED}</dt><dd>SIM card data loaded</dd>
++      *     </dl></dd>
++      *   <dt>reason</dt><dd>The reason why ss is {@code LOCKED}; null otherwise.</dd>
++      *   <dl>
++      *       <dt>{@code PIN}</dt><dd>locked on PIN1</dd>
++      *       <dt>{@code PUK}</dt><dd>locked on PUK1</dd>
++      *       <dt>{@code NETWORK}</dt><dd>locked on network personalization</dd>
++      *   </dl>
++      *   <dt>appid</dt><dd>The application id.</dd>
++      * </dl>
++      *
++      * <p class="note">This is a protected intent that can only be sent
++      * by the system.
++      */
++      // FIXME: need to add subId, slotId, phoneId extra value comments.
++     public static final String ACTION_SIM_STATE_CHANGED_MULTI_APPLICATION
++             = "mediatek.intent.action.ACTION_SIM_STATE_CHANGED_MULTI_APPLICATION";
++
++    /**
++    * Do SIM Recovery Done.
++    */
++    public static final String ACTION_SIM_RECOVERY_DONE = "com.android.phone.ACTION_SIM_RECOVERY_DONE";
++
++    // ALPS00302698 ENS
++    /**
++       * This event is broadcasted when CSP PLMN is changed
++       * @internal
++       */
++    public static final String ACTION_EF_CSP_CONTENT_NOTIFY = "android.intent.action.ACTION_EF_CSP_CONTENT_NOTIFY";
++    public static final String INTENT_KEY_PLMN_MODE_BIT = "plmn_mode_bit";
++
++    // ALPS00302702 RAT balancing
++    public static final String ACTION_EF_RAT_CONTENT_NOTIFY = "android.intent.action.ACTION_EF_RAT_CONTENT_NOTIFY";
++    public static final String INTENT_KEY_EF_RAT_CONTENT = "ef_rat_content";
++    public static final String INTENT_KEY_EF_RAT_STATUS = "ef_rat_status";
++
++    public static final String ACTION_COMMON_SLOT_NO_CHANGED = "com.mediatek.phone.ACTION_COMMON_SLOT_NO_CHANGED";
++
++
++  /**
++      * Broadcast Action: ACMT Network Service Status Indicator
++      * The intent will have the following extra values:</p>
++      * <ul>
++      * <li><em>CauseCode</em> - specify the reject cause code from MM/GMM/EMM</li>
++      * <li><em>Cause</em> - the reject cause<li>
++      * </ul>
++      */
++    public static final String ACTION_ACMT_NETWORK_SERVICE_STATUS_INDICATOR
++            = "mediatek.intent.action.acmt_nw_service_status";
++
++    //MTK-START [mtk80589][121026][ALPS00376525] STK dialog pop up caused ISVR
++    public static final String ACTION_IVSR_NOTIFY
++        = "mediatek.intent.action.IVSR_NOTIFY";
++
++    public static final String INTENT_KEY_IVSR_ACTION = "action";
++    //MTK-END [mtk80589][121026][ALPS00376525] STK dialog pop up caused ISVR
++
++   /* ALPS01139189 */
++   /**
++     * This event is broadcasted when frmework start/stop hiding network state update
++     * @internal
++     */
++    public static final String ACTION_HIDE_NETWORK_STATE = "mediatek.intent.action.ACTION_HIDE_NETWORK_STATE";
++    public static final String EXTRA_ACTION = "action";
++    public static final String EXTRA_REAL_SERVICE_STATE = "state";
++
++    /**
++     * This event is broadcasted when the located PLMN is changed
++     * @internal
++     */
++    public static final String ACTION_LOCATED_PLMN_CHANGED = "mediatek.intent.action.LOCATED_PLMN_CHANGED";
++
++  /**
++     * This event is broadcasted when the IMS registeration state is changed
++     */
++    public static final String ACTION_IMS_STATE_CHANGED = "android.intent.action.IMS_SERVICE_STATE";
++
++  /**
++     * This extra value is the IMS registeration state
++     */
++    public static final String EXTRA_IMS_REG_STATE_KEY = "regState"; // 0: not registered  , 1: registered
++
++    // Femtocell (CSG) START
++    public static final String EXTRA_HNB_NAME   = "hnbName";
++    public static final String EXTRA_CSG_ID     = "csgId";
++    public static final String EXTRA_DOMAIN     = "domain";
++    // Femtocell (CSG) END
++
++    /**
++     * Broadcast Action: The PHB state has changed.
++     * The intent will have the following extra values:</p>
++     * <ul>
++     *   <li><em>ready</em> - The PHB ready state.  True for ready, false for not ready</li>
++     *   <li><em>simId</em> - The SIM ID</li>
++     * </ul>
++     *
++     * <p class="note">
++     * Requires the READ_PHONE_STATE permission.
++     *
++     * <p class="note">This is a protected intent that can only be sent
++     * by the system.
++     * @internal
++     */
++    public static final String ACTION_PHB_STATE_CHANGED
++            = "android.intent.action.PHB_STATE_CHANGED";
++
++    /* SIM switch start */
++    /**
++     * To notify the capability switch procedure start
++     */
++    public static String EVENT_PRE_CAPABILITY_SWITCH = "com.mediatek.PRE_CAPABILITY_SWITCH";
++    /**
++     * To notify the capability switch procedure end
++     */
++    public static String EVENT_CAPABILITY_SWITCH_DONE = "com.mediatek.CAPABILITY_SWITCH_DONE";
++    /**
++     * The target SIM Id where capability is going to set to.
++     * This is an extra information comes with EVENT_CAPABILITY_PRE_SWITCH event.
++     */
++    public static String EXTRA_MAIN_PROTOCOL_SIM = "MAIN_PROTOCOL_SIM";
++    // Added by M end
++
++    /**
++     * Broadcast Action: The modem type changed.
++     * @internal
++     * The intent will have the following extra values:</p>
++     * <ul>
++     *   <li><em>ready</em> - The modem type after switched.</li>
++     * </ul>
++     */
++    public static final String ACTION_MD_TYPE_CHANGE
++            = "android.intent.action.ACTION_MD_TYPE_CHANGE";
++    /** @internal */
++    public static final String EXTRA_MD_TYPE = "mdType";
++
++    /**
++     * This event is to notify when data bearer need to clear
++     */
++    public static final String ACTION_CLEAR_DATA_BEARER_NOTIFY = "android.intent.action.CLEAR_DATA_BEARER_NOTIFY";
++
++    // VOLTE
++    public static final String ACTION_ANY_DEDICATE_DATA_CONNECTION_STATE_CHANGED = "android.intent.action.ANY_DEDICATE_DATA_STATE";
++    /**
++     * This event is broadcasted when clear data bearer finished
++     */
++    public static final String ACTION_CLEAR_DATA_BEARER_FINISHED = "android.intent.action.CLEAR_DATA_BEARER_FINISHED";
++    public static final String ACTION_NOTIFY_GLOBAL_IP_ADDR = "android.intent.action.NOTIFY_GLOBAL_ADDR";
++    public static final String EXTRA_GLOBAL_IP_ADDR_KEY = "lte_global_ip_addr";
++
++    /**
++     * This event is broadcasted when ims or emergency pdn deactivated from NW in VOLTE
++     */
++    public static final String ACTION_NOTIFY_IMS_DEACTIVATED_CIDS = "android.intent.action.NOTIFY_IMS_DEACTIVATED_CIDS";
++    public static final String EXTRA_IMS_DEACTIVATED_CIDS = "ims_deactivate_cids";
++
++     /**
++     * This event is broadcasted when default pdn modified by NW in VOLTE
++     */
++     public static final String ACTION_NOTIFY_IMS_DEFAULT_PDN_MODIFICATION = "android.intent.action.NOTIFY_IMS_DEFAULT_PDN_MODIFICATION";
++     public static final String EXTRA_IMS_DEFAULT_RESPONSE_DATA_CALL = "ims_default_response_data_call";
++
++
++    /**
++    * This event is broadcasted when Stk Refresh with type REFRESH_RESULT_INIT,
++    * REFRESH_RESULT_RESET, REFRESH_INIT_FULL_FILE_UPDATED, REFRESH_INIT_FILE_UPDATED
++    * @internal
++    */
++    public static final String ACTION_REMOVE_IDLE_TEXT = "android.intent.aciton.stk.REMOVE_IDLE_TEXT";
++
++    /**
++    * @hide
++    */
++    public static final String ACTION_REMOVE_IDLE_TEXT_2 = "android.intent.aciton.stk.REMOVE_IDLE_TEXT_2";
++
++    /// M: IMS feature for SS Runtime  Indication. @{
++    public static final String ACTION_LTE_MESSAGE_WAITING_INDICATION = "android.intent.action.lte.mwi";
++    public static final String EXTRA_LTE_MWI_BODY = "lte_mwi_body";
++    /// @}
++
++    /// M: c2k modify, intents. @{
++    // MCC MNC Change
++    public static final String ACTION_MCC_MNC_CHANGED = "android.intent.action.MCC_MNC_CHANGED";
++    public static final String EXTRA_MCC_MNC_CHANGED_MCC = "mcc";
++    public static final String EXTRA_MCC_MNC_CHANGED_MNC = "mnc";
++    // RADIO AVAILABLE
++    public static final String ACTION_RADIO_AVAILABLE = "android.intent.action.RADIO_AVAILABLE";
++    public static final String EXTRA_RADIO_AVAILABLE_STATE = "radio_available_state";
++    /// @}
+ }
+diff --git a/telephony/java/com/android/internal/telephony/TelephonyProperties.java b/telephony/java/com/android/internal/telephony/TelephonyProperties.java
+index db84d59..ec79f9c 100644
+--- a/telephony/java/com/android/internal/telephony/TelephonyProperties.java
++++ b/telephony/java/com/android/internal/telephony/TelephonyProperties.java
+@@ -248,4 +248,39 @@ public interface TelephonyProperties
+      *     or Earpiece, based on the default audio routing strategy.
+      */
+     static final String PROPERTY_IMS_AUDIO_OUTPUT = "persist.radio.ims.audio.output";
++
++    // MTK additions
++
++    // Added by M begin
++    /** The IMSI of the SIM
++     *  Availability: SIM state must be "READY"
++     */
++    static final String PROPERTY_ICC_OPERATOR_IMSI   = "gsm.sim.operator.imsi";
++
++    /**
++    * Indicate if chaneing to SIM locale is processing
++    */
++    static final String PROPERTY_SIM_LOCALE_SETTINGS = "gsm.sim.locale.waiting";
++
++    /** PROPERTY_ICC_OPERATOR_DEFAULT_NAME is the operator name for plmn which origins the SIM.
++     *  Availablity: SIM state must be "READY"
++     */
++    static final String PROPERTY_ICC_OPERATOR_DEFAULT_NAME = "gsm.sim.operator.default-name";
++    // Added by M end
++
++    static final String PROPERTY_WORLD_PHONE = "ro.mtk_world_phone";
++    static final String PROPERTY_ACTIVE_MD = "ril.active.md";
++
++ /**
++    * Indicate the highest radio access capability(ex: UMTS,LTE,etc.) of modem
++    */
++    static final String PROPERTY_BASEBAND_CAPABILITY = "gsm.baseband.capability";
++    static final String PROPERTY_BASEBAND_CAPABILITY_MD2 = "gsm.baseband.capability.md2";
++
++ /**
++    * NITZ operator long name,short name, numeric (if ever received from MM information)
++    */
++    static final String PROPERTY_NITZ_OPER_CODE = "persist.radio.nitz_oper_code";
++    static final String PROPERTY_NITZ_OPER_LNAME = "persist.radio.nitz_oper_lname";
++    static final String PROPERTY_NITZ_OPER_SNAME = "persist.radio.nitz_oper_sname";
+ }
+-- 
+1.9.1
+

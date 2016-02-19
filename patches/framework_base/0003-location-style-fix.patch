@@ -1,0 +1,35 @@
+From 4b81d92c16297d7dd0eabe771f455068dbfc74aa Mon Sep 17 00:00:00 2001
+From: Wang Xuerui <idontknw.wang@gmail.com>
+Date: Fri, 28 Aug 2015 06:18:05 +0800
+Subject: [PATCH 3/5] location: style fix
+
+Change-Id: Ia7cc4b44f418273eec9154d1ce7e58e950e48ec2
+---
+ services/core/jni/com_android_server_location_GpsLocationProvider.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/services/core/jni/com_android_server_location_GpsLocationProvider.cpp b/services/core/jni/com_android_server_location_GpsLocationProvider.cpp
+index 84d17b9..7d2fbe1 100644
+--- a/services/core/jni/com_android_server_location_GpsLocationProvider.cpp
++++ b/services/core/jni/com_android_server_location_GpsLocationProvider.cpp
+@@ -107,7 +107,7 @@ static void status_callback(GpsStatus* status)
+ static void sv_status_callback(GpsSvStatus* sv_status)
+ {
+     JNIEnv* env = AndroidRuntime::getJNIEnv();
+-	ALOGD("sv_status_callback(%p)", sv_status);
++    ALOGD("sv_status_callback(%p)", sv_status);
+     memcpy(&sGpsSvStatus, sv_status, sizeof(sGpsSvStatus));
+     env->CallVoidMethod(mCallbacksObj, method_reportSvStatus);
+     checkAndClearExceptionFromCallback(env, __FUNCTION__);
+@@ -116,7 +116,7 @@ static void sv_status_callback(GpsSvStatus* sv_status)
+ static void gnss_sv_status_callback(GnssSvStatus* sv_status)
+ {
+     JNIEnv* env = AndroidRuntime::getJNIEnv();
+-	ALOGD("gnss_sv_status_callback(%p)", sv_status);
++    ALOGD("gnss_sv_status_callback(%p)", sv_status);
+     memcpy(&sGnssSvStatus, sv_status, sizeof(sGnssSvStatus));
+     env->CallVoidMethod(mCallbacksObj, method_reportGnssSvStatus);
+     checkAndClearExceptionFromCallback(env, __FUNCTION__);
+-- 
+1.9.1
+
