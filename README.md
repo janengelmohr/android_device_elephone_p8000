@@ -10,14 +10,15 @@ currently working:
  * Rotation
  * BT
  * Audio
+ * GPS
  * PS
+ * ALS
 
 TODO:
  * RIL
  * Videorecording
- * GPS
- * ALS
  * MTP
+ * FM Radio
  * Enforcing SELinux
 
 IF you are trying to build TWRP against cm-12.1 you will need this commit:
