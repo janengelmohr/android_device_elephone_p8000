@@ -8,6 +8,9 @@ $(call inherit-product-if-exists, vendor/elephone/p8000/p8000-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/elephone/p8000/overlay
 
+# Recovery allowed devices
+TARGET_OTA_ASSERT_DEVICE := p8000,k05ts_a
+
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/elephone/p8000/prebuilt/kernel
 else
