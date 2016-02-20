@@ -28,6 +28,9 @@ PRODUCT_COPY_FILES += \
 	device/elephone/p8000/rootdir/ueventd.mt6735.rc:root/ueventd.rc \
 	device/elephone/p8000/rootdir/factory_init.rc:root/factory_init.rc \
 	device/elephone/p8000/rootdir/factory_init.project.rc:root/factory_init.project.rc \
+	device/elephone/p8000/rootdir/meta_init.project.rc:root/meta_init.project.rc \
+	device/elephone/p8000/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
+	device/elephone/p8000/rootdir/meta_init.rc:root/meta_init.rc \
 	frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml \
 	frameworks/native/data/etc/android.hardware.audio.output.xml:system/etc/permissions/android.hardware.audio.output.xml \
 	frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
