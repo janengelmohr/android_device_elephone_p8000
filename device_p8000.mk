@@ -28,7 +28,7 @@ PRODUCT_COPY_FILES += \
 	device/elephone/p8000/rootdir/init.project.rc:root/init.project.rc \
 	device/elephone/p8000/rootdir/init.modem.rc:root/init.modem.rc \
     device/elephone/p8000/recovery/root/fstab.mt6753:root/fstab.mt6735  \
-	device/elephone/p8000/rootdir/ueventd.mt6735.rc:root/ueventd.rc \
+	device/elephone/p8000/rootdir/ueventd.mt6735.rc:root/ueventd.mt6735.rc \
 	device/elephone/p8000/rootdir/factory_init.rc:root/factory_init.rc \
 	device/elephone/p8000/rootdir/factory_init.project.rc:root/factory_init.project.rc \
 	device/elephone/p8000/rootdir/meta_init.project.rc:root/meta_init.project.rc \
@@ -78,10 +78,4 @@ ro.allow.mock.location=1 \
 persist.mtk.aee.aed=on \
 ro.debuggable=1 \
 ro.adb.secure=0 \
-persist.service.acm.enable=0 \
-persist.sys.usb.config=mtp \
-ro.mount.fs=EXT4 \
-ro.persist.partition.support=no \
-ro.cip.partition.support=no \
-debug.hwui.render_dirty_regions=false \
-ro.sf.lcd_density=480
+persist.service.acm.enable=0 
