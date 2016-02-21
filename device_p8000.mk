@@ -62,9 +62,72 @@ PRODUCT_PACKAGES += \
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
+    audio_policy.default \
+    audio_policy.stub \
+    audio.r_submix.default \
+    audio.usb.default \
     libaudio-resampler \
     tinymix \
-    libdashplayer
+    libtinyalsa \
+    libtinycompress
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
+    $(LOCAL_PATH)/configs/audio_device.xml:system/etc/audio_device.xml \
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
+
+
+# Telecom
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/apns-conf.xml:system/etc/apns-conf.xml \
+    $(LOCAL_PATH)/configs/ecc_list.xml:system/etc/ecc_list.xml \
+    $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml 
+
+# Torch
+PRODUCT_PACKAGES += \
+    Torch
+
+# Immvibe
+PRODUCT_PACKAGES += \
+	immvibe
+
+# MTK's XLog
+PRODUCT_PACKAGES += \
+    libxlog
+
+PRODUCT_PACKAGES += \
+    libifaddrs
+
+PRODUCT_PACKAGES += \
+    libifaddrs
+
+PRODUCT_PACKAGES += \
+    librs_jni \
+    com.android.future.usb.accessory
+
+ PRODUCT_PACKAGES += \
+    libnl_2 \
+    libtinyxml
+
+# STk
+PRODUCT_PACKAGES += \
+    Stk
+
+# GPS
+PRODUCT_COPY_FILES += \
+     $(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml 
+
+# Media	
+PRODUCT_COPY_FILES += \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
+
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/permissions/media_codecs.xml \
+	$(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 
 PRODUCT_COPY_FILES += \
