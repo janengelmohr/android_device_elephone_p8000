@@ -1,6 +1,6 @@
 #
 #
-# system.prop for Hermes
+# system.prop for P8000, thanks to jianminglok
 #
 
 rild.libpath=/system/lib64/mtk-ril.so
