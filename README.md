@@ -6,7 +6,6 @@ currently working:
  * it is hardware accelerated
  * WiFi 
  * RIL
- * Camera works for taking pictures if FlashlightTile is nulled
  * Vibration
  * Rotation
  * BT
@@ -17,10 +16,11 @@ currently working:
 
 TODO:
  * Videorecording
- * getting Camera properly to run
+ * Camera in general
  * MTP
  * FM Radio
  * Enforcing SELinux
+ * external SD
 
 IF you are trying to build TWRP against cm-12.1 you will need this commit:
 * http://review.cyanogenmod.org/#/c/89474/1/recovery.te
