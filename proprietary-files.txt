@@ -342,6 +342,8 @@ system/lib/libvp8enc_sa.ca7.so
 system/lib/libvp9dec_sa.ca7.so
 system/lib/mtk-ril.so
 system/lib/mtk-rilmd2.so
+system/lib64/mtk-ril.so
+system/lib64/mtk-rilmd2.so
 system/lib64/egl/libGLES_android.so
 system/lib64/hw/audio.primary.mt6753.so
 system/lib64/hw/camera.mt6753.so
