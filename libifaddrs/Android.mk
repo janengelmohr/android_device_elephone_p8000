@@ -1,0 +1,11 @@
+
+LOCAL_PATH:= $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := ifaddrs.c
+LOCAL_CFLAGS := -O2 -g
+LOCAL_C_INCLUDES := 
+LOCAL_SHARED_LIBRARIES :=
+LOCAL_MODULE := libifaddrs
+LOCAL_MULTILIB := 32
+include $(BUILD_STATIC_LIBRARY)
