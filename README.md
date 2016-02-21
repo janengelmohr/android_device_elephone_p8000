@@ -5,6 +5,7 @@ currently working:
  * it boots
  * it is hardware accelerated
  * WiFi 
+ * RIL
  * Camera works for taking pictures if FlashlightTile is nulled
  * Vibration
  * Rotation
@@ -15,8 +16,8 @@ currently working:
  * ALS
 
 TODO:
- * RIL
  * Videorecording
+ * getting Camera properly to run
  * MTP
  * FM Radio
  * Enforcing SELinux
