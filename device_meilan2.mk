@@ -100,7 +100,14 @@ persist.sys.usb.config=mtp \
 ro.mount.fs=EXT4 \
 debug.hwui.render_dirty_regions=false \
 ro.sf.lcd_density=320 \
-ro.hardware.bluetooth=blueangel
+ro.hardware.bluetooth=blueangel \
+persist.radio.multisim.config=dsds \
+ro.mtk_lte_support=1 \
+ro.telephony.ril_class=MediaTekRIL \
+ro.telephony.sim.count=2 \
+persist.gemini.sim_num=2 \
+ril.current.share_modem=2 \
+
 
 # Removed for now
 #ro.persist.partition.support=no \
