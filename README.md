@@ -10,7 +10,7 @@ Initialize a repository with CyanogenMode:
 
 Optinally use a specific manifest (not a tip):
 
-    repo init -u git://github.com/divis1969/android.git -b meilan2 -m cm-12.1-v0.1.xml
+    repo init -u git://github.com/divis1969/android.git -b meilan2 -m cm-12.1-v0.2.xml
 
 Build the code:
 
@@ -31,15 +31,22 @@ Current state
 - Wifi is working
 - Camera is working
 - Audio is working
-- MTK RILD starts, comminicate to modem, SIM
+- Telephony is working
+    - USIM (3G) supported
+    - Incoming/outgoung call
+    - Data connection (3G/2G)
 
 Known Issues
 -------------
-- Bluetooth is not functional
-- Radio (modem) is not functional (cannot register in network)
+- Bluetooth is not functional (not tested)
+- Battery charge indicator shows incorrect status (>100 %)
+- SIM sometimes is not correctly identiified (workaround: turn Airplane mode on/off)
 
 Change log
 ----------
+
+### v0.2
+- Telephony bring up complete
 
 ### v0.1
 - Fixed an issue with USB/ADB
