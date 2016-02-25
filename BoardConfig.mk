@@ -96,6 +96,10 @@ BOARD_MEDIATEK_USES_GPS := true
 USE_CAMERA_STUB := true
 BOARD_USES_MTK_AUDIO := true
 
+# FM Radio
+MTK_FM_SUPPORT :=true
+MTK_FM_RX_SUPPORT :=true
+
 #twrp ( WIP do not use!!! see comments )
 
 #tw_theme is essential flag

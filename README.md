@@ -5,14 +5,15 @@ currently working:
  * it boots
  * it is hardware accelerated
  * WiFi 
- * RIL
+ * RIL (SMS, Calls, Mobile Data)
  * Vibration
  * Rotation
- * BT
+ * Bluetooth
  * Audio
  * GPS
  * PS
  * ALS
+ * external SD
 
 TODO:
  * Videorecording
@@ -20,7 +21,7 @@ TODO:
  * MTP
  * FM Radio
  * Enforcing SELinux
- * external SD
+ * Audio over Bluetooth
 
 IF you are trying to build TWRP against cm-12.1 you will need this commit:
 * http://review.cyanogenmod.org/#/c/89474/1/recovery.te
