@@ -19,8 +19,6 @@ TARGET_PROVIDES_INIT_RC := true
 
 PRODUCT_COPY_FILES += \
 	device/meizu/meilan2/rootdir/init.rc:root/init.rc \
-	device/meizu/meilan2/rootdir/factory_init.rc:root/factory_init.rc \
-	device/meizu/meilan2/rootdir/factory_init.project.rc:root/factory_init.project.rc \
 	device/meizu/meilan2/rootdir/enableswap.sh:root/enableswap.sh \
 	device/meizu/meilan2/rootdir/init.mt6735.rc:root/init.mt6735.rc \
 	device/meizu/meilan2/rootdir/init.ssd.rc:root/init.ssd.rc \
@@ -31,9 +29,6 @@ PRODUCT_COPY_FILES += \
 	device/meizu/meilan2/rootdir/init.modem.rc:root/init.modem.rc \
 	device/meizu/meilan2/rootdir/fstab.mt6735:root/fstab.mt6735 \
 	device/meizu/meilan2/rootdir/ueventd.rc:root/ueventd.rc \
-	device/meizu/meilan2/rootdir/meta_init.rc:root/meta_init.rc \
-	device/meizu/meilan2/rootdir/meta_init.project.rc:root/meta_init.project.rc \
-	device/meizu/meilan2/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
 	device/meizu/meilan2/permissions/media_codecs.xml:system/etc/permissions/media_codecs.xml \
 	frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml \
 	frameworks/native/data/etc/android.hardware.audio.output.xml:system/etc/permissions/android.hardware.audio.output.xml \
