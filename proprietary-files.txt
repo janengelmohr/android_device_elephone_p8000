@@ -132,6 +132,8 @@ system/lib/drm/libdrmmtkplugin.so
 system/lib/egl/egl.cfg
 system/lib/egl/libGLES_android.so
 system/lib/hw/audio.primary.mt6753.so
+system/lib/libmmsdkservice.feature_platform.so
+system/lib64/libmmsdkservice.feature_platform.so
 system/lib/hw/camera.mt6753.so
 system/lib/hw/gps.default.so
 system/lib/hw/lights.default.so
@@ -143,8 +145,8 @@ system/lib/lib3a.so
 system/lib/lib3a_sample.so
 system/lib/libAGifEncoder.so
 system/lib/libBnMtkCodec.so
+system/lib64/libBnMtkCodec.so
 system/lib/libGdmaScalerPipe.so
-
 system/lib/libJpgDecPipe.so
 system/lib/libJpgEncPipe.so
 system/lib/libMtkOmxAdpcmDec.so
@@ -160,6 +162,7 @@ system/lib/libMtkOmxRawDec.so
 system/lib/libMtkOmxVdec.so
 system/lib/libMtkOmxVenc.so
 system/lib/libMtkOmxVorbisEnc.so
+system/lib/libHEVCdec_sa.ca7.android.so
 system/lib/libMtkVideoSpeedEffect.so
 system/lib/libMtkVideoTranscoder.so
 system/lib/libPQDCjni.so
@@ -360,6 +363,7 @@ system/lib64/libJpgDecPipe.so
 system/lib64/libJpgEncPipe.so
 system/lib64/libMtkOmxCore.so
 system/lib64/libMtkVideoTranscoder.so
+system/lib/drm/libdrmctaplugin.so
 system/lib64/libPQDCjni.so
 system/lib64/libPQjni.so
 system/lib64/libSwJpgCodec.so
