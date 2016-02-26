@@ -102,6 +102,8 @@ vendor/lib/mediadrm/libmockdrmcryptoplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 
 #GPS
+lib/hw/gps.default.so
+lib64/hw/gps.default.so
 app/YGPS/YGPS.apk
 #-app/LocationEM2/LocationEM2.apk
 bin/mtk_agpsd
@@ -216,6 +218,7 @@ bin/AcdApiDaemon
 #xbin
 xbin/BGW
 xbin/mnld
+lib/libmnl.so
 
 
 #Testing

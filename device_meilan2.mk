@@ -102,6 +102,9 @@ ro.telephony.ril_class=MediaTekRIL \
 ro.telephony.sim.count=2 \
 persist.gemini.sim_num=2 \
 ril.current.share_modem=2 \
+ro.mtk_gps_support=1 \
+ro.mtk_agps_app=1 \
+persist.debug.xlog.enable=1 \
 
 
 # Removed for now
