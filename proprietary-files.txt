@@ -580,3 +580,8 @@ system/lib/libmmsdkservice.feature.so
 system/lib64/libmmsdkservice.feature.so
 system/lib/libfeatureiodrv.so
 system/lib64/libfeatureiodrv.so
+system/lib/libsileadinc_dev.so
+system/lib/libslfpjni.so
+system/lib64/libsileadinc_dev.so
+system/lib64/libslfpjni.so
+system/lib64/libslfpauth.a
