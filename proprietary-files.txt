@@ -337,6 +337,8 @@ system/lib/libvcodec_oal.so
 system/lib/libvcodec_utility.so
 system/lib/libvcodecdrv.so
 system/lib/libvie.so
+system/lib/libtinycompress.so
+system/lib64/libtinycompress.so
 system/lib/libvie_jni.so
 system/lib/libvoicerecognition.so
 system/lib/libvoicerecognition_jni.so
