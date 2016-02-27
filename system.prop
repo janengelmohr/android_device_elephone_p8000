@@ -123,7 +123,7 @@ ro.sf.lcd_density=320
 ro.mtk_perf_simple_start_win=1
 ro.mtk_perf_response_time=1
 # add by liujianbo@wind-mobi.com 20150629 begin
-persist.sys.timezone = Asia/Shanghai
+#persist.sys.timezone = Asia/Shanghai
 # add by liujianbo@wind-mobi.com 20150629 end
 
 
