@@ -1,5 +1,15 @@
 #Bluetooth
 vendor/lib/hw/bluetooth.blueangel.so
+lib/libbtcust.so
+lib/libbtsession.so
+lib/libbtcusttable.so
+lib64/libbtcusttable.so
+lib/libcustom_prop.so
+lib64/libcustom_prop.so
+lib/libbtstd.so
+lib64/libbtstd.so
+lib/libextsys.so
+lib64/libextsys.so
 app/MtkBt/MtkBt.apk
 lib64/libbluetoothem_mtk.so
 lib64/libbluetooth_mtk.so
@@ -8,6 +18,9 @@ lib/libbluetoothem_mtk.so
 lib/libbluetoothdrv.so
 lib64/libbluetoothdrv.so
 bin/mtkbt
+lib/libadpcm.so
+lib/libpalsecurity.so
+lib/libpalwlan_mtk.so
 #app/MtkBt/arm64/MtkBt.odex
 #app/MtkBt/arm/MtkBt.odex
 
