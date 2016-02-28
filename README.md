@@ -10,7 +10,10 @@ Initialize a repository with CyanogenMode:
 
 Optinally use a specific manifest (not a tip):
 
-    repo init -u git://github.com/divis1969/android.git -b meilan2 -m cm-12.1-v0.2.xml
+    repo init -u git://github.com/divis1969/android.git -b meilan2 -m cm-12.1-v0.3.xml
+
+Note: 2 more Cyanogen repositories were forked for v0.3, so if you will encounter an error while syncing on top
+of exiting tree, use the suggesstion from the error log (sync those repos with --force-sync) 
 
 Build the code:
 
@@ -35,15 +38,23 @@ Current state
     - USIM (3G) supported
     - Incoming/outgoung call
     - Data connection (3G/2G)
+- GPS is working
+- BT is working (discovery and connect were tested only)
 
 Known Issues
 -------------
-- Bluetooth is not functional (not tested)
-- Battery charge indicator shows incorrect status (>100 %)
-- SIM sometimes is not correctly identiified (workaround: turn Airplane mode on/off)
+- SIM sometimes is not correctly identified (workaround: turn Airplane mode on/off)
+- Google Play (opengapps) does not allow to install some apps (ex. Chrome, Telegram)
+- Google search cannot use microphone
 
 Change log
 ----------
+
+### v0.3
+- GPS bring up
+- BT bring up
+- Fixed a battery status issue
+- Removed China default timezone
 
 ### v0.2
 - Telephony bring up complete
