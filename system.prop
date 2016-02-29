@@ -78,7 +78,7 @@ mediatek.wlan.ctia=0
 wifi.tethering.interface=ap0
 #
 
-#ro.opengles.version=196608
+ro.opengles.version=196608
 ##ro.kernel.qemu=1
 ##ro.kernel.qemu.gles=0
 
