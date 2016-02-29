@@ -585,3 +585,5 @@ system/lib/libslfpjni.so
 system/lib64/libsileadinc_dev.so
 system/lib64/libslfpjni.so
 system/lib64/libslfpauth.a
+system/lib/libcameraservice.so
+system/lib64/libcameraservice.so
