@@ -1,25 +1,9 @@
 # android_device_alps_k05ts_a
-Device repository for Elephone P8000 CM12.1 (WIP)
+Device repository for Elephone P8000 CM12.1
 
-currently working:
- * it boots
- * it is hardware accelerated
- * WiFi 
- * RIL (SMS, Calls, Mobile Data)
- * Vibration
- * Rotation
- * Bluetooth
- * Audio
- * GPS
- * PS
- * ALS
- * external SD
-
-TODO:
- * Videorecording
- * Camera in general
- * MTP
+Currently broken features:
  * FM Radio
+ * Fingerprint
  * Enforcing SELinux
  * Audio over Bluetooth
 
