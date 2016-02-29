@@ -64,6 +64,10 @@ on post-fs-data
    chmod 0660 /dev/DW9761AF 
     chown system camera /dev/DW9761AF 
 
+# fix for Elephone P8000 camera
+   chmod 0660 /dev/DW9718AF 
+    chown system camera /dev/DW9718AF
+
 
 #SMB
     chown system system /proc/smb/ScreenComm

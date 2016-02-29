@@ -1,16 +1,12 @@
 # MTK platform .rc configure
 
+
 import init.project.rc
-import /FWUpgradeInit.rc
 import init.xlog.rc
 import init.aee.rc
 import init.ssd.rc
-import init.no_ssd.rc
-import init.ssd_nomuser.rc
-import init.fon.rc
-import init.volte.rc
-import init.epdg.rc
-import init.trustonic.rc
+import init.modem.rc
+
 
 on init
     export USBOTG_STORAGE /storage/usbotg
@@ -25,7 +21,21 @@ on init
     #create mountpoint for persist partition
     mkdir /persist 0771 system system
 #Create nvdata mount point
-    mkdir /nvdata 0771 system system
+    mkdir /nvdata 0777 system system
+    
+# Temp Backward compatibility
+    symlink /dev/block/platform/mtk-msdc.0/by-name/boot /dev/bootimg 
+    symlink /dev/block/platform/mtk-msdc.0/by-name/recovery /dev/recovery
+    symlink /dev/block/platform/mtk-msdc.0/by-name/secro  /dev/sec_ro
+    symlink /dev/block/platform/mtk-msdc.0/by-name/kb /dev/kb
+    symlink /dev/block/platform/mtk-msdc.0/by-name/dkb /dev/dkb 
+    symlink /dev/block/platform/mtk-msdc.0/by-name/seccfg /dev/seccfg
+    symlink /dev/block/platform/mtk-msdc.0/by-name/proinfo /dev/pro_info 
+    symlink /dev/block/platform/mtk-msdc.0/by-name/nvram /dev/nvram   
+    symlink /dev/block/platform/mtk-msdc.0/by-name/para /dev/misc
+    symlink /dev/block/platform/mtk-msdc.0/by-name/logo /dev/logo 
+    
+
 # Create CIP mount point
     mkdir /custom
 
@@ -67,7 +77,7 @@ on fs
     exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/proinfo
     exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/otp
     exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/otp
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/nvram
+    exec /system/bin/chmod 0777 /dev/block/platform/mtk-msdc.0/by-name/nvram
     exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/nvram
     exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/para
     exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/para
@@ -125,7 +135,7 @@ on post-fs-data
     # mkdir /data/nvram 2770 root system
     # We chown/chmod /nvdata again so because mount is run as root + defaults
     chown root system /nvdata
-    chmod 2770 /nvdata
+    chmod 2777 /nvdata
     symlink /nvdata /data/nvram
 
     # Set SELinux security contexts on upgrade or policy update.
@@ -455,7 +465,7 @@ on post-fs-data
 
     # device info /proc interface
     mknod /dev/devmap c 196 0;
-    chmod 0440 /dev/devmap
+    chmod 0777 /dev/devmap
     chown root system /dev/devmap
 
     # BT relayer mode used VCOM
@@ -491,15 +501,15 @@ on post-fs-data
     chmod 0444 /dev/mtk_disp
 
     #Camera
-    chmod 0660 /dev/camera-sysram
-    chmod 0660 /dev/camera-isp
-    chmod 0660 /dev/camera-fdvt
-    chmod 0660 /dev/camera-pipemgr
-    chmod 0660 /dev/kd_camera_hw
-    chmod 0660 /dev/kd_camera_flashlight
-    chmod 0660 /dev/kd_camera_hw_bus2
-    chmod 0660 /dev/FM50AF
-    chmod 0660 /dev/CAM_CAL_DRV
+    chmod 0666 /dev/camera-sysram
+    chmod 0666 /dev/camera-isp
+    chmod 0666 /dev/camera-fdvt
+    chmod 0666 /dev/camera-pipemgr
+    chmod 0666 /dev/kd_camera_hw
+    chmod 0666 /dev/kd_camera_flashlight
+    chmod 0666 /dev/kd_camera_hw_bus2
+    chmod 0666 /dev/FM50AF
+    chmod 0666 /dev/CAM_CAL_DRV
 
     chown system camera /dev/camera-sysram
     chown system camera /dev/camera-isp
@@ -545,7 +555,7 @@ on post-fs-data
     chmod 0640 /mtd@recovery
     chown root system /mtd@recovery
 
-    chmod 0660 /mtd@nvram
+    chmod 0777 /mtd@nvram
     chown root system /mtd@nvram
 
     chmod 0660 /mtd@seccfg

@@ -11,11 +11,6 @@ on post-fs-data
     # Modem related device nodes
     mkdir /data/nvram/md  0770 root system
 
-#  Build-in Modified - S
-#    insmod /system/lib/modules/ccci_plat.ko
-#    insmod /system/lib/modules/ccci.ko
-#  Build-in Modified - E
-#   chown radio radio /sys/class/BOOT/BOOT/boot/md
     chown radio radio /sys/kernel/ccci/boot
 
 #SeLinux
