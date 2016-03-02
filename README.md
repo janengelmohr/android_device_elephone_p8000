@@ -5,7 +5,6 @@ Currently broken features:
  * FM Radio
  * Fingerprint
  * Enforcing SELinux
- * Audio over Bluetooth
 
 IF you are trying to build TWRP against cm-12.1 you will need this commit:
 * http://review.cyanogenmod.org/#/c/89474/1/recovery.te
