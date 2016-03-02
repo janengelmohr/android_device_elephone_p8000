@@ -72,6 +72,7 @@ TARGET_KERNEL_SOURCE := kernel/elephone/p8000
 TARGET_KERNEL_CONFIG := cyanogenmod_p8000_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 MTK_APPENDED_DTB_SUPPORT := yes
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
  
 #for now lets use prebuilt
 #TARGET_PREBUILT_KERNEL := device/elephone/p8000/prebuilt/kernel
