@@ -89,6 +89,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf
 
+# Charger
+PRODUCT_PACKAGES += \
+      charger_res_images
 
 # Telecom
 PRODUCT_COPY_FILES += \
