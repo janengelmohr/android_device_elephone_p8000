@@ -79,8 +79,8 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     libaudio-resampler \
     tinymix \
-    libtinyalsa #\
-#    libtinycompress
+    libtinyalsa \
+    libtinycompress
 
 # Audio profiles used to address the correct audio devices for headset, etc.
 PRODUCT_COPY_FILES += \
