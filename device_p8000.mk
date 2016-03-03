@@ -157,4 +157,5 @@ ro.allow.mock.location=1 \
 persist.mtk.aee.aed=on \
 ro.debuggable=1 \
 ro.adb.secure=0 \
-persist.service.acm.enable=0 
+persist.service.acm.enable=0 \
+ro.oem_unlock_supported=1
