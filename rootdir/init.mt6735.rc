@@ -89,7 +89,7 @@ on fs
 
 on fs
 
-   mount iso9660 loop@/system/etc/iAmCdRom.iso /mnt/cd-rom ro
+  # mount iso9660 loop@/system/etc/iAmCdRom.iso /mnt/cd-rom ro
 
 on post-fs
     #change permissions for mediaserver
