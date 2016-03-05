@@ -147,20 +147,20 @@ PRODUCT_COPY_FILES += \
 
 
 PRODUCT_COPY_FILES += \
-    device/elephone/p8000/rootdir/etc/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+    	device/elephone/p8000/rootdir/etc/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
 
 # limit dex2oat threads to improve thermals
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.boot-dex2oat-threads=4 \
-    dalvik.vm.dex2oat-threads=2 \
-    dalvik.vm.image-dex2oat-threads=4
+    	dalvik.vm.boot-dex2oat-threads=4 \
+    	dalvik.vm.dex2oat-threads=2 \
+    	dalvik.vm.image-dex2oat-threads=4
 
 $(call inherit-product, build/target/product/full.mk)
 
-ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0 \
-ro.allow.mock.location=1 \
-persist.mtk.aee.aed=on \
-ro.debuggable=1 \
-ro.adb.secure=0 \
-persist.service.acm.enable=0 \
-ro.oem_unlock_supported=1
+ADDITIONAL_DEFAULT_PROPERTIES += \
+	ro.secure=0 \
+	ro.allow.mock.location=1 \
+	ro.debuggable=1 \
+	ro.adb.secure=0 \
+	persist.service.acm.enable=0 \
+	ro.oem_unlock_supported=1

@@ -26,7 +26,8 @@ wifi.tethering.interface=ap0
 #
 
 ro.opengles.version=196608
-#ro.kernel.qemu=1
+
+persist.mtk.aee.aed=on
 
 wifi.direct.interface=p2p0
 dalvik.vm.heapgrowthlimit=256m
@@ -41,7 +42,7 @@ sys.ipo.pwrdncap=2
 ro.sys.usb.storage.type=mtp,mass_storage
 
 # USB BICR function
-ro.sys.usb.bicr=yes
+ro.sys.usb.bicr=no
 
 # USB Charge only function
 ro.sys.usb.charging.only=yes
