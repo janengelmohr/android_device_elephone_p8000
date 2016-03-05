@@ -67,22 +67,20 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 444596224
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --tags_offset 0x0df88000
  
-#in case we want to build kernel from source
+# build kernel from source
 TARGET_KERNEL_SOURCE := kernel/elephone/p8000
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CONFIG := cyanogenmod_p8000_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 MTK_APPENDED_DTB_SUPPORT := yes
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
  
-#for now lets use prebuilt
+# prebuild kernel as fallback
 #TARGET_PREBUILT_KERNEL := device/elephone/p8000/prebuilt/kernel
 BOARD_HAS_NO_SELECT_BUTTON := true
-#recovery
-#TARGET_RECOVERY_INITRC := device/elephone/p8000/recovery/init.mt6753.rc
-TARGET_RECOVERY_FSTAB := device/elephone/p8000/recovery/root/fstab.mt6753
-TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
 
-#system.prop
+# system.prop
 TARGET_SYSTEM_PROP := device/elephone/p8000/system.prop
 
 # WiFi
