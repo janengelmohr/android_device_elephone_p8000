@@ -10,10 +10,10 @@ Initialize a repository with CyanogenMode:
 
 Optinally use a specific manifest (not a tip):
 
-    repo init -u git://github.com/divis1969/android.git -b meilan2 -m cm-12.1-v0.4.xml
+    repo init -u git://github.com/divis1969/android.git -b meilan2 -m cm-12.1-v0.3.xml
 
-Note: 3 more Cyanogen repositories were forked since v0.2, so if you will encounter an error while syncing on top
-of exiting tree, use the suggestion from the error log (sync those repos with --force-sync) 
+Note: 2 more Cyanogen repositories were forked for v0.3, so if you will encounter an error while syncing on top
+of exiting tree, use the suggesstion from the error log (sync those repos with --force-sync) 
 
 Build the code:
 
@@ -33,9 +33,6 @@ Current state
 - Touch, screen, keyboard, central key are working
 - Wifi is working
 - Camera is working
-    - Preview
-    - Still image capturing
-    - Video Recording
 - Audio is working
 - Telephony is working
     - USIM (3G) supported
@@ -47,19 +44,11 @@ Current state
 Known Issues
 -------------
 - SIM sometimes is not correctly identified (workaround: turn Airplane mode on/off)
-- Other telephony issues (no Data, etc.)
-
-All issues: https://github.com/divis1969/android_device_meizu_meilan2/issues
+- Google Play (opengapps) does not allow to install some apps (ex. Chrome, Telegram)
+- Google search cannot use microphone
 
 Change log
 ----------
-
-### v0.4
-- Fixed Google Play issue "... is not supported by your device"
-- Fixed microphone issues (ex. Google Search)
-- HW media codec support (Fixes issues with video recording and media playback)
-- Auto-brightness support (modeled similar to stock 4.5.4)
-- Fixed USSD
 
 ### v0.3
 - GPS bring up
