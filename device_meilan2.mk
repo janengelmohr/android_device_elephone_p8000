@@ -29,7 +29,8 @@ PRODUCT_COPY_FILES += \
 	device/meizu/meilan2/rootdir/init.modem.rc:root/init.modem.rc \
 	device/meizu/meilan2/rootdir/fstab.mt6735:root/fstab.mt6735 \
 	device/meizu/meilan2/rootdir/ueventd.rc:root/ueventd.rc \
-	device/meizu/meilan2/permissions/media_codecs.xml:system/etc/permissions/media_codecs.xml \
+	device/meizu/meilan2/etc/media_codecs.xml:system/etc/media_codecs.xml \
+	device/meizu/meilan2/media_profiles.xml:system/etc/media_profiles.xml \
 	frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml \
 	frameworks/native/data/etc/android.hardware.audio.output.xml:system/etc/permissions/android.hardware.audio.output.xml \
 	frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
