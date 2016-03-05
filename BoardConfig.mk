@@ -116,6 +116,21 @@ BOARD_USES_MTK_AUDIO := true
 MTK_FM_SUPPORT :=true
 MTK_FM_RX_SUPPORT :=true
 
+#Mediatek flags
+BOARD_HAS_MTK_HARDWARE := true
+MTK_HARDWARE := true
+COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
+COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
+
+#EGL settings
+USE_OPENGL_RENDERER := true
+BOARD_EGL_CFG := device/elephone/p8000/egl.cfg
+
+# recovery
+#TARGET_RECOVERY_INITRC := device/elephone/p8000/recovery/init.mt6753.rc
+TARGET_RECOVERY_FSTAB := device/elephone/p8000/recovery/root/fstab.mt6753
+TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
+
 #twrp ( WIP do not use!!! see comments )
 
 #tw_theme is essential flag
@@ -148,15 +163,3 @@ TW_MAX_BRIGHTNESS := 255
 
 #F2FS support (only activate if kernel supports)
 #TARGET_USERIMAGES_USE_F2FS:=true
-
-
-#Mediatek flags
-BOARD_HAS_MTK_HARDWARE := true
-MTK_HARDWARE := true
-COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
-COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
-
-#EGL settings
-USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := device/elephone/p8000/egl.cfg
-

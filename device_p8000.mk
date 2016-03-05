@@ -29,7 +29,7 @@ PRODUCT_COPY_FILES += \
 	device/elephone/p8000/rootdir/init.aee.rc:root/init.aee.rc \
 	device/elephone/p8000/rootdir/init.project.rc:root/init.project.rc \
 	device/elephone/p8000/rootdir/init.modem.rc:root/init.modem.rc \
-    device/elephone/p8000/recovery/root/fstab.mt6753:root/fstab.mt6735  \
+	device/elephone/p8000/recovery/root/fstab.mt6753:root/fstab.mt6735  \
 	device/elephone/p8000/rootdir/ueventd.mt6735.rc:root/ueventd.mt6735.rc \
 	device/elephone/p8000/rootdir/factory_init.rc:root/factory_init.rc \
 	device/elephone/p8000/rootdir/factory_init.project.rc:root/factory_init.project.rc \
@@ -54,8 +54,8 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/permissions/media_codecs.xml \
-    $(LOCAL_PATH)/configs/android.hardware.microphone.xml:system/etc/permissions/android.hardware.microphone.xml \
-    $(LOCAL_PATH)/configs/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
+    	$(LOCAL_PATH)/configs/android.hardware.microphone.xml:system/etc/permissions/android.hardware.microphone.xml \
+    	$(LOCAL_PATH)/configs/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
 	$(LOCAL_PATH)/configs/platform.xml:system/etc/permissions/platform.xml 
     
 # Bluetooth
@@ -64,44 +64,44 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    libwpa_client \
-    hostapd \
-    dhcpcd.conf \
-    wpa_supplicant \
-    wpa_supplicant.conf
+    	libwpa_client \
+    	hostapd \
+    	dhcpcd.conf \
+    	wpa_supplicant \
+    	wpa_supplicant.conf
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    audio_policy.default \
-    audio_policy.stub \
-    audio.r_submix.default \
-    audio.usb.default \
-    libaudio-resampler \
-    tinymix \
-    libtinyalsa \
-    libtinycompress
+    	audio.a2dp.default \
+    	audio_policy.default \
+    	audio_policy.stub \
+    	audio.r_submix.default \
+    	audio.usb.default \
+    	libaudio-resampler \
+    	tinymix \
+    	libtinyalsa \
+    	libtinycompress
 
 # Audio profiles used to address the correct audio devices for headset, etc.
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/configs/audio_device.xml:system/etc/audio_device.xml \
-    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf
+    	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    	$(LOCAL_PATH)/configs/audio_device.xml:system/etc/audio_device.xml \
+    	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    	$(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf
 
 # Charger
 PRODUCT_PACKAGES += \
-      charger_res_images
+      	charger_res_images
 
 # Telecom
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/apns-conf.xml:system/etc/apns-conf.xml \
-    $(LOCAL_PATH)/configs/ecc_list.xml:system/etc/ecc_list.xml \
-    $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml 
+    	$(LOCAL_PATH)/configs/apns-conf.xml:system/etc/apns-conf.xml \
+    	$(LOCAL_PATH)/configs/ecc_list.xml:system/etc/ecc_list.xml \
+    	$(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml 
 
 # Torch
 PRODUCT_PACKAGES += \
-    Torch
+    	Torch
 
 # Immvibe
 PRODUCT_PACKAGES += \
@@ -109,37 +109,37 @@ PRODUCT_PACKAGES += \
 
 # MTK's XLog
 PRODUCT_PACKAGES += \
-    libxlog
+	libxlog
 
 PRODUCT_PACKAGES += \
-    libifaddrs
+    	libifaddrs
 
 PRODUCT_PACKAGES += \
-    librs_jni \
-    com.android.future.usb.accessory
+    	librs_jni \
+    	com.android.future.usb.accessory
 
  PRODUCT_PACKAGES += \
-    libnl_2 \
-    libtinyxml
+    	libnl_2 \
+    	libtinyxml
 
 # STk
 PRODUCT_PACKAGES += \
-    Stk
+    	Stk
 
 # GPS
 PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml 
+     	$(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml 
 
 # FM Radio
 PRODUCT_PACKAGES += \
-     FMRadio \
-     libfmjni
+     	FMRadio \
+     	libfmjni
 
 # Media	
 PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
+    	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
