@@ -101,7 +101,6 @@ system/etc/custom.conf
 system/etc/dhcpcd/dhcpcd-hooks/20-dns.conf
 system/etc/dhcpcd/dhcpcd-hooks/95-configured
 system/etc/dhcpcd/dhcpcd-run-hooks
-
 system/etc/firmware/ROMv2_lm_patch_1_0_hdr.bin
 system/etc/firmware/ROMv2_lm_patch_1_1_hdr.bin
 system/etc/firmware/WIFI_RAM_CODE_6735
@@ -163,6 +162,8 @@ system/lib/libMtkOmxVdec.so
 system/lib/libMtkOmxVenc.so
 system/lib/libMtkOmxVorbisEnc.so
 system/lib/libHEVCdec_sa.ca7.android.so
+system/lib/libh264enc_sa.ca7.so
+system/lib/libh264enc_sb.ca7.so
 system/lib/libMtkVideoSpeedEffect.so
 system/lib/libMtkVideoTranscoder.so
 system/lib/libPQDCjni.so
@@ -285,6 +286,7 @@ system/lib/libmmprofile_jni.so
 system/lib/libmmsdkservice.so
 system/lib/libmnl.so
 system/lib/libmp4enc_sa.ca7.so
+system/lib/libmp4enc_xa.ca7.so
 system/lib/libmpo.so
 system/lib/libmpodecoder.so
 system/lib/libmpoencoder.so
