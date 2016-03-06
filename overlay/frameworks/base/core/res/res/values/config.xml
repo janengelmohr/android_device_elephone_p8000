@@ -89,6 +89,12 @@
 </string-array>
     <bool name="config_wifi_background_scan_support">true</bool>
 
+<!-- Shutdown if the battery temperature exceeds (this value * 0.1) Celsius. -->
+<integer name="config_shutdownBatteryTemperature">700</integer>
+
+<!-- Indicate whether the SD card is accessible without removing the battery. -->
+<bool name="config_batterySdCardAccessibility">true</bool>
+
     <bool name="config_automatic_brightness_available">true</bool>
 
     <integer-array name="config_autoBrightnessLevels">
