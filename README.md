@@ -11,7 +11,7 @@ IF you are trying to build TWRP against cm-12.1 you will need this commit:
 * DO NOT INCLUDE THIS COMMIT FOR NORMAL BUILDS!
 
 
-##How to compile[^1]:
+##How to compile:
 1. Get the latest CM 12.1 sources.
 2. Download my manifest [from here](https://github.com/visi0nary/Elephone_P8000_manifest) and put it under .repo/local_manifests
 3. Repo sync again so the device tree, kernel and vendor repos are pulled.
@@ -21,6 +21,4 @@ IF you are trying to build TWRP against cm-12.1 you will need this commit:
 7. Go to the root of CM and run ". build/envsetup.sh" followed by "lunch cm_p8000-user" and "mka bacon". If you want a debug build, swap "user" with "userdebug" or "eng".
 8. Go grab yourself a coffee. A full build with empty CCache takes around 5 hours on my machine (i5 Dualcore with Hyperthreading, 8 GB RAM and SSD).
 9. Once it's finished you can just flash it. Congratulations, you built your own CM 12.1 for the P8000!
-10. Contribute to the project if you find a bug or want to improve something :)
-
-[^1]: Feel free to play around with the sources or use parts of it for your own project. Just make sure you give credits and everything is alright.
+10. Contribute to the project if you find a bug or want to improve something :) Feel free to play around with the sources or use parts of it for your own project. Just make sure you give credits and everything is alright.
