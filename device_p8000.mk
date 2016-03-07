@@ -60,6 +60,11 @@ PRODUCT_COPY_FILES += \
     	$(LOCAL_PATH)/configs/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
 	$(LOCAL_PATH)/configs/platform.xml:system/etc/permissions/platform.xml 
     
+# CM's Snap camera
+PRODUCT_PACKAGES += \
+	Snap
+
+
 # Bluetooth
 PRODUCT_PACKAGES += \
 	libbt-vendor
