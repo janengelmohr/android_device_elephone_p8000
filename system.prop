@@ -47,6 +47,9 @@ ro.sys.usb.bicr=no
 # USB Charge only function
 ro.sys.usb.charging.only=yes
 
+# display density
+ro.sf.lcd_density=420
+
 # audio
 ro.camera.sound.forced=0
 ro.audio.silent=0
