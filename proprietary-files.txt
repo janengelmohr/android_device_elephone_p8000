@@ -129,7 +129,6 @@ system/etc/wifi/wpa_supplicant.conf
 system/etc/wifi/wpa_supplicant_overlay.conf
 system/lib/drm/libdrmmtkplugin.so
 system/lib/egl/egl.cfg
-system/lib/egl/libGLES_android.so
 system/lib/hw/audio.primary.mt6753.so
 system/lib/libmmsdkservice.feature_platform.so
 system/lib64/libmmsdkservice.feature_platform.so
@@ -317,7 +316,6 @@ system/lib/libperfservicenative.so
 system/lib/libpppbtdun.so
 system/lib/libpq_cust.so
 system/lib/libpq_prot.so
-system/lib/libGLESv3.so
 system/lib/libJniAtvService.so
 system/lib/librilmtk.so
 system/lib/librilmtkmd2.so
@@ -351,7 +349,6 @@ system/lib/mtk-ril.so
 system/lib/mtk-rilmd2.so
 system/lib64/mtk-ril.so
 system/lib64/mtk-rilmd2.so
-system/lib64/egl/libGLES_android.so
 system/lib64/hw/audio.primary.mt6753.so
 system/lib64/hw/camera.mt6753.so
 system/lib64/hw/gps.default.so
@@ -485,7 +482,6 @@ system/lib64/libmtkjpeg.so
 system/lib64/libmtklimiter.so
 system/lib64/libmtkplayer.so
 system/lib64/libmtkshifter.so
-system/lib64/libGLESv3.so
 system/lib64/liblogwrap.so
 system/lib64/libn3d3a.so
 system/lib64/libnativecheck-jni.so
@@ -519,8 +515,6 @@ system/usr/keylayout/ACCDET.kl
 system/usr/keylayout/AVRCP.kl
 system/usr/keylayout/mtk-kpd.kl
 system/vendor/lib/drm/libdrmwvmplugin.so
-system/lib/libEGL.so
-system/lib64/libEGL.so
 system/lib/egl/libGLES_mali.so
 system/lib64/egl/libGLES_mali.so
 system/vendor/lib/hw/audio.a2dp.blueangel.so
