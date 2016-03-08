@@ -5,7 +5,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/elephone/p8000/p8000-vendor.mk)
+$(call inherit-product, vendor/elephone/p8000/p8000-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/elephone/p8000/overlay
 
