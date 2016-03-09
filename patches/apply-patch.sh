@@ -19,7 +19,7 @@ git apply -v ../../../device/elephone/p8000/patches/framework_opt_telephony/0001
 git apply -v ../../../device/elephone/p8000/patches/framework_opt_telephony/0002_mobile_data_patch_mt6753.patch
 cd ../../..
 #
-#not working
+#working
 cd hardware/libhardware
 git apply -v ../../device/elephone/p8000/patches/hardware_libhardware/0001-fix-gps-light-audio.patch
 #
