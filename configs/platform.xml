@@ -54,6 +54,11 @@
         <group gid="inet" />
     </permission>
 
+    <permission name="android.permission.ACCESS_MTK_MMHW" >
+        <group gid="media" />
+        <group gid="camera" />
+    </permission>
+
     <permission name="android.permission.READ_LOGS" >
         <group gid="log" />
     </permission>
@@ -65,6 +70,7 @@
     <permission name="android.permission.WRITE_EXTERNAL_STORAGE" >
         <group gid="sdcard_r" />
         <group gid="sdcard_rw" />
+	 <group gid="media_rw" />
     </permission>
 
     <permission name="android.permission.ACCESS_ALL_EXTERNAL_STORAGE" >
@@ -140,6 +146,8 @@
     <assign-permission name="android.permission.WAKE_LOCK" uid="media" />
     <assign-permission name="android.permission.UPDATE_DEVICE_STATS" uid="media" />
     <assign-permission name="android.permission.UPDATE_APP_OPS_STATS" uid="media" />
+    <assign-permission name="android.permission.CAMERA" uid="media" />
+    <assign-permission name="android.permission.ACCESS_FM_RADIO" uid="media" />
 
     <assign-permission name="android.permission.ACCESS_SURFACE_FLINGER" uid="graphics" />
 
@@ -150,11 +158,8 @@
             file="/system/framework/android.test.runner.jar" />
     <library name="javax.obex"
             file="/system/framework/javax.obex.jar"/>
-    <library name="javax.btobex"
-            file="/system/framework/javax.btobex.jar"/>
 
     <!-- These are the standard packages that are white-listed to always have internet
          access while in power save mode, even if they aren't in the foreground. -->
     <allow-in-power-save package="com.android.providers.downloads" />
-
 </permissions>
