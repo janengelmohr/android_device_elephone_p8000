@@ -168,6 +168,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.secure=0 \
 	ro.allow.mock.location=1 \
 	ro.debuggable=1 \
-	ro.adb.secure=0 \
+	ro.adb.secure=1 \
 	persist.service.acm.enable=0 \
 	ro.oem_unlock_supported=1
