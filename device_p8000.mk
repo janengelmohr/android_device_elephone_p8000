@@ -100,6 +100,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
       	charger_res_images
 
+# Live Display
+PRODUCT_PACKAGES += \
+	libjni_livedisplay
+
 # Telecom
 PRODUCT_COPY_FILES += \
     	$(LOCAL_PATH)/configs/apns-conf.xml:system/etc/apns-conf.xml \
