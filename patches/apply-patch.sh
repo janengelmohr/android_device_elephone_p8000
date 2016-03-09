@@ -16,6 +16,7 @@ cd ../..
 cd frameworks/opt/telephony
 #working
 git apply -v ../../../device/elephone/p8000/patches/framework_opt_telephony/0001-Update-for-mtk.patch
+git apply -v ../../../device/elephone/p8000/patches/framework_opt_telephony/0002_mobile_data_patch_mt6753.patch
 cd ../../..
 #
 #not working
