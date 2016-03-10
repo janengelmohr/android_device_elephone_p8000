@@ -200,6 +200,7 @@ bin/md_ctrl
 bin/mdlogger
 bin/memsicd
 bin/memsicd3416x
+bin/memsicd3524x
 bin/msensord
 bin/muxreport
 bin/nvram_agent_binder
