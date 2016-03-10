@@ -175,4 +175,5 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.debuggable=1 \
 	ro.adb.secure=1 \
 	persist.service.acm.enable=0 \
-	ro.oem_unlock_supported=1
+	ro.oem_unlock_supported=1 \
+	persist.sys.usb.config=mtp
