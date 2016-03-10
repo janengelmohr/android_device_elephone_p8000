@@ -583,3 +583,12 @@ system/lib64/libslfpjni.so
 system/lib64/libslfpauth.a
 system/lib/libcameraservice.so
 system/lib64/libcameraservice.so
+system/lib64/libMtkOmxAdpcmDec.so
+system/lib64/libMtkOmxAdpcmEnc.so
+system/lib64/libMtkOmxAlacDec.so
+system/lib64/libMtkOmxApeDec.so
+system/lib64/libMtkOmxG711Dec.so
+system/lib64/libMtkOmxGsmDec.so
+system/lib64/libMtkOmxMp3Dec.so
+system/lib64/libMtkOmxRawDec.so
+system/lib64/libMtkOmxVorbisEnc.so
