@@ -10,7 +10,7 @@ Initialize a repository with CyanogenMode:
 
 Optinally use a specific manifest (not a tip):
 
-    repo init -u git://github.com/divis1969/android.git -b meilan2 -m cm-12.1-v0.4.xml
+    repo init -u git://github.com/divis1969/android.git -b meilan2 -m cm-12.1-v0.5.xml
 
 Note: 3 more Cyanogen repositories were forked since v0.2, so if you will encounter an error while syncing on top
 of exiting tree, use the suggestion from the error log (sync those repos with --force-sync) 
@@ -46,13 +46,15 @@ Current state
 
 Known Issues
 -------------
-- SIM sometimes is not correctly identified (workaround: turn Airplane mode on/off)
-- Other telephony issues (no Data, etc.)
-
 All issues: https://github.com/divis1969/android_device_meizu_meilan2/issues
 
 Change log
 ----------
+
+### v0.5
+- Fixed YouTube playback crash
+- Fixed SIM card handling (enabled fakeiccid feature)
+- Fixed sensors (enabled orientation and magnetic sensors)
 
 ### v0.4
 - Fixed Google Play issue "... is not supported by your device"
