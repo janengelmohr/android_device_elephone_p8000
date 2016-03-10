@@ -101,6 +101,7 @@ ro.hardware.bluetooth=blueangel \
 persist.radio.multisim.config=dsds \
 ro.mtk_lte_support=1 \
 ro.telephony.ril_class=MediaTekRIL \
+ro.telephony.ril.config=fakeiccid \
 ro.telephony.sim.count=2 \
 persist.gemini.sim_num=2 \
 ril.current.share_modem=2 \
