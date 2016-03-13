@@ -23,3 +23,5 @@ IF you are trying to build TWRP against cm-12.1 you will need this commit:
 9. Go grab yourself a coffee. A full build with empty CCache takes around 5 hours on my machine (i5 Dualcore with Hyperthreading, 8 GB RAM and SSD).
 10. Once it's finished you can just flash it. Congratulations, you built your own CM 12.1 for the P8000!
 11. Contribute to the project if you find a bug or want to improve something :) Feel free to play around with the sources or use parts of it for your own project. Just make sure you give credits and everything is alright.
+12. optional: if yo get this error: 'android_errorWriteWithInfoLog' was not declared in this scope
+install this patch: https://android.googlesource.com/platform/system/core/+/75ac84c0bf57d646dfae468916fcdcc071570293%5E!/
