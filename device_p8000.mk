@@ -9,6 +9,10 @@ $(call inherit-product, vendor/elephone/p8000/p8000-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/elephone/p8000/overlay
 
+# Device uses high-density artwork where available
+PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := p8000,k05ts_a
 
