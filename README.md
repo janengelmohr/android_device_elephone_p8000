@@ -10,9 +10,9 @@ Initialize a repository with CyanogenMode:
 
 Optinally use a specific manifest (not a tip):
 
-    repo init -u git://github.com/divis1969/android.git -b meilan2 -m cm-12.1-v0.5.xml
+    repo init -u git://github.com/divis1969/android.git -b meilan2 -m meilan2-cm-12.1-v0.6.xml
 
-Note: 3 more Cyanogen repositories were forked since v0.2, so if you will encounter an error while syncing on top
+Note: 4 more Cyanogen repositories were forked since v0.2, so if you will encounter an error while syncing on top
 of exiting tree, use the suggestion from the error log (sync those repos with --force-sync) 
 
 Build the code:
@@ -28,7 +28,7 @@ Current state
 -------------
 
 - Recovery is fully functional
-- Update package (OTA) generation
+- Update package generation
 - Cyanogen boots
 - Touch, screen, keyboard, central key are working
 - Wifi is working
@@ -50,6 +50,13 @@ All issues: https://github.com/divis1969/android_device_meizu_meilan2/issues
 
 Change log
 ----------
+
+### v0.6
+- Enabled Tethering support
+- Enabled A2DP support (fixed BT audio)
+- Enabled power profile (battery statistics)
+- Fixed MTK thermald and thermal utility launch
+- Fixed microphone issue in some apps
 
 ### v0.5
 - Fixed YouTube playback crash
