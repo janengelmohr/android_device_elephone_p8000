@@ -337,6 +337,8 @@ lib/libfeatureio.so
 lib64/libfeatureio.so
 lib/libcurl.so
 lib64/libcurl.so
+lib/libBnMtkCodec.so
+lib64/libBnMtkCodec.so
 
 #OpenGL
 lib/libdpframework.so
