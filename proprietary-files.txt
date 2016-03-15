@@ -1,5 +1,6 @@
 #Bluetooth
 vendor/lib/hw/bluetooth.blueangel.so
+lib/libsbccodec.so
 lib/libbtcust.so
 lib/libbtsession.so
 lib/libbtcusttable.so

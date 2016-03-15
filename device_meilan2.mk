@@ -66,7 +66,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     Torch
-	
+
 # Wifi
 PRODUCT_PACKAGES += \
     libwpa_client \
@@ -77,6 +77,15 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     device/meizu/meilan2/rootdir/etc/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+
+# Audio componets from source
+PRODUCT_PACKAGES += \
+    audio.usb.default \
+    audio.r_submix.default
+
+# BT A2DP
+PRODUCT_COPY_FILES += \
+    vendor/meizu/meilan2/proprietary/vendor/lib/hw/audio.a2dp.blueangel.so:system/vendor/lib/hw/audio.a2dp.mt6735.so
 
 PRODUCT_EXTRA_RECOVERY_KEYS += device/meizu/meilan2/meizu
 
