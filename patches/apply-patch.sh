@@ -28,10 +28,10 @@ cd hardware/libhardware_legacy
 #working
 git apply -v ../../device/elephone/p8000/patches/hardware_libhardware_legacy/0001-patch-for-mtk.patch
 cd ../..
-#cd packages/services/Telephony
+cd packages/services/Telephony
 #working
-#git apply -v ../../../device/elephone/p8000/patches/packages_services_Telephony/NeedsFakeIccid.patch
-#cd ../../..
+git apply -v ../../../device/elephone/p8000/patches/packages_services_Telephony/NeedsFakeIccid.patch
+cd ../../..
 #cd system/core
 #working
 #git apply -v ../../device/elephone/p8000/patches/system_core/0001-fix-boot-for-mtk.patch
