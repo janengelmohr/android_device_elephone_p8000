@@ -1,0 +1,20 @@
+commit 0a52d87c422927dca260ad94aa00a6ddd4b2e727
+Author: Jan Engelmohr <jan.engelmohr@mailbox.tu-dresden.de>
+Date:   Sun Mar 6 00:46:17 2016 +0100
+
+    fixed mobile data on MT6753
+    
+    Change-Id: Ieaa51f8b3d89733727c4e63baa50710b1adc0b83
+
+diff --git a/src/java/com/android/internal/telephony/RIL.java b/src/java/com/android/internal/telephony/RIL.java
+index 330679e..9ba3e64 100644
+--- a/src/java/com/android/internal/telephony/RIL.java
++++ b/src/java/com/android/internal/telephony/RIL.java
+@@ -3900,6 +3900,7 @@ public class RIL extends BaseCommands implements CommandsInterface {
+ 	      dataCall.suggestedRetryTime = p.readInt();
+             dataCall.cid = p.readInt();
+             dataCall.active = p.readInt();
++	    dataCall.mtu = p.readInt(); // fix for mobile data on MT6753 SoC
+             dataCall.type = p.readString();
+             dataCall.ifname = p.readString();
+             if ((dataCall.status == DcFailCause.NONE.getErrorCode()) &&

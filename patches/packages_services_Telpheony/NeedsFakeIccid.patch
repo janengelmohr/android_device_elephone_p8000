@@ -1,0 +1,49 @@
+From a945c5e9b1d19788cbd414795f6bfb2325c11024 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=E7=A7=8B=E5=8F=B6=E9=9A=8F=E9=A3=8Eivan?=
+ <yanziily@gmail.com>
+Date: Sun, 3 Jan 2016 22:03:19 +0800
+Subject: [PATCH] Update for mtk
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Change-Id: Ia628e1992fd978c17da6f9c526160adcdae9a693
+Signed-off-by: 秋叶随风ivan <yanziily@gmail.com>
+---
+ src/com/android/phone/CardStateMonitor.java | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/com/android/phone/CardStateMonitor.java b/src/com/android/phone/CardStateMonitor.java
+index da128c9..9288005 100644
+--- a/src/com/android/phone/CardStateMonitor.java
++++ b/src/com/android/phone/CardStateMonitor.java
+@@ -70,6 +70,8 @@ public class CardStateMonitor extends Handler {
+     private static final int EVENT_ICC_CHANGED = 1;
+     private static final int EVENT_ICCID_LOAD_DONE = 2;
+ 
++    private boolean mNeedsFakeIccid = false;
++
+     static class CardInfo {
+         boolean mLoadingIcc;
+         String mIccId;
+@@ -185,6 +187,9 @@ public class CardStateMonitor extends Handler {
+         String iccId = null;
+         if (iccIdResult.exception != null) {
+             logd("Exception in GET ICCID," + iccIdResult.exception);
++            if(mNeedsFakeIccid) {
++                iccId = IccConstants.FAKE_ICCID;
++            }
+         } else {
+             iccId = IccUtils.bcdToString(data, 0, data.length);
+             logd("get iccid on card" + cardIndex + ", iccId=" + iccId);
+@@ -229,6 +234,7 @@ public class CardStateMonitor extends Handler {
+         if (validApp != null) {
+             IccFileHandler fileHandler = validApp.getIccFileHandler();
+             if (fileHandler != null) {
++                mNeedsFakeIccid = fileHandler.needsFakeIccid();
+                 fileHandler.loadEFTransparent(IccConstants.EF_ICCID,
+                         obtainMessage(EVENT_ICCID_LOAD_DONE, sub));
+                 request = true;
+-- 
+1.9.1
+

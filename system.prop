@@ -26,7 +26,8 @@ wifi.tethering.interface=ap0
 #
 
 ro.opengles.version=196608
-#ro.kernel.qemu=1
+
+persist.mtk.aee.aed=on
 
 wifi.direct.interface=p2p0
 dalvik.vm.heapgrowthlimit=256m
@@ -41,10 +42,13 @@ sys.ipo.pwrdncap=2
 ro.sys.usb.storage.type=mtp,mass_storage
 
 # USB BICR function
-ro.sys.usb.bicr=yes
+ro.sys.usb.bicr=no
 
 # USB Charge only function
 ro.sys.usb.charging.only=yes
+
+# display density
+ro.sf.lcd_density=440
 
 # audio
 ro.camera.sound.forced=0
@@ -53,19 +57,10 @@ persist.audio.dirac.speaker=true
 
 ro.zygote.preload.enable=0
 
-# temporary enables NAV bar (soft keys)
-qemu.hw.mainkeys=1
-
 ro.kernel.zio=38,108,105,16
-#ro.kernel.qemu=1
-#ro.boot.selinux=disable
-#ro.kernel.qemu.gles=0
 
 # Disable dirty region for Mali
 debug.hwui.render_dirty_regions=false
-
-#qinhai change density
-ro.sf.lcd_density=480
 
 # button jack mode & switch
 persist.sys.button_jack_profile=volume
@@ -176,11 +171,9 @@ keyguard.no_require_sim=true
 persist.sys.isUsbOtgEnabled=true
 persist.debug.wfd.enable=1
 
-ro.carrier=unknown
 ro.kernel.android.checkjni=0
 ro.telephony.ril_class=MediaTekRIL
 ro.telephony.ril.config=fakeiccid
 persist.call_recording.enabled=true
 persist.call_recording.src=1
-persist.debug.wfd.enable=1
 
