@@ -32,10 +32,10 @@ cd packages/services/Telephony
 #working
 git apply -v ../../../device/elephone/p8000/patches/packages_services_Telpheony/0001-Update-for-mtk.patch
 cd ../../..
-cd system/core
+#cd system/core
 #working
-git apply -v ../../device/elephone/p8000/patches/system_core/0001-fix-boot-for-mtk.patch
-cd ../..
+#git apply -v ../../device/elephone/p8000/patches/system_core/0001-fix-boot-for-mtk.patch
+#cd ../..
 cd system/netd
 #working
 git apply -v ../../device/elephone/p8000/patches/system_netd/0001-hotpost-fix.patch
