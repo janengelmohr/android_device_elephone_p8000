@@ -5,7 +5,6 @@ system/bin/AcdApiDaemon
 system/bin/MtkCodecService
 system/bin/aee
 system/bin/aee_archive
-system/bin/aee_core_forwarder
 system/bin/aee_dumpstate
 system/bin/akmd8963
 system/bin/akmd8975
