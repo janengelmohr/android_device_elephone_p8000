@@ -87,6 +87,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/meizu/meilan2/proprietary/vendor/lib/hw/audio.a2dp.blueangel.so:system/vendor/lib/hw/audio.a2dp.mt6735.so
 
+# Audio componets from source
+PRODUCT_PACKAGES += \
+    EngineerMode
+
 PRODUCT_EXTRA_RECOVERY_KEYS += device/meizu/meilan2/meizu
 
 #$(call inherit-product, build/target/product/full.mk)

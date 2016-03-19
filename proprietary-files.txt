@@ -190,6 +190,7 @@ bin/bmm050d
 bin/ccci_fsd
 bin/ccci_mdinit
 bin/dualmdlogger
+bin/em_svr
 bin/fsck_msdos_mtk
 bin/geomagneticd
 bin/gsm0710muxd
@@ -339,6 +340,26 @@ lib/libcurl.so
 lib64/libcurl.so
 lib/libBnMtkCodec.so
 lib64/libBnMtkCodec.so
+lib/libem_support_jni.so
+lib64/libem_support_jni.so
+
+# Engineering mode support lib
+lib/libem_bt_jni.so
+lib64/libem_bt_jni.so
+lib/libem_gpio_jni.so
+lib64/libem_gpio_jni.so
+lib/libem_lte_jni.so
+lib64/libem_lte_jni.so
+lib/libem_modem_jni.so
+lib64/libem_modem_jni.so
+lib/libem_sensor_jni.so
+lib64/libem_sensor_jni.so
+lib/libem_support_jni.so
+lib64/libem_support_jni.so
+lib/libem_usb_jni.so
+lib64/libem_usb_jni.so
+lib/libem_wifi_jni.so
+lib64/libem_wifi_jni.so
 
 #OpenGL
 lib/libdpframework.so
