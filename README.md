@@ -8,7 +8,12 @@ Currently broken features:
 
 IF you are trying to build TWRP against cm-12.1 you will need this commit:
 * http://review.cyanogenmod.org/#/c/89474/1/recovery.te
-* DO NOT INCLUDE THIS COMMIT FOR NORMAL BUILDS!
+
+## Thanks to:
+ * DerTeufel1980
+ * fire855
+ * jianminglok
+ * walter79
 
 
 ##How to compile:
