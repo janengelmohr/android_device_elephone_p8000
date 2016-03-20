@@ -651,3 +651,23 @@ service pre-recovery /system/bin/uncrypt
     class main
     disabled
     oneshot
+
+on property:persist.sys.myloggerd=true
+   start myloggerd
+
+on property:persist.sys.myloggerd=false
+   stop myloggerd
+
+service myloggerd /system/bin/logcat -v threadtime -b all -r 1024 -n 50 -f /data/local/logcat.log
+    class main
+    disabled
+
+on property:persist.sys.mykloggerd=true
+   start mykloggerd
+
+on property:persist.sys.mykloggerd=false
+   stop mykloggerd
+
+service mykloggerd /system/bin/cat /proc/kmsg > /data/local/kernel.log
+    class main
+    disabled
