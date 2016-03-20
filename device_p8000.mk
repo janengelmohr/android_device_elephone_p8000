@@ -69,6 +69,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	Snap
 
+# Hack to fix asec on emulated sdcard
+PRODUCT_PACKAGES += \
+    	asec_helper
+
 
 # Bluetooth
 PRODUCT_PACKAGES += \
