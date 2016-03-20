@@ -23,6 +23,7 @@ PRODUCT_COPY_FILES += \
 	device/meizu/meilan2/rootdir/init.mt6735.rc:root/init.mt6735.rc \
 	device/meizu/meilan2/rootdir/init.ssd.rc:root/init.ssd.rc \
 	device/meizu/meilan2/rootdir/init.xlog.rc:root/init.xlog.rc \
+	device/meizu/meilan2/rootdir/init.usb.rc:root/init.usb.rc \
 	device/meizu/meilan2/rootdir/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
 	device/meizu/meilan2/rootdir/init.aee.rc:root/init.aee.rc \
 	device/meizu/meilan2/rootdir/init.project.rc:root/init.project.rc \

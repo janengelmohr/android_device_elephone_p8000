@@ -25,6 +25,7 @@ on property:sys.usb.config=adb
     write /sys/class/android_usb/android0/idProduct 4EE7
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/enable 1
+    write /sys/devices/platform/mt_usb/cmode 1
     start adbd
     setprop sys.usb.state ${sys.usb.config}
 
@@ -35,6 +36,7 @@ on property:sys.usb.config=accessory
     write /sys/class/android_usb/android0/idProduct 2d00
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/enable 1
+    write /sys/devices/platform/mt_usb/cmode 1
     setprop sys.usb.state ${sys.usb.config}
 
 # USB accessory configuration, with adb
@@ -44,6 +46,7 @@ on property:sys.usb.config=accessory,adb
     write /sys/class/android_usb/android0/idProduct 2d01
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/enable 1
+    write /sys/devices/platform/mt_usb/cmode 1
     start adbd
     setprop sys.usb.state ${sys.usb.config}
 
@@ -54,6 +57,7 @@ on property:sys.usb.config=audio_source
     write /sys/class/android_usb/android0/idProduct 2d02
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/enable 1
+    write /sys/devices/platform/mt_usb/cmode 1
     setprop sys.usb.state ${sys.usb.config}
 
 # audio accessory configuration, with adb
@@ -63,6 +67,7 @@ on property:sys.usb.config=audio_source,adb
     write /sys/class/android_usb/android0/idProduct 2d03
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/enable 1
+    write /sys/devices/platform/mt_usb/cmode 1
     start adbd
     setprop sys.usb.state ${sys.usb.config}
 
@@ -73,6 +78,7 @@ on property:sys.usb.config=accessory,audio_source
     write /sys/class/android_usb/android0/idProduct 2d04
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/enable 1
+    write /sys/devices/platform/mt_usb/cmode 1
     setprop sys.usb.state ${sys.usb.config}
 
 # USB and audio accessory configuration, with adb
@@ -82,6 +88,7 @@ on property:sys.usb.config=accessory,audio_source,adb
     write /sys/class/android_usb/android0/idProduct 2d05
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/enable 1
+    write /sys/devices/platform/mt_usb/cmode 1
     start adbd
     setprop sys.usb.state ${sys.usb.config}
 
