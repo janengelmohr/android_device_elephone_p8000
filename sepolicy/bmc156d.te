@@ -1,0 +1,52 @@
+# ==============================================
+# Policy File of /system/bin/bmc156d Executable File 
+
+
+# ==============================================
+# Type Declaration
+# ==============================================
+
+type bmc156d_exec , exec_type, file_type;
+type bmc156d ,domain;
+
+# ==============================================
+# Android Policy Rule
+# ==============================================
+
+# ==============================================
+# NSA Policy Rule
+# ==============================================
+
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+#permissive bmc156d;
+init_daemon_domain(bmc156d)
+#unconfined_domain(bmc156d)
+
+# Data : WK14.48
+# Operation : Migration
+# Purpose : M-sensor daemon for access driver node
+
+allow bmc156d msensor_device:chr_file { open read write ioctl };
+allow bmc156d gsensor_device:chr_file { open read write ioctl };
+allow bmc156d input_device:dir { search open read write };
+allow bmc156d input_device:file { open read write ioctl };
+allow bmc156d sensor_data_file:dir {search open read write create getattr setattr };
+allow bmc156d sensor_data_file:file { open read write create append unlink ioctl getattr setattr };
+allow bmc156d system_sensor_data_file:dir { search open read create };
+allow bmc156d system_sensor_data_file:file { open read create write };
+allow bmc156d bmm050_sensor_log_file:file { open create read write };
+allow bmc156d sysfs:file write;
+allow bmc156d sysfs_gsensor_file:dir { search open read create };
+allow bmc156d sysfs_gsensor_file:file { open read create write };
+allow bmc156d sysfs_gsensor_file:lnk_file read;
+allow bmc156d sysfs_msensor_file:dir { search open read create };
+allow bmc156d sysfs_msensor_file:file { open read create write };
+allow bmc156d sysfs_msensor_file:lnk_file read;
+# Operate data partation directly, need modify later,e.g. use "data/misc/sensor".
+allow bmc156d system_data_file:dir { write add_name create setattr};
+allow bmc156d system_data_file:file { open create read write setattr};
+allow bmc156d shell_data_file:dir { search };
+allow bmc156d shell_data_file:file { open read write create append unlink ioctl getattr setattr };

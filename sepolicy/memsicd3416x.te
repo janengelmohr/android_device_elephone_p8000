@@ -1,0 +1,24 @@
+# ==============================================
+# Policy File of /system/binmemsicd3416x Executable File 
+
+
+# ==============================================
+# Type Declaration
+# ==============================================
+
+type memsicd3416x_exec , exec_type, file_type;
+type memsicd3416x ,domain;
+
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+init_daemon_domain(memsicd3416x)
+# Purpose : M-sensor daemon for access driver node
+allow memsicd3416x msensor_device:chr_file { open ioctl read write };
+allow memsicd3416x gsensor_device:chr_file { open ioctl read write };
+allow memsicd3416x input_device:dir { search open read write };
+allow memsicd3416x input_device:file { open read };
+# Operate data partation directly, need modify later,e.g. use "data/misc/sensor".
+allow memsicd3416x system_data_file:dir { write add_name create setattr };
+allow memsicd3416x system_data_file:file { open write read create setattr};
