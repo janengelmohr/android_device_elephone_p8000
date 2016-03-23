@@ -83,6 +83,9 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 # system.prop
 TARGET_SYSTEM_PROP := device/elephone/p8000/system.prop
 
+# CMHW
+BOARD_HARDWARE_CLASS := device/elephone/p8000/cmhw/
+
 # WiFi
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HOSTAPD_DRIVER := NL80211
