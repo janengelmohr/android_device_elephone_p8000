@@ -257,7 +257,6 @@ system/lib/libfmmt6627.so
 system/lib/libged.so
 system/lib/libgifEncoder_jni.so
 system/lib/libgpu_aux.so
-system/lib/libgralloc_extra.so
 system/lib/libgraphite2.so
 system/lib/libgui_ext.so
 system/lib/libhotknot.so
@@ -449,7 +448,6 @@ system/lib64/libfmmt6628.so
 system/lib64/libfmmt6627.so
 system/lib64/libged.so
 system/lib64/libgpu_aux.so
-system/lib64/libgralloc_extra.so
 system/lib64/libgraphite2.so
 system/lib64/libgui_ext.so
 system/lib64/libhotknot.so
