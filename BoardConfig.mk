@@ -126,6 +126,10 @@ COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/elephone/p8000/egl.cfg
 
+#Block based ota
+#http://review.cyanogenmod.org/#/c/78849/1/core/Makefile
+BLOCK_BASED_OTA := false
+
 # recovery
 #TARGET_RECOVERY_INITRC := device/elephone/p8000/recovery/init.mt6753.rc
 TARGET_RECOVERY_FSTAB := device/elephone/p8000/recovery/root/fstab.mt6753
