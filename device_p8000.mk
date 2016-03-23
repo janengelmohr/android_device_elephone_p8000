@@ -73,6 +73,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     	asec_helper
 
+# Gralloc
+PRODUCT_PACKAGES += \
+   	libgralloc_extra
 
 # Bluetooth
 PRODUCT_PACKAGES += \
