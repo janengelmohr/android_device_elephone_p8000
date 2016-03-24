@@ -162,3 +162,5 @@ type ttyACM_device, dev_type;
 type hrm_device, dev_type;
 # Fingerprint device
 type silead_fp_dev_device, dev_type;
+# camera fix for CM 12.1
+type DW9761AF_device, dev_type;

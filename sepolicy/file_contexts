@@ -419,3 +419,5 @@
 
 # Wallpaper file for smartbook
 /data/system/users/[0-9]+/smartbook_wallpaper	u:object_r:wallpaper_file:s0
+# Camera fix for CM 12.1
+/dev/DW9761AF(/.*)? u:object_r:DW9761AF_device:s0

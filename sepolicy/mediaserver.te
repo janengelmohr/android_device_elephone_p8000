@@ -10,8 +10,8 @@ allow mediaserver camera_isp_device:chr_file { read write ioctl open };
 allow mediaserver kd_camera_hw_device:chr_file { read write ioctl open };
 allow mediaserver self:capability { setuid ipc_lock };
 allow mediaserver sysfs_wake_lock:file { read write open };
-allow mediaserver MTK_SMI_device:chr_file { read ioctl open };
-allow mediaserver camera_pipemgr_device:chr_file { read ioctl open };
+allow mediaserver MTK_SMI_device:chr_file { read write ioctl open };
+allow mediaserver camera_pipemgr_device:chr_file { read write ioctl open };
 allow mediaserver kd_camera_flashlight_device:chr_file { read write ioctl open };
 allow mediaserver self:capability sys_nice;
 
@@ -136,6 +136,8 @@ allow mediaserver LC898212AF_device:chr_file { read write ioctl open };
 allow mediaserver BU6429AF_device:chr_file { read write ioctl open };
 allow mediaserver DW9718AF_device:chr_file { read write ioctl open };
 allow mediaserver BU64745GWZAF_device:chr_file { read write ioctl open };
+# camera fix for CM 12.1
+allow mediaserver DW9761AF_device:chr_file { read write ioctl open };
 
 # Data : WK14.38
 # Operation : Migration

@@ -152,3 +152,5 @@ allow meta_tst ttySDIO_device:chr_file { read write ioctl open };
 # Purpose : Camera
 allow meta_tst fuse:dir {search write add_name create};
 allow meta_tst fuse:file {write create open getattr};
+# camera fix for CM 12.1
+allow meta_tst DW9761AF_device:chr_file { read write ioctl open };

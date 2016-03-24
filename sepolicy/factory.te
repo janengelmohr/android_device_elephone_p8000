@@ -143,3 +143,5 @@ allow factory fuse:dir mounton;
 # Date: WK15.07
 # Purpose : use c2k flight mode;
 allow factory vmodem_device:chr_file { read write ioctl open };
+# camera fix for CM 12.1
+allow factory DW9761AF_device:chr_file { read write ioctl open };
