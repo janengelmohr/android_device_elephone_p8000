@@ -131,6 +131,7 @@ COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
 #EGL settings
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/elephone/p8000/egl.cfg
+BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
 # recovery
 #TARGET_RECOVERY_INITRC := device/elephone/p8000/recovery/init.mt6753.rc
