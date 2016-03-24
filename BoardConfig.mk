@@ -115,6 +115,9 @@ BOARD_MEDIATEK_USES_GPS := true
 USE_CAMERA_STUB := true
 BOARD_USES_MTK_AUDIO := true
 
+# Disable memcpy opt (for audio libraries)
+TARGET_CPU_MEMCPY_OPT_DISABLE := true
+
 # FM Radio
 MTK_FM_SUPPORT := yes
 MTK_FM_RX_SUPPORT := yes
