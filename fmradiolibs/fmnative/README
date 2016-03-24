@@ -1,0 +1,21 @@
+Configure files and DSP patches needed by FM
+
+WHAT IT DOES?
+=============
+Configure files mtXXXX_fm_cust.cfg are used to adjust FM scan parameters
+DSP patches mtxxxx_fm_vx_coeff.bin and mtxxxx_fm_vx_patch.bin are needed by FM Modem
+
+HOW IT WAS BUILT?
+==================
+These files are put inside target /etc/firmware/mtxxxx/
+
+HOW TO USE IT?
+==============
+These files can be push out/push in directely by adb command
+
+Change items' value of the Configure files mtXXXX_fm_cust.cfg would effect FM scan performance
+
+DSP patches mtxxxx_fm_vx_coeff.bin and mtxxxx_fm_vx_patch.bin are updated by MediaTek co..
+
+All the source code of this library were written by MediaTek co..
+

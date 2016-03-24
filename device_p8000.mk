@@ -160,7 +160,12 @@ PRODUCT_COPY_FILES += \
 # FM Radio
 PRODUCT_PACKAGES += \
      	FMRadio \
-     	libfmjni
+     	libfmjni \
+	libfmmt6620 \
+        libfmmt6628 \
+        libfmmt6627 \
+        libfmmt6630 \
+        libfmcust 
 
 # Media	
 PRODUCT_COPY_FILES += \

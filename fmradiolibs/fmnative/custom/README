@@ -1,0 +1,20 @@
+Initial parameters needed by FM before open it
+
+WHAT IT DOES?
+=============
+Initial parameters needed by FM before open it
+
+HOW IT WAS BUILT?
+==================
+It needs the following libs from AOSP:
+1.  libcutils
+
+HOW TO USE IT?
+==============
+Files in this directory is used to
+generate a library which name is 'libfmcust'
+
+The lib 'libfmcust' is loaded when system up
+
+All the source code of this library were written by MediaTek co..
+

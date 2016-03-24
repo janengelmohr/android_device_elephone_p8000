@@ -1,0 +1,25 @@
+Libraries of MTK FM feature, including FM power on/off, 
+seek, scan, tune...and some other basic functions.
+
+WHAT IT DOES?
+=============
+Provide FM basic functions
+
+HOW IT WAS BUILT?
+==================
+It needs the following libs from AOSP:
+1.  libcutils
+2.	libdl
+
+and the following libs from MediaTek:
+1.	libmedia 
+
+HOW TO USE IT?
+==============
+Files in this directory is used to
+generate libraries 'libfmjni' and 'libfmmtxxxx'
+
+These libraries are loaded when system up
+
+All the source code of this library were written by MediaTek co..
+

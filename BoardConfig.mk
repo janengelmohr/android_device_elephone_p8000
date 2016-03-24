@@ -116,8 +116,8 @@ USE_CAMERA_STUB := true
 BOARD_USES_MTK_AUDIO := true
 
 # FM Radio
-MTK_FM_SUPPORT :=true
-MTK_FM_RX_SUPPORT :=true
+MTK_FM_SUPPORT := yes
+MTK_FM_RX_SUPPORT := yes
 
 #Mediatek flags
 BOARD_HAS_MTK_HARDWARE := true
