@@ -30,3 +30,10 @@ allow mediaserver bt_data_file:file read;
 #============= bluetooth ==============
 allow bluetooth platform_app_tmpfs:file write;
 
+# fix for CM12.1 
+allow bluetooth bt_data_file:dir { write getattr read remove_name open add_name };
+allow bluetooth bt_data_file:file { write getattr read create unlink open append};
+allow bluetooth nvram_data_file:file { create setattr read write getattr open };
+allow bluetooth stpbt_device:chr_file { read write ioctl open };
+allow bluetooth stpbt_device:file { read write ioctl open };
+
