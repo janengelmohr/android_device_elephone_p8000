@@ -75,7 +75,6 @@ system/bin/radvd
 system/bin/rtt
 system/bin/run-as
 system/bin/s62xd
-system/bin/sn
 system/bin/terservice
 system/bin/tertestclient
 system/bin/thermal
