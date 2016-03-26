@@ -1,0 +1,14 @@
+# auditd - Audit event daemon
+type auditd, domain;
+type auditd_exec, exec_type, file_type;
+
+init_daemon_domain(auditd)
+
+allow auditd self:capability { audit_control setuid setgid };
+allow auditd self:capability2 syslog;
+allow auditd self:netlink_audit_socket { write create nlmsg_write read };
+
+allow auditd system_data_file:dir { remove_name };
+allow auditd cgroup:dir { create add_name };
+
+allow auditd kernel:system syslog_read;
