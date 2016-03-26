@@ -3,9 +3,6 @@ system/bin/6620_wmt_concurrency
 system/bin/6620_wmt_lpbk
 system/bin/AcdApiDaemon
 system/bin/MtkCodecService
-system/bin/aee
-system/bin/aee_archive
-system/bin/aee_dumpstate
 system/bin/akmd8963
 system/bin/akmd8975
 system/bin/ami304d
