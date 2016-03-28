@@ -64,10 +64,19 @@ PRODUCT_COPY_FILES += \
     	$(LOCAL_PATH)/configs/android.hardware.microphone.xml:system/etc/permissions/android.hardware.microphone.xml \
     	$(LOCAL_PATH)/configs/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
 	$(LOCAL_PATH)/configs/platform.xml:system/etc/permissions/platform.xml
-    
+
 # CM's Snap camera
 PRODUCT_PACKAGES += \
 	Snap
+
+# Fingerprint support
+PRODUCT_PACKAGES += fp
+PRODUCT_PACKAGES += slfpcal
+PRODUCT_PACKAGES += libslfpjni
+PRODUCT_PACKAGES += libsileadinc_dev
+
+include device/elephone/p8000/Fingerprint/slfpcal/Android.mk
+include device/elephone/p8000/Fingerprint/fp/Android.mk
 
 # Hack to fix asec on emulated sdcard
 PRODUCT_PACKAGES += \
