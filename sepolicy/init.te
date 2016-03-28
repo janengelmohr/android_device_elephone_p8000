@@ -20,3 +20,9 @@ allow init platformblk_device:blk_file setattr;
 
 allow init MtkCodecService_exec:file execute_no_trans;
 
+# fingerprint, silead
+allow init shell_data_file:file { read write };
+allow init shell_data_file:dir write;
+allow init shell_data_file:dir add_name;
+allow init shell_data_file:file create;
+allow init shell_data_file:file open;

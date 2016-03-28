@@ -421,3 +421,5 @@
 /data/system/users/[0-9]+/smartbook_wallpaper	u:object_r:wallpaper_file:s0
 # Camera fix for CM 12.1
 /dev/DW9761AF(/.*)? u:object_r:DW9761AF_device:s0
+# silead fingerprint
+/dev/silead_fp_dev(/.*)? u:object_r:silead_fp_dev_device:s0

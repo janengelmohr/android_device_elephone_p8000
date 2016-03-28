@@ -176,3 +176,9 @@ allow platform_app mobicore_tui_device:chr_file { read open ioctl };
 # Purpose : MTKLogger need setup local socket with mnld 
 # Package: com.mediatek.mtklogger
 allow platform_app mnld:unix_stream_socket connectto;
+
+# silead 
+allow platform_app silead_fp_dev_device:chr_file {open read write ioctl};
+allow platform_app init_tmpfs:file {open read write};
+allow platform_app tmpfs:dir {mounton read write};
+allow platform_app init_tmpfs:file getattr;
