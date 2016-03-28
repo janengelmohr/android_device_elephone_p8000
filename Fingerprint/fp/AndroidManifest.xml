@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.silead.fp"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+    
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+<uses-permission android:name="android.permission.CONTROL_KEYGUARD" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.silead.fp.MainActivity"
+            android:label="@string/app_name" 
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <data android:host="MainActivity" android:scheme="com.silead.fp"/>
+              
+            </intent-filter>
+        </activity>
+          
+       <activity
+            android:name="com.silead.fp.FpManagerActivity"
+            android:label="@string/apps_manager"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.silead.fp.action.VIEW" />
+				<category android:name="com.silead.fp.category.appsmanager"/>
+				  <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.silead.fp.lockscreen.ErrorNotifyDialogActivity"
+            android:label="@string/apps_manager"
+            android:theme="@style/FullScreenTheme"
+            android:configChanges="orientation|screenSize"
+            >
+            <intent-filter>
+                <action android:name="com.silead.fp.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        
+       <service android:name="com.silead.fp.lockscreen.FpService" >
+              <intent-filter>
+                  <action android:name="com.silead.fp.lockscreen.fpservice.ACTION"/>
+                  <category android:name="android.intent.category.DEFAULT"/>
+              </intent-filter>
+       </service>
+        
+       <activity
+            android:name="com.silead.fp.lockscreen.LockScreen"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.silead.fp.lockscreen.action.VIEW" />
+				  <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.silead.fp.setting.Settings"
+            android:theme="@android:style/Theme.Black.NoTitleBar" 
+            android:screenOrientation="portrait"
+            android:launchMode="standard"
+            >
+            <intent-filter>
+                <action android:name="com.silead.fp.setting.Settings.ACTION" />
+				  <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+	    
+	</activity>
+	     <receiver android:name="com.silead.fp.receiver.BootCompletedReceiver">
+             <intent-filter>
+                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
+             </intent-filter>
+             <intent-filter>
+             	 <action android:name="com.silead.fp.Settings.NONSUPPORT_LOCKSCREEN_ACTIVE"/>
+             </intent-filter>
+         </receiver> 
+
+         <activity
+            android:name="com.silead.fp.setting.EnrollActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar" 
+            android:screenOrientation="portrait"
+            android:launchMode="standard"
+            >
+            <intent-filter>
+                <action android:name="com.silead.fp.setting.EnrollActivity.ACTION" />
+		 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+       
+    </application>
+
+</manifest>

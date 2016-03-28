@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+    <string name="unlock_set_unlock_off_title"> </string>
+	<string name="unlock_set_unlock_none_title">思立微</string>
+	<string name="unlock_set_unlock_biometric_weak_title">人脸识别</string>
+	<string name="unlock_set_unlock_pattern_title">模型</string>
+	<string name="unlock_set_unlock_pin_title">PIN</string>
+	<string name="unlock_set_unlock_password_title">密码</string>
+	<string name="unlock_set_unlock_Fingerprint_title">指纹采集</string>
+	
+    <string name="app_name">指纹识别</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">设置</string>
+    <string name="cancel">退出</string>
+    <string name="apps_manager">应用管理</string>
+     <string name="fp_manager">应用管理</string>
+    <string name="fp_instruction"></string>
+    <string name="pw_warnning">请输入密码.</string>
+   <string name="bt_unlock">解锁</string>
+   <string name="set_password">请设置密码</string>
+    <string name="fp_switch_name">指纹信息列表</string>
+    <string name="fp_prompt_str">没有指纹信息，请录入。</string>
+    <string name="fp_entry_button">录入</string>
+     <string name="entry_finger_name">请输入指纹名字</string>
+     <string name="ok">OK</string>
+     <string name="enroll_finger_put">请将您的手指放在指纹识别器位置。待录入指纹进度条出现时，把手指拿开重新放到指纹器上面，重复这个动作直到指纹录入完成。</string>
+     <string name="enroll_finger_remove">请将你的手指从指纹识别器移开。</string>
+     
+     <string name="enroll_success">登记成功</string>
+     <string name="identify_success">验证成功</string>
+     <string name="identify_errol">验证发生错误</string>
+     <string name="identify_fail">验证失败</string>
+     <string name="identify_finger">请验证您的指纹</string>
+          <string name="finger_name_defualt">手指:</string>
+     <string name="finger_count_full">指纹数量已满</string>
+     <string name="allChecked">全选</string>
+     
+     <string name="PassWord">密码</string>
+     <string name="identify">登录</string>
+     <string name="calibration">校准</string>
+     <string name="rename">重命名</string>
+     <string name="delete">删除</string>
+     <string name="maininfo">首次设置指纹解锁时，请先进行校准。</string>
+</resources>
