@@ -668,6 +668,6 @@ on property:persist.sys.mykloggerd=true
 on property:persist.sys.mykloggerd=false
    stop mykloggerd
 
-service mykloggerd /system/bin/cat /proc/kmsg > /data/local/kernel.log
+service mykloggerd /system/bin/logwrapper /system/bin/cat /proc/kmsg
     class main
     disabled
