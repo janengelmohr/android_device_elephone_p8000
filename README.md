@@ -4,9 +4,6 @@ Device repository for Elephone P8000 CM12.1
 Currently broken features:
  * FM Radio
 
-IF you are trying to build TWRP against cm-12.1 you will need this commit:
-* http://review.cyanogenmod.org/#/c/89474/1/recovery.te
-
 ## Thanks to:
  * DerTeufel1980
  * fire855
