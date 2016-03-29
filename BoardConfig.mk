@@ -375,4 +375,8 @@ TWHAVE_SELINUX := true
 #F2FS support (only activate if kernel supports)
 #TARGET_USERIMAGES_USE_F2FS:=true
 
+# encryption
+TW_INCLUDE_JB_CRYPTO := false
+TW_INCLUDE_L_CRYPTO := true
+
 
