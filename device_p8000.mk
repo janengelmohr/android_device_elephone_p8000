@@ -41,6 +41,10 @@ PRODUCT_COPY_FILES += \
 	device/elephone/p8000/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
 	device/elephone/p8000/rootdir/meta_init.rc:root/meta_init.rc 
 
+# TWRP thanks to Hanuma50
+PRODUCT_COPY_FILES += device/elephone/p8000/recovery/twrp.fstab:recovery/root/etc/twrp.fstab
+
+
 # hardware specifics
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml \
