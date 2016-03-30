@@ -140,10 +140,10 @@ BOARD_EGL_WORKAROUND_BUG_10194508 := true
 #Block based ota
 #http://review.cyanogenmod.org/#/c/78849/1/core/Makefile
 BLOCK_BASED_OTA := false
-
+
 # recovery
 #TARGET_RECOVERY_INITRC := device/elephone/p8000/recovery/init.mt6753.rc
-#TARGET_RECOVERY_FSTAB := device/elephone/p8000/recovery/root/fstab.mt6753
+TARGET_RECOVERY_FSTAB := device/elephone/p8000/recovery/root/fstab.mt6753
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
 
 # SELinux
