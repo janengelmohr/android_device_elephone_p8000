@@ -10,7 +10,11 @@ git apply -v ../../device/elephone/p8000/patches/framework_base/0002-location-ad
 git apply -v ../../device/elephone/p8000/patches/framework_base/0003-location-style-fix.patch
 git apply -v ../../device/elephone/p8000/patches/framework_base/0004-add-com.mediatek-for-build.patch
 git apply -v ../../device/elephone/p8000/patches/framework_base/0005-Update-for-mtk.patch
+git apply -v ../../device/elephone/p8000/Fingerprint/0001-fingerprint_frameworks_base.patch
 cd ../..
+cd packages/apps/Settings/
+git apply -v ../../../device/elephone/p8000/Fingerprint/0001-fingerprint_packages_apps_settings.patch
+cd ../../..
 cd frameworks/opt/telephony
 git apply -v ../../../device/elephone/p8000/patches/framework_opt_telephony/0001-Update-for-mtk.patch
 git apply -v ../../../device/elephone/p8000/patches/framework_opt_telephony/0002_mobile_data_patch_mt6753.patch
