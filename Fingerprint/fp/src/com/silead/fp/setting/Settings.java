@@ -82,14 +82,14 @@ public class Settings extends Activity {
 		mControllerNative.initFPSystem();
 		initView();
 		
-		Log.d(TAG, "enrollCredentialRSP $$$$$$$ GetFpInfo begin");
+		//Log.d(TAG, "enrollCredentialRSP $$$$$$$ GetFpInfo begin");
 
 		mFingerList = new ArrayList<SLFpsvcFPInfo>();
-		Log.d(TAG, "mFingerList size $$$$$$$ " + mFingerList.size());
+		//Log.d(TAG, "mFingerList size $$$$$$$ " + mFingerList.size());
 
 		fpsvcIndex = mControllerNative.GetFpInfo();
 
-		Log.d(TAG, "enrollCredentialRSP $$$$$$$ GetFpInfo end  ");
+		//Log.d(TAG, "enrollCredentialRSP $$$$$$$ GetFpInfo end  ");
 
 		System.out.println("mControllerNative" + mControllerNative);
 		for (int i = 0; i < 5; i++) {
@@ -105,7 +105,7 @@ public class Settings extends Activity {
 		}
 		for (int i = 0; i < fpsvcIndex.max; i++) {
 			if(fpsvcIndex.FPInfo[i].slot == 1){
-				Log.d(TAG, " $$$ fpsvcIndex.fingerName 222 = " + fpsvcIndex.FPInfo[i].fingerName+":"+fpsvcIndex.FPInfo[i].enrollIndex);
+				//Log.d(TAG, " $$$ fpsvcIndex.fingerName 222 = " + fpsvcIndex.FPInfo[i].fingerName+":"+fpsvcIndex.FPInfo[i].enrollIndex);
 				mFingerList.add(fpsvcIndex.FPInfo[i]);
 			}
 		}
@@ -190,7 +190,7 @@ public class Settings extends Activity {
 		
 	private void initFpAdapter() {
   		mAdapter = new FingerAdapter(Settings.this, mFingerList);
-		Log.d(TAG, "$$$$$$ initFpAdapter end $$$$$$$$$ ");
+		//Log.d(TAG, "$$$$$$ initFpAdapter end $$$$$$$$$ ");
 		mFingerListView.setAdapter(mAdapter);
 		mFingerListView
 		.setOnItemLongClickListener(new FingerListItemOnItemLongClick());
@@ -206,13 +206,13 @@ public class Settings extends Activity {
 	}
 	
 	public static void DisableFp() {
-		Log.d(TAG, "DisableFp $$$$$$$ DisableFp 2222 ");
+		//Log.d(TAG, "DisableFp $$$$$$$ DisableFp 2222 ");
 		FpControllerNative controllerNative = FpControllerNative.getInstance();
 		controllerNative.initFPSystem();
 		SLFpsvcIndex fpIndex = controllerNative.GetFpInfo();
 		for (int i = 0; i < fpIndex.max; i++) {
 			if(fpIndex.FPInfo[i].enable == 1){
-				Log.d(TAG, "DisableFp $$$$$$$ DisableFp enable["+i+"] = "+fpIndex.FPInfo[i].enable);
+				//Log.d(TAG, "DisableFp $$$$$$$ DisableFp enable["+i+"] = "+fpIndex.FPInfo[i].enable);
 				fpIndex.FPInfo[i].setEnable(0);
 			}
 		}
@@ -234,7 +234,7 @@ public class Settings extends Activity {
 					break;
 				case 1:
 					// 顶层删除finger
-					Log.d(TAG,"SLFpsvcFPInfoonLongClick 1  pos = "+pos+":"+mFingerList.size());
+					//Log.d(TAG,"SLFpsvcFPInfoonLongClick 1  pos = "+pos+":"+mFingerList.size());
 					fPInfos = (SLFpsvcFPInfo) mFingerList.get(pos);
 					fpsvcIndex = mControllerNative.GetFpInfo();
 					int deleteIndex = fPInfos.enrollIndex;
@@ -256,12 +256,10 @@ public class Settings extends Activity {
 						mFingerPrompt.setText(getString(R.string.fp_prompt_str));
 					}
 					
-					Log.d(TAG,"SLFpsvcFPInfoonLongClick 1  deleteIndex = "+deleteIndex+":"+mFingerList.size());
-					if (mFingerList.size() > pos) {
-						Log.d(TAG,
-								"mFingerList.get(pos).slot = "
-										+ mFingerList.get(pos).slot);
-					}
+					//Log.d(TAG,"SLFpsvcFPInfoonLongClick 1  deleteIndex = "+deleteIndex+":"+mFingerList.size());
+					//if (mFingerList.size() > pos) {
+						//Log.d(TAG,"mFingerList.get(pos).slot = "+ mFingerList.get(pos).slot);
+					//}
 					break;
 				default:
 					break;
@@ -310,7 +308,7 @@ public class Settings extends Activity {
 	}
 
 	public void myLog(String msg) {
-		Log.d(TAG, msg);
+		//Log.d(TAG, msg);
 	}
 	
 	public void onResume() {
@@ -334,7 +332,7 @@ public class Settings extends Activity {
 
 	public void onStop() {
 		super.onStop();
-		Log.d(TAG, "run onstop(), cancel enrolling");
+		//Log.d(TAG, "run onstop(), cancel enrolling");
 //		mControllerNative.destroyFPSystem();
 		System.out.println("Settings onStop 启动了");
 	}

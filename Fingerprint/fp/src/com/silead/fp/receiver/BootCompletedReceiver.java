@@ -16,12 +16,12 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 	public void onReceive(Context arg0, Intent arg1) {
 		// TODO Auto-generated method stub
 		String action = arg1.getAction();
-		Log.d(TAG,"$$$$$$ onReceive action = "+action);
+		//Log.d(TAG,"$$$$$$ onReceive action = "+action);
 		if (action.equals(Intent.ACTION_BOOT_COMPLETED)){
 			Intent intent = new Intent(arg0, FpService.class);  
 			arg0.startService(intent);
 		} else if (action.equals(Settings.ACTION_NONSUPPORT_LOCKSCREEN_ACTIVE)) {
-		    Log.d(TAG,"$$$$$$ onReceive ACTION_NONSUPPORT_LOCKSCREEN_ACTIVE ");
+		    //Log.d(TAG,"$$$$$$ onReceive ACTION_NONSUPPORT_LOCKSCREEN_ACTIVE ");
             Settings.DisableFp();
 		}
 	}

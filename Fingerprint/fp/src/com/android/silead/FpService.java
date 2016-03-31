@@ -9,7 +9,7 @@ public class FpService{
 	
     public FpService() {
     	serviceInited = false;
-    	Log.d(TAG, "settings fpservice() construction fun");
+    	//Log.d(TAG, "settings fpservice() construction fun");
     }
     
     public native int InitFPService();
@@ -17,7 +17,7 @@ public class FpService{
     public int  InitService() {
     	int ret = -1;
 		if(serviceInited == false ){
-			Log.d(TAG, "InitService()");
+			//Log.d(TAG, "InitService()");
 			ret = InitFPService();
 			if(ret == SL_SUCCESS){
 				serviceInited = true;
@@ -29,7 +29,7 @@ public class FpService{
     public int DeinitService() {
     	int ret = -1;
 		if( serviceInited == true ){
-		  Log.d(TAG, "DeinitService()");
+		  //Log.d(TAG, "DeinitService()");
 	      ret = DeinitFPService();
 	      if(ret == SL_SUCCESS){
 	    	  serviceInited = false;
@@ -64,7 +64,7 @@ public class FpService{
     	   try {
             	System.loadLibrary("SL_fp");
             } catch (UnsatisfiedLinkError e) {
-                Log.d("FPservice", "SL_fp-hardware library not found!");
+                //Log.d("FPservice", "SL_fp-hardware library not found!");
             }
     }
 	

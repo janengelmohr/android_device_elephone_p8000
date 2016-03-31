@@ -12,13 +12,13 @@ public class ScreenReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context arg0, Intent arg1) {
 		// TODO Auto-generated method stub
-		String action = arg1.getAction();
-		Log.d(TAG,"$$$$$$ onReceive action = "+action);
-		if (action.equals(Intent.ACTION_SCREEN_OFF)){
+		//String action = arg1.getAction();
+		//Log.d(TAG,"$$$$$$ onReceive action = "+action);
+		/*if (action.equals(Intent.ACTION_SCREEN_OFF)){
 			Log.d(TAG, "#######onReceive 2 ");
 		} else if (action.equals(Intent.ACTION_SCREEN_ON)) {
 			Log.d(TAG,"$$$$$$$ onReceive ACTION_SCREEN_ON");
-		}
+		}*/
 	}
 }
 

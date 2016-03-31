@@ -115,15 +115,15 @@ void slfpkeyRSP (int fpkeyret) {
 void enrollCredentialRSP (int index, int percent, int result, int area) {
     if (gFpControllerNativeObj) {
        JNIEnv* env;
-//__android_log_print(4, "[SL_FP]", "enrollCredentialRSP before CallVoidMethod env 222 = %p",env);
+////__android_log_print(4, "[SL_FP]", "enrollCredentialRSP before CallVoidMethod env 222 = %p",env);
        if (gJvm->AttachCurrentThread(&env, NULL) != JNI_OK) {
-//           __android_log_print(4, "[SL_FP]", "enrollCredentialRSP Attach error ");
+//           //__android_log_print(4, "[SL_FP]", "enrollCredentialRSP Attach error ");
             return;
        }
- //__android_log_print(4, "[SL_FP]", "enrollCredentialRSP before CallVoidMethod gEnv = %p",gEnv);
+ ////__android_log_print(4, "[SL_FP]", "enrollCredentialRSP before CallVoidMethod gEnv = %p",gEnv);
         env->CallVoidMethod(gFpControllerNativeObj, gFpControllerNativeClassInfo.enrollCredentialRSP,
                  index, percent, result, area);
-//__android_log_print(4, "[SL_FP]", "enrollCredentialRSP after CallVoidMethod");
+////__android_log_print(4, "[SL_FP]", "enrollCredentialRSP after CallVoidMethod");
        checkAndClearExceptionFromCallback(env, "enrollCredentialRSP");
        gJvm->DetachCurrentThread();
     }
@@ -133,10 +133,10 @@ void identifyCredentialRSP (int index, int result,int fingerid) {
     if (gFpControllerNativeObj) {
 		JNIEnv* env;
 		if (gJvm->AttachCurrentThread(&env, NULL) != JNI_OK) {return;}
-//		__android_log_print(4, "[SL_FP]", "identifyCredentialRSP before CallVoidMethod $$$ \n");
+//		//__android_log_print(4, "[SL_FP]", "identifyCredentialRSP before CallVoidMethod $$$ \n");
         env->CallVoidMethod(gFpControllerNativeObj, gFpControllerNativeClassInfo.identifyCredentialRSP,
                 index, result,fingerid);
-//		__android_log_print(4, "[SL_FP]", "identifyCredentialRSP after CallVoidMethod $$$ \n");
+//		//__android_log_print(4, "[SL_FP]", "identifyCredentialRSP after CallVoidMethod $$$ \n");
         checkAndClearExceptionFromCallback(env, "identifyCredentialRSP");
         gJvm->DetachCurrentThread();
     }
@@ -148,13 +148,13 @@ static jobject com_silead_fp_utils_FpControllerNative_nativeGetFpInfo(
 	jobject		object
 	){
 
-	__android_log_print(4, "[SL_FP]", "com_silead_fp_utils_FpControllerNative_nativeGetFpInfo enter");
+	//__android_log_print(4, "[SL_FP]", "com_silead_fp_utils_FpControllerNative_nativeGetFpInfo enter");
 	SLFpsvcIndex_t info;
 	g_Client->GetFPInfo(&info);
-	__android_log_print(4, "[SL_FP]", "info total=%d max=%d wenable=%d frame_w=%d frame_h=%d",info.total,info.max,info.wenable,info.frame_w,info.frame_h);
+	//__android_log_print(4, "[SL_FP]", "info total=%d max=%d wenable=%d frame_w=%d frame_h=%d",info.total,info.max,info.wenable,info.frame_w,info.frame_h);
     for(int i=0; i < SL_SLOT_ALL; i++)
     {
-    	__android_log_print(4, "[SL_FP]", "info.fpinfo index=%d slot=%d enable=%d fingername = %s i=%d",info.fpinfo[i].index,info.fpinfo[i].slot,info.fpinfo[i].enable,info.fpinfo[i].fingername,i);
+    	//__android_log_print(4, "[SL_FP]", "info.fpinfo index=%d slot=%d enable=%d fingername = %s i=%d",info.fpinfo[i].index,info.fpinfo[i].slot,info.fpinfo[i].enable,info.fpinfo[i].fingername,i);
     }
 
 	jclass  j_infoclazz = env->FindClass("com/silead/fp/utils/FpControllerNative$SLFpsvcFPInfo");
@@ -163,11 +163,11 @@ static jobject com_silead_fp_utils_FpControllerNative_nativeGetFpInfo(
     jfieldID jenable = env->GetFieldID(j_infoclazz, "enable", "I");
     jfieldID jfingername = env->GetFieldID(j_infoclazz, "fingerName", "Ljava/lang/String;");
 
-    __android_log_print(4, "[SL_FP]", "com_silead_fp_utils_FpControllerNative_nativeGetFpInfo SLFpsvcFPInfo = %d",j_infoclazz);
+    //__android_log_print(4, "[SL_FP]", "com_silead_fp_utils_FpControllerNative_nativeGetFpInfo SLFpsvcFPInfo = %d",j_infoclazz);
 
     jclass  clazzz = env->FindClass("com/silead/fp/utils/FpControllerNative$SLFpsvcIndex");
 
-    __android_log_print(4, "[SL_FP]", "com_silead_fp_utils_FpControllerNative_nativeGetFpInfo SLFpsvcIndex = %d",clazzz);
+    //__android_log_print(4, "[SL_FP]", "com_silead_fp_utils_FpControllerNative_nativeGetFpInfo SLFpsvcIndex = %d",clazzz);
     jfieldID jtotal = env->GetFieldID(clazzz, "total", "I");
     jfieldID jmax = env->GetFieldID(clazzz, "max", "I");
     jfieldID jwenable = env->GetFieldID(clazzz, "wenable", "I");
@@ -202,7 +202,7 @@ static jint com_silead_fp_utils_FpControllerNative_nativeSetfpInfo(
 		jobject		object,
 		jobject		fpindex
 		){
-	__android_log_print(4, "[SL_FP]", "com_silead_fp_utils_FpControllerNative_nativeSetfpInfo enter");
+	//__android_log_print(4, "[SL_FP]", "com_silead_fp_utils_FpControllerNative_nativeSetfpInfo enter");
 	SLFpsvcIndex_t info;
 	jclass  clazzz = env->FindClass("com/silead/fp/utils/FpControllerNative$SLFpsvcIndex");
 	jfieldID jtotal = env->GetFieldID(clazzz, "total", "I");
@@ -238,13 +238,13 @@ static jint com_silead_fp_utils_FpControllerNative_nativeSetfpInfo(
 		}
 
 
-    __android_log_print(4, "[SL_FP]", "info total=%d max=%d wenable=%d frame_w=%d frame_h=%d",info.total,info.max,info.wenable,info.frame_w,info.frame_h);
+    //__android_log_print(4, "[SL_FP]", "info total=%d max=%d wenable=%d frame_w=%d frame_h=%d",info.total,info.max,info.wenable,info.frame_w,info.frame_h);
     for(int i=0; i < SL_SLOT_ALL; i++)
     {
-    	__android_log_print(4, "[SL_FP]", "info.fpinfo index=%d slot=%d enable=%d fingername = %s i=%d",info.fpinfo[i].index,info.fpinfo[i].slot,info.fpinfo[i].enable,info.fpinfo[i].fingername,i);
+    	//__android_log_print(4, "[SL_FP]", "info.fpinfo index=%d slot=%d enable=%d fingername = %s i=%d",info.fpinfo[i].index,info.fpinfo[i].slot,info.fpinfo[i].enable,info.fpinfo[i].fingername,i);
     }
 	int ret =  g_Client->SetFPInfo(&info);
-	__android_log_print(4, "[SL_FP]", "com_silead_fp_utils_FpControllerNative_nativeSetfpInfo ret = %d",ret);
+	//__android_log_print(4, "[SL_FP]", "com_silead_fp_utils_FpControllerNative_nativeSetfpInfo ret = %d",ret);
 	return ret;
 }
 
@@ -255,7 +255,7 @@ static void com_silead_fp_utils_FpControllerNative_nativeInit(
     if (env->GetJavaVM(&gJvm) < 0) {
         LOGE("com_silead_fp_utils_FpControllerNative_nativeInit Could not get handle to the VM");
     }
-    __android_log_print(4, "[SL_FP]", "com_silead_fp_utils_FpControllerNative_nativeInit $$$ env = %p , gJvm = %p \n",env,gJvm);
+    //__android_log_print(4, "[SL_FP]", "com_silead_fp_utils_FpControllerNative_nativeInit $$$ env = %p , gJvm = %p \n",env,gJvm);
     gFpControllerNativeObj = env->NewGlobalRef(object);
 
 }
@@ -265,7 +265,7 @@ static jint com_silead_fp_utils_FpControllerNative_nativeInitFPSystem(
 	JNIEnv		*env,
 	jobject		object
 	) {
-	__android_log_print(4, "[SL_FP]", "com_silead_fp_utils_FpControllerNative_nativeInitFPSystem $$$ enter \n");
+	//__android_log_print(4, "[SL_FP]", "com_silead_fp_utils_FpControllerNative_nativeInitFPSystem $$$ enter \n");
 	if(!g_Relayer)
 	{
 		g_Relayer = AInfFpsvcFPApkRelayerCB::Create();
@@ -289,7 +289,7 @@ static jint com_silead_fp_utils_FpControllerNative_nativeEnrollCredentialREQ(
 	jobject		object,
 	jint index
 	) {
-	__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeEnrollCredentialREQ");
+	//__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeEnrollCredentialREQ");
 	return g_Client->EnrollCredential(index);
 }
 
@@ -303,7 +303,7 @@ static jint com_silead_fp_utils_FpControllerNative_nativeIdentifyCredentialREQ(
 	jobject		object,
 	jint index
 	) {
-	__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeIdentifyCredentialREQ _debug");
+	//__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeIdentifyCredentialREQ _debug");
 	return g_Client->IdentifyCredential(index);
 }
 
@@ -317,7 +317,7 @@ static jint com_silead_fp_utils_FpControllerNative_nativeRemoveCredential(
 	jobject		object, 
 	jint		index
 	) {
-	__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeRemoveCredential");
+	//__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeRemoveCredential");
 	return g_Client->RemoveCredential(index);
 }
 
@@ -337,7 +337,7 @@ static jint com_silead_fp_utils_FpControllerNative_nativeDestoryFPSystem(
 //		g_Client = NULL;
 //	}
 
-	__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeDestoryFPSystem");
+	//__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeDestoryFPSystem");
 	return 1;
 }
 
@@ -345,7 +345,7 @@ static jint com_silead_fp_utils_FpControllerNative_nativeResetFPService(
 	JNIEnv		*env,
 	jobject		object
 	){
-	__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeResetFPService");
+	//__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeResetFPService");
 	return g_Client->ResetFPService();
 }
 
@@ -355,7 +355,7 @@ static jint com_silead_fp_utils_FpControllerNative_nativeEnalbeCredential(
 	jint		index,
 	jint		enable
 	){
-	__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeEnalbeCredential");
+	//__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeEnalbeCredential");
 	return g_Client->EnalbeCredential(index,enable);
 }
 
@@ -364,7 +364,7 @@ static jint com_silead_fp_utils_FpControllerNative_nativeGetEnableCredential(
 	jobject		object,
 	jint		index
 	){
-	__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeFpCancelOperation ");
+	//__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeFpCancelOperation ");
 	return g_Client->GetEnableCredential(index);
 }
 static jint com_silead_fp_utils_FpControllerNative_nativeFpCancelOperation(
@@ -372,7 +372,7 @@ static jint com_silead_fp_utils_FpControllerNative_nativeFpCancelOperation(
 	jobject		object
 	){
 
-	__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeFpCancelOperation _debug");
+	//__android_log_print(4, "[SL_FP]","com_silead_fp_utils_FpControllerNative_nativeFpCancelOperation _debug");
 	return g_Client->FpCancelOperation();
 }
 
@@ -414,11 +414,11 @@ int register_com_silead_fp_utils_FpControllerNative(JNIEnv* env,
     int res = jniRegisterNativeMethods(env, className, jniMethods, numMethods);
 	gEnv = env;
     LOG_FATAL_IF(res < 0, " register_com_silead_fp_utils_FpControllerNative Unable to register native methods.");
-	__android_log_print(4, "[SL_FP]", "[wq]:jniRegisterNativeMethods:start numMethods = %d,env = %p\n",numMethods,env);
+	//__android_log_print(4, "[SL_FP]", "[wq]:jniRegisterNativeMethods:start numMethods = %d,env = %p\n",numMethods,env);
     FIND_CLASS(gFpControllerNativeClassInfo.clazz, className);
     if (gFpControllerNativeClassInfo.clazz == NULL) {
-      //  __android_log_print(ANDROID_LOG_ERROR, TAG, "Native registration unable to find class '%s'\n", className);
-		__android_log_print(4, "[SL_FP]", "[wq]:jniRegisterNativeMethods:0\n");
+      //  //__android_log_print(ANDROID_LOG_ERROR, TAG, "Native registration unable to find class '%s'\n", className);
+		//__android_log_print(4, "[SL_FP]", "[wq]:jniRegisterNativeMethods:0\n");
 	    return -1;
     }
 
@@ -430,7 +430,7 @@ int register_com_silead_fp_utils_FpControllerNative(JNIEnv* env,
             "identifyCredentialRSP", "(III)V");
     GET_METHOD_ID(gFpControllerNativeClassInfo.fpGenericCB, gFpControllerNativeClassInfo.clazz,
             "fpGenericCB", "(ILjava/lang/String;ILjava/lang/String;)V");
-   __android_log_print(4, "[SL_FP]", "[wq]:jniRegisterNativeMethods:1 numMethods = %d\n",numMethods);
+   //__android_log_print(4, "[SL_FP]", "[wq]:jniRegisterNativeMethods:1 numMethods = %d\n",numMethods);
 
     return 0;
 }
@@ -438,21 +438,21 @@ int register_com_silead_fp_utils_FpControllerNative(JNIEnv* env,
 jint JNI_OnLoad(JavaVM *vm, void *reserved) {
 	JNIEnv *env = NULL;
 	int ret = -1;
-	__android_log_print(4, "[SL_FP]", "[wq]:JNI_OnLoad:start\n");
+	//__android_log_print(4, "[SL_FP]", "[wq]:JNI_OnLoad:start\n");
 
 	if (vm->GetEnv((void **)&env, JNI_VERSION_1_4) != JNI_OK) {
-		__android_log_print(4, "[SL_FP]", "[wq]:JNI_OnLoad:0\n");
+		//__android_log_print(4, "[SL_FP]", "[wq]:JNI_OnLoad:0\n");
 		return -1;
 	}
-	__android_log_print(4, "[SL_FP]", "[wq]:JNI_OnLoad:1 env = %p\n",env);
+	//__android_log_print(4, "[SL_FP]", "[wq]:JNI_OnLoad:1 env = %p\n",env);
 	assert(env != NULL);
-	__android_log_print(4, "[SL_FP]", "[wq]:JNI_OnLoad:2\n");
+	//__android_log_print(4, "[SL_FP]", "[wq]:JNI_OnLoad:2\n");
 	ret = register_com_silead_fp_utils_FpControllerNative(env, "com/silead/fp/utils/FpControllerNative", gMethods, sizeof(gMethods)/sizeof(gMethods[0]));
 	if ( ret < 0 ) {
-		__android_log_print(4, "[SL_FP]", "[wq]:JNI_OnLoad:3\n");
+		//__android_log_print(4, "[SL_FP]", "[wq]:JNI_OnLoad:3\n");
 		return -1;
 	}
-		__android_log_print(4, "[SL_FP]", "[wq]:JNI_OnLoad:end\n");
+		//__android_log_print(4, "[SL_FP]", "[wq]:JNI_OnLoad:end\n");
 	return JNI_VERSION_1_4;
 }
 

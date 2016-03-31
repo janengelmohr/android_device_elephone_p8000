@@ -34,7 +34,7 @@ public class FpAPIFromJNI {
 	//登记操作完成后。这里有返回值 根据不同的状态进行下一步操作
 	public  void   EnrollCredentialRSP(int index)
 	{
-		Log.d("[wq]","[wq]:EnrollCredentialRSP:in JAVA\n");
+		//Log.d("[wq]","[wq]:EnrollCredentialRSP:in JAVA\n");
 		//return 1;
 	}
 	

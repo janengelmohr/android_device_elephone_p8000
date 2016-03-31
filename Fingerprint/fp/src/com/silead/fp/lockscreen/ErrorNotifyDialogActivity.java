@@ -35,7 +35,7 @@ public class ErrorNotifyDialogActivity extends Activity {
 			WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED|WindowManager.LayoutParams.FLAG_SHOW_WALLPAPER
 			|WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);		
         setContentView(R.layout.error_notify_dialog_activity);
-        Log.d(TAG," onCreate ");
+        //Log.d(TAG," onCreate ");
 		//int errorCount = 0;
 		String msg = "";
 		Intent intent = getIntent();
@@ -51,7 +51,7 @@ public class ErrorNotifyDialogActivity extends Activity {
 		mAlertDialog.setOnDismissListener(new OnDismissListener() {
 			@Override
 			public void onDismiss(DialogInterface dialog) {
-				Log.d(TAG,"alertDialog onDismiss ");
+				//Log.d(TAG,"alertDialog onDismiss ");
 				Intent broadCastIntent = new Intent();
 				broadCastIntent.setAction(ERROR_NOTIFY_DIALOG_FINISH_ACTION);
 				sendBroadcast(broadCastIntent);
@@ -64,7 +64,7 @@ public class ErrorNotifyDialogActivity extends Activity {
         handler.postDelayed(new Runnable() {  
  
             public void run() {  
-				Log.d(TAG,"postDelayed alertDialog dismiss ");
+				//Log.d(TAG,"postDelayed alertDialog dismiss ");
                 mAlertDialog.dismiss();  
             }  
         }, 3000);  		
@@ -102,19 +102,19 @@ public class ErrorNotifyDialogActivity extends Activity {
 	
 	@Override
 	public void onPause() {
-        Log.d(TAG," onPause ");
+        //Log.d(TAG," onPause ");
 		super.onPause();
 	}    
     
 	@Override
 	public void onDestroy() {
-        Log.d(TAG," onDestroy 222 ");
+        //Log.d(TAG," onDestroy 222 ");
 		super.onDestroy();
 	}
 
 	@Override
 	public Object onRetainNonConfigurationInstance() {
-		Log.d(TAG," onRetainNonConfigurationInstance ");
+		//Log.d(TAG," onRetainNonConfigurationInstance ");
 		return null;
 
 	}	
@@ -122,12 +122,12 @@ public class ErrorNotifyDialogActivity extends Activity {
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 	    super.onConfigurationChanged(newConfig);
-		Log.d(TAG," onConfigurationChanged ");	 
+		//Log.d(TAG," onConfigurationChanged ");	 
 	    // Checks the orientation of the screen
 	    if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-			Log.d(TAG," onConfigurationChanged ORIENTATION_LANDSCAPE");	 
+			//Log.d(TAG," onConfigurationChanged ORIENTATION_LANDSCAPE");	 
 	    } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-			Log.d(TAG," onConfigurationChanged ORIENTATION_PORTRAIT");	 
+			//Log.d(TAG," onConfigurationChanged ORIENTATION_PORTRAIT");	 
 	    }
 	}
 	

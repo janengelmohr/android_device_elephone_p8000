@@ -74,7 +74,7 @@ int AInfFpsvcFPApkRelayerCB::EnrollCredential_CB(
 	int area
 	)
 {
-__android_log_print(4, "[SL_FP_CB]","\n--AInfFpsvcFPApkRelayerCB::EnrollCredential_CB-index=%d-inret=%d-pid=%d\n",index,inret,getpid());
+//__android_log_print(4, "[SL_FP_CB]","\n--AInfFpsvcFPApkRelayerCB::EnrollCredential_CB-index=%d-inret=%d-pid=%d\n",index,inret,getpid());
 	enrollCredentialRSP (index, percent, inret, area);
 	return 0;
 }
@@ -90,7 +90,7 @@ int AInfFpsvcFPApkRelayerCB::IdentifyCredential_CB(
 	int fingerid
     )
 {
-__android_log_print(4, "[SL_FP_CB]","\n--AInfFpsvcFPApkRelayerCB::IdentifyCredential_CB-index=%d-inret=%d-pid=%d\n",index,inret,getpid());
+//__android_log_print(4, "[SL_FP_CB]","\n--AInfFpsvcFPApkRelayerCB::IdentifyCredential_CB-index=%d-inret=%d-pid=%d\n",index,inret,getpid());
 	identifyCredentialRSP (index, inret,fingerid);
 	return 0;
 }
@@ -98,7 +98,7 @@ int AInfFpsvcFPApkRelayerCB::slfpkey_CB(
     int slfpkey
     )
 {
-__android_log_print(4, "[SL_FP_CB]","\n--AInfFpsvcFPApkRelayerCB::IdentifyCredential_CB- slfpkey = %d-pid=%d\n",slfpkey,getpid());
+//__android_log_print(4, "[SL_FP_CB]","\n--AInfFpsvcFPApkRelayerCB::IdentifyCredential_CB- slfpkey = %d-pid=%d\n",slfpkey,getpid());
 	slfpkeyRSP (slfpkey);
 	return 0;
 }

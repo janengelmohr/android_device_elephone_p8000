@@ -151,7 +151,7 @@ public class FpControllerNative {
 		public void handleMessage(Message msg) {
 			
 			int result = msg.what;
-			Log.d(TAG,"handleMessage $$$$$$$ result = "+result);
+			//Log.d(TAG,"handleMessage $$$$$$$ result = "+result);
 			switch (result) {
 			case IDENTIFY_CREDENTIAL_RSP:
 				break;
@@ -169,7 +169,7 @@ public class FpControllerNative {
 	
 	private FpControllerNative(){
 		mFPhandler = mDefaultHandler;
-		Log.d(TAG,"enrollCredentialRSP $$$$$$$ handle = "+mFPhandler);
+		//Log.d(TAG,"enrollCredentialRSP $$$$$$$ handle = "+mFPhandler);
 	}
 
     private static FpControllerNative sFpControllerNative = null;// 声明一个Emperor类的引用
@@ -223,40 +223,40 @@ public class FpControllerNative {
  	}
 	
 	public int initFPSystem(){
-		Log.d(TAG, "initFPSystem");
+		//Log.d(TAG, "initFPSystem");
 		return nativeInitFPSystem();
 	}
 
 	public int destroyFPSystem() {
-		Log.d(TAG, "destroyFPSystem");
+		//Log.d(TAG, "destroyFPSystem");
 		return nativeDestoryFPSystem();
 	}
     
 	public int enrollCredentialREQ(int index) {
-		Log.d(TAG, "enrollCredentialREQ");
+		//Log.d(TAG, "enrollCredentialREQ");
 		return nativeEnrollCredentialREQ(index);
 	}
 
 	public int identifyCredentialREQ(int index) {
-		Log.d(TAG, "identifyCredentialREQ");
+		//Log.d(TAG, "identifyCredentialREQ");
 		return nativeIdentifyCredentialREQ(index);
 	}
 	
 	public int removeCredential(int index) {
-		Log.d(TAG, "removeCredential");
+		//Log.d(TAG, "removeCredential");
 		return nativeRemoveCredential(index);
 	}
 
 	public int EnalbeCredential(int index , int enable) {
-		Log.d(TAG, "EnalbeCredential");
+		//Log.d(TAG, "EnalbeCredential");
 		return nativeEnalbeCredential(index ,enable);
 	}
 	public int GetEnableCredential(int index) {
-		Log.d(TAG, "GetEnableCredential");
+		//Log.d(TAG, "GetEnableCredential");
 		return nativeGetEnableCredential(index);
 	}
 	public int FpCancelOperation() {
-//		Log.d(TAG, "FpCancelOperation mCanceling = "+mCanceling);
+//		//Log.d(TAG, "FpCancelOperation mCanceling = "+mCanceling);
 //        if (mCanceling) {
 //			Log.w(TAG, "FpCancelOperation canceling, return");
 //            return -1;
@@ -269,15 +269,15 @@ public class FpControllerNative {
 		return result;
 	}
 	public int resetFPService() {
-		Log.d(TAG, "resetFPService");
+		//Log.d(TAG, "resetFPService");
 		return nativeResetFPService();
 	}
 	public SLFpsvcIndex GetFpInfo(){
-		Log.d(TAG, "GetFpInfo");
+		//Log.d(TAG, "GetFpInfo");
 		return nativeGetFpInfo();
 	}
 	public int SetFpInfo(SLFpsvcIndex fpindex){
-		Log.d(TAG, "SetFpInfo");
+		//Log.d(TAG, "SetFpInfo");
 		return nativeSetFpInfo(fpindex);
 	}	
 	public void setIdentifyListener(OnIdentifyRspCB callback) {
@@ -286,8 +286,8 @@ public class FpControllerNative {
 	
 	//call from native
 	private void enrollCredentialRSP(int index, int percent, int result, int area) { //percent
-		Log.d(TAG,"enrollCredentialRSP $$$$$$$ index 222 = "+index+":"+percent+":"+result);
-		Log.d(TAG,"enrollCredentialRSP $$$$$$$ handle = "+mFPhandler);
+		//Log.d(TAG,"enrollCredentialRSP $$$$$$$ index 222 = "+index+":"+percent+":"+result);
+		//Log.d(TAG,"enrollCredentialRSP $$$$$$$ handle = "+mFPhandler);
         if (result == ENROLL_CANCLED) {
             mCanceling = false;
         }		
@@ -302,7 +302,7 @@ public class FpControllerNative {
 
 	//call from native
 	private void identifyCredentialRSP(int index, int result, int fingerid) {
-		Log.d(TAG,"identifyCredentialRSP $$$$$$$ index = "+index+"result :"+result+"fingerid :"+fingerid);
+		//Log.d(TAG,"identifyCredentialRSP $$$$$$$ index = "+index+"result :"+result+"fingerid :"+fingerid);
 		if (mOnIdentifyRsp != null) {
 			mOnIdentifyRsp.onIdentifyRsp(index, result,fingerid);
 		}
@@ -319,7 +319,7 @@ public class FpControllerNative {
 
 	//call from native
 	private void fpGenericCB(int index, String event_name, int result, String event_data) {
-		Log.d(TAG,"fpGenericCB $$$$$$$ index = "+index+":"+event_name+":"+result+":"+event_data+":"+mCanceling);
+		//Log.d(TAG,"fpGenericCB $$$$$$$ index = "+index+":"+event_name+":"+result+":"+event_data+":"+mCanceling);
         if (result == ENROLL_CANCLED) {
             mCanceling = false;
         }

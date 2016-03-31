@@ -30,7 +30,7 @@ import com.silead.fp.utils.FpControllerNative.SLFpsvcIndex;
 public class FpService extends Service implements FpControllerNative.OnIdentifyRspCB {
 
     public static final String TAG = "FpService";
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = false;
     private static final String FP_LOCK_SCREEN_SERVICE_ACTION = "com.silead.fp.lockscreen.service.ACTION";
     private static final String FP_LOCK_SCREEN_ACTIVITY_ACTION = "com.silead.fp.lockscreen.action.VIEW";
     public static final String FINGER_PRINT_UNMATCH_ACTION = "com.silead.fp.lockscreen.action.UNMATCH";
@@ -66,7 +66,7 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
     public void onCreate() {
         // TODO Auto-generated method stub
         super.onCreate();
-        Log.d(TAG, "FpService $$$$ 444 $$$$ onCreate");
+        //Log.d(TAG, "FpService $$$$ 444 $$$$ onCreate");
         mKeyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         mLock = mKeyguardManager.newKeyguardLock("KeyguardLock");
         
@@ -96,14 +96,14 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
     public void onDestroy() {
         // TODO Auto-generated method stub
         super.onDestroy();
-        Log.d(TAG, "FpService onDestroy");
+        //Log.d(TAG, "FpService onDestroy");
         mLock.reenableKeyguard();
         unregisterReceiver(screenReceiver);
     }
 
     @Override
     public void onIdentifyRsp(int index, int result,int fingerid) {
-        Log.d(TAG, "FpService $$$$ onIdentifyRsp 222 $$$$ index = "+index+"result:"+result+"fingerid:"+fingerid+"result"+result);
+        //Log.d(TAG, "FpService $$$$ onIdentifyRsp 222 $$$$ index = "+index+"result:"+result+"fingerid:"+fingerid+"result"+result);
         mIdentifying = false;
 //        if (result == FpControllerNative.IDENTIFY_CANCELED) {
 //            mCanceling = false;
@@ -113,7 +113,7 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
 //			}
 //        }
         if (!mKeyguardManager.inKeyguardRestrictedInputMode()) {
-            Log.d(TAG," onIdentifyRsp no keyguard is showing !!! ");
+            //Log.d(TAG," onIdentifyRsp no keyguard is showing !!! ");
             return;
         }
         if (result == FpControllerNative.IDENTIFY_SUCCESS) {
@@ -154,18 +154,18 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
 
 
     public int initFPSystem(){
-        Log.d(TAG," initFPSystem ");
+        //Log.d(TAG," initFPSystem ");
         return mFpControllerNative.initFPSystem();
     }
 
     public int identifyCredentialREQ (int fpIndex) {
-        Log.d(TAG," identifyCredentialREQ 222  mIdentifying = "+mIdentifying);
+        //Log.d(TAG," identifyCredentialREQ 222  mIdentifying = "+mIdentifying);
         if (!mKeyguardManager.inKeyguardRestrictedInputMode()) {
-            Log.d(TAG," identifyCredentialREQ no keyguard is showing !!! ");
+            //Log.d(TAG," identifyCredentialREQ no keyguard is showing !!! ");
             return -1;
         }
         if (mPowerManager != null && !mPowerManager.isScreenOn()) {
-            Log.d(TAG," identifyCredentialREQ screen is off !!! ");
+            //Log.d(TAG," identifyCredentialREQ screen is off !!! ");
             return -1;
         }
 //        if (mCanceling) {
@@ -175,11 +175,11 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
 //            mNeedReqAfterCanceling = false;
 //        }
         if (mIdentifying) {
-            Log.d(TAG," identifyCredentialREQ  mIdentifying before return");
+            //Log.d(TAG," identifyCredentialREQ  mIdentifying before return");
 	    return -1;
         }
         if (!hasFingerEnabled()) {
-            Log.d(TAG," identifyCredentialREQ  has no Finger Enabled");
+            //Log.d(TAG," identifyCredentialREQ  has no Finger Enabled");
             return -1;
         }
         mIdentifying = true;
@@ -191,7 +191,7 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
     }
 
     public void cancelOperation () {
-//        Log.d(TAG," cancelOperation begin mCanceling = "+mCanceling+":"+mIdentifying);
+//        //Log.d(TAG," cancelOperation begin mCanceling = "+mCanceling+":"+mIdentifying);
         if (mIdentifying) 
 //        {
 //             return;
@@ -200,7 +200,7 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
         	mFpControllerNative.FpCancelOperation();
         	mIdentifying = false;
         }
-        	//        Log.d(TAG," cancelOperation after cancel result = "+result);
+        	//        //Log.d(TAG," cancelOperation after cancel result = "+result);
 //        if (result >= 0) {
 //			aquireWakeLock();
 //            mCanceling = true;
@@ -210,11 +210,11 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
     }
 
     public boolean unLock() {
-        Log.d(TAG," unLock before keyguardDone");
+        //Log.d(TAG," unLock before keyguardDone");
         try {
             mKeyguardService.keyguardDone(false, true);
         } catch (RemoteException e) {
-            Log.d(TAG," unLock RemoteException when keyguardDone");
+            //Log.d(TAG," unLock RemoteException when keyguardDone");
         }
         //mKeyguardManager.dismissKeyguard();	
         return true;
@@ -235,7 +235,7 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
     }
 
     private void showIdentifyError(int errorCount, String msg, int timeout) {
-        Log.d(TAG," showIdentifyError  errorCount 444 = "+errorCount+":"+msg);
+        //Log.d(TAG," showIdentifyError  errorCount 444 = "+errorCount+":"+msg);
         /* //start activity
         Intent intent = new Intent(this,ErrorNotifyDialogActivity.class);
         //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -254,7 +254,7 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
     private void onIdentifyError() {
         String msg;
         mErrorCount++;
-        Log.d(TAG,"onIdentifyError before wakelock aquire 5s mErrorCount = "+mErrorCount);
+        //Log.d(TAG,"onIdentifyError before wakelock aquire 5s mErrorCount = "+mErrorCount);
         PowerManager.WakeLock timeoutWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, TAG);
         timeoutWakeLock.acquire(5000);
         if (mErrorCount >= FpControllerNative.IDENTIFY_MAX) {
@@ -263,13 +263,13 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
         showIdentifyError(mErrorCount, msg, UNMATCH_DIALOG_MAX_TIMEOUT);
 			return;
 		} else {
-			Log.d(TAG,"onIdentifyError");
+			//Log.d(TAG,"onIdentifyError");
 		
 			msg = "Identify Error times:"+mErrorCount+"/"+FpControllerNative.IDENTIFY_MAX+";Please try again!";
 			showIdentifyError(mErrorCount, msg, UNMATCH_DIALOG_NORMAL_TIMEOUT);
 	        mHandler.postDelayed(new Runnable() {
 	            public void run() {  
-					Log.d(TAG,"postDelayed before identifyCredentialREQ ");
+					//Log.d(TAG,"postDelayed before identifyCredentialREQ ");
 	                identifyCredentialREQ(0);
 	            }
 	        }, UNMATCH_DIALOG_NORMAL_TIMEOUT);
@@ -278,7 +278,7 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
 	}
 
     private boolean hasFingerEnabled() {
-	    Log.d(TAG,"$$$$$$ hasFingerEnabled ");
+	    //Log.d(TAG,"$$$$$$ hasFingerEnabled ");
         SLFpsvcIndex fpsvcIndex = mFpControllerNative.GetFpInfo();
 		boolean hasEnabled = false;
         for (int i = 0; i < fpsvcIndex.max ; i++) {
@@ -302,9 +302,9 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
 	        mCall = true;
 	    }
 	    String action = intent.getAction();
-	    Log.d(TAG,"$$$$$$ onReceive action = "+action);
+	    //Log.d(TAG,"$$$$$$ onReceive action = "+action);
 	    if (action.equals(Intent.ACTION_SCREEN_OFF) && !(mCall)){//濡傛灉鎺ュ彈鍒板叧闂睆骞曠殑骞挎挱
-		Log.d(TAG, "#######onReceive 555 ");
+		//Log.d(TAG, "#######onReceive 555 ");
 	        mLock.reenableKeyguard();
 	        cancelOperation();	
 		/*
@@ -315,27 +315,27 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
 		PowerManagerWakeLock.release();
 		*/
             } else if (action.equals(Intent.ACTION_SCREEN_ON)) {
-		Log.d(TAG," onReceive  ACTION_SCREEN_ON ");
+		//Log.d(TAG," onReceive  ACTION_SCREEN_ON ");
 		mErrorCount = 0;
 		identifyCredentialREQ(0);
 		/*
 		mKeyguardManager.exitKeyguardSecurely(new OnKeyguardExitResult () {
 		public void onKeyguardExitResult(final boolean success) {
-		Log.d(TAG,"$$$$$$$ onReceive success = "+success);
+		//Log.d(TAG,"$$$$$$$ onReceive success = "+success);
 		}
 		});
 		*/
 		//startNativeFPService();
 	    } else if (action.equals(Intent.ACTION_USER_PRESENT)) {
-                Log.d(TAG," onReceive Intent.ACTION_USER_PRESENT ");
+                //Log.d(TAG," onReceive Intent.ACTION_USER_PRESENT ");
 				mErrorCount = 0;
                 cancelOperation();
 	        } else if (action.equals(ErrorNotifyDialogActivity.ERROR_NOTIFY_DIALOG_FINISH_ACTION)) {
 				if (mErrorCount < FpControllerNative.IDENTIFY_MAX) {
-	                Log.d(TAG," onReceive ERROR_NOTIFY_DIALOG_FINISH_ACTION mErrorCount = "+mErrorCount);
+	                //Log.d(TAG," onReceive ERROR_NOTIFY_DIALOG_FINISH_ACTION mErrorCount = "+mErrorCount);
 					identifyCredentialREQ(0);
 				} else {
-	                Log.d(TAG," onReceive ERROR_NOTIFY_DIALOG_FINISH_ACTION times out of max mErrorCount = "+mErrorCount);
+	                //Log.d(TAG," onReceive ERROR_NOTIFY_DIALOG_FINISH_ACTION times out of max mErrorCount = "+mErrorCount);
 					mErrorCount = 0;
 				}
 			}

@@ -92,7 +92,7 @@ public class LockScreen extends Activity {
         mHandler = new LockScreenHandler();
 		mFpControllerNative = FpControllerNative.getInstance();
 		mFpControllerNative.setHandler(mHandler);
-        //Log.d("[wq]","[wq]:new FpAPIFromJNI\n");        
+        ////Log.d("[wq]","[wq]:new FpAPIFromJNI\n");        
     }
 
 
@@ -112,22 +112,22 @@ public class LockScreen extends Activity {
     }
 
     private void onFingerMatched() {
-	Log.d(TAG, "<<Finger Identify>> Go into <onFingerMatched>");
-        if (DEBUG) Log.d(TAG, "onFingerMatched");
+	//Log.d(TAG, "<<Finger Identify>> Go into <onFingerMatched>");
+        //if (DEBUG) //Log.d(TAG, "onFingerMatched");
         /*
 	Message msg = mHandler.obtainMessage(HIDE);
         mHandler.sendMessage(msg);
 	   //addbylufang
 		if(isFingerLockOn()){
-		    Log.d(TAG, "<<Finger Identify>> in onFingerMatched -- addbylufang Unlock & Deinit bIdentify = "+bIdentify);
+		    //Log.d(TAG, "<<Finger Identify>> in onFingerMatched -- addbylufang Unlock & Deinit bIdentify = "+bIdentify);
 		    if(bIdentify){
 				cancelIdentify(mFpControllerNative.IDENTIFY_INDEX);
 		    }
 		    deinitFPSystem();
-		    Log.d(TAG, "<<Finger Identify>> in onFingerMatched -- after addbylufang deinitFPSystem");
+		    //Log.d(TAG, "<<Finger Identify>> in onFingerMatched -- after addbylufang deinitFPSystem");
 		}
 	  // addbylufang
-	Log.d(TAG, "<<Finger Identify>> exit addbylufang <onFingerMatched>");
+	//Log.d(TAG, "<<Finger Identify>> exit addbylufang <onFingerMatched>");
 	*/
     }
 
@@ -144,7 +144,7 @@ public class LockScreen extends Activity {
 	}
 
 	private void scheduleScreenState(boolean on) {
-		Log.d(TAG, " scheduleScreenState addbylufang on = "+on);
+		//Log.d(TAG, " scheduleScreenState addbylufang on = "+on);
 		mHandler.removeCallbacks(mSendScreenStateOff);
 		if (on) {
 			startScreenOnOff(true);
@@ -157,7 +157,7 @@ public class LockScreen extends Activity {
 		if (on) {
 			// Added by MGao: 2014-05-22				
 			if(isFingerLockOn()){
-				Log.d(TAG, "$$$$$ startScreenOnOff <<Finger Identify>>  -- addbylufang Start FP Thread bIdentify = "+bIdentify);
+				//Log.d(TAG, "$$$$$ startScreenOnOff <<Finger Identify>>  -- addbylufang Start FP Thread bIdentify = "+bIdentify);
 				if (bIdentify) {
 					return;
 				}
@@ -169,21 +169,21 @@ public class LockScreen extends Activity {
 				}
 			} else {
 				bIdentify = false;
-				Log.d(TAG, "$$$$$ startScreenOnOff <<Finger Identify>> -- addbylufang Finger Lock OFF");
+				//Log.d(TAG, "$$$$$ startScreenOnOff <<Finger Identify>> -- addbylufang Finger Lock OFF");
 			}
 			// Added END
-		} else {
+		}// else {
 			// Added by MGao: 2014-05-22
-			if(isFingerLockOn()){
-				Log.d(TAG, "$$$$ startScreenOnOff <<Finger Identify>> -- addbylufang Unlock & Deinit");
-			}
+			//if(isFingerLockOn()){
+				//Log.d(TAG, "$$$$ startScreenOnOff <<Finger Identify>> -- addbylufang Unlock & Deinit");
+			//}
 			// Added END
-		}
+		//}
 	}
 
 	Runnable mSendScreenStateOff = new Runnable() {
 		public void run() {
-			Log.d(TAG, " mSendScreenState addbylufang run ");
+			//Log.d(TAG, " mSendScreenState addbylufang run ");
 			startScreenOnOff(false);
 		}
 	};
@@ -199,24 +199,24 @@ public class LockScreen extends Activity {
  
     
     void IdentifyUserLoop(){
-	Log.d(TAG, "<<Finger Identify>> IdentifyUserLoop addbylufang --- start:" + bIdentify);
+	//Log.d(TAG, "<<Finger Identify>> IdentifyUserLoop addbylufang --- start:" + bIdentify);
 	while(bIdentify){
 		int identifyResult = 1;// = identifyCredentialREQ();
-	    Log.d(TAG, "<<Finger Identify>> --- Result:" + identifyResult);
+	    //Log.d(TAG, "<<Finger Identify>> --- Result:" + identifyResult);
 	    if(identifyResult >= 0){
-			Log.d(TAG, "<<Finger Identify>> --- UNLOCK");
+			//Log.d(TAG, "<<Finger Identify>> --- UNLOCK");
 			bIdentify = false;
 			onFingerMatched();
-			Log.d(TAG, "<<Finger Identify>> after hideLocked");
+			//Log.d(TAG, "<<Finger Identify>> after hideLocked");
 	    } else {
-			Log.d(TAG, "<<Finger Identify>> -- Finger UNMATCHED");
+			//Log.d(TAG, "<<Finger Identify>> -- Finger UNMATCHED");
 			//send msg
 			Intent intent = new Intent();
 			intent.setAction("com.android.internal.policy.impl.PhoneWindowManager.KEYGUARD_UNLOCK");
 		    mContext.sendBroadcast(intent);
 	    }	    
 	}
-	Log.d(TAG, "<<Finger Identify>> IdentifyUserLoop addbylufang --- end");
+	//Log.d(TAG, "<<Finger Identify>> IdentifyUserLoop addbylufang --- end");
 	
     } 
 
