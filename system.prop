@@ -45,7 +45,7 @@ ro.sys.usb.storage.type=mtp,mass_storage
 ro.sys.usb.bicr=no
 
 # USB Charge only function
-ro.sys.usb.charging.only=yes
+# ro.sys.usb.charging.only=yes
 
 # display density
 ro.sf.lcd_density=440

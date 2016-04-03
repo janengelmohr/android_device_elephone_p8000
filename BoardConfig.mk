@@ -336,7 +336,7 @@ BOARD_SEPOLICY_UNION += \
 
 
 # ________________________________________________TWRP_________________________________________________
-RECOVERY_VARIANT := twrp
+# RECOVERY_VARIANT := twrp
 
 TW_THEME := portrait_hdpi
 # brightness settings (needs verification)
