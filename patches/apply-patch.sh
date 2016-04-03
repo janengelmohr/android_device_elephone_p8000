@@ -11,6 +11,7 @@ git apply -v ../../device/elephone/p8000/patches/framework_base/0003-location-st
 git apply -v ../../device/elephone/p8000/patches/framework_base/0004-add-com.mediatek-for-build.patch
 git apply -v ../../device/elephone/p8000/patches/framework_base/0005-Update-for-mtk.patch
 git apply -v ../../device/elephone/p8000/Fingerprint/0001-fingerprint_frameworks_base.patch
+git apply -v ../../device/elephone/p8000/Fingerprint/0002-fingerprint_frameworks_base.patch
 cd ../..
 cd packages/apps/Settings/
 git apply -v ../../../device/elephone/p8000/Fingerprint/0001-fingerprint_packages_apps_settings.patch
