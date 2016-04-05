@@ -125,6 +125,13 @@ PRODUCT_COPY_FILES += \
     	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
     	$(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf
 
+# Thermal
+PRODUCT_COPY_FILES += \
+    	$(LOCAL_PATH)/configs/thermal/thermal.conf:system/etc/.tp/thermal.conf \
+    	$(LOCAL_PATH)/configs/thermal/thermal.off.conf:system/etc/.tp/thermal.off.conf \
+    	$(LOCAL_PATH)/configs/thermal/.ht120.conf:system/etc/.tp/.h120.conf \
+    	$(LOCAL_PATH)/configs/thermal/.thermal_policy_00:system/etc/.tp/.thermal_policy_00
+
 # Charger
 PRODUCT_PACKAGES += \
       	charger_res_images
