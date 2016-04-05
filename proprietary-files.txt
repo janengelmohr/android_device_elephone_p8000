@@ -5,6 +5,7 @@ system/bin/AcdApiDaemon
 system/bin/MtkCodecService
 system/bin/akmd8963
 system/bin/akmd8975
+system/bin/auditd
 system/bin/ami304d
 system/bin/atci_service
 system/bin/atcid
