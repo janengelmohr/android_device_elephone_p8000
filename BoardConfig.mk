@@ -368,4 +368,4 @@ TW_INCLUDE_CRYPTO := true
 # Antiforensic wipe
 BOARD_SUPPRESS_SECURE_ERASE :=  true
 # CPU temp
-# TW_CUSTOM_CPU_TEMP_PATH := XXXXXX ?????
+TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
