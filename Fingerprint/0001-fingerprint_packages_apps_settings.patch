@@ -213,7 +213,7 @@ index 5236abc..f77991d 100644
 + * fingerprint add by sileadinc
 + */
 +                if (mSupportSileadincFp) {
-+                    Toast.makeText(getActivity(), "Fingerprint is not supported", Toast.LENGTH_LONG).show();
++                    Toast.makeText(getActivity(), "Fingerprint unlock is now disabled.", Toast.LENGTH_LONG).show();
 +                    getActivity().sendBroadcast(new  Intent("com.silead.fp.Settings.NONSUPPORT_LOCKSCREEN_ACTIVE"));
 +                }
 +// End of Vanzo:hanshengpeng
@@ -228,7 +228,7 @@ index 5236abc..f77991d 100644
 + * fingerprint add by sileadinc
 + */
 +                if (mSupportSileadincFp) {
-+                    Toast.makeText(getActivity(), "Fingerprint is not supported", Toast.LENGTH_LONG).show();
++                    Toast.makeText(getActivity(), "Fingerprint unlock is now disabled.", Toast.LENGTH_LONG).show();
 +                    getActivity().sendBroadcast(new  Intent("com.silead.fp.Settings.NONSUPPORT_LOCKSCREEN_ACTIVE"));
 +                }
 +// End of Vanzo:hanshengpeng
@@ -243,7 +243,7 @@ index 5236abc..f77991d 100644
 + * fingerprint add by sileadinc
 + */
 +                if (mSupportSileadincFp) {
-+                    Toast.makeText(getActivity(), "Fingerprint is not supported", Toast.LENGTH_LONG).show();
++                    Toast.makeText(getActivity(), "Fingerprint unlock is now disabled.", Toast.LENGTH_LONG).show();
 +                    getActivity().sendBroadcast(new  Intent("com.silead.fp.Settings.NONSUPPORT_LOCKSCREEN_ACTIVE"));
 +                }
 +// End of Vanzo:hanshengpeng
@@ -254,7 +254,7 @@ index 5236abc..f77991d 100644
 + * fingerprint add by sileadinc
 + */
 +                if (mSupportSileadincFp) {
-+                    Toast.makeText(getActivity(), "Fingerprint is not supported", Toast.LENGTH_LONG).show();
++                    Toast.makeText(getActivity(), "Fingerprint unlock is now disabled.", Toast.LENGTH_LONG).show();
 +                    getActivity().sendBroadcast(new  Intent("com.silead.fp.Settings.NONSUPPORT_LOCKSCREEN_ACTIVE"));
 +                }
 +// End of Vanzo:hanshengpeng
@@ -265,7 +265,7 @@ index 5236abc..f77991d 100644
 + * fingerprint add by sileadinc
 + */
 +                if (mSupportSileadincFp) {
-+                    Toast.makeText(getActivity(), "Fingerprint is not supported", Toast.LENGTH_LONG).show();
++                    Toast.makeText(getActivity(), "Fingerprint unlock is now disabled.", Toast.LENGTH_LONG).show();
 +                    getActivity().sendBroadcast(new  Intent("com.silead.fp.Settings.NONSUPPORT_LOCKSCREEN_ACTIVE"));
 +                }
 +// End of Vanzo:hanshengpeng
@@ -355,7 +355,7 @@ index 60de8a7..c364dad 100644
 +/* Vanzo:hanshengpeng on: Thu, 21 May 2015 16:38:59 +0800
 + * fingerprint add by sileadinc
 + */
-+               Toast.makeText(getActivity(), "Fingerprint is not supported", Toast.LENGTH_LONG).show();
++               Toast.makeText(getActivity(), "Fingerprint unlock is now disabled.", Toast.LENGTH_LONG).show();
 +                getActivity().sendBroadcast(new  Intent("com.silead.fp.Settings.NONSUPPORT_LOCKSCREEN_ACTIVE"));
 +            
 +// End of Vanzo:hanshengpeng
