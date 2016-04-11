@@ -168,7 +168,6 @@ BOARD_SEPOLICY_UNION := \
     system_app.te \
     zygote.te \
     aal.te \
-    aee_core_forwarder.te \
     akmd09911.te \
     akmd8963.te \
     akmd8975.te \

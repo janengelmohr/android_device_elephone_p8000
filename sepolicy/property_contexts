@@ -38,19 +38,6 @@ mtk_wifi. u:object_r:mtk_wifi_prop:s0
 #=============allow mdlogger==============
 debug.mdlogger u:object_r:debug_mdlogger_prop:s0
 
-#=============allow AEE==============
-# persist.mtk.aee.mode && persist.mtk.aee.dal
-persist.mtk.aee u:object_r:persist_mtk_aee_prop:s0
-
-# persist.aee.core.dump && persist.aee.core.direct
-persist.aee u:object_r:persist_aee_prop:s0
-
-# debug.mtk.aee.db
-debug.mtk.aee u:object_r:debug_mtk_aee_prop:s0
-
-#=============allow AEE_Dumpstate==============
-debug.bq.dump u:object_r:debug_bq_dump_prop:s0
-
 #=============allow mux==============
 ril.mux.      u:object_r:gsm0710muxd_prop:s0
 

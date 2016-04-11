@@ -41,18 +41,6 @@ allow debuggerd sdcard_internal:file create_file_perms;
 allow debuggerd anr_data_file:dir create_dir_perms;
 allow debuggerd anr_data_file:file create_file_perms;
 
-#data/aee_exp
-allow debuggerd aee_exp_data_file:dir { relabelto create_dir_perms };
-allow debuggerd aee_exp_data_file:file create_file_perms;
-
-#data/dumpsys
-allow debuggerd aee_dumpsys_data_file:dir { relabelto create_dir_perms };
-allow debuggerd aee_dumpsys_data_file:file create_file_perms;
-
-#/data/core
-allow debuggerd aee_core_data_file:dir create_dir_perms;
-allow debuggerd aee_core_data_file:file create_file_perms;
-
 # /data/data_tmpfs_log
 allow debuggerd data_tmpfs_log_file:dir create_dir_perms;
 allow debuggerd data_tmpfs_log_file:file create_file_perms;
@@ -98,11 +86,6 @@ allow debuggerd debugfs:lnk_file read;
 
 allow debuggerd tmpfs:lnk_file read;
 
-
-# aed set property
-allow debuggerd persist_mtk_aee_prop:property_service set;
-allow debuggerd persist_aee_prop:property_service set;
-allow debuggerd debug_mtk_aee_prop:property_service set;
 
 # aee_dumpstate set property
 allow debuggerd debug_bq_dump_prop:property_service set;

@@ -109,13 +109,6 @@ allow platform_app system_app_data_file:file {read write};
 # Package: com.mediatek.voicecommand
 allow platform_app vow_device:chr_file rw_file_perms;
 
-# Date : 2014/11/12
-# Operation : Migration
-# Purpose : MTKLogger need copy db from data folder
-# Package: com.mediatek.mtklogger
-allow platform_app aee_exp_data_file:file r_file_perms;
-allow platform_app aee_exp_data_file:dir r_dir_perms;
-
 # Date : WK14.46
 # Operation : Migration
 # Purpose : for MTK Emulator HW GPU

@@ -131,12 +131,6 @@ allow system_server atci_service:dir add_name;
 allow system_server anr_data_file:dir relabelfrom;
 allow system_server sf_rtt_file:dir relabelto;
 
-# Date: WK14.43
-# Operation : Migration
-# Purpose : for dumpsys
-allow system_server aee_dumpsys_data_file:file write;
-allow system_server aee_exp_data_file:file write;
-
 # Date: WK14.44
 # Operation : Migration
 # Purpose : for debug
@@ -199,11 +193,6 @@ allow system_server sf_rtt_file:file r_file_perms;
 # Operation : MTBF
 # Purpose : for native process backtrace dump
 allow system_server exec_type:file r_file_perms;
-
-# Date: WK14.47
-# Operation : SQC
-# Purpose : for debug
-allow system_server aee_core_data_file:dir r_dir_perms;
 
 # Date: WK14.48
 # Operation : SQC

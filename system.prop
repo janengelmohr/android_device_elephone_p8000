@@ -27,8 +27,6 @@ wifi.tethering.interface=ap0
 
 ro.opengles.version=196608
 
-persist.mtk.aee.aed=on
-
 wifi.direct.interface=p2p0
 dalvik.vm.heapgrowthlimit=256m
 dalvik.vm.heapsize=512m
@@ -162,7 +160,6 @@ ro.mtk_motion_track_support=1
 ro.mtk_slidevideo_support=1
 ro.mtk_bg_power_saving_support=1
 ro.mtk_bg_power_saving_ui=1
-ro.have_aee_feature=1
 ro.sim_me_lock_mode=0
 ro.mtk_voice_extension_support=1
 wfd.dummy.enable=1

@@ -13,10 +13,8 @@ allow surfaceflinger proc:file write;
 allow surfaceflinger shell_exec:file { read execute open execute_no_trans };
 allow surfaceflinger anr_data_file:dir { write search create add_name };
 allow surfaceflinger anr_data_file:file { create write};
-allow surfaceflinger aee_exp_data_file:file write;
 allow surfaceflinger custom_file:dir search;
 binder_call(surfaceflinger, debuggerd)
-allow surfaceflinger aee_dumpsys_data_file:file write;
 allow surfaceflinger RT_Monitor_device:chr_file { read ioctl open };
 
 # for using toolbox

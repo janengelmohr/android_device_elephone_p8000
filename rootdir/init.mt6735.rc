@@ -3,7 +3,6 @@
 
 import init.project.rc
 import init.xlog.rc
-import init.aee.rc
 import init.ssd.rc
 import init.modem.rc
 

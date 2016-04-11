@@ -49,8 +49,6 @@ allow netdiag qtaguid_proc:file { read getattr open };
 allow netdiag self:capability net_admin;
 allow netdiag self:udp_socket create;
 allow netdiag system_file:file execute_no_trans;
-#/system/bin/aee
-#allow netdiag aee_exec:file { read getattr open execute execute_no_trans };
 
 #ping
 allow netdiag dnsproxyd_socket:sock_file write;

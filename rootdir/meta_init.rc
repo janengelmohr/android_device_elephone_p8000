@@ -4,7 +4,6 @@
 # This is a common source of Android security bugs.
 #
 
-import init.aee.rc
 import init.trustonic.rc
 
 on early-init

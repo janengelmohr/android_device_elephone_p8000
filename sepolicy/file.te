@@ -89,13 +89,6 @@ type logmisc_data_file, file_type, data_file_type;
 #mobilelog data/log_temp
 type logtemp_data_file, file_type, data_file_type; 
 
-# NE core_forwarder
-type aee_core_data_file, file_type, data_file_type;
-
-# AEE exp
-type aee_exp_data_file, file_type, data_file_type;
-type aee_dumpsys_data_file, file_type, data_file_type;
-
 # SF bqdump
 type sf_bqdump_data_file, file_type, data_file_type;
 

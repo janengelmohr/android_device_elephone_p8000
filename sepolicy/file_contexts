@@ -7,15 +7,12 @@
 ##############################
 # Data files
 #
-/data/aee_exp(/.*)?  u:object_r:aee_exp_data_file:s0
 /data/agps_supl(/.*)?    u:object_r:agpsd_data_file:s0
 /data/anr/SF_RTT(/.*)? u:object_r:sf_rtt_file:s0
 /data/app/mcRegistry(/.*)? u:object_r:mobicore_data_file:s0
 /data/@btmtk(/.*)?       u:object_r:bt_data_file:s0
 /data/ccci_cfg(/.*)? u:object_r:ccci_cfg_file:s0
-/data/core(/.*)? u:object_r:aee_core_data_file:s0
 /data/dontpanic(/.*)? u:object_r:dontpanic_data_file:s0
-/data/dumpsys(/.*)?    u:object_r:aee_dumpsys_data_file:s0
 /data/extmdl(/.*)? u:object_r:mdlog_data_file:s0
 /data/http-proxy-cfg(/.*)? u:object_r:http_proxy_cfg_data_file:s0
 /data/log_temp(/.*)? u:object_r:logtemp_data_file:s0
@@ -306,7 +303,6 @@
 /system/app/mcRegistry(/.*)? u:object_r:mobicore_data_file:s0
 /system/bin/6620_launcher u:object_r:mtk_6620_launcher_exec:s0
 /system/bin/aal u:object_r:aal_exec:s0
-/system/bin/aee_core_forwarder u:object_r:aee_core_forwarder_exec:s0
 /system/bin/akmd09911 u:object_r:akmd09911_exec:s0
 /system/bin/akmd8963 u:object_r:akmd8963_exec:s0
 /system/bin/akmd8975 u:object_r:akmd8975_exec:s0

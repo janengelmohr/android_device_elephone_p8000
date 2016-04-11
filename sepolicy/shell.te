@@ -8,7 +8,6 @@
 allow shell mtk_6620_launcher_exec:file rx_file_perms;
 allow shell GoogleOtaBinder_exec:file rx_file_perms;
 allow shell MtkCodecService_exec:file rx_file_perms;
-allow shell aee_core_forwarder_exec:file rx_file_perms;
 allow shell akmd8963_exec:file rx_file_perms;
 allow shell akmd8975_exec:file rx_file_perms;
 allow shell ami304d_exec:file rx_file_perms;
@@ -107,7 +106,3 @@ allow shell su_exec:file rx_file_perms;
 # Operation : Migration
 # Purpose : for MTK Emulator HW GPU
 allow shell qemu_pipe_device:chr_file rw_file_perms;
-
-# GAT ls /data/aee_exp/db.xxxx
-allow shell aee_exp_data_file:dir r_dir_perms;
-allow shell aee_exp_data_file:file r_file_perms;

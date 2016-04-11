@@ -38,10 +38,6 @@ allow adbd tmpfs:lnk_file read;
 # Purpose : for MTK Emulator HW GPU
 allow adbd qemu_pipe_device:chr_file rw_file_perms;
 
-# user load adb pull /data/aee_exp db
-allow adbd aee_exp_data_file:dir r_dir_perms;
-allow adbd aee_exp_data_file:file r_file_perms;
-
 # call screencap by DDMS
 allow adbd surfaceflinger:dir search;
 allow adbd surfaceflinger:file r_file_perms;

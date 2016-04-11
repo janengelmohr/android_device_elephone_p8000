@@ -71,8 +71,6 @@ allow vold logmisc_data_file:dir { read open getattr search};
 allow vold logmisc_data_file:file { read getattr open };
 allow vold mdlog_data_file:dir { read open getattr search};
 allow vold mdlog_data_file:file { read getattr open };
-allow vold aee_exp_data_file:dir { read open getattr search};
-allow vold aee_exp_data_file:file { read getattr open };
 allow vold data_tmpfs_log_file:dir { setattr getattr read create write rmdir relabelto remove_name open add_name search};
 allow vold data_tmpfs_log_file:file { write setattr getattr relabelto create unlink open };
 # mount crypto block device to /data/tmp_mnt/data_tmpfs_log and restorecon

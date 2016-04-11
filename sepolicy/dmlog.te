@@ -25,5 +25,4 @@ allow dmlog debuggerd:unix_stream_socket { read write };
 allow dmlog expdb_device:chr_file { read write };
 allow dmlog fuse:file { write getattr };
 allow dmlog sysfs:file write;
-allow dmlog aee_exp_data_file:file write;
 allow dmlog platformblk_device:blk_file { read write };

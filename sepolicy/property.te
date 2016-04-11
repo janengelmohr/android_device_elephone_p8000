@@ -43,14 +43,6 @@ type mtk_wifi_prop, property_type;
 #=============allow mdlogger==============
 type debug_mdlogger_prop, property_type;
 
-#=============allow AEE==============
-type persist_mtk_aee_prop, property_type;
-type persist_aee_prop, property_type;
-type debug_mtk_aee_prop, property_type;
-
-#=============allow aee_dumpstate==============
-type debug_bq_dump_prop, property_type;
-
 #=============allow ccci_mdinit to stop rild==============
 type ctl_ril-daemon-mtk_prop, property_type;
 type ctl_ril-daemon-s_prop, property_type;
