@@ -259,13 +259,13 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
         timeoutWakeLock.acquire(5000);
         if (mErrorCount >= FpControllerNative.IDENTIFY_MAX) {
         //mErrorCount = 0;
-        msg = "Identify Error times:"+mErrorCount+"/"+FpControllerNative.IDENTIFY_MAX+";you must unlock manually";
+        msg = "You have to unlock the device manually.";
         showIdentifyError(mErrorCount, msg, UNMATCH_DIALOG_MAX_TIMEOUT);
 			return;
 		} else {
 			//Log.d(TAG,"onIdentifyError");
 		
-			msg = "Identify Error times:"+mErrorCount+"/"+FpControllerNative.IDENTIFY_MAX+";Please try again!";
+			msg = "Could not identify. Please try again. ["+mErrorCount+"/"+FpControllerNative.IDENTIFY_MAX+"]";
 			showIdentifyError(mErrorCount, msg, UNMATCH_DIALOG_NORMAL_TIMEOUT);
 	        mHandler.postDelayed(new Runnable() {
 	            public void run() {  
