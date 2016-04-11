@@ -131,7 +131,7 @@ public class FpControllerNative {
 	public static final int IDENTIFY_ERR_MATCH = -3;
 	public static final int IDENTIFY_ERROR = -4;
 	public static final int IDENTIFY_FAIL = -5;
-	public static final int IDENTIFY_MAX = 5;
+	public static final int IDENTIFY_MAX = 10;
 
 	public static final int IDENTIFY_INDEX = 2;
     public static final int IDENTIFY_CREDENTIAL_RSP = 0;
