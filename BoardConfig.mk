@@ -275,7 +275,6 @@ BOARD_SEPOLICY_UNION += \
 	bluetooth.te \
 	bootanim.te \
 	clatd.te \
-	debuggerd.te \
 	drmserver.te \
 	dhcp.te \
 	dnsmasq.te \
