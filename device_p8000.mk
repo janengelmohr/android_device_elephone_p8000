@@ -64,24 +64,6 @@ PRODUCT_COPY_FILES += \
     	$(LOCAL_PATH)/configs/android.hardware.microphone.xml:system/etc/permissions/android.hardware.microphone.xml \
     	$(LOCAL_PATH)/configs/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
 	$(LOCAL_PATH)/configs/platform.xml:system/etc/permissions/platform.xml
-    
-# CM's Snap camera
-PRODUCT_PACKAGES += \
-	Snap
-
-
-# Bluetooth
-PRODUCT_PACKAGES += \
-	libbt-vendor
-
-# Wifi
-PRODUCT_PACKAGES += \
-    	libwpa_client \
-    	hostapd \
-    	dhcpcd.conf \
-    	wpa_supplicant \
-    	wpa_supplicant.conf
-
 # Audio
 PRODUCT_PACKAGES += \
     	audio.a2dp.default \
@@ -145,11 +127,6 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_COPY_FILES += \
      	$(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml 
-
-# FM Radio
-PRODUCT_PACKAGES += \
-     	FMRadio \
-     	libfmjni
 
 # Media	
 PRODUCT_COPY_FILES += \
