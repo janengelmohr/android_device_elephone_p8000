@@ -122,6 +122,9 @@ TARGET_CPU_MEMCPY_OPT_DISABLE := true
 MTK_FM_SUPPORT := yes
 MTK_FM_RX_SUPPORT := yes
 
+#twrp ( just started )
+TWRP_THEME := portrait_hdpi
+
 #Mediatek flags
 BOARD_HAS_MTK_HARDWARE := true
 MTK_HARDWARE := true
