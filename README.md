@@ -10,16 +10,16 @@ Initialize a repository with CyanogenMode:
 
 Optinally use a specific manifest (not a tip):
 
-    repo init -u git://github.com/divis1969/android.git -b meilan2 -m meilan2-cm-12.1-v0.8.xml
+    repo init -u git://github.com/divis1969/android.git -b meilan2 -m meilan2-cm-12.1-v0.9.xml
 
-Note: 5 more Cyanogen repositories were forked since v0.2, so if you will encounter an error while syncing on top
+Note: 6 more Cyanogen repositories were forked since v0.2, so if you will encounter an error while syncing on top
 of exiting tree, use the suggestion from the error log (sync those repos with --force-sync) 
 
 Build the code:
 
     source build/envsetup.sh
     breakfast meilan2
-    mka bacon 2>&1 | tee build.log
+    make -j 4 bacon showcommands 2>&1 | tee build.log
 
 Flash the phone:
 https://github.com/divis1969/android_device_meizu_meilan2/wiki/%D0%9F%D1%80%D0%BE%D1%88%D0%B8%D0%B2%D0%BA%D0%B0-%D1%82%D0%B5%D0%BB%D0%B5%D1%84%D0%BE%D0%BD%D0%B0
@@ -50,6 +50,13 @@ All issues: https://github.com/divis1969/android_device_meizu_meilan2/issues
 
 Change log
 ----------
+
+### v0.9
+- Fixed an issue mounting USB OTG storage
+- Enabled Doze display mode
+- Implemented support of OTA package provisioning via plain text file
+- Increased polling period for accelerometer for screen orientation
+- Upmerge to the tip of cm-12.1
 
 ### v0.8
 - Fixed an issue with moving apps to SD card
