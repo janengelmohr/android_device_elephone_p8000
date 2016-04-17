@@ -1,7 +1,5 @@
 ifeq ($(MTK_FM_SUPPORT), yes)
 
-$(warning [FM]starting to build autofm)  
-
 BUILD_FMTEST  := true
 FM_TOOL_BUILD_DEAMON := false
 

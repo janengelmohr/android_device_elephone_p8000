@@ -25,5 +25,4 @@ LOCAL_PATH := $(call my-dir)
 # if some modules are built directly from this directory (not subdirectories),
 # their rules should be written here.
 
-$(warning [FM]starting to build fm radio part...)  
 include $(call all-subdir-makefiles)
