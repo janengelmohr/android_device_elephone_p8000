@@ -1236,31 +1236,6 @@ service mc64xxd /system/bin/mc64xxd
 #sensor service (end)
 #
 
-#
-#emsvr service (start)
-#
-on property:ro.build.type=eng
-    start emsvr
-
-on property:ro.build.type=user
-    start emsvr_user
-
-on property:ro.build.type=userdebug
-    start emsvr_user
-
-service emsvr_user /system/bin/em_svr
-    disabled
-    user system
-    group system radio diag
-
-service emsvr /system/bin/em_svr
-    disabled
-    user root
-
-#
-#emsvr service (end)
-#
-
 service shutdown /system/bin/shutdown
     user root
     group root
