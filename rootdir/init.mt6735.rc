@@ -778,9 +778,6 @@ service bootlogoupdater /system/bin/boot_logo_updater
     class core
     oneshot
 
-service mobile_log_d /system/bin/mobile_log_d
-    class main
-
 service met_log_d /system/bin/met_log_d
     class main
     # Refer to http://source.android.com/devices/tech/storage/index.html
@@ -1139,64 +1136,6 @@ service mnld /system/xbin/mnld
     user gps
     group gps inet misc sdcard_rw sdcard_r media_rw system
     socket mnld stream 660 gps system
-
-service ipod /system/bin/ipod
-    user root
-    group root
-    disabled
-
-service extmdlogger /system/bin/extmdlogger
-    class main
-    user shell
-    group shell system radio sdcard_rw inet sdcard_r media_rw
-
-service GoogleOtaAgent /system/bin/GoogleOtaBinder
-    class main
-    user system
-    group system
-
-service mdlogger /system/bin/mdlogger
-    class main
-    user shell
-    group shell system radio sdcard_rw inet sdcard_r media_rw
-    disabled
-    oneshot
-
-service dualmdlogger /system/bin/dualmdlogger
-    class main
-    user shell
-    group shell system radio sdcard_rw inet sdcard_r media_rw
-    disabled
-    oneshot
-
-service emdlogger1 /system/bin/emdlogger1
-    class main
-    user shell
-    group system shell radio sdcard_rw inet sdcard_r media_rw
-    disabled
-    oneshot
-
-service emdlogger2 /system/bin/emdlogger2
-    class main
-    user shell
-    group system shell radio sdcard_rw inet sdcard_r media_rw
-    disabled
-    oneshot
-
-service emdlogger5 /system/bin/emdlogger5
-    class main
-    user shell
-    group system shell radio sdcard_rw inet sdcard_r media_rw
-    disabled
-    oneshot
-
-service emdlogger6 /system/bin/emdlogger6
-    class main
-    user shell
-    group system shell radio sdcard_rw inet sdcard_r media_rw
-    disabled
-    oneshot
-
 #
 #sensor service (begin)
 #
