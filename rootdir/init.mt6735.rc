@@ -1305,18 +1305,6 @@ service guiext-server /system/bin/guiext-server
     user system
     group system graphics
 
-# OperaMax Service
-service OperaMaxSystem /system/bin/OperaMaxSystem
-    socket tunman stream 0666 system system
-    class main
-    disabled
-
-on property:persist.service.operamax=1
-    start OperaMaxSystem
-
-on property:persist.service.operamax=0
-    stop OperaMaxSystem
-
 service kpoc_charger /system/bin/kpoc_charger
     class charger
 
