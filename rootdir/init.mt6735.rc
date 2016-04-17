@@ -866,12 +866,6 @@ service aal /system/bin/aal
     user system
     group system graphics
 
-# FOTA upgrade
-service rbfota /system/bin/fota1
-    class main
-    disabled
-    oneshot
-
 #
 # MTK Wi-Fi related services (Begin)
 #
