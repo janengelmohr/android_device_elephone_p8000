@@ -207,7 +207,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 $(call inherit-product, build/target/product/full.mk)
 
 ADDITIONAL_DEFAULT_PROPERTIES += \
-	ro.secure=1 \
+	ro.secure=0 \
 	ro.allow.mock.location=1 \
 	ro.debuggable=0 \
 	ro.adb.secure=1 \
