@@ -2,7 +2,7 @@ on init
 
 sysclktz 0
 
-loglevel 5
+loglevel 0
 
 # Backward compatibility
     symlink /system/etc /etc
