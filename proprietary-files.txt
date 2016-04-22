@@ -11,7 +11,7 @@ lib/libbtstd.so
 lib64/libbtstd.so
 lib/libextsys.so
 lib64/libextsys.so
-app/MtkBt/MtkBt.apk
+#app/MtkBt/MtkBt.apk
 lib64/libbluetoothem_mtk.so
 lib64/libbluetooth_mtk.so
 lib/libbluetooth_mtk.so
