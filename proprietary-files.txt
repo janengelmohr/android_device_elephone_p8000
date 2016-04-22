@@ -106,6 +106,8 @@ lib/libsfb.so
 lib64/libsfb.so
 lib/libdngop.so
 lib64/libdngop.so
+lib/librender_engine.so
+lib64/librender_engine.so
 #DRM
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libWVStreamControlAPI_L3.so
@@ -485,3 +487,7 @@ lib/libvp9dec_sa.ca7.so
 
 lib/libcfgdevparam.so # MODULE
 lib64/libcfgdevparam.so # MODULE
+
+app/Camera/Camera.apk # MODULE
+app/Camera/lib/arm/libDocVfbEngineLib_m81.so # MODULE
+app/Camera/lib/arm/libpanorama.so # MODULE

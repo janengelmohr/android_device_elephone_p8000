@@ -90,7 +90,8 @@ PRODUCT_COPY_FILES += \
 
 # Audio componets from source
 PRODUCT_PACKAGES += \
-    EngineerMode
+    EngineerMode \
+    MtkCamera libDocVfbEngineLib_m81 libpanorama
 
 PRODUCT_EXTRA_RECOVERY_KEYS += device/meizu/meilan2/meizu
 
