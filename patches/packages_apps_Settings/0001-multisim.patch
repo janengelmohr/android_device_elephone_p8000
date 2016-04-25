@@ -1,0 +1,71 @@
+commit a30f5239dedbd4d6fe3e0035cfa9fd1e535adc0a
+Author: Jan Engelmohr <jan.engelmohr@mailbox.tu-dresden.de>
+Date:   Mon Apr 25 18:25:38 2016 +0200
+
+    first shots at multiSIM disabling
+    
+    Change-Id: Ifbfbdaf644c327d421632af8a306d171bae9818b
+
+diff --git a/src/com/android/settings/sim/MultiSimEnablerPreference.java b/src/com/android/settings/sim/MultiSimEnablerPreference.java
+index a7fbf7d..81d95e0 100644
+--- a/src/com/android/settings/sim/MultiSimEnablerPreference.java
++++ b/src/com/android/settings/sim/MultiSimEnablerPreference.java
+@@ -42,6 +42,8 @@ import android.graphics.drawable.ShapeDrawable;
+ import android.graphics.drawable.shapes.OvalShape;
+ import android.os.Handler;
+ import android.os.Message;
++import android.os.RemoteException;
++import android.os.ServiceManager;
+ import android.preference.Preference;
+ import android.preference.SwitchPreference;
+ import android.provider.Settings;
+@@ -64,6 +66,7 @@ import android.widget.Toast;
+ 
+ import com.android.internal.telephony.SubscriptionController;
+ import com.android.internal.telephony.TelephonyIntents;
++import com.android.internal.telephony.ITelephony;
+ import com.android.settings.R;
+ import com.android.settings.Utils;
+ 
+@@ -99,6 +102,7 @@ public class MultiSimEnablerPreference extends SwitchPreference implements
+     private boolean mExplicitlyDisabled = false;
+ 
+     private SubscriptionManager mSubscriptionManager;
++    private ITelephony mITelephony;
+ 
+     private int[] mTintArr;
+     private String[] mColorStrings;
+@@ -115,6 +119,7 @@ public class MultiSimEnablerPreference extends SwitchPreference implements
+         mTintArr = context.getResources().getIntArray(com.android.internal.R.array.sim_colors);
+         mColorStrings = context.getResources().getStringArray(R.array.color_picker);
+         mTintSelectorPos = 0;
++	mITelephony = ITelephony.Stub.asInterface(ServiceManager.getService(Context.TELEPHONY_SERVICE));
+ 
+         setOnPreferenceChangeListener(this);
+         setPersistent(false);
+@@ -354,6 +359,17 @@ public class MultiSimEnablerPreference extends SwitchPreference implements
+         Toast.makeText(getContext(), textResId, Toast.LENGTH_LONG).show();
+     }
+ 
++    private void setRadioStateForSpecificSIM(boolean checked, int subscriberID) {
++	if(subscriberID != SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
++		try {
++			mITelephony.setRadioForSubscriber(subscriberID, checked);
++		}
++		catch (RemoteException re) {
++			re.printStackTrace();
++		}
++	}
++    }
++
+     private void sendSubConfigurationRequest(boolean enable) {
+         if (mParentHandler == null) {
+             return;
+@@ -361,6 +377,7 @@ public class MultiSimEnablerPreference extends SwitchPreference implements
+         mTargetState = enable;
+ 
+         showProgressDialog(enable);
++	setRadioStateForSpecificSIM(enable, mSir.getSubscriptionId());
+         if (enable) {
+             SubscriptionManager.activateSubId(mSir.getSubscriptionId());
+         } else {
