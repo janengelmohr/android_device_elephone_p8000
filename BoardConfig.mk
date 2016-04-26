@@ -110,26 +110,6 @@ TW_MAX_BRIGHTNESS := 255
 # accept Lollipop SEPolicies
 POLICYVERS := 29
 
-#may be usefull if we get graphical glitches
-#RECOVERY_GRAPHICS_USE_LINELENGTH := true
+# do not check sensors for CM 13
+TARGET_NO_SENSOR_PERMISSION_CHECK := true
 
-#in case of wrong color this needs modification
-#TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-
-#if sdcard0 is a /data/media emulated one
-#RECOVERY_SDCARD_ON_DATA := true
-
-#ntfs support? (needs much space..)
-#TW_INCLUDE_NTFS_3G := true
-
-#we may need that if sdcard0 dont work
-#TW_FLASH_FROM_STORAGE := true
-#TW_EXTERNAL_STORAGE_PATH := "/external_sd"
-#TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-#TW_DEFAULT_EXTERNAL_STORAGE := true
-
-#only add if kernel supports
-#TW_INCLUDE_FUSE_EXFAT := true
-
-#F2FS support (only activate if kernel supports)
-#TARGET_USERIMAGES_USE_F2FS:=true
