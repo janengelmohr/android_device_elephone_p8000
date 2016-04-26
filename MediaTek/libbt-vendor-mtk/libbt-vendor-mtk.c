@@ -56,13 +56,13 @@ void hw_config_cback(HC_BT_HDR *p_evt_buf);
  * *******************************************************************************/
 void hw_config_cback(HC_BT_HDR *p_evt_buf)
 {
-  ALOGI("hw_config_cback");
+  //ALOGI("hw_config_cback");
 }
 
 int mtk_init(const bt_vendor_callbacks_t* p_cb, unsigned char *local_bdaddr) {
   const char *dlerrors;
 
-  ALOGI("libbt-vendor init for MTK blob");
+  //ALOGI("libbt-vendor init for MTK blob");
 
   if (p_cb == NULL)
     {
@@ -91,7 +91,7 @@ int mtk_init(const bt_vendor_callbacks_t* p_cb, unsigned char *local_bdaddr) {
 }
 
 void mtk_cleanup(void) {
-  ALOGI("vendor cleanup");
+  //ALOGI("vendor cleanup");
   bt_vendor_cbacks = NULL;
 
   if (mtklib_handle) {

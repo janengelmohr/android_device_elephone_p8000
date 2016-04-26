@@ -75,7 +75,7 @@ public class FingerAdapter extends BaseAdapter {
         final TextView textView = (TextView) view.findViewById(R.id.name);
         holder.iv = (ImageView) view.findViewById(R.id.iv_over);
         String fp_name = mfingerlist.get(pos).getFingerName();
-		Log.d(TAG, "getView fp_name = "+fp_name);
+		//Log.d(TAG, "getView fp_name = "+fp_name);
         textView.setText(fp_name);
        	CheckBox enableBox = (CheckBox) view.findViewById(R.id.enable);
        	int enrollIndex = mfingerlist.get(pos).enrollIndex;
@@ -95,7 +95,7 @@ public class FingerAdapter extends BaseAdapter {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				// TODO Auto-generated method stub
-				Log.d(TAG, "onCheckedChanged isChecked = "+isChecked);
+				//Log.d(TAG, "onCheckedChanged isChecked = "+isChecked);
 				if(isChecked){
 					mfingerlist.get(pos).setEnable(1);
 					int enrollIndex = mfingerlist.get(pos).enrollIndex;

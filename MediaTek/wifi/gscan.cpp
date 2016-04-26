@@ -108,8 +108,8 @@ public:
     }
 
     virtual int create() {
-        ALOGD("[WIFI HAL]Creating message to get scan capablities; handle=%p, iface=%d, ifname=%s", 
-			mIfaceInfo->handle, mIfaceInfo->id, mIfaceInfo->name);
+        //ALOGD("[WIFI HAL]Creating message to get scan capablities; handle=%p, iface=%d, ifname=%s", 
+	//		mIfaceInfo->handle, mIfaceInfo->id, mIfaceInfo->name);
 		
         int ret = mMsg.create(GOOGLE_OUI, GSCAN_SUBCMD_GET_CAPABILITIES);
         if (ret < 0) {
@@ -122,10 +122,10 @@ public:
 protected:
     virtual int handleResponse(WifiEvent& reply) {
 
-        ALOGD("In GetCapabilities::handleResponse");
+        //ALOGD("In GetCapabilities::handleResponse");
 
         if (reply.get_cmd() != NL80211_CMD_VENDOR) {
-            ALOGD("Ignoring reply with cmd = %d", reply.get_cmd());
+            //ALOGD("Ignoring reply with cmd = %d", reply.get_cmd());
             return NL_SKIP;
         }
 
@@ -143,15 +143,15 @@ protected:
 			len -= NLA_HDRLEN;
 		}
 
-        ALOGD("wiphy_id=%d, if_id=%d, Id = %0x, subcmd = %d, len = %d, expected len = %d", wiphy_id, if_id, id, subcmd, len,
-                    sizeof(*mCapabilities));
+        //ALOGD("wiphy_id=%d, if_id=%d, Id = %0x, subcmd = %d, len = %d, expected len = %d", wiphy_id, if_id, id, subcmd, len,
+        //            sizeof(*mCapabilities));
 		if(payload)
         	memcpy(mCapabilities, payload, min(len, (int) sizeof(*mCapabilities)));
 
-		ALOGI("%s: max_scan_cache_size=%d, %d, %d, %d, %d, %d, %d, max_bssid_history_entries=%d", __func__,
-			mCapabilities->max_scan_cache_size, mCapabilities->max_scan_buckets, mCapabilities->max_ap_cache_per_scan,
-			mCapabilities->max_rssi_sample_size, mCapabilities->max_scan_reporting_threshold, mCapabilities->max_hotlist_aps,
-			mCapabilities->max_significant_wifi_change_aps, mCapabilities->max_bssid_history_entries);
+		//ALOGI("%s: max_scan_cache_size=%d, %d, %d, %d, %d, %d, %d, max_bssid_history_entries=%d", __func__,
+		//	mCapabilities->max_scan_cache_size, mCapabilities->max_scan_buckets, mCapabilities->max_ap_cache_per_scan,
+		//	mCapabilities->max_rssi_sample_size, mCapabilities->max_scan_reporting_threshold, mCapabilities->max_hotlist_aps,
+		//	mCapabilities->max_significant_wifi_change_aps, mCapabilities->max_bssid_history_entries);
 
         return NL_OK;
     }
@@ -168,7 +168,7 @@ wifi_error wifi_get_gscan_capabilities(wifi_interface_handle handle,
         GetCapabilitiesCommand command(handle, capabilities);
         return (wifi_error) command.requestResponse();
     } else {
-        ALOGD("[WIFI HAL]don't support wifi_get_gscan_capabilities");
+        //ALOGD("[WIFI HAL]don't support wifi_get_gscan_capabilities");
         return WIFI_ERROR_NOT_SUPPORTED;
     }
 }
@@ -188,7 +188,7 @@ public:
         memset(channels, 0, sizeof(wifi_channel) * max_channels);
     }
     virtual int create() {
-        ALOGD("[WIFI HAL]Creating message to get channel list; iface = %d", mIfaceInfo->id);
+        //ALOGD("[WIFI HAL]Creating message to get channel list; iface = %d", mIfaceInfo->id);
 
         int ret = mMsg.create(GOOGLE_OUI, GSCAN_SUBCMD_GET_CHANNEL_LIST);
         if (ret < 0) {
@@ -209,10 +209,10 @@ public:
 protected:
     virtual int handleResponse(WifiEvent& reply) {
 
-        ALOGD("[WIFI HAL]In GetChannelList::handleResponse");
+        //ALOGD("[WIFI HAL]In GetChannelList::handleResponse");
 
         if (reply.get_cmd() != NL80211_CMD_VENDOR) {
-            ALOGD("Ignoring reply with cmd = %d", reply.get_cmd());
+            //ALOGD("Ignoring reply with cmd = %d", reply.get_cmd());
             return NL_SKIP;
         }
 
@@ -223,7 +223,7 @@ protected:
         nlattr *vendor = reply.get_attribute(NL80211_ATTR_VENDOR_DATA);
         int len = reply.get_vendor_data_len();
 
-        ALOGD("Id = %0x, subcmd = %d, len = %d", id, subcmd, len);
+        //ALOGD("Id = %0x, subcmd = %d, len = %d", id, subcmd, len);
         if (vendor == NULL || len == 0) {
             ALOGE("no vendor data in GetChannelList response; ignoring it");
             return NL_SKIP;
@@ -232,14 +232,14 @@ protected:
         for (nl_iterator it(vendor); it.has_next(); it.next()) {
             if (it.get_type() == GSCAN_ATTRIBUTE_NUM_CHANNELS) {
                 num_channels_to_copy = it.get_u32();
-                ALOGI("Got channel list with %d channels", num_channels_to_copy);
+                //ALOGI("Got channel list with %d channels", num_channels_to_copy);
                 if(num_channels_to_copy > max_channels)
                     num_channels_to_copy = max_channels;
                 *num_channels = num_channels_to_copy;
             } else if (it.get_type() == GSCAN_ATTRIBUTE_CHANNEL_LIST && num_channels_to_copy) {
                 memcpy(channels, it.get_data(), sizeof(int) * num_channels_to_copy);
                 if(channels)
-                    ALOGD("channel[0]=%d, ", channels[0]);
+                    //ALOGD("channel[0]=%d, ", channels[0]);
             } else {
                 ALOGW("Ignoring invalid attribute type = %d, size = %d",
                         it.get_type(), it.get_len());
@@ -269,7 +269,7 @@ static int parseScanResults(wifi_scan_result *results, int num, nlattr *attr)
     for (nl_iterator it(attr); it.has_next() && i < num; it.next(), i++) {
 
         int index = it.get_type();
-        ALOGI("retrieved scan result %d", index);
+        //ALOGI("retrieved scan result %d", index);
         nlattr *sc_data = (nlattr *) it.get_data();
         wifi_scan_result *result = results + i;
 
@@ -368,7 +368,7 @@ public:
     }
 
     virtual int cancel() {
-        ALOGD("Disabling Full scan results");
+        //ALOGD("Disabling Full scan results");
 
         WifiRequest request(familyId(), ifaceId());
         int result = createRequest(request, GSCAN_SUBCMD_ENABLE_FULL_SCAN_RESULTS, 0);
@@ -386,13 +386,13 @@ public:
     }
 
     virtual int handleResponse(WifiEvent& reply) {
-         ALOGD("Request complete!");
+         //ALOGD("Request complete!");
         /* Nothing to do on response! */
         return NL_SKIP;
     }
 
     virtual int handleEvent(WifiEvent& event) {
-        ALOGD("[WIFI HAL]Full scan results:  Got an event");
+        //ALOGD("[WIFI HAL]Full scan results:  Got an event");
 
         // event.log();
 
@@ -404,7 +404,7 @@ public:
             return NL_SKIP;
         }
 
-        ALOGD("vendor_data->nla_type=%d nla_len=%d, len=%d",
+        //ALOGD("vendor_data->nla_type=%d nla_len=%d, len=%d",
             vendor_data->nla_type, vendor_data->nla_len, len);
 
         wifi_scan_result *result = NULL;
@@ -416,16 +416,16 @@ public:
 
 		if(result)
         {
-            ALOGI("FullScanResults SSID: %-32s\t", result->ssid);
+            //ALOGI("FullScanResults SSID: %-32s\t", result->ssid);
 
-            ALOGI("%02x:%02x:%02x:%02x:%02x:%02x ", result->bssid[0], result->bssid[1],
-                    result->bssid[2], result->bssid[3], result->bssid[4], result->bssid[5]);
+            //ALOGI("%02x:%02x:%02x:%02x:%02x:%02x ", result->bssid[0], result->bssid[1],
+            //        result->bssid[2], result->bssid[3], result->bssid[4], result->bssid[5]);
 
-            ALOGI("%d\t", result->rssi);
-            ALOGI("%d\t", result->channel);
-            ALOGI("%lld\t", result->ts);
-            ALOGI("%lld\t", result->rtt);
-            ALOGI("%lld\n", result->rtt_sd);
+            //ALOGI("%d\t", result->rssi);
+            //ALOGI("%d\t", result->channel);
+            //ALOGI("%lld\t", result->ts);
+            //ALOGI("%lld\t", result->rtt);
+            //ALOGI("%lld\n", result->rtt_sd);
         }
 
         return NL_SKIP;
@@ -530,7 +530,7 @@ public:
         int num_scans = 20;
         for (int i = 0; i < mParams->num_buckets; i++) {
             if (mParams->buckets[i].report_events == 1) {
-                ALOGD("Setting num_scans to 1");
+                //ALOGD("Setting num_scans to 1");
                 num_scans = 1;
                 break;
             }
@@ -556,7 +556,7 @@ public:
     int enableFullScanResultsIfRequired() {
         /* temporary workaround till we have full support for per bucket scans */
 
-        ALOGD("enabling full scan results if needed");
+        //ALOGD("enabling full scan results if needed");
         int nBuckets = 0;
         for (int i = 0; i < mParams->num_buckets; i++) {
             if (mParams->buckets[i].report_events == 2) {
@@ -570,10 +570,10 @@ public:
                 ALOGE("failed to enable full scan results");
                 return result;
             } else {
-                ALOGD("successfully enabled full scan results");
+                //ALOGD("successfully enabled full scan results");
             }
         } else {
-            ALOGD("mGlobalFullScanBuckets = %d, nBuckets = %d", mGlobalFullScanBuckets, nBuckets);
+            //ALOGD("mGlobalFullScanBuckets = %d, nBuckets = %d", mGlobalFullScanBuckets, nBuckets);
         }
 
         mLocalFullScanBuckets = nBuckets;
@@ -592,9 +592,9 @@ public:
         if (mGlobalFullScanBuckets == 0) {
             int result = wifi_disable_full_scan_results(0x1000, ifaceHandle());
             if (result != WIFI_SUCCESS) {
-                ALOGI("failed to disable full scan results");
+                //ALOGI("failed to disable full scan results");
             } else {
-                ALOGI("successfully disable full scan results");
+                //ALOGI("successfully disable full scan results");
             }
         }
 
@@ -602,7 +602,7 @@ public:
     }
 
     int start() {
-        ALOGD("1) GScan Setting configuration: ");
+        //ALOGD("1) GScan Setting configuration: ");
         WifiRequest request(familyId(), ifaceId());
         int result = createSetupRequest(request);
         if (result != WIFI_SUCCESS) {
@@ -630,7 +630,7 @@ public:
             return result;
         }
 
-        ALOGD("2) Enable GScan: ");
+        //ALOGD("2) Enable GScan: ");
 
         result = createStartRequest(request);
         if (result != WIFI_SUCCESS) {
@@ -654,7 +654,7 @@ public:
     }
 
     virtual int cancel() {
-        ALOGD("Stopping scan");
+        //ALOGD("Stopping scan");
 
         WifiRequest request(familyId(), ifaceId());
         int result = createStopRequest(request);
@@ -680,7 +680,7 @@ public:
     }
 
     virtual int handleEvent(WifiEvent& event) {
-        ALOGD("[WIFI HAL]Got a scan results event");
+        //ALOGD("[WIFI HAL]Got a scan results event");
 
         // event.log();
 
@@ -688,8 +688,8 @@ public:
         int len = event.get_vendor_data_len();
         int event_id = event.get_vendor_subcmd();
 
-        ALOGD("vendor_data->nla_type=%d nla_len=%d, len=%d, event_id=%d",
-            vendor_data->nla_type, vendor_data->nla_len, len, event_id);
+        //ALOGD("vendor_data->nla_type=%d nla_len=%d, len=%d, event_id=%d",
+        //    vendor_data->nla_type, vendor_data->nla_len, len, event_id);
 
         if(event_id == GSCAN_EVENT_COMPLETE_SCAN) {
             if (vendor_data == NULL || vendor_data->nla_len != 8) {
@@ -700,7 +700,7 @@ public:
 
 			if(vendor_data->nla_type == GSCAN_EVENT_COMPLETE_SCAN)
             	evt_type = (wifi_scan_event) nla_get_u32(vendor_data);
-            ALOGD("Scan complete: Received event type %d", evt_type);
+            //ALOGD("Scan complete: Received event type %d", evt_type);
             if(*mHandler.on_scan_event)
                 (*mHandler.on_scan_event)(evt_type, evt_type);
         } else {
@@ -713,7 +713,7 @@ public:
 
 			if(vendor_data->nla_type == GSCAN_EVENT_SCAN_RESULTS_AVAILABLE)
             	num = nla_get_u32(vendor_data);
-            ALOGD("Found %d scan results, ", num);
+            //ALOGD("Found %d scan results, ", num);
             if(*mHandler.on_scan_results_available)
                 (*mHandler.on_scan_results_available)(id(), num);
         }
@@ -731,7 +731,7 @@ wifi_error wifi_start_gscan(
 {
     wifi_handle handle = getWifiHandle(iface);
 
-    ALOGD("[WIFI HAL]Starting GScan, halHandle = %p", handle);
+    //ALOGD("[WIFI HAL]Starting GScan, halHandle = %p", handle);
 
     ScanCommand *cmd = new ScanCommand(iface, id, &params, handler);
     wifi_register_cmd(handle, id, cmd);
@@ -744,7 +744,7 @@ wifi_error wifi_stop_gscan(wifi_request_id id, wifi_interface_handle iface)
     property_get("wlan.mtk.gscan", prop_buf, "0");
 
     if(!strcmp(prop_buf, "1")) {
-        ALOGD("[WIFI HAL]Stopping GScan");
+        //ALOGD("[WIFI HAL]Stopping GScan");
         wifi_handle handle = getWifiHandle(iface);
 
         if(id == -1) {
@@ -777,7 +777,7 @@ wifi_error wifi_enable_full_scan_results(
 {
     wifi_handle handle = getWifiHandle(iface);
     int params_dummy;
-    ALOGD("[WIFI HAL]Enabling full scan results, halHandle = %p", handle);
+    //ALOGD("[WIFI HAL]Enabling full scan results, halHandle = %p", handle);
 
     FullScanResultsCommand *cmd = new FullScanResultsCommand(iface, id, &params_dummy, handler);
     wifi_register_cmd(handle, id, cmd);
@@ -787,7 +787,7 @@ wifi_error wifi_enable_full_scan_results(
 
 wifi_error wifi_disable_full_scan_results(wifi_request_id id, wifi_interface_handle iface)
 {
-    ALOGD("[WIFI HAL]Disabling full scan results");
+    //ALOGD("[WIFI HAL]Disabling full scan results");
     wifi_handle handle = getWifiHandle(iface);
 
     if(id == -1) {
@@ -852,7 +852,7 @@ public:
 
     int execute() {
         WifiRequest request(familyId(), ifaceId());
-        ALOGD("retrieving %d scan results", mMax);
+        //ALOGD("retrieving %d scan results", mMax);
 
         for (int i = 0; i < 10 && mRetrieved < mMax; i++) {
             int result = createRequest(request, (mMax - mRetrieved), mFlush);
@@ -878,13 +878,13 @@ public:
             request.destroy();
         }
 
-        ALOGD("GetScanResults read %d results", mRetrieved);
+        //ALOGD("GetScanResults read %d results", mRetrieved);
         *mNum = mRetrieved;
         return WIFI_SUCCESS;
     }
 
     virtual int handleResponse(WifiEvent& reply) {
-        ALOGD("In GetScanResultsCommand::handleResponse");
+        //ALOGD("In GetScanResultsCommand::handleResponse");
 
         if (reply.get_cmd() != NL80211_CMD_VENDOR) {
             ALOGE("Ignoring reply with cmd = %d", reply.get_cmd());
@@ -903,8 +903,8 @@ public:
 
         nlattr *vendor = reply.get_attribute(NL80211_ATTR_VENDOR_DATA);
         int len = reply.get_vendor_data_len();
-		ALOGD("Id = %0x, subcmd = %d, vendor=%p, get_vendor_data()=%p vendor->nla_type=%d len=%d", 
-			id, subcmd, vendor, reply.get_vendor_data(), vendor->nla_type, len);
+		//ALOGD("Id = %0x, subcmd = %d, vendor=%p, get_vendor_data()=%p vendor->nla_type=%d len=%d", 
+		//	id, subcmd, vendor, reply.get_vendor_data(), vendor->nla_type, len);
 
         if (vendor == NULL || len == 0) {
             ALOGE("no vendor data in GetScanResults response; ignoring it");
@@ -914,7 +914,7 @@ public:
         for (nl_iterator it(vendor); it.has_next(); it.next()) {
             if (it.get_type() == GSCAN_ATTRIBUTE_SCAN_RESULTS_COMPLETE) {
                 mCompleted = it.get_u8();
-                ALOGI("retrieved mCompleted flag : %d", mCompleted);
+                //ALOGI("retrieved mCompleted flag : %d", mCompleted);
             } else if (it.get_type() == GSCAN_ATTRIBUTE_SCAN_RESULTS || it.get_type() == 0) {
                 for (nl_iterator it2(it.get()); it2.has_next(); it2.next()) {
                     int scan_id = 0, flags = 0, num = 0;
@@ -929,11 +929,11 @@ public:
                         num = min(*mNum - mRetrieved, num);
                         memcpy(mResults + mRetrieved, it2.get_data(),
                                 sizeof(wifi_scan_result) * num);
-                        ALOGD("Retrieved %d scan results", num);
+                        //ALOGD("Retrieved %d scan results", num);
                         wifi_scan_result *results = (wifi_scan_result *)it2.get_data();
                         for (int i = 0; i < num; i++) {
                             wifi_scan_result *result = results + i;
-                            ALOGD("%02d  %-32s  %02x:%02x:%02x:%02x:%02x:%02x  %04d channel=%d", i,
+                            //ALOGD("%02d  %-32s  %02x:%02x:%02x:%02x:%02x:%02x  %04d channel=%d", i,
                                 result->ssid, result->bssid[0], result->bssid[1], result->bssid[2],
                                 result->bssid[3], result->bssid[4], result->bssid[5],
                                 result->rssi, result->channel);
@@ -957,7 +957,7 @@ public:
 wifi_error wifi_get_cached_gscan_results(wifi_interface_handle iface, byte flush,
         int max, wifi_scan_result *results, int *num) {
 
-    ALOGD("[WIFI HAL]Getting cached scan results, iface handle = %p, num = %d", iface, *num);
+    //ALOGD("[WIFI HAL]Getting cached scan results, iface handle = %p, num = %d", iface, *num);
 
     GetScanResultsCommand *cmd = new GetScanResultsCommand(iface, flush, results, max, num);
     return (wifi_error)cmd->execute();
@@ -1044,7 +1044,7 @@ public:
     }
 
     int start() {
-        ALOGD("[WIFI HAL]Executing hotlist setup request, num = %d", mParams.num_ap);
+        //ALOGD("[WIFI HAL]Executing hotlist setup request, num = %d", mParams.num_ap);
         WifiRequest request(familyId(), ifaceId());
         int result = createSetupRequest(request);
         if (result < 0) {
@@ -1053,13 +1053,13 @@ public:
 
         result = requestResponse(request);
         if (result < 0) {
-            ALOGI("Failed to execute hotlist setup request, result = %d", result);
+            //ALOGI("Failed to execute hotlist setup request, result = %d", result);
             //unregisterVendorHandler(GOOGLE_OUI, GSCAN_EVENT_HOTLIST_RESULTS_FOUND);
             //unregisterVendorHandler(GOOGLE_OUI, GSCAN_EVENT_HOTLIST_RESULTS_LOST);
             return result;
         }
 
-        ALOGI("Successfully set %d APs in the hotlist", mParams.num_ap);
+        //ALOGI("Successfully set %d APs in the hotlist", mParams.num_ap);
         result = createFeatureRequest(request, GSCAN_SUBCMD_ENABLE_GSCAN, 1);
         if (result < 0) {
             return result;
@@ -1076,7 +1076,7 @@ public:
             return result;
         }
 
-        ALOGI("successfully restarted the scan");
+        //ALOGI("successfully restarted the scan");
         return result;
     }
 
@@ -1096,7 +1096,7 @@ public:
             return result;
         }
 
-        ALOGI("Successfully reset APs in current hotlist");
+        //ALOGI("Successfully reset APs in current hotlist");
         return result;
     }
 
@@ -1106,7 +1106,7 @@ public:
     }
 
     virtual int handleEvent(WifiEvent& event) {
-        ALOGD("[WIFI HAL]Hotlist AP event");
+        //ALOGD("[WIFI HAL]Hotlist AP event");
         int event_id = event.get_vendor_subcmd();
         // event.log();
 
@@ -1114,7 +1114,7 @@ public:
         int len = event.get_vendor_data_len();
 
         if (vendor_data == NULL || len == 0) {
-            ALOGI("No scan results found");
+            //ALOGI("No scan results found");
             return NL_SKIP;
         }
 
@@ -1122,18 +1122,18 @@ public:
 
         int num = len / sizeof(wifi_scan_result);
         num = min(MAX_RESULTS, num);
-        ALOGD("hotlist APs num=%d, vendor len=%d, sizeof()=%d, nla_len=%d nla_type=%d", 
+        //ALOGD("hotlist APs num=%d, vendor len=%d, sizeof()=%d, nla_len=%d nla_type=%d", 
             num, len, sizeof(wifi_scan_result), vendor_data->nla_len, vendor_data->nla_type);
         if(vendor_data->nla_type == GSCAN_EVENT_HOTLIST_RESULTS_LOST
            || vendor_data->nla_type == GSCAN_EVENT_HOTLIST_RESULTS_FOUND)
             memcpy(mResults, nla_data(vendor_data), num * sizeof(wifi_scan_result));
 
         if (event_id == GSCAN_EVENT_HOTLIST_RESULTS_FOUND) {
-            ALOGI("FOUND %d hotlist APs", num);
+            //ALOGI("FOUND %d hotlist APs", num);
             if (*mHandler.on_hotlist_ap_found)
                 (*mHandler.on_hotlist_ap_found)(id(), num, mResults);
         } else if (event_id == GSCAN_EVENT_HOTLIST_RESULTS_LOST) {
-            ALOGI("LOST %d hotlist APs", num);
+            //ALOGI("LOST %d hotlist APs", num);
             if (*mHandler.on_hotlist_ap_lost)
                 (*mHandler.on_hotlist_ap_lost)(id(), num, mResults);
         }
@@ -1268,7 +1268,7 @@ public:
     }
 
     int start() {
-        ALOGD("[WIFI HAL]Set significant wifi change config");
+        //ALOGD("[WIFI HAL]Set significant wifi change config");
         WifiRequest request(familyId(), ifaceId());
 
         int result = createSetupRequest(request);
@@ -1282,7 +1282,7 @@ public:
             return result;
         }
 
-        ALOGI("successfully set significant wifi change config");
+        //ALOGI("successfully set significant wifi change config");
 
         result = createFeatureRequest(request, GSCAN_SUBCMD_ENABLE_GSCAN, 1);
         if (result < 0) {
@@ -1298,7 +1298,7 @@ public:
             return result;
         }
 
-        ALOGI("successfully restarted the scan");
+        //ALOGI("successfully restarted the scan");
         return result;
     }
 
@@ -1319,7 +1319,7 @@ public:
             return result;
         }
 
-        ALOGI("successfully reset significant wifi change config");
+        //ALOGI("successfully reset significant wifi change config");
         return result;
     }
 
@@ -1329,13 +1329,13 @@ public:
     }
 
     virtual int handleEvent(WifiEvent& event) {
-        ALOGD("[WIFI HAL]Got a significant wifi change event");
+        //ALOGD("[WIFI HAL]Got a significant wifi change event");
 
         struct nlattr *vendor_data = (struct nlattr *)event.get_vendor_data();
         int len = event.get_vendor_data_len();
 
         if (vendor_data == NULL || len == 0) {
-            ALOGI("No scan results found");
+            //ALOGI("No scan results found");
             return NL_SKIP;
         }
 
@@ -1360,7 +1360,7 @@ public:
             mResults[i] = reinterpret_cast<wifi_significant_change_result *>(&(mResultsBuffer[i]));
         }
 
-        ALOGI("Retrieved %d scan results, vendor len=%d nla_type=%d", num, len, vendor_data->nla_type);
+        //ALOGI("Retrieved %d scan results, vendor len=%d nla_type=%d", num, len, vendor_data->nla_type);
 
         if (num != 0) {
             (*mHandler.on_significant_change)(id(), num, mResults);

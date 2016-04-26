@@ -119,7 +119,7 @@ public class EnrollActivity extends Activity {
 		super.onPause();
                 if (aniDraw.isRunning())
                     aniDraw.stop();
-		Log.d(TAG, "EnrollActivity onPause 启动了");
+		//Log.d(TAG, "EnrollActivity onPause 启动了");
 		finish();
 	}
 
@@ -129,14 +129,14 @@ public class EnrollActivity extends Activity {
 		super.onStop();
                 if (aniDraw.isRunning())
                     aniDraw.stop();
-		Log.d(TAG, "EnrollActivity onStop 启动了");
+		//Log.d(TAG, "EnrollActivity onStop 启动了");
 	}
 
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
-		Log.d(TAG, "EnrollActivity onstart 启动了");
+		//Log.d(TAG, "EnrollActivity onstart 启动了");
 		// enrollStart();
 	}
 
@@ -145,7 +145,7 @@ public class EnrollActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onResume();
                 aniDraw.start();
-		Log.d(TAG, "EnrollActivity onResume 启动了");
+		//Log.d(TAG, "EnrollActivity onResume 启动了");
 	}
 
 	@Override
@@ -154,7 +154,7 @@ public class EnrollActivity extends Activity {
 		super.onDestroy();
                 if (aniDraw.isRunning())
                     aniDraw.stop();
-		Log.d(TAG, "EnrollActivity onDestroy 启动了");
+		//Log.d(TAG, "EnrollActivity onDestroy 启动了");
 		enrollCancel();
 		mControllerNative.destroyFPSystem();
 		if(mBroadcastReceiver != null){
@@ -168,7 +168,7 @@ public class EnrollActivity extends Activity {
 	}
 
 	private int enrollStart() {
-		Log.d(TAG, "enrollStart mIsEnrolling = "+mIsEnrolling);
+		//Log.d(TAG, "enrollStart mIsEnrolling = "+mIsEnrolling);
 		mIsEnrolling = true;
 		int index =findEnrollMinIndex();
 		if(index < 5 && index >= 0) 
@@ -188,8 +188,8 @@ public class EnrollActivity extends Activity {
 		// FILENAME, Context.MODE_WORLD_READABLE);
 		for (index = 0; index < fpsvcIndex.max; index++) {// 5 items at most
 			if (fpsvcIndex.FPInfo[index].slot == 0) {// judge
-				Log.d(TAG, "findEnrollMinIndex mFingerList.get(index).slot ===== index"
-						+ index);
+				//Log.d(TAG, "findEnrollMinIndex mFingerList.get(index).slot ===== index"
+				//		+ index);
 				break;
 			}
 		}
@@ -205,7 +205,7 @@ public class EnrollActivity extends Activity {
 			int msgwt = msg.what;
 			// 下面的数据是要改变的
 			// int value = msg.what;
-			Log.d(TAG, "handleMessage: msgwt = " + msgwt);
+			//Log.d(TAG, "handleMessage: msgwt = " + msgwt);
 			switch (msgwt) {
 			case FpControllerNative.IDENTIFY:
 				int[] idetifyIntArray = (int[]) msg.obj;
@@ -219,9 +219,9 @@ public class EnrollActivity extends Activity {
 				progress = intArray[1];
 				int enrollResult = intArray[2];
 				int area = intArray[3];
-				Log.d(TAG, "handleMessage:  ENROLL_CREDENTIAL_RSP index = "
-						+ enrollIndex + ":" + progress + ":" + enrollResult
-						+ ":" + area);
+				//Log.d(TAG, "handleMessage:  ENROLL_CREDENTIAL_RSP index = "
+				//		+ enrollIndex + ":" + progress + ":" + enrollResult
+				//		+ ":" + area);
 				enrollRSP(enrollIndex, progress, enrollResult, area);
 				break;
 			case FpControllerNative.INIT_FP_FAIL:
@@ -248,12 +248,12 @@ public class EnrollActivity extends Activity {
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		Log.d(TAG, "backkey onKeyDown" + keyCode + ":"
-				+ KeyEvent.KEYCODE_BACK);
+		//Log.d(TAG, "backkey onKeyDown" + keyCode + ":"
+		//		+ KeyEvent.KEYCODE_BACK);
 
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:// 按返回键退出录入
-			Log.d(TAG, "EnrollActivity : 你按下了返回键");
+			//Log.d(TAG, "EnrollActivity : 你按下了返回键");
 			EnrollActivity.this.finish();
 			enrollCancel();
 			return true;
@@ -264,12 +264,12 @@ public class EnrollActivity extends Activity {
 			enrollCancel();
 			return true;
 		case KeyEvent.KEYCODE_POWER:
-			Log.d(TAG, "EnrollActivity : 你按下了 POWER键");
+			//Log.d(TAG, "EnrollActivity : 你按下了 POWER键");
 			enrollCancel();
 			finish();
 			return true;
 		default:
-			Log.d(TAG, "backkey onKeyDown default");
+			//Log.d(TAG, "backkey onKeyDown default");
 			break;
 		}
 		return super.onKeyDown(keyCode, event);
@@ -286,7 +286,7 @@ public class EnrollActivity extends Activity {
 	};
 	private void enrolling(int index, int progress, int area) {
 		// add vibrate
-		Log.d(TAG, "enrolling index = " + index + ":" + progress + ":" + area);
+		//Log.d(TAG, "enrolling index = " + index + ":" + progress + ":" + area);
 		if (progress >= 0 && progress < 100) {
 			setDialogProgress(progress);
 		} else {
@@ -297,7 +297,7 @@ public class EnrollActivity extends Activity {
 		int[] bitValue = intToArray(area);
 
 		for (int l = 0; l < bitValue.length; l++) {
-			Log.d(TAG, "bitValue[l] = " + bitValue[l]);
+			//Log.d(TAG, "bitValue[l] = " + bitValue[l]);
 		}
                 int count = progress / 10;
                 if (count > 10)
@@ -308,7 +308,7 @@ public class EnrollActivity extends Activity {
 	}
 
 	private void enrollSuccess(final int index) {
-		Log.d(TAG, "enroll success, enroll index = " + index+":"+mIsEnrolling);
+		//Log.d(TAG, "enroll success, enroll index = " + index+":"+mIsEnrolling);
                 mIsEnrolling = false;
 		setDialogProgress(100);
 		finger.setImageResource(R.drawable.zwt_10);
@@ -332,8 +332,8 @@ public class EnrollActivity extends Activity {
 	}
 	private void enrollRSP(int enrollIndex, int progress, int enrollResult,
 			int area) {
-		Log.d(TAG, "enrollRSP result = " + enrollResult + ":" + enrollIndex
-				+ ":" + progress + ":" + area+":"+mIsEnrolling);
+		//Log.d(TAG, "enrollRSP result = " + enrollResult + ":" + enrollIndex
+		//		+ ":" + progress + ":" + area+":"+mIsEnrolling);
                 if (enrollResult != FpControllerNative.ENROLLING) {
                     mIsEnrolling = false;
                 }
@@ -370,9 +370,9 @@ public class EnrollActivity extends Activity {
 	}
 
 	private void enrollCancel() {
-        Log.d(TAG, "enrollCancel mIsEnrolling = "+mIsEnrolling);
+        //Log.d(TAG, "enrollCancel mIsEnrolling = "+mIsEnrolling);
         if (!mIsEnrolling) {
-            Log.d(TAG, "enrollCancel isnot enrolling return !");
+            //Log.d(TAG, "enrollCancel isnot enrolling return !");
             return;
         }
         mIsEnrolling = false;
@@ -395,7 +395,7 @@ public class EnrollActivity extends Activity {
 	}
 
 	public void myLog(String msg) {
-		Log.d(TAG1, msg);
+		//Log.d(TAG1, msg);
 	}
 
 	public void Mytoast(String msg) {
@@ -410,7 +410,7 @@ public class EnrollActivity extends Activity {
 		 fpsvcIndex = mControllerNative.GetFpInfo();
 		 System.out.println("GetFpInfo _debug_ takes time :" + (System.currentTimeMillis() - starttime)); 
 		fpsvcIndex.FPInfo[index].setFingerName(fingerName);
-		Log.d(TAG, "enroll success, enroll fingerName = " + fingerName);
+		//Log.d(TAG, "enroll success, enroll fingerName = " + fingerName);
 		fpsvcIndex.FPInfo[index].setEnrollIndex(index);
 		fpsvcIndex.setFPInfo(fpsvcIndex.FPInfo);
 		mControllerNative.SetFpInfo(fpsvcIndex);

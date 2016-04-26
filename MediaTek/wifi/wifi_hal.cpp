@@ -106,7 +106,7 @@ wifi_error wifi_initialize(wifi_handle *handle)
 {
     srand(getpid());
 
-    ALOGD("[WIFI HAL]wifi_initialize() Initializing wifi");
+    //ALOGD("[WIFI HAL]wifi_initialize() Initializing wifi");
     hal_info *info = (hal_info *)malloc(sizeof(hal_info));
     if (info == NULL) {
         ALOGE("Could not allocate hal_info");
@@ -115,7 +115,7 @@ wifi_error wifi_initialize(wifi_handle *handle)
 
     memset(info, 0, sizeof(*info));
 
-    ALOGD("Creating socket");
+    //ALOGD("Creating socket");
     struct nl_sock *cmd_sock = wifi_create_nl_socket(WIFI_HAL_CMD_SOCK_PORT);
     if (cmd_sock == NULL) {
         ALOGE("Could not create handle");
@@ -172,10 +172,10 @@ wifi_error wifi_initialize(wifi_handle *handle)
     wifi_add_membership(*handle, "vendor");
 
     wifi_init_interfaces(*handle);
-    ALOGD("Found %d interfaces", info->num_interfaces);
+    //ALOGD("Found %d interfaces", info->num_interfaces);
 
 
-    ALOGD("[WIFI HAL]Initialized Wifi HAL Successfully; vendor cmd = %d, nl80211_family_id=%d",
+    //ALOGD("[WIFI HAL]Initialized Wifi HAL Successfully; vendor cmd = %d, nl80211_family_id=%d",
     	NL80211_CMD_VENDOR, info->nl80211_family_id);
     return WIFI_SUCCESS;
 }
@@ -215,7 +215,7 @@ static void internal_cleaned_up_handler(wifi_handle handle)
     pthread_mutex_destroy(&info->cb_lock);
     free(info);
 
-    ALOGD("Internal cleanup completed");
+    //ALOGD("Internal cleanup completed");
 }
 
 void wifi_cleanup(wifi_handle handle, wifi_cleaned_up_handler handler)
@@ -224,7 +224,7 @@ void wifi_cleanup(wifi_handle handle, wifi_cleaned_up_handler handler)
     info->cleaned_up_handler = handler;
     info->clean_up = true;
 
-    ALOGD("Wifi cleanup completed");
+    //ALOGD("Wifi cleanup completed");
 }
 
 static int internal_pollin_handler(wifi_handle handle)
@@ -279,7 +279,7 @@ void wifi_event_loop(wifi_handle handle)
     } while (!info->clean_up);
 
 
-    ALOGD("Cleaning up");
+    //ALOGD("Cleaning up");
     internal_cleaned_up_handler(handle);
 }
 
@@ -309,8 +309,8 @@ static int internal_valid_message_handler(nl_msg *msg, void *arg)
     if (cmd == NL80211_CMD_VENDOR) {
         vendor_id = event.get_u32(NL80211_ATTR_VENDOR_ID);
         subcmd = event.get_u32(NL80211_ATTR_VENDOR_SUBCMD);
-        ALOGD("event received %s, vendor_id = 0x%0x, subcmd = 0x%0x",
-                event.get_cmdString(), vendor_id, subcmd);
+        //ALOGD("event received %s, vendor_id = 0x%0x, subcmd = 0x%0x",
+        //        event.get_cmdString(), vendor_id, subcmd);
     } else {
         // ALOGD("event received %s", event.get_cmdString());
     }
@@ -397,7 +397,7 @@ public:
         int i;
 
         if (!tb[CTRL_ATTR_MCAST_GROUPS]) {
-            ALOGD("No multicast groups found");
+           // ALOGD("No multicast groups found");
             return NL_SKIP;
         } else {
             // ALOGD("Multicast groups attr size = %d", nla_len(tb[CTRL_ATTR_MCAST_GROUPS]));
@@ -463,7 +463,7 @@ public:
     }
 
     int start() {
-        ALOGD("Sending mac address OUI");
+        //ALOGD("Sending mac address OUI");
         WifiRequest request(familyId(), ifaceId());
         int result = createRequest(request, WIFI_SUBCMD_SET_PNO_RANDOM_MAC_OUI, mOui);
         if (result != WIFI_SUCCESS) {
@@ -480,7 +480,7 @@ public:
     }
 protected:
     virtual int handleResponse(WifiEvent& reply) {
-         ALOGD("Request complete!");
+         //ALOGD("Request complete!");
         /* Nothing to do on response! */
         return NL_SKIP;
     }
@@ -557,10 +557,10 @@ public:
 protected:
     virtual int handleResponse(WifiEvent& reply) {
 
-        ALOGD("In GetFeatureSetCommand::handleResponse");
+        //ALOGD("In GetFeatureSetCommand::handleResponse");
 
         if (reply.get_cmd() != NL80211_CMD_VENDOR) {
-            ALOGD("Ignoring reply with cmd = %d", reply.get_cmd());
+            //ALOGD("Ignoring reply with cmd = %d", reply.get_cmd());
             return NL_SKIP;
         }
 
@@ -570,7 +570,7 @@ protected:
         nlattr *vendor_data = reply.get_attribute(NL80211_ATTR_VENDOR_DATA);
         int len = reply.get_vendor_data_len();
 
-        ALOGD("Id = %0x, subcmd = %d, len = %d", id, subcmd, len);
+        //ALOGD("Id = %0x, subcmd = %d, len = %d", id, subcmd, len);
         if (vendor_data == NULL || len == 0) {
             ALOGE("no vendor data in GetFeatureSetCommand response; ignoring it");
             return NL_SKIP;
@@ -594,7 +594,7 @@ protected:
             for (nl_iterator it(vendor_data); it.has_next(); it.next()) {
                 if (it.get_type() == ANDR_WIFI_ATTRIBUTE_NUM_FEATURE_SET) {
                     num_features_set = it.get_u32();
-                    ALOGI("Got feature list with %d concurrent sets", num_features_set);
+                    //ALOGI("Got feature list with %d concurrent sets", num_features_set);
                     if(set_size_max && (num_features_set > set_size_max))
                         num_features_set = set_size_max;
                     *fm_size = num_features_set;
@@ -640,7 +640,7 @@ static int get_interface(const char *name, interface_info *info)
 {
     strcpy(info->name, name);
     info->id = if_nametoindex(name);
-    ALOGD("found an interface : %s, id = %d", name, info->id);
+    //ALOGD("found an interface : %s, id = %d", name, info->id);
     return WIFI_SUCCESS;
 }
 
@@ -704,7 +704,7 @@ wifi_error wifi_init_interfaces(wifi_handle handle)
     interface_info *ifinfo = (interface_info *)malloc(sizeof(interface_info));
     memcpy(ifinfo->name, "wlan0", sizeof("wlan0"));
     ifinfo->id = if_nametoindex(ifinfo->name);
-    ALOGD("init an interface: %s, id = %d, errno=%d", ifinfo->name, ifinfo->id, errno);
+    //ALOGD("init an interface: %s, id = %d, errno=%d", ifinfo->name, ifinfo->id, errno);
     if(ifinfo->id <= 0) ifinfo->id = 10; //create a virtual interface
     ifinfo->handle = handle;
     info->interfaces[0] = ifinfo;
@@ -722,7 +722,7 @@ wifi_error wifi_get_ifaces(wifi_handle handle, int *num, wifi_interface_handle *
     int if_index = if_nametoindex(info->interfaces[0]->name);
     if(if_index > 0)
         info->interfaces[0]->id = if_index;
-    ALOGI("[WIFI HAL]wifi_get_ifaces: get actual if_index=%d", if_index);
+    //ALOGI("[WIFI HAL]wifi_get_ifaces: get actual if_index=%d", if_index);
 #endif
 
     *interfaces = (wifi_interface_handle *)info->interfaces;

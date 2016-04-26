@@ -7149,7 +7149,7 @@ index 0000000..3b7c313
 +    }
 +
 +    private static void log(String s) {
-+        Log.d(LOG_TAG, "[NetworkManager] " + s);
++       // Log.d(LOG_TAG, "[NetworkManager] " + s);
 +    }
 +}
 +
@@ -7465,7 +7465,7 @@ index 0000000..28c9bd0
 +	*/
 +
 +    private static void logd(String s) {
-+        Log.d(LOG_TAG, "[RadioCapSwitchUtil] " + s);
++        //Log.d(LOG_TAG, "[RadioCapSwitchUtil] " + s);
 +    }
 +}
 +

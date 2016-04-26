@@ -41,7 +41,7 @@ public:
     { }
 
     virtual int create() {
-        ALOGD("[WIFI HAL]Creating message to get link statistics; iface = %d", mIfaceInfo->id);
+        //ALOGD("[WIFI HAL]Creating message to get link statistics; iface = %d", mIfaceInfo->id);
 
         int ret = mMsg.create(GOOGLE_OUI, LSTATS_SUBCMD_GET_INFO);
         if (ret < 0) {
@@ -54,7 +54,7 @@ public:
 
 protected:
     virtual int handleResponse(WifiEvent& reply) {
-        ALOGD("[WIFI HAL]In GetLinkStatsCommand::handleResponse");
+        //ALOGD("[WIFI HAL]In GetLinkStatsCommand::handleResponse");
 
         if (reply.get_cmd() != NL80211_CMD_VENDOR) {
             ALOGE("Ignoring reply with cmd = %d", reply.get_cmd());
