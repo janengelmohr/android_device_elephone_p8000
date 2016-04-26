@@ -107,6 +107,9 @@ TW_THEME := portrait_hdpi
 TW_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness/
 TW_MAX_BRIGHTNESS := 255
 
+# accept Lollipop SEPolicies
+POLICYVERS := 29
+
 #may be usefull if we get graphical glitches
 #RECOVERY_GRAPHICS_USE_LINELENGTH := true
 
