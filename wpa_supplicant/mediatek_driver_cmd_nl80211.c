@@ -9,7 +9,19 @@
  * license.
  *
  */
-#include "hardware_legacy/driver_nl80211.h"
+#include <sys/types.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <sys/ioctl.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <net/if.h>
+#include "common.h"
+#include "linux_ioctl.h"
+#include "netlink/msg.h"
+#include "netlink/genl/genl.h"
+#include "driver_nl80211.h"
 #include "mediatek_driver_nl80211.h"
 #include "wpa_supplicant_i.h"
 #include "config.h"
@@ -140,12 +152,12 @@ static int testmode_sta_statistics_handler(struct nl_msg *msg, void *arg)
     return NL_SKIP;
 }
 
-static void * nl80211_cmd(struct wpa_driver_nl80211_data *drv,
+/*void * nl80211_cmd(struct wpa_driver_nl80211_data *drv,
               struct nl_msg *msg, int flags, uint8_t cmd)
 {
     return genlmsg_put(msg, 0, 0, drv->global->nl80211_id,
                0, flags, cmd, 0);
-}
+}*/
 
 int wpa_driver_nl80211_testmode(void *priv, const u8 *data,
                             size_t data_len)

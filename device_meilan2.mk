@@ -63,7 +63,11 @@ PRODUCT_COPY_FILES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    gsm0710muxd
+    gsm0710muxd \
+    libshim_icu53 \
+    libshim_crypto \
+    libshim_ui \
+    libshim_gui
 
 PRODUCT_PACKAGES += \
     Torch
@@ -78,6 +82,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     device/meizu/meilan2/rootdir/etc/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+    prebuilts/ndk/current/sources/cxx-stl/stlport/libs/arm64-v8a/libstlport_shared.so:system/lib64/libstlport.so \
+    prebuilts/ndk/current/sources/cxx-stl/stlport/libs/armeabi-v7a/libstlport_shared.so:system/lib/libstlport.so
 
 # Audio componets from source
 PRODUCT_PACKAGES += \

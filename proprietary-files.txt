@@ -399,8 +399,8 @@ lib/libperfservicenative.so
 lib64/libperfservicenative.so
 lib/libui_ext.so
 lib64/libui_ext.so
-lib/libui.so
-lib64/libui.so
+#lib/libui.so
+#lib64/libui.so
 
 # Keys
 usr/keylayout/ACCDET.kl
