@@ -59,7 +59,7 @@ public:
     }
 
     virtual int create() {
-        ALOGD("Creating message to get scan capablities; iface = %d", mIfaceInfo->id);
+        //ALOGD("Creating message to get scan capablities; iface = %d", mIfaceInfo->id);
 
         int ret = mMsg.create(GOOGLE_OUI, RTT_SUBCMD_GETCAPABILITY);
         if (ret < 0) {
@@ -72,10 +72,10 @@ public:
 protected:
     virtual int handleResponse(WifiEvent& reply) {
 
-        ALOGD("In GetRttCapabilitiesCommand::handleResponse");
+        //ALOGD("In GetRttCapabilitiesCommand::handleResponse");
 
         if (reply.get_cmd() != NL80211_CMD_VENDOR) {
-            ALOGD("Ignoring reply with cmd = %d", reply.get_cmd());
+            //ALOGD("Ignoring reply with cmd = %d", reply.get_cmd());
             return NL_SKIP;
         }
 
@@ -85,7 +85,7 @@ protected:
         void *data = reply.get_vendor_data();
         int len = reply.get_vendor_data_len();
 
-        ALOGD("Id = %0x, subcmd = %d, len = %d, expected len = %d", id, subcmd, len,
+        //ALOGD("Id = %0x, subcmd = %d, len = %d, expected len = %d", id, subcmd, len,
                     sizeof(*mCapabilities));
 
         memcpy(mCapabilities, data, min(len, (int) sizeof(*mCapabilities)));
@@ -195,7 +195,7 @@ public:
         return result;
     }
     int start() {
-        ALOGD("Setting RTT configuration");
+        //ALOGD("Setting RTT configuration");
         WifiRequest request(familyId(), ifaceId());
         int result = createSetupRequest(request);
         if (result != WIFI_SUCCESS) {
@@ -210,12 +210,12 @@ public:
         }
 
         registerVendorHandler(GOOGLE_OUI, RTT_EVENT_COMPLETE);
-        ALOGI("Successfully started RTT operation");
+        //ALOGI("Successfully started RTT operation");
         return result;
     }
 
     virtual int cancel() {
-        ALOGD("Stopping RTT");
+        //ALOGD("Stopping RTT");
 
         WifiRequest request(familyId(), ifaceId());
         int result = createTeardownRequest(request, 0, NULL);
@@ -233,7 +233,7 @@ public:
     }
 
     int cancel_specific(unsigned num_devices, mac_addr addr[]) {
-        ALOGD("Stopping scan");
+        //ALOGD("Stopping scan");
 
         WifiRequest request(familyId(), ifaceId());
         int result = createTeardownRequest(request, num_devices, addr);
@@ -256,7 +256,7 @@ public:
     }
 
     virtual int handleEvent(WifiEvent& event) {
-        ALOGI("Got an RTT event");
+        //ALOGI("Got an RTT event");
 
         // event.log();
 
@@ -264,7 +264,7 @@ public:
         int len = event.get_vendor_data_len();
 
         if (vendor_data == NULL || len == 0) {
-            ALOGI("No rtt results found");
+            //ALOGI("No rtt results found");
         }
 
         unregisterVendorHandler(GOOGLE_OUI, RTT_EVENT_COMPLETE);
@@ -275,7 +275,7 @@ public:
         int num = len / sizeof(wifi_rtt_result);
         num = min(MAX_RESULTS, num);
         memcpy(rttResults, event.get_vendor_data(), num * sizeof(wifi_rtt_result));
-        ALOGI("Retrieved %d rtt results", num);
+        //ALOGI("Retrieved %d rtt results", num);
 
         (*rttHandler.on_rtt_results)(id(), num, rttResults);
         return NL_SKIP;

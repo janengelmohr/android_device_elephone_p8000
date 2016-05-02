@@ -15,6 +15,7 @@ git apply -v ../../device/elephone/p8000/Fingerprint/0002-fingerprint_frameworks
 cd ../..
 cd packages/apps/Settings/
 git apply -v ../../../device/elephone/p8000/Fingerprint/0001-fingerprint_packages_apps_settings.patch
+git apply -v ../../../device/elephone/p8000/patches/packages_apps_Settings/0001-multisim.patch
 cd ../../..
 cd frameworks/opt/telephony
 git apply -v ../../../device/elephone/p8000/patches/framework_opt_telephony/0001-Update-for-mtk.patch

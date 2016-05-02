@@ -480,8 +480,8 @@ void WifiEvent::log() {
 
     byte *data = (byte *)genlmsg_attrdata(mHeader, 0);
     int len = genlmsg_attrlen(mHeader, 0);
-    ALOGD("cmd = %s, len = %d", get_cmdString(), len);
-    ALOGD("vendor_id = %04x, vendor_subcmd = %d", get_vendor_id(), get_vendor_subcmd());
+    //ALOGD("cmd = %s, len = %d", get_cmdString(), len);
+    //ALOGD("vendor_id = %04x, vendor_subcmd = %d", get_vendor_id(), get_vendor_subcmd());
 
     for (int i = 0; i < len; i += 16) {
         char line[81];
@@ -508,16 +508,16 @@ void WifiEvent::log() {
             }
         }
 
-        ALOGD("%s", line);
+        //ALOGD("%s", line);
     }
 
     for (unsigned i = 0; i < NL80211_ATTR_MAX_INTERNAL; i++) {
         if (mAttributes[i] != NULL) {
-            ALOGD("found attribute %s", attributeToString(i));
+            //ALOGD("found attribute %s", attributeToString(i));
         }
     }
 
-    ALOGD("-- End of message --");
+    //ALOGD("-- End of message --");
 }
 
 const char *WifiEvent::get_cmdString() {
@@ -566,7 +566,7 @@ int WifiRequest::create(uint32_t id, int subcmd) {
 
     if (mIface != -1) {
         res = set_iface_id(mIface);
-		ALOGD("WifiRequest::create at set_iface_id res=%d, mIface=%d, subcmd=0x%x", res, mIface, subcmd);
+		//ALOGD("WifiRequest::create at set_iface_id res=%d, mIface=%d, subcmd=0x%x", res, mIface, subcmd);
     }
 
     return res;
@@ -606,15 +606,15 @@ int WifiCommand::requestResponse(WifiRequest& request) {
     nl_cb_set(cb, NL_CB_ACK, NL_CB_CUSTOM, ack_handler, &err);
     nl_cb_set(cb, NL_CB_VALID, NL_CB_CUSTOM, response_handler, this);
 
-	ALOGD("WifiCommand::requestResponse err=%d", err);
+	//ALOGD("WifiCommand::requestResponse err=%d", err);
 
     while (err > 0) {                   /* wait for reply */
         int res = nl_recvmsgs(mInfo->cmd_sock, cb);
         if (res) {
-            ALOGE("nl80211: %s->nl_recvmsgs failed: %d", __func__, res);
+            //ALOGE("nl80211: %s->nl_recvmsgs failed: %d", __func__, res);
         }
     }
-	ALOGD("WifiCommand::requestResponse after nl_recvmsgs err=%d", err);
+	//ALOGD("WifiCommand::requestResponse after nl_recvmsgs err=%d", err);
 out:
     nl_cb_put(cb);
     return err;
@@ -622,7 +622,7 @@ out:
 
 int WifiCommand::requestEvent(int cmd) {
 
-    ALOGD("requesting event %d", cmd);
+    //ALOGD("requesting event %d", cmd);
 
     int res = wifi_register_handler(wifiHandle(), cmd, event_handler, this);
     if (res < 0) {
@@ -633,13 +633,13 @@ int WifiCommand::requestEvent(int cmd) {
     if (res < 0)
         goto out;
 
-    ALOGD("waiting for response %d", cmd);
+    //ALOGD("waiting for response %d", cmd);
 
     res = nl_send_auto_complete(mInfo->cmd_sock, mMsg.getMessage());    /* send message */
     if (res < 0)
         goto out;
 
-    ALOGD("waiting for event %d", cmd);
+    //ALOGD("waiting for event %d", cmd);
     res = mCondition.wait();
     if (res < 0)
         goto out;
