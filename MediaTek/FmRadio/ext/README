@@ -1,0 +1,25 @@
+The FM radio plugin host side.
+
+This library is pre-built by MediaTek internal.
+
+WHAT IT DOES?
+=============
+The FM Radio plugin host is designed to change some strings
+for vendor customing. It contains:
+1. Plugin host API
+2. A default implement
+
+HOW IT WAS BUILT?
+==================
+It needs the following library from AOSP:
+No need.
+
+and the following libs from MediaTek:
+No need.
+
+All source/dependency modules of this module are already put in
+'vendor/mediatek/libs' folder.
+
+HOW TO USE IT?
+==============
+Install FmRadio.apk and plugin apk in mediatek platform.

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Copyright Statement:
+
+  This software/firmware and related documentation ("MediaTek Software") are
+  protected under relevant copyright laws. The information contained herein is
+  confidential and proprietary to MediaTek Inc. and/or its licensors. Without
+  the prior written permission of MediaTek inc. and/or its licensors, any
+  reproduction, modification, use or disclosure of MediaTek Software, and
+  information contained herein, in whole or in part, shall be strictly
+  prohibited.
+
+  MediaTek Inc. (C) 2011-2014. All rights reserved.
+
+  BY OPENING THIS FILE, RECEIVER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO RECEIVER
+  ON AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL
+  WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR
+  NONINFRINGEMENT. NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH
+  RESPECT TO THE SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY,
+  INCORPORATED IN, OR SUPPLIED WITH THE MEDIATEK SOFTWARE, AND RECEIVER AGREES
+  TO LOOK ONLY TO SUCH THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO.
+  RECEIVER EXPRESSLY ACKNOWLEDGES THAT IT IS RECEIVER'S SOLE RESPONSIBILITY TO
+  OBTAIN FROM ANY THIRD PARTY ALL PROPER LICENSES CONTAINED IN MEDIATEK
+  SOFTWARE. MEDIATEK SHALL ALSO NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE
+  RELEASES MADE TO RECEIVER'S SPECIFICATION OR TO CONFORM TO A PARTICULAR
+  STANDARD OR OPEN FORUM. RECEIVER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S
+  ENTIRE AND CUMULATIVE LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE
+  RELEASED HEREUNDER WILL BE, AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE
+  MEDIATEK SOFTWARE AT ISSUE, OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE
+  CHARGE PAID BY RECEIVER TO MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+
+  The following software/firmware and/or related documentation ("MediaTek
+  Software") have been modified by MediaTek Inc. All revisions are subject to
+  any receiver's applicable license agreements with MediaTek Inc.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Radio FM</string>
+    <string name="dlg_progress_title">Iskanje</string>
+    <string name="btn_yes">Da</string>
+    <string name="optmenu_speaker">Zvočnik</string>
+    <string name="edit_frequency_overwrite_text">Prepiši</string>
+    <string name="toast_start_recording">Začetek snemanja ...</string>
+    <string name="fm_unit">MHz</string>
+    <string name="empty_list">Seznam kanalov je prazen.</string>
+    <string name="optmenu_rds_settings">Nastavitve RDS</string>
+    <string name="toast_channel_searched">Najdeni razpoložljivi kanali:</string>
+    <string name="already_exists">že obstaja</string>
+    <string name="dlg_noantenna_title">Priklop slušalk</string>
+    <string name="add_to_favorite">Dodaj priljubljenim</string>
+    <string name="toast_sdcard_insufficient_space">Na kartici SD ni dovolj prostora!</string>
+    <string name="dlg_delete_confirm_title">Potrdi odstranitev iz priljubljenih</string>
+    <string name="optmenu_record">Snemanje FM</string>
+    <string name="optmenu_earphone">Slušalka</string>
+    <string name="sound_mode">Način zvoka</string>
+    <string name="toast_already_favorite">Ta kanal je že med priljubljenimi.</string>
+    <string name="not_available">Trenutno ni na voljo</string>
+    <string name="toast_channel_deleted">Uspešno odstranjeno iz priljubljenih</string>
+    <string name="toast_channel_added">Uspešno dodano priljubljenim.</string>
+    <string name="dlg_rds_settings_channel_information">Podatki o kanalu</string>
+    <string name="toast_favorite_full">Kanala ni mogoče dodati na seznam priljubljenih, ker je ta poln.</string>
+    <string name="btn_save_recording">Shrani</string>
+    <string name="optmenu_search">Išči</string>
+    <string name="dlg_rds_settings_alternative_frequency">Alternativna frekvenca</string>
+    <string name="dlg_progress_text">Iskanje kanalov ...</string>
+    <string name="optmenu_exit">Izhod</string>
+    <string name="more">Več</string>
+    <string name="btn_discard_recording">Zavrzi</string>
+    <string name="contmenu_item_edit">Uredi</string>
+    <string name="toast_cannot_search">Iskanje razpoložljivih kanalov ni na voljo.</string>
+    <string name="dlg_save_recording_storage_warning">V pomnilniku ni dovolj prostora! Ali želite shraniti trenutni posnetek?</string>
+    <string name="toast_in_call">Radia FM ne morete zagnati, medtem ko imate klic.</string>
+    <string name="dlg_addedit_station_freq">Frekvenca:</string>
+    <string name="toast_recorder_internal_error">V snemalniku je prišlo do notranje napake!</string>
+    <string name="dlg_save_recording_title">Shrani posneto datoteko</string>
+    <string name="btn_ok">V redu</string>
+    <string name="power">Napajanje</string>
+    <string name="contmenu_item_delete">Odstrani iz priljubljenih</string>
+    <string name="toast_powerup_before_record_warning">Najprej napolnite FM!</string>
+    <string name="fm_recorder_name">Snemalnik FM</string>
+    <string name="toast_recording_lost_warning">Če odstranite SD, boste posnetek izgubili!</string>
+    <string name="dlg_delete_confirm_text">Ali ste prepričani, da želite ta kanal odstraniti iz priljubljenih?</string>
+    <string name="default_station_name">Nov kanal</string>
+    <string name="btn_cancel">Prekliči</string>
+    <string name="contmenu_title">Dejanja</string>
+    <string name="btn_no">Ne</string>
+    <string name="favorite_manager">Seznam kanalov</string>
+    <string name="toast_invalid_frequency">Neveljavna frekvenca za trenutno lokacijo. Veljaven frekvenčni razpon: 87,5–108,0</string>
+    <string name="toast_sdcard_missing">Kartica SD manjka!</string>
+    <string name="dlg_addedit_station_name">Ime:</string>
+    <string name="dlg_addedit_title_edit">Urejanje kanala</string>
+    <string name="toast_invalid_input">Zadnji neveljaven vnos, veljavna vrednost je 0 ali 5.</string>
+    <string name="edit_recording_name_hint">Sem vpišite ime datoteke</string>
+    <string name="dlg_noantenna_text">Slušalke rabite kot anteno. Priključite slušalke.</string>
+    <string name="toast_player_internal_error">V predvajalniku je prišlo do notranje napake!</string>
+    <string name="no_antenna_info">Priključite slušalke, da bodo služile kot antena radia.</string>
+    <string name="add_to_favorite1">Dodaj med prednastavljene kanale</string>
+    <string name="contmenu_item_delete1">Odstrani iz prednastavljenih kanalov</string>
+    <string name="dlg_delete_confirm_title1">Potrdi odstranitev iz prednastavljenih kanalov</string>
+    <string name="dlg_delete_confirm_text1">Ali ste prepričani, da želite odstraniti ta kanal iz prednastavljenih kanalov?</string>
+    <string name="toast_favorite_full1">Kanala ni mogoče dodati na seznam prednastavljenih kanalov, ker je seznam poln.</string>
+    <string name="toast_already_favorite1">Ta kanal je že na seznamu prednastavljenih kanalov.</string>
+    <string name="toast_channel_deleted1">Uspešno odstranjeno iz prednastavljenih kanalov.</string>
+    <string name="toast_channel_added1">Uspešno dodano med prednastavljene kanale.</string>
+</resources>

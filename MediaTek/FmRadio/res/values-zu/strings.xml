@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Copyright Statement:
+
+  This software/firmware and related documentation ("MediaTek Software") are
+  protected under relevant copyright laws. The information contained herein is
+  confidential and proprietary to MediaTek Inc. and/or its licensors. Without
+  the prior written permission of MediaTek inc. and/or its licensors, any
+  reproduction, modification, use or disclosure of MediaTek Software, and
+  information contained herein, in whole or in part, shall be strictly
+  prohibited.
+
+  MediaTek Inc. (C) 2011-2014. All rights reserved.
+
+  BY OPENING THIS FILE, RECEIVER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO RECEIVER
+  ON AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL
+  WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR
+  NONINFRINGEMENT. NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH
+  RESPECT TO THE SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY,
+  INCORPORATED IN, OR SUPPLIED WITH THE MEDIATEK SOFTWARE, AND RECEIVER AGREES
+  TO LOOK ONLY TO SUCH THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO.
+  RECEIVER EXPRESSLY ACKNOWLEDGES THAT IT IS RECEIVER'S SOLE RESPONSIBILITY TO
+  OBTAIN FROM ANY THIRD PARTY ALL PROPER LICENSES CONTAINED IN MEDIATEK
+  SOFTWARE. MEDIATEK SHALL ALSO NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE
+  RELEASES MADE TO RECEIVER'S SPECIFICATION OR TO CONFORM TO A PARTICULAR
+  STANDARD OR OPEN FORUM. RECEIVER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S
+  ENTIRE AND CUMULATIVE LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE
+  RELEASED HEREUNDER WILL BE, AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE
+  MEDIATEK SOFTWARE AT ISSUE, OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE
+  CHARGE PAID BY RECEIVER TO MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+
+  The following software/firmware and/or related documentation ("MediaTek
+  Software") have been modified by MediaTek Inc. All revisions are subject to
+  any receiver's applicable license agreements with MediaTek Inc.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Umsakazo we-FM</string>
+    <string name="dlg_progress_title">Sesha</string>
+    <string name="btn_yes">Yebo</string>
+    <string name="optmenu_speaker">Isikhulumi</string>
+    <string name="edit_frequency_overwrite_text">Bhala ngaphezulu</string>
+    <string name="toast_start_recording">Qala ukuqopha...</string>
+    <string name="fm_unit">MHz</string>
+    <string name="empty_list">Uhlu lweshaneli alunalutho.</string>
+    <string name="optmenu_rds_settings">Amasethingi e-RDS</string>
+    <string name="toast_channel_searched">Hlolile amashaneli atholakalayo:</string>
+    <string name="already_exists">ivele ikhona</string>
+    <string name="dlg_noantenna_title">faka ama-earphone</string>
+    <string name="add_to_favorite">Engeza Kokuthandwayo</string>
+    <string name="toast_sdcard_insufficient_space">Isikhala asanele kwikhadi le-SD!</string>
+    <string name="dlg_delete_confirm_title">Qinisekisa ukususa kokuthandwayo</string>
+    <string name="optmenu_record">Qopha i-FM</string>
+    <string name="optmenu_earphone">I-earphone</string>
+    <string name="sound_mode">Imowudi yomsindo</string>
+    <string name="toast_already_favorite">Leshaneli isivele ukuhlu lokuthandwayo.</string>
+    <string name="not_available">Okwamanje ayitholakali</string>
+    <string name="toast_channel_deleted">Isuswe ngempumelelo kokuthandwayo.</string>
+    <string name="toast_channel_added">Yongezwe ngokuyimpumelelo kokuthandwayo.</string>
+    <string name="dlg_rds_settings_channel_information">Imniningwane yeshaneli</string>
+    <string name="toast_favorite_full">Ayongezeki ishaneli kuhlu lokuthandwayo ngenxa yokuba igcwele.</string>
+    <string name="btn_save_recording">Gcina</string>
+    <string name="optmenu_search">Sesha</string>
+    <string name="dlg_rds_settings_alternative_frequency">Ifrikwensi Enye</string>
+    <string name="dlg_progress_text">Sesha amashaneli...</string>
+    <string name="optmenu_exit">Phuma</string>
+    <string name="more">Okuningi</string>
+    <string name="btn_discard_recording">Khipha</string>
+    <string name="contmenu_item_edit">Lungisa</string>
+    <string name="toast_cannot_search">Akusesheki amashaneli atholakalayo.</string>
+    <string name="dlg_save_recording_storage_warning">Isikhala sokugcina asanele! Uyafuna ukugcina lokuqopha kwamanje?</string>
+    <string name="toast_in_call">Ngeke ukwazi ukuphumisa umsaka we-FM uma usefonini.</string>
+    <string name="dlg_addedit_station_freq">Ifrikwensi:</string>
+    <string name="toast_recorder_internal_error">Kwenzeke iphutha ngaphakathi kwisiqophi!</string>
+    <string name="dlg_save_recording_title">Gcina ifayela yokuqopha</string>
+    <string name="btn_ok">KULUNGILE</string>
+    <string name="power">Ugesi</string>
+    <string name="contmenu_item_delete">Susa kokuthandwayo</string>
+    <string name="toast_powerup_before_record_warning">Sicela ukhanyise i-FM kuqala!</string>
+    <string name="fm_recorder_name">Isiqophi se-FM</string>
+    <string name="toast_recording_lost_warning">Ukuqopha kwakho kuzolahleka ngenxa yokususwa kwe-SD!</string>
+    <string name="dlg_delete_confirm_text">Unesiqiniseko sokuthi ufuna ukususa leshaneli kokuthandwayo?</string>
+    <string name="default_station_name">Ishanelo Entsha</string>
+    <string name="btn_cancel">Khansela</string>
+    <string name="contmenu_title">Imisebenzi</string>
+    <string name="btn_no">Cha</string>
+    <string name="favorite_manager">Uhlu lweshaneli</string>
+    <string name="toast_invalid_frequency">Ifrikwensi engaqinisekisiwe yendawo yamanje. Indawo eqinisekisiwe yefrikwensi: u-87.5 – 108.0</string>
+    <string name="toast_sdcard_missing">Ikhadi lakho le-SD lilahlekile!</string>
+    <string name="dlg_addedit_station_name">Igama:</string>
+    <string name="dlg_addedit_title_edit">Lungisa ishaneli</string>
+    <string name="toast_invalid_input">Okokugcina okufakiwe phakathi akuqisekiwe, inani eliqinisekisiswe u-0 noma u-5.</string>
+    <string name="edit_recording_name_hint">Bhala igama lefayela lapha</string>
+    <string name="dlg_noantenna_text">Udinga i-earphone njenge eriyeli. Sicela ufake i-earphone yakho.</string>
+    <string name="toast_player_internal_error">Kwenzeke iphutha ngaphakathi kwi-Player!</string>
+</resources>

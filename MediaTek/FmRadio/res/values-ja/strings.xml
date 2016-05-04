@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Copyright Statement:
+
+  This software/firmware and related documentation ("MediaTek Software") are
+  protected under relevant copyright laws. The information contained herein is
+  confidential and proprietary to MediaTek Inc. and/or its licensors. Without
+  the prior written permission of MediaTek inc. and/or its licensors, any
+  reproduction, modification, use or disclosure of MediaTek Software, and
+  information contained herein, in whole or in part, shall be strictly
+  prohibited.
+
+  MediaTek Inc. (C) 2011-2014. All rights reserved.
+
+  BY OPENING THIS FILE, RECEIVER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO RECEIVER
+  ON AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL
+  WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR
+  NONINFRINGEMENT. NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH
+  RESPECT TO THE SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY,
+  INCORPORATED IN, OR SUPPLIED WITH THE MEDIATEK SOFTWARE, AND RECEIVER AGREES
+  TO LOOK ONLY TO SUCH THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO.
+  RECEIVER EXPRESSLY ACKNOWLEDGES THAT IT IS RECEIVER'S SOLE RESPONSIBILITY TO
+  OBTAIN FROM ANY THIRD PARTY ALL PROPER LICENSES CONTAINED IN MEDIATEK
+  SOFTWARE. MEDIATEK SHALL ALSO NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE
+  RELEASES MADE TO RECEIVER'S SPECIFICATION OR TO CONFORM TO A PARTICULAR
+  STANDARD OR OPEN FORUM. RECEIVER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S
+  ENTIRE AND CUMULATIVE LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE
+  RELEASED HEREUNDER WILL BE, AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE
+  MEDIATEK SOFTWARE AT ISSUE, OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE
+  CHARGE PAID BY RECEIVER TO MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+
+  The following software/firmware and/or related documentation ("MediaTek
+  Software") have been modified by MediaTek Inc. All revisions are subject to
+  any receiver's applicable license agreements with MediaTek Inc.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">FMラジオ</string>
+    <string name="dlg_progress_title">検索</string>
+    <string name="btn_yes">はい</string>
+    <string name="optmenu_speaker">スピーカー</string>
+    <string name="edit_frequency_overwrite_text">上書き</string>
+    <string name="toast_start_recording">録音開始...</string>
+    <string name="fm_unit">MHz</string>
+    <string name="empty_list">チャンネルリストは空です。</string>
+    <string name="optmenu_rds_settings">RDS設定</string>
+    <string name="toast_channel_searched">利用可能なチャンネルを検索：</string>
+    <string name="already_exists">すでに存在しています</string>
+    <string name="dlg_noantenna_title">イヤホンの差し込み</string>
+    <string name="add_to_favorite">お気に入りに追加</string>
+    <string name="toast_sdcard_insufficient_space">SDカード容量が不足しています！</string>
+    <string name="dlg_delete_confirm_title">お気に入りからの削除を確認</string>
+    <string name="optmenu_record">FMを録音</string>
+    <string name="optmenu_earphone">イヤホン</string>
+    <string name="sound_mode">サウンドモード</string>
+    <string name="toast_already_favorite">このチャンネルはすでにお気に入りリストの中にあります。</string>
+    <string name="not_available">現在使用できません</string>
+    <string name="toast_channel_deleted">お気に入りから削除されました。</string>
+    <string name="toast_channel_added">お気に入りに追加されました。</string>
+    <string name="dlg_rds_settings_channel_information">チャンネル情報</string>
+    <string name="toast_favorite_full">満杯のため、お気に入りリストにチャンネルを追加できません。</string>
+    <string name="btn_save_recording">保存</string>
+    <string name="optmenu_search">検索</string>
+    <string name="dlg_rds_settings_alternative_frequency">代替周波数</string>
+    <string name="dlg_progress_text">チャンネルの検索...</string>
+    <string name="optmenu_exit">終了</string>
+    <string name="more">詳細</string>
+    <string name="btn_discard_recording">捨てる</string>
+    <string name="contmenu_item_edit">編集</string>
+    <string name="toast_cannot_search">利用可能なチャンネルを検索できません。</string>
+    <string name="dlg_save_recording_storage_warning">容量が不足しています！現在の録音を保存しますか？</string>
+    <string name="toast_in_call">通話中にFMラジオは起動できません。</string>
+    <string name="dlg_addedit_station_freq">周波数：</string>
+    <string name="toast_recorder_internal_error">レコーダーで内部エラーが発生しました！</string>
+    <string name="dlg_save_recording_title">録音ファイルを保存</string>
+    <string name="btn_ok">OK</string>
+    <string name="power">電源</string>
+    <string name="contmenu_item_delete">お気に入りから削除</string>
+    <string name="toast_powerup_before_record_warning">最初にFMの電源を入れてください！</string>
+    <string name="fm_recorder_name">FMレコーダー</string>
+    <string name="toast_recording_lost_warning">SDが取り出されたため、録音は失われます！</string>
+    <string name="dlg_delete_confirm_text">お気に入りからこのチャンネルを削除してもよろしいですか？</string>
+    <string name="default_station_name">新しいチャンネル</string>
+    <string name="btn_cancel">キャンセル</string>
+    <string name="contmenu_title">操作</string>
+    <string name="btn_no">いいえ</string>
+    <string name="favorite_manager">チャンネルリスト</string>
+    <string name="toast_invalid_frequency">現在の場所では無効な周波数です。有効な周波数範囲：87.5-108.0</string>
+    <string name="toast_sdcard_missing">SDカードがありません！</string>
+    <string name="dlg_addedit_station_name">名前：</string>
+    <string name="dlg_addedit_title_edit">チャンネルの編集</string>
+    <string name="toast_invalid_input">最後の入力は無効です。有効な値は0または5です。</string>
+    <string name="edit_recording_name_hint">ここにファイル名を入力します</string>
+    <string name="dlg_noantenna_text">アンテナとしてイヤホンが必要です。イヤホンを差し込んでください。</string>
+    <string name="toast_player_internal_error">プレイヤーで内部エラーが発生しました！</string>
+    <string name="no_antenna_info">イヤホンを差し込み、ラジオのアンテナとして使用します。</string>
+    <string name="add_to_favorite1">プリセットチャンネルに追加する</string>
+    <string name="contmenu_item_delete1">プリセットチャンネルから外す</string>
+    <string name="dlg_delete_confirm_title1">プリセットチャンネルからの削除を確定する</string>
+    <string name="dlg_delete_confirm_text1">このチャンネルをプリセットから削除しますか？</string>
+    <string name="toast_favorite_full1">プリセットが一杯なので、チャンネルを追加できません。</string>
+    <string name="toast_already_favorite1">このチャンネルは既にプリセットに登録されています。</string>
+    <string name="toast_channel_deleted1">プリセットチャンネルから削除しました。</string>
+    <string name="toast_channel_added1">プリセットチャンネルに登録しました。</string>
+</resources>

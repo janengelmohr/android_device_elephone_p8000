@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright Statement:
+
+  This software/firmware and related documentation ("MediaTek Software") are
+  protected under relevant copyright laws. The information contained herein is
+  confidential and proprietary to MediaTek Inc. and/or its licensors. Without
+  the prior written permission of MediaTek inc. and/or its licensors, any
+  reproduction, modification, use or disclosure of MediaTek Software, and
+  information contained herein, in whole or in part, shall be strictly
+  prohibited.
+
+  MediaTek Inc. (C) 2011-2014. All rights reserved.
+
+  BY OPENING THIS FILE, RECEIVER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO RECEIVER
+  ON AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL
+  WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR
+  NONINFRINGEMENT. NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH
+  RESPECT TO THE SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY,
+  INCORPORATED IN, OR SUPPLIED WITH THE MEDIATEK SOFTWARE, AND RECEIVER AGREES
+  TO LOOK ONLY TO SUCH THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO.
+  RECEIVER EXPRESSLY ACKNOWLEDGES THAT IT IS RECEIVER'S SOLE RESPONSIBILITY TO
+  OBTAIN FROM ANY THIRD PARTY ALL PROPER LICENSES CONTAINED IN MEDIATEK
+  SOFTWARE. MEDIATEK SHALL ALSO NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE
+  RELEASES MADE TO RECEIVER'S SPECIFICATION OR TO CONFORM TO A PARTICULAR
+  STANDARD OR OPEN FORUM. RECEIVER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S
+  ENTIRE AND CUMULATIVE LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE
+  RELEASED HEREUNDER WILL BE, AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE
+  MEDIATEK SOFTWARE AT ISSUE, OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE
+  CHARGE PAID BY RECEIVER TO MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+
+  The following software/firmware and/or related documentation ("MediaTek
+  Software") have been modified by MediaTek Inc. All revisions are subject to
+  any receiver's applicable license agreements with MediaTek Inc.
+-->
+<resources>
+    <string name="app_name">FM Radyo</string>
+    <string name="favorite_manager">Kanal listesi</string>
+    <string name="add_to_favorite">Sık Kullanılanlara Ekle</string>
+    <string name="optmenu_search">Ara</string>
+    <string name="optmenu_exit">Exit</string>
+    <string name="contmenu_title">İşlemler</string>
+    <string name="contmenu_item_edit">Düzenle</string>
+    <string name="contmenu_item_delete">Sık kullanılanlardan kaldır</string>
+    <string name="dlg_noantenna_text">Anten işlevi için bir kulaklık gerekiyor. Lütfen kulaklığınızı takın.</string>
+    <string name="dlg_noantenna_title">Kulaklığı takın</string>
+    <string name="btn_yes">Evet</string>
+    <string name="btn_no">Hayır</string>
+    <string name="btn_ok">Tamam</string>
+    <string name="btn_cancel">İptal</string>
+    <string name="dlg_progress_title">Tara</string>
+    <string name="dlg_progress_text">Kanalları ara…</string>
+    <string name="dlg_addedit_station_name">Ad:</string>
+    <string name="dlg_addedit_station_freq">Sıklık:</string>
+    <string name="dlg_addedit_title_edit">Kanalı Düzenle</string>
+    <string name="default_station_name">Yeni Kanal</string>
+    <string name="dlg_delete_confirm_title">Kanal Silme İşlemini Onayla</string>
+    <string name="dlg_delete_confirm_text">Bu kanalı silmek istediğinizden emin misiniz?</string>
+    <string name="toast_favorite_full">Sık kullanılanlar listesi dolu olduğu için listeye kanal eklenemiyor.</string>
+    <string name="toast_already_favorite">Bu kanal zaten sık kullanılanlar listesinde.</string>
+    <string name="toast_channel_deleted">Sık kullanılanlardan başarıyla kaldır.</string>
+    <string name="toast_channel_added">Sık kullanılanlara başarıyla eklendi.</string>
+    <string name="toast_channel_searched">Uygun kanallar bulundu:</string>
+    <string name="toast_cannot_search">Uygun kanal bulunamıyor.</string>
+    <string name="optmenu_rds_settings">RDS ayarları</string>
+    <string name="dlg_rds_settings_channel_information">Kanal bilgileri</string>
+    <string name="dlg_rds_settings_alternative_frequency">Alternatif frekans</string>
+    <string name="more">Diğer Uyg</string>
+    <string name="sound_mode">Ses modu</string>
+    <string name="power">üstü</string>
+    <string name="fm_unit">MHz</string>
+    <string name="no_antenna_info">Radyo anteni olarak kullanmak için kulaklıklarınızı takın.</string>
+    <!-- For FM recording -->
+    <string name="edit_frequency_overwrite_text">"Üzerine yaz"</string>
+    <string name="fm_recorder_name">FM kaydedici</string>
+    <string name="toast_recording_lost_warning">SD çıkarıldığı için kaydınız kaybolacak!</string>
+    <string name="toast_start_recording">Kayıdı başla…</string>
+    <string name="toast_sdcard_missing">SD kartınız yok!</string>
+    <string name="toast_sdcard_insufficient_space">Yetersiz SD kartı alanı!</string>
+    <string name="toast_recorder_internal_error">Kayıt cihazında dahili hata oluştu!</string>
+    <string name="toast_player_internal_error">Müzik çalarda dahili hata oluştu!</string>
+    <string name="toast_powerup_before_record_warning">"Lütfen ilk önce FM'i açın!"</string>
+    <string name="optmenu_record">"FM'i kaydet"</string>
+    <string name="btn_save_recording">Kaydet</string>
+    <string name="btn_discard_recording">Çıkar</string>
+    <string name="edit_recording_name_hint">Dosya adını buraya yazın</string>
+    <string name="dlg_save_recording_title">Kayıt dosyasını kaydet</string>
+    <string name="dlg_save_recording_storage_warning">Yetersiz depolama alanı! Mevcut kaydı kaydetmek istiyor musunuz?</string>
+    <string name="already_exists">Zaten var</string>
+    <string name="toast_invalid_frequency">Şu anki konum için geçersiz frekans. Geçerli frekans aralığı: 87,5 - 108,0.</string>
+    <string name="toast_invalid_input">"En son geçersiz giriş, geçersiz değer 0 veya 5'dir."</string>
+    <string name="toast_in_call">"Görüşme sırasında FM Radyo'yu başlatmazsınız."</string>
+    <string name="empty_list">Kanal listesi boş.</string>
+    <string name="optmenu_speaker">"Hoparlör"</string>
+    <string name="optmenu_earphone">Kulaklık</string>
+    <string name="not_available">Şu anda kullanılamaz</string>
+    <string name="add_to_favorite1">Önceden ayarlanmış kanallara ekle</string>  
+    <string name="contmenu_item_delete1">Önceden ayarlanmış kanallardan sil</string>  
+    <string name="dlg_delete_confirm_title1">Önceden ayarlanmış kanallardan silmeyi onayla</string>  
+    <string name="dlg_delete_confirm_text1">Bu kanalı önceden ayarlanmış kanallar arasından silmek istediğinizden emin misiniz?</string>  
+    <string name="toast_favorite_full1">Önceden ayarlanmış kanal listesi dolu olduğundan kanal eklenemiyor.</string>  
+    <string name="toast_already_favorite1">Bu kanal zaten önceden ayarlanmış kanal listesinde var.</string>  
+    <string name="toast_channel_deleted1">Önceden ayarlanmış kanallardan başarıyla silindi.</string>  
+    <string name="toast_channel_added1">Önceden ayarlanmış kanallara başarıyla eklendi.</string>  
+</resources>

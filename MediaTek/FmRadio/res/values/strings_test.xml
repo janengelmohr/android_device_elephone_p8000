@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="test_success" translatable="false">成功</string>
+    <string name="test_fail" translatable="false">失败</string>
+    <string name="test_search" translatable="false">搜索</string>
+</resources>

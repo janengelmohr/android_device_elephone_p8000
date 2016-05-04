@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Copyright Statement:
+
+  This software/firmware and related documentation ("MediaTek Software") are
+  protected under relevant copyright laws. The information contained herein is
+  confidential and proprietary to MediaTek Inc. and/or its licensors. Without
+  the prior written permission of MediaTek inc. and/or its licensors, any
+  reproduction, modification, use or disclosure of MediaTek Software, and
+  information contained herein, in whole or in part, shall be strictly
+  prohibited.
+
+  MediaTek Inc. (C) 2011-2014. All rights reserved.
+
+  BY OPENING THIS FILE, RECEIVER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO RECEIVER
+  ON AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL
+  WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR
+  NONINFRINGEMENT. NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH
+  RESPECT TO THE SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY,
+  INCORPORATED IN, OR SUPPLIED WITH THE MEDIATEK SOFTWARE, AND RECEIVER AGREES
+  TO LOOK ONLY TO SUCH THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO.
+  RECEIVER EXPRESSLY ACKNOWLEDGES THAT IT IS RECEIVER'S SOLE RESPONSIBILITY TO
+  OBTAIN FROM ANY THIRD PARTY ALL PROPER LICENSES CONTAINED IN MEDIATEK
+  SOFTWARE. MEDIATEK SHALL ALSO NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE
+  RELEASES MADE TO RECEIVER'S SPECIFICATION OR TO CONFORM TO A PARTICULAR
+  STANDARD OR OPEN FORUM. RECEIVER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S
+  ENTIRE AND CUMULATIVE LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE
+  RELEASED HEREUNDER WILL BE, AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE
+  MEDIATEK SOFTWARE AT ISSUE, OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE
+  CHARGE PAID BY RECEIVER TO MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+
+  The following software/firmware and/or related documentation ("MediaTek
+  Software") have been modified by MediaTek Inc. All revisions are subject to
+  any receiver's applicable license agreements with MediaTek Inc.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">FM raadio</string>
+    <string name="dlg_progress_title">Otsi</string>
+    <string name="btn_yes">Jah</string>
+    <string name="optmenu_speaker">Kõlar</string>
+    <string name="edit_frequency_overwrite_text">Kirjuta üle</string>
+    <string name="toast_start_recording">Alusta salvestamist...</string>
+    <string name="fm_unit">MHz</string>
+    <string name="empty_list">Kanalite loend on tühi.</string>
+    <string name="optmenu_rds_settings">RDS seaded</string>
+    <string name="toast_channel_searched">Otsiti välja saadaolevad kanalid:</string>
+    <string name="already_exists">on juba olemas</string>
+    <string name="dlg_noantenna_title">Ühenda kõrvaklapid</string>
+    <string name="add_to_favorite">Lisa Lemmikutesse</string>
+    <string name="toast_sdcard_insufficient_space">SD kaardil pole piisavalt ruumi!</string>
+    <string name="dlg_delete_confirm_title">Kinnita lemmikutest eemaldamine</string>
+    <string name="optmenu_record">Salvesta FM</string>
+    <string name="optmenu_earphone">Kõrvaklapid</string>
+    <string name="sound_mode">Helirežiim</string>
+    <string name="toast_already_favorite">See kanal on juba lemmikute loendis.</string>
+    <string name="not_available">Ei ole praegu saadaval</string>
+    <string name="toast_channel_deleted">Lemmikutest eemaldamine õnnestus.</string>
+    <string name="toast_channel_added">Lemmikutesse lisamine õnnestus.</string>
+    <string name="dlg_rds_settings_channel_information">Kanali teave</string>
+    <string name="toast_favorite_full">Ei saa lisada kanalit lemmikute loendisse, kuna see on täis.</string>
+    <string name="btn_save_recording">Salvesta</string>
+    <string name="optmenu_search">Otsi</string>
+    <string name="dlg_rds_settings_alternative_frequency">Alternatiivne sagedus</string>
+    <string name="dlg_progress_text">Otsi kanaleid...</string>
+    <string name="optmenu_exit">Välju</string>
+    <string name="more">Veel</string>
+    <string name="btn_discard_recording">Likvideeri</string>
+    <string name="contmenu_item_edit">Redigeeri</string>
+    <string name="toast_cannot_search">Ei saa saadaolevat kanalit välja otsida.</string>
+    <string name="dlg_save_recording_storage_warning">Pole piisavalt mälu! Kas soovid praeguse salvestuse salvestada?</string>
+    <string name="toast_in_call">Sa ei saa käivitada FM raadiot helistamise ajal.</string>
+    <string name="dlg_addedit_station_freq">Sagedus:</string>
+    <string name="toast_recorder_internal_error">Salvestil ilmnes sisetõrge!</string>
+    <string name="dlg_save_recording_title">Salvesta salvestusfail</string>
+    <string name="btn_ok">OK</string>
+    <string name="power">Võimsus</string>
+    <string name="contmenu_item_delete">Eemalda lemmikutest</string>
+    <string name="toast_powerup_before_record_warning">Lülita kõigepealt FM sisse!</string>
+    <string name="no_antenna_info">Ühendage kõrvaklapid, et kasutada neid raadioantennina.</string>
+    <string name="fm_recorder_name">FM salvesti</string>
+    <string name="toast_recording_lost_warning">Sinu salvestus läheb SD eemaldamise tõttu kaotsi!</string>
+    <string name="dlg_delete_confirm_text">Kas soovid kindlasti selle kanali lemmikutest eemaldada?</string>
+    <string name="default_station_name">Uus kanal</string>
+    <string name="btn_cancel">Loobu</string>
+    <string name="contmenu_title">Toimingud</string>
+    <string name="btn_no">Ei</string>
+    <string name="favorite_manager">Kanalite loend</string>
+    <string name="toast_invalid_frequency">Vigane sagedus praeguse asukoha jaoks. Kehtiv sagedusulatus: 87,5-108,0</string>
+    <string name="toast_sdcard_missing">SD kaart puudub!</string>
+    <string name="dlg_addedit_station_name">Nimi:</string>
+    <string name="dlg_addedit_title_edit">Redigeeri kanalit</string>
+    <string name="toast_invalid_input">Viimane vigane sisestus, õige väärtus on 0 või 5.</string>
+    <string name="edit_recording_name_hint">Sisesta faili nimi siin</string>
+    <string name="dlg_noantenna_text">Sa vajad kõrvaklappe antenniks. Ühenda oma kõrvaklapid.</string>
+    <string name="toast_player_internal_error">Pleieril ilmnes sisetõrge!</string>
+    <string name="add_to_favorite1">Lisa eelseatud kanalitesse</string>
+    <string name="contmenu_item_delete1">Eemalda eelseatud kanalitest</string>
+    <string name="dlg_delete_confirm_title1">Kinnita eelseatud kanalitest eemaldamine</string>
+    <string name="dlg_delete_confirm_text1">Kas soovid kindlasti selle kanali eelseatud kanalitest eemaldada?</string>
+    <string name="toast_favorite_full1">Ei saa lisada kanalit eelseatud kanalite loendisse, kuna see on täis.</string>
+    <string name="toast_already_favorite1">See kanal on juba eelseatud kanalite loendis.</string>
+    <string name="toast_channel_deleted1">Eelseatud kanalitest eemaldamine õnnestus.</string>
+    <string name="toast_channel_added1">Eelseatud kanalitesse lisamine õnnestus.</string>
+</resources>

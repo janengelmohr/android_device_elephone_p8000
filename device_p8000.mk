@@ -180,7 +180,7 @@ PRODUCT_COPY_FILES += \
 
 # FM Radio
 PRODUCT_PACKAGES += \
-     	FMRadio \
+     	FmRadio \
      	libfmjni \
 	libfmmt6620 \
         libfmmt6628 \

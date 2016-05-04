@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Copyright Statement:
+
+  This software/firmware and related documentation ("MediaTek Software") are
+  protected under relevant copyright laws. The information contained herein is
+  confidential and proprietary to MediaTek Inc. and/or its licensors. Without
+  the prior written permission of MediaTek inc. and/or its licensors, any
+  reproduction, modification, use or disclosure of MediaTek Software, and
+  information contained herein, in whole or in part, shall be strictly
+  prohibited.
+
+  MediaTek Inc. (C) 2011-2014. All rights reserved.
+
+  BY OPENING THIS FILE, RECEIVER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO RECEIVER
+  ON AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL
+  WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR
+  NONINFRINGEMENT. NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH
+  RESPECT TO THE SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY,
+  INCORPORATED IN, OR SUPPLIED WITH THE MEDIATEK SOFTWARE, AND RECEIVER AGREES
+  TO LOOK ONLY TO SUCH THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO.
+  RECEIVER EXPRESSLY ACKNOWLEDGES THAT IT IS RECEIVER'S SOLE RESPONSIBILITY TO
+  OBTAIN FROM ANY THIRD PARTY ALL PROPER LICENSES CONTAINED IN MEDIATEK
+  SOFTWARE. MEDIATEK SHALL ALSO NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE
+  RELEASES MADE TO RECEIVER'S SPECIFICATION OR TO CONFORM TO A PARTICULAR
+  STANDARD OR OPEN FORUM. RECEIVER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S
+  ENTIRE AND CUMULATIVE LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE
+  RELEASED HEREUNDER WILL BE, AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE
+  MEDIATEK SOFTWARE AT ISSUE, OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE
+  CHARGE PAID BY RECEIVER TO MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+
+  The following software/firmware and/or related documentation ("MediaTek
+  Software") have been modified by MediaTek Inc. All revisions are subject to
+  any receiver's applicable license agreements with MediaTek Inc.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">ວິທະຍຸ FM</string>
+    <string name="dlg_progress_title">ຊອກຫາ</string>
+    <string name="btn_yes">ແມ່ນແລ້ວ</string>
+    <string name="optmenu_speaker">ຜູ້ຢິງເວົ້າ</string>
+    <string name="edit_frequency_overwrite_text">ຂຽນກ່ຽວກັບການເທິງ</string>
+    <string name="toast_start_recording">ເລີ່ມຕົ້ນການບັນທຶກ…</string>
+    <string name="fm_unit">MHz</string>
+    <string name="empty_list">ບັນຊີລາຍຊື່ຊ່ອງເປົ່າຫວ່າງ.</string>
+    <string name="optmenu_rds_settings">ການປັບຄ່າ RDS </string>
+    <string name="toast_channel_searched">ຊອກຫາຊ່ອງທາງອອກທີ່ມີຢູ່:</string>
+    <string name="already_exists">ມີແລ້ວ</string>
+    <string name="dlg_noantenna_title">ສຽບໃນໂທລະສັບຫູ</string>
+    <string name="add_to_favorite">ເພີ່ມເຖິງຄວາມຕ້ອງການ</string>
+    <string name="toast_sdcard_insufficient_space">ຊ່ອງບັດ SD ບໍ່ພຽງພໍ!</string>
+    <string name="dlg_delete_confirm_title">ຢືນຢັນອອກຈາກຄວາມຕ້ອງການ</string>
+    <string name="optmenu_record">ການບັນທຶກການ FM</string>
+    <string name="optmenu_earphone">ໂທລະສັບຫູ</string>
+    <string name="sound_mode">ຮູບແບບສຽງ</string>
+    <string name="toast_already_favorite">ຊ່ອງທາງນີ້ແມ່ນຢູ່ໃນບັນຊີລາຍຊື່ຂອງຄວາມຕ້ອງການ.</string>
+    <string name="not_available">ປະຈຸບັນຍັງບໍ່ທັນມີ</string>
+    <string name="toast_channel_deleted">ການໂຍກຍ້າຍສົບຜົນສໍາເລັດຈາກຄວາມຕ້ອງການ.</string>
+    <string name="toast_channel_added">ເພີ່ມສົບຜົນສໍາເລັດກັບຄວາມຕ້ອງການ.</string>
+    <string name="dlg_rds_settings_channel_information">ຂໍ້ມູນຂ່າວສານທາງ</string>
+    <string name="toast_favorite_full">ບໍ່ສາມາດເພີ່ມຊ່ອງທາງໃນການບັນຊີຂອງທ່ານເພາະວ່າມັນເປັນອັນເຕັມທີ່.</string>
+    <string name="btn_save_recording">ຊ່ວຍປະຢັດ</string>
+    <string name="optmenu_search">ຊອກຫາ</string>
+    <string name="dlg_rds_settings_alternative_frequency">ຄວາມຖີ່ຂອງການເລືອກ</string>
+    <string name="dlg_progress_text">ຊ່ອງທາງການຊອກຫາ…</string>
+    <string name="optmenu_exit">ອອກໄປ</string>
+    <string name="more">ອ່ານຕໍ່</string>
+    <string name="btn_discard_recording">ຖິ້ມ</string>
+    <string name="contmenu_item_edit">ດັດແກ້</string>
+    <string name="toast_cannot_search">ບໍ່ສາມາດຊອກຫາຊ່ອງທາງອອກທີ່ມີຢູ່.</string>
+    <string name="dlg_save_recording_storage_warning">ການເກັບຮັກສາບໍ່ພຽງພໍ! ທ່ານຕ້ອງການທີ່ຈະຊ່ວຍປະຢັດການບັນທຶກການປະຈຸບັນ?</string>
+    <string name="toast_in_call">ທ່ານບໍ່ສາມາດເປີດວິທະຍຸ FM ໃນເວລາທີ່ທ່ານຢູ່ໃນການເອີ້ນ.</string>
+    <string name="dlg_addedit_station_freq">ຄວາມຖີ່ຂອງການ:</string>
+    <string name="toast_recorder_internal_error">ເປັນຄວາມຜິດພາດທີ່ເກີດຂຶ້ນພາຍໃນໃນການບັນທຶກ!</string>
+    <string name="dlg_save_recording_title">ຊ່ວຍປະຢັດໄຟລ໌ບັນທຶກ</string>
+    <string name="btn_ok">ຖືກແລ້ວ</string>
+    <string name="power">ພະລັງງານ</string>
+    <string name="contmenu_item_delete">ເອົາອອກຈາກຂອງ</string>
+    <string name="toast_powerup_before_record_warning">ກະລຸນາພະລັງງານສູງ FM ທໍາອິດ!</string>
+    <string name="fm_recorder_name">ເຄື່ອງມືບັນທຶກ FM</string>
+    <string name="toast_recording_lost_warning">ການບັນທຶກຂອງທ່ານຈະໄດ້ຮັບການສູນເສຍເນື່ອງຈາກການໂຍກຍ້າຍ SD!</string>
+    <string name="dlg_delete_confirm_text">ທ່ານແນ່ໃຈວ່າທ່ານຕ້ອງການທີ່ຈະເອົາຊ່ອງທາງນີ້ຈາກຂອງ?</string>
+    <string name="default_station_name">ໃຫມ່ຊ່ອງ</string>
+    <string name="btn_cancel">ຍົກເລີກການ</string>
+    <string name="contmenu_title">ການປະຕິບັດ</string>
+    <string name="btn_no">ບໍ່</string>
+    <string name="favorite_manager">ບັນຊີລາຍຊື່ຊ່ອງ</string>
+    <string name="toast_invalid_frequency">ຄວາມຖີ່ຂອງການບໍ່ຖືກຕ້ອງສໍາລັບສະຖານທີ່ໃນປະຈຸບັນ. ຂອບເຂດຄວາມຖີ່ຂອງຄວາມຖືກຕ້ອງ: 87.5-108.0</string>
+    <string name="toast_sdcard_missing">ບັດ SD ຂອງທ່ານໄດ້ຖືກຫາຍ!</string>
+    <string name="dlg_addedit_station_name">ຊື່ຂອງທ່ານ:</string>
+    <string name="dlg_addedit_title_edit">ດັດແກ້ການຊ່ອງ</string>
+    <string name="toast_invalid_input">ການປະກອບບໍ່ຖືກຕ້ອງທີ່ສຸດ, ມູນຄ່າຖືກຕ້ອງແມ່ນ 0 ຫຼື 5.</string>
+    <string name="edit_recording_name_hint">ຊື່ໄຟລ໌ທີ່ນີ້</string>
+    <string name="dlg_noantenna_text">ທ່ານຈໍາເປັນຕ້ອງໂທລະສັບຫູເປັນສາຍອາກາດ. ກະລຸນາສຽບໃນໂທລະສັບຫູຂອງທ່ານ.</string>
+    <string name="toast_player_internal_error">ເປັນຄວາມຜິດພາດພາຍໃນທີ່ເກີດຂຶ້ນໃນລະ!</string>
+</resources>

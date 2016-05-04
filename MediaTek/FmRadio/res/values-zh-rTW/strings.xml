@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright Statement:
+
+  This software/firmware and related documentation ("MediaTek Software") are
+  protected under relevant copyright laws. The information contained herein is
+  confidential and proprietary to MediaTek Inc. and/or its licensors. Without
+  the prior written permission of MediaTek inc. and/or its licensors, any
+  reproduction, modification, use or disclosure of MediaTek Software, and
+  information contained herein, in whole or in part, shall be strictly
+  prohibited.
+
+  MediaTek Inc. (C) 2011-2014. All rights reserved.
+
+  BY OPENING THIS FILE, RECEIVER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO RECEIVER
+  ON AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL
+  WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR
+  NONINFRINGEMENT. NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH
+  RESPECT TO THE SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY,
+  INCORPORATED IN, OR SUPPLIED WITH THE MEDIATEK SOFTWARE, AND RECEIVER AGREES
+  TO LOOK ONLY TO SUCH THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO.
+  RECEIVER EXPRESSLY ACKNOWLEDGES THAT IT IS RECEIVER'S SOLE RESPONSIBILITY TO
+  OBTAIN FROM ANY THIRD PARTY ALL PROPER LICENSES CONTAINED IN MEDIATEK
+  SOFTWARE. MEDIATEK SHALL ALSO NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE
+  RELEASES MADE TO RECEIVER'S SPECIFICATION OR TO CONFORM TO A PARTICULAR
+  STANDARD OR OPEN FORUM. RECEIVER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S
+  ENTIRE AND CUMULATIVE LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE
+  RELEASED HEREUNDER WILL BE, AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE
+  MEDIATEK SOFTWARE AT ISSUE, OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE
+  CHARGE PAID BY RECEIVER TO MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+
+  The following software/firmware and/or related documentation ("MediaTek
+  Software") have been modified by MediaTek Inc. All revisions are subject to
+  any receiver's applicable license agreements with MediaTek Inc.
+-->
+<resources>
+    <string name="app_name">調頻廣播</string>
+    <string name="favorite_manager">頻道清單</string>
+    <string name="add_to_favorite">新增到我的最愛</string>
+    <string name="optmenu_search">搜尋</string>
+    <string name="optmenu_exit">結束</string>
+    <string name="contmenu_title">操作</string>
+    <string name="contmenu_item_edit">編輯</string>
+    <string name="contmenu_item_delete">從我的最愛移除</string>
+    <string name="dlg_noantenna_text">您需要耳機充當天線。請插入您的耳機。</string>
+    <string name="dlg_noantenna_title">插入耳機</string>
+    <string name="btn_yes">是</string>
+    <string name="btn_no">否</string>
+    <string name="btn_ok">確定</string>
+    <string name="btn_cancel">取消</string>
+    <string name="dlg_progress_title">搜尋</string>
+    <string name="dlg_progress_text">搜尋頻道...</string>
+    <string name="dlg_addedit_station_name">名稱:</string>
+    <string name="dlg_addedit_station_freq">頻率：</string>
+    <string name="dlg_addedit_title_edit">編輯頻道</string>
+    <string name="default_station_name">新頻道</string>
+    <string name="dlg_delete_confirm_title">確認從我的最愛移除</string>
+    <string name="dlg_delete_confirm_text">您是否確定要從我的最愛移除這個頻道？</string>
+    <string name="toast_favorite_full">由於已滿，而無法將頻道新增到我的最愛清單。</string>
+    <string name="toast_already_favorite">這個頻道已在我的最愛清單內。</string>
+    <string name="toast_channel_deleted">已成功從我的最愛移除。</string>
+    <string name="toast_channel_added">已成功新增至我的最愛。</string>
+    <string name="toast_channel_searched">找到可用頻道：</string>
+    <string name="toast_cannot_search">找不到可用頻道。</string>
+    <string name="toast_invalid_frequency">目前位置的頻率無效。有效頻率範圍：87.5至108.0</string>
+    <string name="toast_invalid_input">最近一次輸入無效，有效值為0或5。</string>
+    <string name="optmenu_rds_settings">RDS設定</string>
+    <string name="dlg_rds_settings_channel_information">頻道資訊</string>
+    <string name="dlg_rds_settings_alternative_frequency">替代頻率</string>
+    <string name="more">更多應用程式</string>
+    <string name="power">電源</string>
+    <string name="sound_mode">音效模式</string>
+    <string name="toast_in_call">你在通話時，無法啟動調頻(FM)廣播。</string>
+    <string name="empty_list">頻道清單空白。</string>  
+    <string name="optmenu_speaker">擴音器</string>  
+    <string name="optmenu_earphone">耳機</string>  
+    <string name="edit_frequency_overwrite_text">"覆寫"</string>
+    <string name="fm_unit">兆赫</string>
+    <string name="no_antenna_info">插入耳機當作收音機天線。</string>
+    <!-- For FM recording -->
+    <string name="fm_recorder_name">調頻(FM)錄音機</string>
+    <string name="toast_recording_lost_warning">您的錄音將因SD記憶卡移除而遺失！</string>
+    <string name="toast_start_recording">開始錄製…</string>
+    <string name="toast_sdcard_missing">您的SD記憶卡遺失中！</string>
+    <string name="toast_sdcard_insufficient_space">SD記憶卡空間不足！</string>
+    <string name="toast_recorder_internal_error">錄製程式發生內部錯誤！</string>
+    <string name="toast_player_internal_error">播放程式發生內部錯誤！</string>
+    <string name="toast_powerup_before_record_warning">請先打開FM的電源！</string>
+    <string name="optmenu_record">錄製 FM</string>
+    <string name="btn_save_recording">儲存</string>
+    <string name="btn_discard_recording">捨棄</string>
+    <string name="edit_recording_name_hint">在這裡輸檔案名稱入</string>
+    <string name="dlg_save_recording_title">儲存錄製檔案</string>
+    <string name="dlg_save_recording_storage_warning">儲存空間不足！要儲存目前錄製的資料？</string>
+    <string name="already_exists">已經存在</string>
+    <string name="not_available">目前不可用</string>
+    <string name="add_to_favorite1">新增到預設頻道</string>
+    <string name="contmenu_item_delete1">從預設頻道中移除</string>
+    <string name="dlg_delete_confirm_title1">確認從預設頻道移除</string>
+    <string name="dlg_delete_confirm_text1">您是否確定要從預設頻道移除這個頻道？</string>
+    <string name="toast_favorite_full1">由於已滿，而無法將頻道新增到預設頻道清單。</string>
+    <string name="toast_already_favorite1">這個頻道已在預設頻道清單內。</string>
+    <string name="toast_channel_deleted1">已成功從預設頻道移除。</string>
+    <string name="toast_channel_added1">已成功新增至預設頻道。</string>
+</resources>

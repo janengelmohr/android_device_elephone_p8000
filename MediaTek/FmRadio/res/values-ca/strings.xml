@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Copyright Statement:
+
+  This software/firmware and related documentation ("MediaTek Software") are
+  protected under relevant copyright laws. The information contained herein is
+  confidential and proprietary to MediaTek Inc. and/or its licensors. Without
+  the prior written permission of MediaTek inc. and/or its licensors, any
+  reproduction, modification, use or disclosure of MediaTek Software, and
+  information contained herein, in whole or in part, shall be strictly
+  prohibited.
+
+  MediaTek Inc. (C) 2011-2014. All rights reserved.
+
+  BY OPENING THIS FILE, RECEIVER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO RECEIVER
+  ON AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL
+  WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR
+  NONINFRINGEMENT. NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH
+  RESPECT TO THE SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY,
+  INCORPORATED IN, OR SUPPLIED WITH THE MEDIATEK SOFTWARE, AND RECEIVER AGREES
+  TO LOOK ONLY TO SUCH THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO.
+  RECEIVER EXPRESSLY ACKNOWLEDGES THAT IT IS RECEIVER'S SOLE RESPONSIBILITY TO
+  OBTAIN FROM ANY THIRD PARTY ALL PROPER LICENSES CONTAINED IN MEDIATEK
+  SOFTWARE. MEDIATEK SHALL ALSO NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE
+  RELEASES MADE TO RECEIVER'S SPECIFICATION OR TO CONFORM TO A PARTICULAR
+  STANDARD OR OPEN FORUM. RECEIVER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S
+  ENTIRE AND CUMULATIVE LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE
+  RELEASED HEREUNDER WILL BE, AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE
+  MEDIATEK SOFTWARE AT ISSUE, OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE
+  CHARGE PAID BY RECEIVER TO MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+
+  The following software/firmware and/or related documentation ("MediaTek
+  Software") have been modified by MediaTek Inc. All revisions are subject to
+  any receiver's applicable license agreements with MediaTek Inc.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Ràdio FM</string>
+    <string name="dlg_progress_title">Cerca</string>
+    <string name="btn_yes">Sí</string>
+    <string name="optmenu_speaker">Altaveu</string>
+    <string name="edit_frequency_overwrite_text">Sobreescriu</string>
+    <string name="toast_start_recording">Inicia l’enregistrament…</string>
+    <string name="fm_unit">MHz</string>
+    <string name="empty_list">La llista de canals és buida.</string>
+    <string name="optmenu_rds_settings">Configuració d’RDS</string>
+    <string name="toast_channel_searched">Canals disponibles que s’han cercat:</string>
+    <string name="already_exists">ja existeix</string>
+    <string name="dlg_noantenna_title">Connecta l’auricular</string>
+    <string name="add_to_favorite">Afegeix als favorits</string>
+    <string name="toast_sdcard_insufficient_space">Espai insuficient a la targeta SD!</string>
+    <string name="dlg_delete_confirm_title">Confirma la supressió dels favorits</string>
+    <string name="optmenu_record">Enregistra FM</string>
+    <string name="optmenu_earphone">Auricular</string>
+    <string name="sound_mode">Mode de so</string>
+    <string name="toast_already_favorite">Aquest canal ja és a la llista de favorits.</string>
+    <string name="not_available">Actualment no està disponible</string>
+    <string name="toast_channel_deleted">S’ha eliminat correctament dels favorits.</string>
+    <string name="toast_channel_added">S’ha afegit correctament als favorits.</string>
+    <string name="dlg_rds_settings_channel_information">Informació del canal</string>
+    <string name="toast_favorite_full">El canal no pot afegir-se a la llista de favorits perquè és plena.</string>
+    <string name="btn_save_recording">Desa-ho</string>
+    <string name="optmenu_search">Cerca</string>
+    <string name="dlg_rds_settings_alternative_frequency">Freqüència alternativa</string>
+    <string name="dlg_progress_text">Cerca canals...</string>
+    <string name="optmenu_exit">Surt</string>
+    <string name="more">Més</string>
+    <string name="btn_discard_recording">Descarta</string>
+    <string name="contmenu_item_edit">Edita</string>
+    <string name="toast_cannot_search">No es poden cercar canals disponibles.</string>
+    <string name="dlg_save_recording_storage_warning">Emmagatzematge insuficient! Voleu desar l’enregistrament actual?</string>
+    <string name="toast_in_call">La ràdio FM no pot iniciar-se amb una trucada en curs.</string>
+    <string name="dlg_addedit_station_freq">Freqüència:</string>
+    <string name="toast_recorder_internal_error">S’ha produït un error intern a l’enregistrador!</string>
+    <string name="dlg_save_recording_title">Desa fitxer d’enregistrament</string>
+    <string name="btn_ok">Accepta</string>
+    <string name="power">Alimentació</string>
+    <string name="contmenu_item_delete">Suprimeix dels favorits</string>
+    <string name="toast_powerup_before_record_warning">Engega primer l’FM!</string>
+    <string name="fm_recorder_name">Enregistrador d’FM</string>
+    <string name="toast_recording_lost_warning">L’extracció de l’SD provocarà la pèrdua de l’enregistrament!</string>
+    <string name="dlg_delete_confirm_text">Esteu segur que voleu eliminar aquest canal dels favorits?</string>
+    <string name="default_station_name">Canal nou</string>
+    <string name="btn_cancel">Cancel·la</string>
+    <string name="contmenu_title">Operacions</string>
+    <string name="btn_no">No</string>
+    <string name="favorite_manager">Llista de canals</string>
+    <string name="toast_invalid_frequency">Freqüència no vàlida per a la ubicació actual. Interval de freqüències vàlides: 87.5-108.0</string>
+    <string name="toast_sdcard_missing">No hi ha cap targeta SD!</string>
+    <string name="dlg_addedit_station_name">Nom:</string>
+    <string name="dlg_addedit_title_edit">Edita el canal</string>
+    <string name="toast_invalid_input">La darrera entrada no és vàlida, els valors vàlids són 0 o 5.</string>
+    <string name="edit_recording_name_hint">Escriviu aquí el nom de fitxer</string>
+    <string name="dlg_noantenna_text">Necessiteu un auricular com a antena. Endolleu l’auricular.</string>
+    <string name="toast_player_internal_error">S’ha produït un error intern al reproductor!</string>
+    <string name="no_antenna_info">Connecta els auriculars per utilitzar-los com a antena d’àudio.</string>
+    <string name="add_to_favorite1">Afegeix als canals predeterminats</string>
+    <string name="contmenu_item_delete1">Suprimeix dels canals predeterminats</string>
+    <string name="dlg_delete_confirm_title1">Confirma la supressió dels canals predeterminats</string>
+    <string name="dlg_delete_confirm_text1">Estàs segur que vols suprimir aquest canal dels canals predeterminats?</string>
+    <string name="toast_favorite_full1">No es pot afegir el canal a la llista de canals predeterminats perquè està plena.</string>
+    <string name="toast_already_favorite1">Aquest canal ja es troba a la llista de canals predeterminats.</string>
+    <string name="toast_channel_deleted1">S’ha suprimit correctament dels canals predeterminats.</string>
+    <string name="toast_channel_added1">S’ha afegit correctament als canals predeterminats</string>
+</resources>

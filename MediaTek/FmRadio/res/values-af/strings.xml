@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Copyright Statement:
+
+  This software/firmware and related documentation ("MediaTek Software") are
+  protected under relevant copyright laws. The information contained herein is
+  confidential and proprietary to MediaTek Inc. and/or its licensors. Without
+  the prior written permission of MediaTek inc. and/or its licensors, any
+  reproduction, modification, use or disclosure of MediaTek Software, and
+  information contained herein, in whole or in part, shall be strictly
+  prohibited.
+
+  MediaTek Inc. (C) 2011-2014. All rights reserved.
+
+  BY OPENING THIS FILE, RECEIVER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO RECEIVER
+  ON AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL
+  WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR
+  NONINFRINGEMENT. NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH
+  RESPECT TO THE SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY,
+  INCORPORATED IN, OR SUPPLIED WITH THE MEDIATEK SOFTWARE, AND RECEIVER AGREES
+  TO LOOK ONLY TO SUCH THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO.
+  RECEIVER EXPRESSLY ACKNOWLEDGES THAT IT IS RECEIVER'S SOLE RESPONSIBILITY TO
+  OBTAIN FROM ANY THIRD PARTY ALL PROPER LICENSES CONTAINED IN MEDIATEK
+  SOFTWARE. MEDIATEK SHALL ALSO NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE
+  RELEASES MADE TO RECEIVER'S SPECIFICATION OR TO CONFORM TO A PARTICULAR
+  STANDARD OR OPEN FORUM. RECEIVER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S
+  ENTIRE AND CUMULATIVE LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE
+  RELEASED HEREUNDER WILL BE, AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE
+  MEDIATEK SOFTWARE AT ISSUE, OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE
+  CHARGE PAID BY RECEIVER TO MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+
+  The following software/firmware and/or related documentation ("MediaTek
+  Software") have been modified by MediaTek Inc. All revisions are subject to
+  any receiver's applicable license agreements with MediaTek Inc.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">FM-radio</string>
+    <string name="dlg_progress_title">Soek</string>
+    <string name="btn_yes">Ja</string>
+    <string name="optmenu_speaker">Luidspreker</string>
+    <string name="edit_frequency_overwrite_text">Skryf oorheen</string>
+    <string name="toast_start_recording">Begin opneem...</string>
+    <string name="fm_unit">MHz</string>
+    <string name="empty_list">Kanaallys is leeg.</string>
+    <string name="optmenu_rds_settings">RDS-instellings</string>
+    <string name="toast_channel_searched">Het beskikbare kanale uitgesoek:</string>
+    <string name="already_exists">bestaan reeds</string>
+    <string name="dlg_noantenna_title">Inprop-oorfoon</string>
+    <string name="add_to_favorite">Voeg by Gunsteling</string>
+    <string name="toast_sdcard_insufficient_space">Te min ruimte op SD-kaart!</string>
+    <string name="dlg_delete_confirm_title">Bevestig verwyder uit gunstelinge</string>
+    <string name="optmenu_record">Neem FM op</string>
+    <string name="optmenu_earphone">Oorfoon</string>
+    <string name="sound_mode">Klankmodus</string>
+    <string name="toast_already_favorite">Hierdie kanaal is reeds in die gunstelinglys.</string>
+    <string name="not_available">Tans nie beskikbaar nie</string>
+    <string name="toast_channel_deleted">Suksesvol uit gunstelinge verwyder.</string>
+    <string name="toast_channel_added">Suksesvol by gunstelinge gevoeg.</string>
+    <string name="dlg_rds_settings_channel_information">Kanaalinligting</string>
+    <string name="toast_favorite_full">Kan nie die kanaal by die gunstelinglys voeg nie, want dis vol.</string>
+    <string name="btn_save_recording">Stoor</string>
+    <string name="optmenu_search">Soek</string>
+    <string name="dlg_rds_settings_alternative_frequency">Alternatiewe frekwensie</string>
+    <string name="dlg_progress_text">Deursoek kanale...</string>
+    <string name="optmenu_exit">Verlaat</string>
+    <string name="more">Meer</string>
+    <string name="btn_discard_recording">Gooi weg</string>
+    <string name="contmenu_item_edit">Redigeer</string>
+    <string name="toast_cannot_search">Kan nie beskikbare kanaal uitsoek nie.</string>
+    <string name="dlg_save_recording_storage_warning">Te min ruimte! Wil jy die huidige opname stoor?</string>
+    <string name="toast_in_call">Jy kan nie FM-radio begin terwyl jy in \'n oproep is nie.</string>
+    <string name="dlg_addedit_station_freq">Frekwensie:</string>
+    <string name="toast_recorder_internal_error">\'n Interne fout het in opnemer voorgekom!</string>
+    <string name="dlg_save_recording_title">Stoor opnamelêer</string>
+    <string name="btn_ok">Oukei</string>
+    <string name="power">Krag</string>
+    <string name="contmenu_item_delete">Verwyder uit gunstelinge</string>
+    <string name="toast_powerup_before_record_warning">Skakel eers FM aan!</string>
+    <string name="fm_recorder_name">FM-opnemer</string>
+    <string name="toast_recording_lost_warning">Jou opname sal verlore gaan, weens SD-kaart uitgehaal!</string>
+    <string name="dlg_delete_confirm_text">Is jy seker jy wil hierdie kanaal uit gunstelinge verwyder?</string>
+    <string name="default_station_name">Nuwe kanaal</string>
+    <string name="btn_cancel">Kanselleer</string>
+    <string name="contmenu_title">Werkinge</string>
+    <string name="btn_no">Nee</string>
+    <string name="favorite_manager">Kanaallys</string>
+    <string name="toast_invalid_frequency">Ongeldige frekwensie vir huidige ligging. Geldige frekwensieomvang: 87,5-108,0</string>
+    <string name="toast_sdcard_missing">Jou SD-kaart word vermis!</string>
+    <string name="dlg_addedit_station_name">Naam:</string>
+    <string name="dlg_addedit_title_edit">Redigeer kanaal</string>
+    <string name="toast_invalid_input">Vorige invoer is ongeldig; geldige waarde is 0 of 5.</string>
+    <string name="edit_recording_name_hint">Tik lêernaam hier</string>
+    <string name="dlg_noantenna_text">Jy kort \'n oorfoon as antenna. Prop een by jou foon in.</string>
+    <string name="toast_player_internal_error">\'n Interne fout het in speler voorgekom!</string>
+</resources>

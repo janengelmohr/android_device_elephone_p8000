@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright Statement:
+
+  This software/firmware and related documentation ("MediaTek Software") are
+  protected under relevant copyright laws. The information contained herein is
+  confidential and proprietary to MediaTek Inc. and/or its licensors. Without
+  the prior written permission of MediaTek inc. and/or its licensors, any
+  reproduction, modification, use or disclosure of MediaTek Software, and
+  information contained herein, in whole or in part, shall be strictly
+  prohibited.
+
+  MediaTek Inc. (C) 2011-2014. All rights reserved.
+
+  BY OPENING THIS FILE, RECEIVER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO RECEIVER
+  ON AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL
+  WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR
+  NONINFRINGEMENT. NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH
+  RESPECT TO THE SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY,
+  INCORPORATED IN, OR SUPPLIED WITH THE MEDIATEK SOFTWARE, AND RECEIVER AGREES
+  TO LOOK ONLY TO SUCH THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO.
+  RECEIVER EXPRESSLY ACKNOWLEDGES THAT IT IS RECEIVER'S SOLE RESPONSIBILITY TO
+  OBTAIN FROM ANY THIRD PARTY ALL PROPER LICENSES CONTAINED IN MEDIATEK
+  SOFTWARE. MEDIATEK SHALL ALSO NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE
+  RELEASES MADE TO RECEIVER'S SPECIFICATION OR TO CONFORM TO A PARTICULAR
+  STANDARD OR OPEN FORUM. RECEIVER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S
+  ENTIRE AND CUMULATIVE LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE
+  RELEASED HEREUNDER WILL BE, AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE
+  MEDIATEK SOFTWARE AT ISSUE, OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE
+  CHARGE PAID BY RECEIVER TO MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+
+  The following software/firmware and/or related documentation ("MediaTek
+  Software") have been modified by MediaTek Inc. All revisions are subject to
+  any receiver's applicable license agreements with MediaTek Inc.
+-->
+<resources>
+    <string name="app_name">FM-radio</string>
+    <string name="favorite_manager">Kanavaluettelo</string>
+    <string name="add_to_favorite">Lisää suosikkeihin</string>
+    <string name="optmenu_search">Etsi</string>
+    <string name="optmenu_exit">Lopeta</string>
+    <string name="contmenu_title">Toiminnot</string>
+    <string name="contmenu_item_edit">Muokkaa</string>
+    <string name="contmenu_item_delete">Poista suosikeista</string>
+    <string name="dlg_noantenna_text">Tarvitset kuulokkeet antenniksi. Liitä kuulokkeet.</string>
+    <string name="dlg_noantenna_title">Liitä kuuloke</string>
+    <string name="btn_yes">"Kyllä"</string>
+    <string name="btn_no">"Ei"</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_cancel">Peru</string>
+    <string name="dlg_progress_title">Etsi</string>
+    <string name="dlg_progress_text">Hae kanavia...</string>
+    <string name="dlg_addedit_station_name">Nimi:</string>
+    <string name="dlg_addedit_station_freq">Taajuus:</string>
+    <string name="dlg_addedit_title_edit">Muokkaa kanavaa</string>
+    <string name="default_station_name">Uusi kanava</string>
+    <string name="dlg_delete_confirm_title">Vahvista poistaminen suosikeista</string>
+    <string name="dlg_delete_confirm_text">Haluatko varmasti poistaa tämän kanavan suosikeista?</string>
+    <string name="toast_favorite_full">Kanavaa ei voi lisätä suosikkilistaan, koska se on täynnä.</string>
+    <string name="toast_already_favorite">Tämä kanava on jo suosikkilistallasi.</string>
+    <string name="toast_channel_deleted">Poistaminen suosikeista onnistui.</string>
+    <string name="toast_channel_added">Suosikkeihin lisääminen onnistui.</string>
+    <string name="toast_channel_searched">Haetut käytettävissä olevat kanavat:</string>
+    <string name="toast_cannot_search">Ei voi hakea käytettävissä olevia kanavia.</string>
+    <string name="toast_invalid_frequency">Väärä taajuus nykyiselle sijainnille. Kelvollinen taajuusalue: 87,5-108,0</string>
+    <string name="toast_invalid_input">Viimeinen virheellinen syöte, kelvollinen arvo on 0 tai 5.</string>
+    <string name="optmenu_rds_settings">RDS-asetukset</string>
+    <string name="dlg_rds_settings_channel_information">Kanavatiedot</string>
+    <string name="dlg_rds_settings_alternative_frequency">Vaihtoehtoinen taajuus</string>
+    <string name="sound_mode">Äänitila</string>
+    <string name="more">"Lisää"</string>
+    <string name="power">"potenssi"</string>
+    <string name="toast_in_call">Et voi käynnistää FM-radiota kesken puhelun.</string>
+    <string name="empty_list">Kanavaluettelo on tyhjä.</string>
+    <string name="edit_frequency_overwrite_text">Korvaa</string>
+    <string name="fm_unit">MHz</string>
+    <string name="no_antenna_info">Liitä korvanapit radioantennina käytettäväksi.</string>
+    <string name="fm_recorder_name">FM-tallennin</string>
+    <string name="toast_recording_lost_warning">Tallennuksesi menetetään, koska SD-kortti irrotettiin!</string>
+    <string name="toast_start_recording">Käynnistä tallennus...</string>
+    <string name="toast_sdcard_missing">SD-kortti puuttuu!</string>
+    <string name="toast_sdcard_insufficient_space">SD-kortin tila ei riitä!</string>
+    <string name="toast_recorder_internal_error">Tallentimessa ilmeni sisäinen virhe!</string>
+    <string name="toast_player_internal_error">Soittimessa ilmeni sisäinen virhe!</string>
+    <string name="toast_powerup_before_record_warning">Käynnistä ensin FM!</string>
+    <string name="optmenu_record">Tallenna FM</string>
+    <string name="btn_save_recording">"Tallenna"</string>
+    <string name="btn_discard_recording">Hylkää</string>
+    <string name="edit_recording_name_hint">Näppäile tiedostonimi tässä</string>
+    <string name="dlg_save_recording_title">Tallenna tallennetiedosto</string>
+    <string name="dlg_save_recording_storage_warning">Tallennustila ei riitä! Haluatko tallentaa nykyisen tallenteen?</string>
+    <string name="already_exists">on jo olemassa</string>
+    <string name="optmenu_speaker">Kaiutin</string>
+    <string name="optmenu_earphone">Kuulokkeet</string>
+    <string name="not_available">Ei tällä hetkellä käytettävissä</string>
+    <string name="add_to_favorite1">Lisää esiasetettuihin kanaviin</string>
+    <string name="contmenu_item_delete1">Poista esiasetetuista kanavista</string>
+    <string name="dlg_delete_confirm_title1">Vahvista poistaminen esiasetetuista kanavista</string>
+    <string name="dlg_delete_confirm_text1">Haluatko varmasti poistaa tämän kanavan esiasetetuista kanavista?</string>
+    <string name="toast_favorite_full1">Kanavaa ei voi lisätä esiasetettujen kanavien luetteloon, koska se on täynnä.</string>
+    <string name="toast_already_favorite1">Tämä kanava on jo esiasetettujen kanavien luettelossa.</string>
+    <string name="toast_channel_deleted1">Poistaminen esiasetetuista kanavista onnistui.</string>
+    <string name="toast_channel_added1">Lisääminen esiasetettuihin kanaviin onnistui.</string>
+</resources>
