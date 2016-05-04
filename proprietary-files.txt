@@ -282,7 +282,6 @@ system/lib/libmtk_mmutils.so
 system/lib/libmtkbtextspp.so
 system/lib/libmtkjpeg.so
 system/lib/libmtklimiter.so
-system/lib/libmtkplayer.so
 system/lib/libmtkshifter.so
 system/lib/libn3d3a.so
 system/lib/libnativecheck-jni.so
@@ -463,7 +462,6 @@ system/lib64/libmtk_drvb.so
 system/lib64/libmtk_mmutils.so
 system/lib64/libmtkjpeg.so
 system/lib64/libmtklimiter.so
-system/lib64/libmtkplayer.so
 system/lib64/libmtkshifter.so
 system/lib64/liblogwrap.so
 system/lib64/libn3d3a.so
