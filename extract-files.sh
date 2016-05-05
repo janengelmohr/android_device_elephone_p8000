@@ -23,7 +23,7 @@ fi
 if [ "$1" = "unzip" -a ! -e $ZIPFILE ]; then
     echo $ZIPFILE does not exist.
 else
-    for FILE in `cat proprietary-files.txt | grep -v ^# | grep -v ^$`; do
+    for FILE in `cat proprietary-files.txt | grep -v ^# | grep -v ^$ | cut -d '#' -f 1`; do
         DIR=`dirname $FILE`
 	if [ ! -d $BASE/$DIR ]; then
             mkdir -p $BASE/$DIR
