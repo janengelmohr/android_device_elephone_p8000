@@ -74,10 +74,6 @@ PRODUCT_PACKAGES += auditd
 PRODUCT_PACKAGES += \
 	Snap
 
-# Audio componets from source
-PRODUCT_PACKAGES += \
-        EngineerMode
-
 # Fingerprint support
 PRODUCT_PACKAGES += fp
 PRODUCT_PACKAGES += slfpcal
