@@ -501,10 +501,6 @@ service console /system/bin/sh
     group shell log
     seclabel u:r:shell:s0
 
-service auditd /system/bin/auditd -k
-    seclabel u:r:logd:s0
-    class main
-
 on property:ro.debuggable=1
     start console
 

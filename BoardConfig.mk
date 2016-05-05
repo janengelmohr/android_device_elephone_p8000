@@ -172,7 +172,6 @@ BOARD_SEPOLICY_UNION := \
     akmd8963.te \
     akmd8975.te \
     ami304d.te \
-    auditd.te \
     ist8303.te \
     mc6470d.te \
     qmcX983d.te \

@@ -67,8 +67,6 @@ PRODUCT_COPY_FILES += \
     	$(LOCAL_PATH)/configs/android.hardware.microphone.xml:system/etc/permissions/android.hardware.microphone.xml \
     	$(LOCAL_PATH)/configs/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
 	$(LOCAL_PATH)/configs/platform.xml:system/etc/permissions/platform.xml
-# Auditd
-PRODUCT_PACKAGES += auditd
 
 # CM's Snap camera
 PRODUCT_PACKAGES += \
