@@ -18,26 +18,6 @@ index b95f949..4760ba2 100644
  };
  
  
-diff --git a/media/libmedia/Android.mk b/media/libmedia/Android.mk
-index 139d6f8..109ab26 100644
---- a/media/libmedia/Android.mk
-+++ b/media/libmedia/Android.mk
-@@ -124,6 +124,15 @@ LOCAL_C_INCLUDES := \
-     $(call include-path-for, audio-effects) \
-     $(call include-path-for, audio-utils)
- 
-+
-+ifeq ($(MTK_HARDWARE),true)
-+LOCAL_SRC_FILES += \
-+    mtkaudio_stubs.cpp
-+
-+# StrongPointer.h
-+LOCAL_C_INCLUDES += $(TOP)/frameworks/rs/server
-+endif
-+
- include $(BUILD_SHARED_LIBRARY)
- 
- include $(CLEAR_VARS)
 diff --git a/media/libmediaplayerservice/Android.mk b/media/libmediaplayerservice/Android.mk
 index 8f06c55..7425a76 100644
 --- a/media/libmediaplayerservice/Android.mk
