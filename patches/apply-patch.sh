@@ -3,6 +3,7 @@ cd ../../../..
 cd frameworks/av
 git apply -v ../../device/elephone/p8000/patches/framework_av/0001-libmedia-stub-out-MTK-specific-bits-audio-working.patch
 #git apply -v ../../device/elephone/p8000/patches/framework_av/0002-camera.patch
+git apply -v ../../device/elephone/p8000/patches/framework_av/0003-frameworks_av_fmradio_patch.patch
 cd ../..
 cd frameworks/base
 git apply -v ../../device/elephone/p8000/patches/framework_base/0001-location-support-GNSS-extension-presumably-from-MTK.patch
