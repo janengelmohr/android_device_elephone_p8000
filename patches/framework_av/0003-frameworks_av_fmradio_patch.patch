@@ -34,7 +34,7 @@ index 8f06c55..7425a76 100644
      $(TOP)/frameworks/av/media/libstagefright/webm                  \
      $(TOP)/frameworks/native/include/media/openmax                  \
      $(TOP)/external/tremolo/Tremolo                                 \
-+    $(TOP)/hardware/mediatek/fmaudioplayer
++    $(TOP)/device/elephone/p8000/MediaTek/fmaudioplayer
  
  LOCAL_MODULE:= libmediaplayerservice
  
