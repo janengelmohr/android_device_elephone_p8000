@@ -1,0 +1,19 @@
+[
+  {
+    "repository": "android_packages_apps_Snap",
+    "target_path": "packages/apps/Snap",
+    "branch": "cm-12.1"
+  },
+  {
+    "remote": "visi0nary"
+    "repository": "android_kernel_elephone_p8000",
+    "target_path": "kernel/elephone/p8000",
+    "branch": "cm-12.1"
+  },
+  {
+    "remote": "visi0nary"
+    "repository": "android_vendor_elephone_p8000",
+    "target_path": "vendor/elephone/p8000",
+    "branch": "master"
+  }
+]
