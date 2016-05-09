@@ -1,29 +1,3 @@
- 
-home
-blog
- prettyprinter.de Logo
-impressum
-Pretty Printer for PHP, Java, C++, C, Perl, JavaScript, CSS
-
-This is a source code beautifier (source code formatter), similiar to indent. Please make a backup before you replace your code! 
-Paste your source here:
-
-
- Add new lines after "{" and before "}" 
- Add new lines before "{" 
- Remove empty lines. 
- Add comment lines before function. 
- Add new lines after ";" 
- Add new lines after "}" (For .css) (Thanks David) 
- Remove new lines (useful only if you add them again with the other functions above) 
- Add new lines after ";" but not in for loops (Don't check "Remove new lines" but do check "Remove empty lines")(Thanks Chris) (Experimental, uses a heuristic that might fail ) 
- Add new lines after ";" but not in for loops and skip quotes (Don't check "Remove new lines" but do check "Remove empty lines") (Thanks Chris) (Experimental, uses a heuristic that might fail ) 
-Reduce whitespace 
-Put the code again in the input box above after submit. 
-Skip HTML, give me plain code! (Use Save-As function of your browser)	
-
-   (Thanks to Steve for the cookie idea!)
-
 package com.silead.fp.lockscreen;
 
 import android.app.KeyguardManager;
