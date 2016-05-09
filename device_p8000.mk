@@ -145,10 +145,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     	Torch
 
-# Immvibe
-PRODUCT_PACKAGES += \
-	immvibe
-
 # MTK's XLog
 PRODUCT_PACKAGES += \
 	libxlog
