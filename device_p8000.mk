@@ -46,13 +46,10 @@ PRODUCT_COPY_FILES += device/elephone/p8000/recovery/twrp.fstab:recovery/root/et
 
 # hardware specifics
 PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml \
-	frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
 	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
 	frameworks/native/data/etc/android.hardware.faketouch.xml:system/etc/permissions/android.hardware.faketouch.xml \
 	frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
 	frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-	frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
 	frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
 	frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
 	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
@@ -64,8 +61,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
 	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/permissions/media_codecs.xml \
-    	$(LOCAL_PATH)/configs/android.hardware.microphone.xml:system/etc/permissions/android.hardware.microphone.xml \
-    	$(LOCAL_PATH)/configs/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
 	$(LOCAL_PATH)/configs/platform.xml:system/etc/permissions/platform.xml
 
 # CM's Snap camera
@@ -78,8 +73,8 @@ PRODUCT_PACKAGES += slfpcal
 PRODUCT_PACKAGES += libslfpjni
 PRODUCT_PACKAGES += libsileadinc_dev
 
-include device/elephone/p8000/Fingerprint/slfpcal/Android.mk
-include device/elephone/p8000/Fingerprint/fp/Android.mk
+include device/elephone/p8000/MediaTek/Fingerprint/slfpcal/Android.mk
+include device/elephone/p8000/MediaTek/Fingerprint/fp/Android.mk
 
 # Gralloc
 PRODUCT_PACKAGES += \
@@ -99,8 +94,9 @@ PRODUCT_PACKAGES += \
     	hostapd_cli \
     	dhcpcd.conf \
     	wpa_supplicant \
-    	wpa_supplicant.conf
-
+    	wpa_supplicant.conf \
+	libnl_2
+   	
 # Audio
 PRODUCT_PACKAGES += \
     	audio.a2dp.default \
@@ -111,7 +107,9 @@ PRODUCT_PACKAGES += \
     	libaudio-resampler \
     	tinymix \
     	libtinyalsa \
-    	libtinycompress
+    	libtinycompress \
+    	librs_jni \
+	libtinyxml
 
 # Audio profiles used to address the correct audio devices for headset, etc.
 PRODUCT_COPY_FILES += \
@@ -145,24 +143,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     	Torch
 
-# Immvibe
+# Network dependency
 PRODUCT_PACKAGES += \
-	immvibe
-
-# MTK's XLog
-PRODUCT_PACKAGES += \
-	libxlog
-
-PRODUCT_PACKAGES += \
-    	libifaddrs
-
-PRODUCT_PACKAGES += \
-    	librs_jni \
-    	com.android.future.usb.accessory
-
- PRODUCT_PACKAGES += \
-    	libnl_2 \
-    	libtinyxml
+    	libifaddrs	
 
 # STk
 PRODUCT_PACKAGES += \
@@ -186,9 +169,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
-
-PRODUCT_COPY_FILES += \
+    	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
 	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
 	$(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 

@@ -8,7 +8,6 @@ import init.modem.rc
 
 
 on init
-    export USBOTG_STORAGE /storage/usbotg
     mount tmpfs tmpfs /mnt/media_rw/ mode=0755,uid=1000,gid=1000
     mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
     mkdir /storage/usbotg 0700 root root
@@ -592,12 +591,6 @@ on post-fs-data
     chown root system /sys/autok/stage1/2/LOG
     chown root system /sys/autok/stage2/2
 
-    #sn
-    chmod 0664 /sys/class/android_usb/android0/iSerial
-    chown root system /sys/class/android_usb/android0/iSerial
-    chmod 0664 /sys/devices/platform/mt_usb/cmode
-    chown root system /sys/devices/platform/mt_usb/cmode
-
     # secure memory
     chown system system /proc/secmem0
 
@@ -773,22 +766,6 @@ service start_modem /system/bin/md_ctrl 1
 on property:persist.uartconsole.enable=1
     write /proc/mtprintk 1
 
-# Update the second boot logo
-service bootlogoupdater /system/bin/boot_logo_updater
-    class core
-    oneshot
-
-service met_log_d /system/bin/met_log_d
-    class main
-    # Refer to http://source.android.com/devices/tech/storage/index.html
-    # It said, "Starting in Android 4.4, multiple external storage devices are surfaced to developers through
-    #           Context.getExternalFilesDirs(), Context.getExternalCacheDirs(), and Context.getObbDirs().
-    #           External storage devices surfaced through these APIs must be a semi-permanent part of the device (such as an SD card slot in a battery compartment).
-    #           Developers expect data stored in these locations to be available over long periods of time."
-    # Therefore, if the target has the SD card slot in a battery compartment, we need to specify SECONDARY_STORAGE (*** UN-Comment the following command ***)
-    #
-    # export SECONDARY_STORAGE /storage/sdcard1
-
 service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
     class late_start
     disabled
@@ -850,21 +827,11 @@ service audio-daemon /system/bin/audiocmdservice_atci
     disabled
     oneshot
 
-service md_minilog_util /system/bin/md_minilog_util
-    user root
-    disabled
-    oneshot
-
 service pq /system/bin/pq
     class main
     user system
     group system graphics
     oneshot
-
-service aal /system/bin/aal
-    class main
-    user system
-    group system graphics
 
 #
 # MTK Wi-Fi related services (Begin)
@@ -984,17 +951,6 @@ service dhcp6c_PD /system/bin/dhcp6c -c "/etc/wide-dhcpv6/dhcp6cPD.conf" -f
 	disabled
 	oneshot
 
-service pppoe_wlan0 /system/bin/launchpppoe
-    user root
-    group radio cache inet misc
-    disabled
-    oneshot
-
-on property:service.pppoe_wlan0.enable=0
-    stop pppoe_wlan0
-
-on property:service.pppoe_wlan0.enable=1
-    start pppoe_wlan0
 # write proc for test sim
     on property:gsm.sim.ril.testsim=0
     write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 0
@@ -1021,46 +977,10 @@ on property:service.pppoe_wlan0.enable=1
     write /proc/sys/net/netfilter/nf_conntrack_tcp_no_window_check 1
     write /proc/sys/net/ipv4/tcp_rto_min 400
 
-service DMAgent /system/bin/dm_agent_binder
-    class main
-    user system
-    group system cache
-
 service PPLAgent /system/bin/ppl_agent
     class main
     user system
     group system cache
-
-service vtservice /system/bin/vtservice
-    class main
-    socket soc_vt_tcv dgram 660 radio system
-    socket soc_vt_stk dgram 660 radio system
-    socket soc_vt_svc dgram 660 radio system
-    user root
-    group camera graphics media sdcard_rw radio sdcard_r media_rw
-    ioprio rt 4
-
-service cmmb /system/bin/cmmbsp
-    class main
-    user root
-    group system audio camera graphics inet net_bt net_bt_admin net_bw_acct media
-    ioprio rt 4
-
-service enableswap /system/bin/sh /enableswap.sh
-    class late_start
-    oneshot
-    seclabel u:r:enableswap:s0
-
-service swapoff_action /system/bin/sh /disableswap.sh
-    class main
-    disabled
-    oneshot
-
-service dbus /system/bin/dbus-daemon --system --nofork
-    class main
-    socket dbus stream 660 bluetooth bluetooth
-    user bluetooth
-    group bluetooth net_bt_admin
 
 service bluetoothd /system/bin/bluetoothd -n
     class main
@@ -1097,20 +1017,10 @@ service pppd_gprs /system/bin/pppd_dt /dev/ttyACM0 debug noauth refuse-eap usepe
     disabled
     oneshot
 
-##Add by T.Zh for ppp daemon
-#service pppd /system/bin/pppd file /data/misc/ppp/ppp_options
-#    user root
-#    disabled
-#    oneshot
-#
-##
 #
 #  Modem related services (End)
 #
 
-#service agpsdcainit /system/bin/agpscacertinit
-#    class main
-#    oneshot
 
 service agpsd /system/bin/mtk_agpsd
     class main
@@ -1119,11 +1029,6 @@ service agpsd /system/bin/mtk_agpsd
     socket agpsd3 stream 660 gps inet
     user gps
     group gps radio inet sdcard_r sdcard_rw misc
-
-service wifi2agps /system/bin/wifi2agps
-    class main
-    user wifi
-    group gps inet
 
 service mnld /system/xbin/mnld
     class main
@@ -1183,19 +1088,9 @@ service bmm050d /system/bin/bmm050d
     group system
     class main
 
-service bmm056d /system/bin/bmm056d
-    disabled
-    user system
-    group system
-    class main
 service mc6420d /system/bin/mc6420d
     disabled
     user system
-    group system
-    class main
-service qmc5983d /system/bin/qmc5983d
-     disabled
-	 user system
     group system
     class main
 
@@ -1216,24 +1111,9 @@ service geomagneticd /system/bin/geomagneticd
     group system input
     class main
 
-service mpud6050 /system/bin/mpud6050
-    oneshot
-    user system
-    group system
-
-service mc64xxd /system/bin/mc64xxd
-    disabled
-    user system
-    group system
-    class main
 #
 #sensor service (end)
 #
-
-service shutdown /system/bin/shutdown
-    user root
-    group root
-    disabled
 
 service NvRAMAgent /system/bin/nvram_agent_binder
     class main
@@ -1260,34 +1140,6 @@ service fuelgauged /system/bin/fuelgauged
     user system
     group system
 
-service sn /system/bin/sn
-    class late_start
-    user system
-    group system sdcard_r
-    oneshot
-
-#add for power-off alarm
-service poad /system/bin/poad
-    class main
-    user system
-    group system
-    oneshot
-
-#monitor battery status
-service batterywarning /system/bin/batterywarning
-    class main
-    user shell
-    group shell
-
-service backuprestore /system/bin/br_app_data_service
-	class main
-	socket backuprestore stream 0660 root sdcard_rw
-	user root
-
-#service BGW /system/xbin/BGW
-#	user system
-#	group gps system radio
-#	class main
 service MtkCodecService /system/bin/MtkCodecService
     class main
     user system
@@ -1325,64 +1177,6 @@ setprop persist.radio.reset_on_switch true
 setprop rild.mark_switchuser 0
 #end
 
-chmod 0644 /system/lib/libzteevdo-ril.so
-chomd 0644 /system/lib/zterilPara
 chown root /system/bin/pppd
 chmod 4755 /system/bin/pppd
-chown root /system/bin/chat
-chmod 4755 /system/bin/chat
-
-#
-#ril-daemon (begin)
-#
-service ril-3gddaemon /system/bin/rild_dongle
-    class main
-    socket rild-dongle stream 660 root radio
-    socket rild-dongle-debug stream 660 radio radio
-    user root
-    group radio cache inet misc audio log
-    disabled
-
-#
-#ril-daemon (end)
-#
-
-#
-#usbdongled(begin)
-#
-service usbdongled /system/bin/dongled
-    class main
-	user root
-	group radio cache inet misc
-	enabled
-
-
-#
-#usbdongled(end)
-#
-
-#
-# add the service for call pppd(begin)
-#
-service zpppd_gprs /system/bin/init.gprs-pppd
-    user root
-	group radio cache inet misc
-	disabled
-	oneshot
-#
-# add the service for call pppd(end)
-#
-
-service sbchk /system/bin/sbchk
-    class core
-    user system
-    group system
-    oneshot
-
-# Program binary service
-service program_binary /system/bin/program_binary_service
-    class late_start
-    user system
-    group graphics
-    oneshot
 
