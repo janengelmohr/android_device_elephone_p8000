@@ -99,8 +99,9 @@ PRODUCT_PACKAGES += \
     	hostapd_cli \
     	dhcpcd.conf \
     	wpa_supplicant \
-    	wpa_supplicant.conf
-
+    	wpa_supplicant.conf \
+	libnl_2
+   	
 # Audio
 PRODUCT_PACKAGES += \
     	audio.a2dp.default \
@@ -111,7 +112,9 @@ PRODUCT_PACKAGES += \
     	libaudio-resampler \
     	tinymix \
     	libtinyalsa \
-    	libtinycompress
+    	libtinycompress \
+    	librs_jni \
+	libtinyxml
 
 # Audio profiles used to address the correct audio devices for headset, etc.
 PRODUCT_COPY_FILES += \
@@ -145,20 +148,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     	Torch
 
-# MTK's XLog
+# Network dependency
 PRODUCT_PACKAGES += \
-	libxlog
-
-PRODUCT_PACKAGES += \
-    	libifaddrs
-
-PRODUCT_PACKAGES += \
-    	librs_jni \
-    	com.android.future.usb.accessory
-
- PRODUCT_PACKAGES += \
-    	libnl_2 \
-    	libtinyxml
+    	libifaddrs	
 
 # STk
 PRODUCT_PACKAGES += \
@@ -182,9 +174,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
-
-PRODUCT_COPY_FILES += \
+    	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
 	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
 	$(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
