@@ -2,7 +2,7 @@
 Device repository for Elephone P8000 CM12.1
 
 Currently broken features:
- * FM Radio
+ * Smart Cover
 
 ## Thanks to:
  * DerTeufel1980
