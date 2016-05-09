@@ -12,6 +12,7 @@ import android.hardware.SensorManager;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.os.Vibrator;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -264,7 +265,8 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
 			return;
 		} else {
 			//Log.d(TAG,"onIdentifyError");
-		
+                           Vibrator vibAttempt = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
+		         vibAttempt(1000);
 			msg = "Could not identify. Please try again. ["+mErrorCount+"/"+FpControllerNative.IDENTIFY_MAX+"]";
 			showIdentifyError(mErrorCount, msg, UNMATCH_DIALOG_NORMAL_TIMEOUT);
 	        mHandler.postDelayed(new Runnable() {
