@@ -78,8 +78,8 @@ PRODUCT_PACKAGES += slfpcal
 PRODUCT_PACKAGES += libslfpjni
 PRODUCT_PACKAGES += libsileadinc_dev
 
-include device/elephone/p8000/Fingerprint/slfpcal/Android.mk
-include device/elephone/p8000/Fingerprint/fp/Android.mk
+include device/elephone/p8000/MediaTek/Fingerprint/slfpcal/Android.mk
+include device/elephone/p8000/MediaTek/Fingerprint/fp/Android.mk
 
 # Gralloc
 PRODUCT_PACKAGES += \
