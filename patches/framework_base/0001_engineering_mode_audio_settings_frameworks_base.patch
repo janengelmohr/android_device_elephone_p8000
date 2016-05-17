@@ -1,0 +1,82 @@
+commit 0b06f324c638dddae0f644d939c3a863dab49008
+Author: Dmitry Smirnov <divis1969@gmail.com>
+Date:   Fri Apr 15 23:06:58 2016 +0300
+
+    Add MTK-speific APIs to access NV audio data
+    
+    These data is used by Engineering app to configure audio params (volume)
+    
+    Change-Id: Id4a6736b00ca7e3dac8683e182bb02b03aedeae6
+
+diff --git a/core/jni/android_media_AudioSystem.cpp b/core/jni/android_media_AudioSystem.cpp
+index fee1ead..5626a15 100644
+--- a/core/jni/android_media_AudioSystem.cpp
++++ b/core/jni/android_media_AudioSystem.cpp
+@@ -1480,7 +1480,43 @@ exit:
+     return jStatus;
+ }
+ 
++static jint
++android_media_AudioSystem_setAudioData(JNIEnv *env, jobject clazz,
++                                       jint jA, jint jB, jbyteArray jArray)
++{
++    ALOGV("setAudioData");
++    if (jArray == NULL || env->GetArrayLength(jArray) == 0) {
++        ALOGE("setAudioData: emply buffer");
++        return (jint)AUDIO_JAVA_BAD_VALUE;
++    }
++
++    jbyte * buffer = env->GetByteArrayElements(jArray, NULL);
++
++    int status = AudioSystem::setAudioData((int)jA, (unsigned long)jB, (char*)buffer);
++
++    env->ReleaseByteArrayElements(jArray, buffer, 0);
++    ALOGV("setAudioData: status %d", status);
++    return (jint)status;
++}
+ 
++static jint
++android_media_AudioSystem_getAudioData(JNIEnv *env, jobject clazz,
++                                       jint jA, jint jB, jbyteArray jArray)
++{
++    ALOGV("getAudioData");
++    if (jArray == NULL || env->GetArrayLength(jArray) == 0) {
++        ALOGE("getAudioData: emply buffer");
++        return (jint)AUDIO_JAVA_BAD_VALUE;
++    }
++
++    jbyte * buffer = env->GetByteArrayElements(jArray, NULL);
++
++    int status = AudioSystem::getAudioData((int)jA, (unsigned long)jB, (char*)buffer);
++
++    env->ReleaseByteArrayElements(jArray, buffer, 0);
++    ALOGV("getAudioData: status %d", status);
++    return (jint)status;
++}
+ 
+ // ----------------------------------------------------------------------------
+ 
+@@ -1525,6 +1561,10 @@ static JNINativeMethod gMethods[] = {
+                                     (void *)android_media_AudioSystem_getAudioHwSyncForSession},
+     {"registerPolicyMixes",    "(Ljava/util/ArrayList;Z)I",
+                                             (void *)android_media_AudioSystem_registerPolicyMixes},
++    {"getAudioData",    "(II[B)I",
++                        (void *)android_media_AudioSystem_getAudioData},
++    {"setAudioData",    "(II[B)I",
++                        (void *)android_media_AudioSystem_setAudioData},
+ 
+ };
+ 
+diff --git a/media/java/android/media/AudioSystem.java b/media/java/android/media/AudioSystem.java
+index bf79e9a..50b94ae 100644
+--- a/media/java/android/media/AudioSystem.java
++++ b/media/java/android/media/AudioSystem.java
+@@ -604,5 +604,8 @@ public class AudioSystem
+     public static native int getAudioHwSyncForSession(int sessionId);
+ 
+     public static native int registerPolicyMixes(ArrayList<AudioMix> mixes, boolean register);
++
++    public static native int getAudioData(int par, int size, byte[] data);
++    public static native int setAudioData(int par, int size, byte[] data);
+ }
+ 
