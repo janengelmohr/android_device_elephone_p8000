@@ -10,7 +10,7 @@ cd frameworks/base
 git apply -v ../../device/elephone/p8000/patches/framework_base/0001-location-support-GNSS-extension-presumably-from-MTK.patch
 git apply -v ../../device/elephone/p8000/patches/framework_base/0002-location-add-some-logs-just-to-be-confident.patch
 git apply -v ../../device/elephone/p8000/patches/framework_base/0003-location-style-fix.patch
-git apply -v ../../device/elephone/p8000/patches/framework_base/0004-add-com.mediatek-for-build.patch
+git apply -v ../../device/elephone/p8000/patches/framework_base/0004_minimal_xlog_frameworks_base.patch
 git apply -v ../../device/elephone/p8000/patches/framework_base/0005-Update-for-mtk.patch
 git apply -v ../../device/elephone/p8000/patches/framework_base/0001-fingerprint_frameworks_base.patch
 git apply -v ../../device/elephone/p8000/patches/framework_base/0002-fingerprint_frameworks_base.patch
