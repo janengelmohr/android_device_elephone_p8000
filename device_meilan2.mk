@@ -67,7 +67,9 @@ PRODUCT_PACKAGES += \
     libshim_icu53 \
     libshim_crypto \
     libshim_ui \
-    libshim_gui
+    libshim_gui \
+    libshim_binder \
+
 
 PRODUCT_PACKAGES += \
     Torch

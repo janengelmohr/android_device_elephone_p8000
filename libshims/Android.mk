@@ -103,3 +103,14 @@ LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
 
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := \
+     binder.cpp \
+
+LOCAL_SHARED_LIBRARIES := libbinder
+LOCAL_MODULE := libshim_binder
+LOCAL_MODULE_TAGS := optional
+
+include $(BUILD_SHARED_LIBRARY)
+
