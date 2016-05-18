@@ -6,7 +6,7 @@ Getting Started
 
 Initialize a repository with CyanogenMode:
 
-    repo init -u git://github.com/divis1969/android.git -b cm-13.0
+    repo init -u git://github.com/divis1969/android.git -b cm-13.0-meilan2
 
 Build the code:
 
