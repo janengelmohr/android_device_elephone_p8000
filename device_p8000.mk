@@ -67,6 +67,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	Snap
 
+# MTK's Engineer Mode
+PRODUCT_PACKAGES += \
+        EngineerMode
+
+# MTK's XLog needed for Engineer Mode
+PRODUCT_PACKAGES += \
+ 	libxlog
+
 # Fingerprint support
 PRODUCT_PACKAGES += fp
 PRODUCT_PACKAGES += slfpcal
