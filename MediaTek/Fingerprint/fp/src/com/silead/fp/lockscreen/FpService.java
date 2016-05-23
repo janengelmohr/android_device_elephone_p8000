@@ -266,7 +266,7 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
             return;
             } else {
             //Log.d(TAG,"onIdentifyError");
-            vibAttempt(1000);
+            vibAttempt(500);
             msg = "Could not identify. Please try again. ["+mErrorCount+"/"+FpControllerNative.IDENTIFY_MAX+"]";
             showIdentifyError(mErrorCount, msg, UNMATCH_DIALOG_NORMAL_TIMEOUT);
             mHandler.postDelayed(new Runnable() {
