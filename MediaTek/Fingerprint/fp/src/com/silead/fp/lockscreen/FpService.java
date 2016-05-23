@@ -253,6 +253,7 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
     }
     
     private void onIdentifyError() {
+    	Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         String msg;
         mErrorCount++;
         //Log.d(TAG,"onIdentifyError before wakelock aquire 5s mErrorCount = "+mErrorCount);
@@ -265,7 +266,6 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
             return;
             } else {
             //Log.d(TAG,"onIdentifyError");
-            Vibrator vibAttempt = (Vibrator) this.context.getSystemService(Context.VIBRATOR_SERVICE);
             vibAttempt(1000);
             msg = "Could not identify. Please try again. ["+mErrorCount+"/"+FpControllerNative.IDENTIFY_MAX+"]";
             showIdentifyError(mErrorCount, msg, UNMATCH_DIALOG_NORMAL_TIMEOUT);
