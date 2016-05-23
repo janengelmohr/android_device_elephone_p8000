@@ -9,6 +9,7 @@ Currently broken features:
  * fire855
  * jianminglok
  * walter79
+ * valascus
 
 
 ##How to compile:
