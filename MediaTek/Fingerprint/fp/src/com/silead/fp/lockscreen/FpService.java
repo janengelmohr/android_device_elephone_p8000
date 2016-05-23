@@ -253,7 +253,7 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
     }
     
     private void onIdentifyError() {
-    	Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+    	Vibrator vibAttempt = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         String msg;
         mErrorCount++;
         //Log.d(TAG,"onIdentifyError before wakelock aquire 5s mErrorCount = "+mErrorCount);
