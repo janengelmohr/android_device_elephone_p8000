@@ -12,6 +12,7 @@ import android.hardware.SensorManager;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.os.Vibrator;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -252,31 +253,32 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
     }
 
     private void onIdentifyError() {
+    	Vibrator vibAttempt = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         String msg;
         mErrorCount++;
         //Log.d(TAG,"onIdentifyError before wakelock aquire 5s mErrorCount = "+mErrorCount);
         PowerManager.WakeLock timeoutWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, TAG);
         timeoutWakeLock.acquire(5000);
         if (mErrorCount >= FpControllerNative.IDENTIFY_MAX) {
-        //mErrorCount = 0;
-        msg = "You have to unlock the device manually.";
-        showIdentifyError(mErrorCount, msg, UNMATCH_DIALOG_MAX_TIMEOUT);
-			return;
-		} else {
-			//Log.d(TAG,"onIdentifyError");
-		
-			msg = "Could not identify. Please try again. ["+mErrorCount+"/"+FpControllerNative.IDENTIFY_MAX+"]";
-			showIdentifyError(mErrorCount, msg, UNMATCH_DIALOG_NORMAL_TIMEOUT);
-	        mHandler.postDelayed(new Runnable() {
-	            public void run() {  
-					//Log.d(TAG,"postDelayed before identifyCredentialREQ ");
-	                identifyCredentialREQ(0);
-	            }
-	        }, UNMATCH_DIALOG_NORMAL_TIMEOUT);
-		}
-
-	}
-
+            //mErrorCount = 0;
+            msg = "You have to unlock the device manually.";
+            showIdentifyError(mErrorCount, msg, UNMATCH_DIALOG_MAX_TIMEOUT);
+            return;
+            } else {
+            //Log.d(TAG,"onIdentifyError");
+            vibAttempt.vibrate(100);
+            msg = "Could not identify. Please try again. ["+mErrorCount+"/"+FpControllerNative.IDENTIFY_MAX+"]";
+            showIdentifyError(mErrorCount, msg, UNMATCH_DIALOG_NORMAL_TIMEOUT);
+            mHandler.postDelayed(new Runnable() {
+                public void run() {
+                    //Log.d(TAG,"postDelayed before identifyCredentialREQ ");
+                    identifyCredentialREQ(0);
+                }
+            }, UNMATCH_DIALOG_NORMAL_TIMEOUT);
+        }
+        
+    }
+    
     private boolean hasFingerEnabled() {
 	    //Log.d(TAG,"$$$$$$ hasFingerEnabled ");
         SLFpsvcIndex fpsvcIndex = mFpControllerNative.GetFpInfo();
