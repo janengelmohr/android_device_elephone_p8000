@@ -120,8 +120,11 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
         if (result == FpControllerNative.IDENTIFY_SUCCESS) {
             mErrorCount = 0;
             boolean isScreenOn = mPowerManager.isScreenOn();
-            if(isScreenOn)
-            	unLock();
+	   if(isScreenOn) { 
+		Vibrator vibAttempt = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		vibAttempt.vibrate(400);
+                unLock();
+		}
         } else if (result == FpControllerNative.IDENTIFY_ERR_MATCH) {
             onIdentifyError();
         }
@@ -267,6 +270,12 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
             } else {
             //Log.d(TAG,"onIdentifyError");
             vibAttempt.vibrate(100);
+	    try {
+	    Thread.sleep(250);
+	    }
+	    catch(Exception e) {
+	    }
+	    vibAttempt.vibrate(100);
             msg = "Could not identify. Please try again. ["+mErrorCount+"/"+FpControllerNative.IDENTIFY_MAX+"]";
             showIdentifyError(mErrorCount, msg, UNMATCH_DIALOG_NORMAL_TIMEOUT);
             mHandler.postDelayed(new Runnable() {
