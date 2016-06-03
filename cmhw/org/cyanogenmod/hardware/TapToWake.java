@@ -19,6 +19,8 @@ package org.cyanogenmod.hardware;
 import org.cyanogenmod.hardware.util.FileUtils;
 
 import java.io.File;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
 /**
  * Tap (usually double-tap) to wake. This *should always* be supported by
@@ -35,8 +37,7 @@ public class TapToWake {
      * @return boolean Supported devices must return always true
      */
     public static boolean isSupported() {
-        File f = new File(CONTROL_PATH);
-        return f.exists();
+	return new File(CONTROL_PATH).exists();
     }
 
     /**
@@ -46,7 +47,7 @@ public class TapToWake {
      * disabled.
      */
     public static boolean isEnabled() {
-        return (FileUtils.readOneLine(CONTROL_PATH).equals("1"));
+	return "1".equals(FileUtils.readOneLine(CONTROL_PATH));
     }
 
     /**
@@ -56,7 +57,26 @@ public class TapToWake {
      * @return boolean for on/off, exception if unsupported
      */
     public static boolean setEnabled(boolean state)  {
-        return FileUtils.writeLine(CONTROL_PATH, (state ? "1" : "0"));
-    }
-
+	DataOutputStream os;
+	Process suProcess;
+	try {
+		suProcess = Runtime.getRuntime().exec("sh");
+		os = new DataOutputStream(suProcess.getOutputStream());
+		if(state)
+		{
+                        os.writeBytes("echo 1 > /sys/android_touch/doubletap2wake\n");
+		}
+                else 
+		{
+                        os.writeBytes("echo 0 > /sys/android_touch/doubletap2wake\n");
+                }
+		os.flush();
+		return state;
+	    } 
+	    catch (IOException exception) 
+	    {
+	        exception.printStackTrace();
+		return false;
+	    }
+	}
 }
