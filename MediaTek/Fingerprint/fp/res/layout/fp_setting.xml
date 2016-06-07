@@ -1,90 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="8"
-   android:background="@drawable/bg_gray">
+    android:layout_height="match_parent" >
     
+    <ListView
+		android:descendantFocusability="blocksDescendants"
+		android:footerDividersEnabled="true"
+		android:id="@+id/fp_finger_list"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:divider="#1f000000"
+		android:dividerHeight="1dp"
+		android:cacheColorHint="#00000000"
+		android:listSelector="@android:color/transparent" >
+    </ListView>
+
     <LinearLayout
-        android:id="@+id/fp_switch"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="6"
-        android:background="@drawable/bg_bluebar">
-	        <RelativeLayout 
-	            android:layout_width="match_parent" 
-	            android:layout_height="match_parent"
-	            android:layout_weight="1">
-		        <ImageView
-		            android:layout_width="30dp"
-		            android:layout_height="30dp"
-		           	android:layout_centerInParent="true"
-		            android:id="@+id/fp_settings_back_bt"
-		            android:src="@drawable/b_back"
-		            android:layout_alignParentLeft="true"
-		            android:layout_marginLeft="5dp"
-		            />
-		        <TextView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:gravity="center"
-		            android:textSize="20sp"
-		            android:textColor="#FFFFFFFF"
-		            android:text="@string/fp_switch_name"
-		            android:layout_centerInParent="true"
-		            />
-            
-			       <CheckBox 
-			           android:id="@+id/fp_switch_cb"
-			           android:layout_width="wrap_content"
-			           android:layout_height="wrap_content"
-			           android:layout_gravity="center"
-			           android:layout_alignParentRight="true"
-			           android:layout_centerInParent="true"
-			           />
-			       <TextView 
-			           android:layout_width="wrap_content"
-			           android:layout_height="wrap_content"
-			           android:text="@string/allChecked"
-			           android:layout_toLeftOf="@id/fp_switch_cb"
-			           android:layout_centerInParent="true"
-			           android:textColor="#FFFFFFFF"
-			           />
-	        </RelativeLayout>     
-    </LinearLayout>
-    
-    <RelativeLayout 
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="6"
-        >
-        <TextView android:id="@+id/fp_prompt"
+        android:id="@+id/fp_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:visibility="gone" >
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/fp_prompt_str"
-            />
-        
-        <ListView
-        	android:descendantFocusability="blocksDescendants"
-            android:footerDividersEnabled="true"
-            android:id="@+id/fp_finger_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="#00000000"
-            android:cacheColorHint="#00000000"
-            android:listSelector="@android:color/transparent"
-            ></ListView> 
-    </RelativeLayout>
-    
-    <Button android:id="@+id/bt_entry"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:text="@string/fp_entry_button"
-        />
+            android:text="@string/maininfo"
+            android:textSize="16sp"
+            android:gravity="center_horizontal" />
 
-</LinearLayout>
+        <Button
+			android:id="@+id/calibration_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calibration"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
