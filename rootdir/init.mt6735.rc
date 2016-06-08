@@ -970,7 +970,7 @@ service dhcpcd_bt-pan /system/bin/dhcpcd -BK -dd
 
 
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -BK -dd
+service dhcpcd_wlan0 /system/bin/dhcpcd -ABKLG -dd
     class main
 	user root
 	group net_admin net_raw
