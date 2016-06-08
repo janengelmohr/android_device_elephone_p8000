@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="10sp" >
+    android:layout_height="match_parent"
+    android:background="?android:attr/selectableItemBackground"
+    android:paddingLeft="16sp"
+    android:paddingRight="16sp" >
         <CheckBox
             android:id="@+id/enable"
             android:layout_width="wrap_content"
@@ -13,29 +15,17 @@
             android:footerDividersEnabled="false"
             android:textIsSelectable="false" />
 		
-        <FrameLayout 
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_toLeftOf="@id/enable"
-            android:focusable="false"
-            >
         <TextView
             android:id="@+id/name"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textColor="#FF000000"
-            android:textSize="20sp" 
+            android:layout_height="72dp"
+            android:layout_toLeftOf="@id/enable"
             android:focusable="false"
-            />
-         <ImageView
-        android:id="@+id/iv_over"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:focusable="false"
-        android:background="@drawable/seleted"
-        />
-         </FrameLayout>
-    </RelativeLayout>
+            android:layout_centerVertical="true"
+            android:gravity="left|center_vertical"
+            android:textColor="#FF000000"
+            android:textSize="16sp" />
+            
+</RelativeLayout>
 
    

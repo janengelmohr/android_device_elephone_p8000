@@ -1,45 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="unlock_set_unlock_off_title">None</string>
-	<string name="unlock_set_unlock_none_title">Slide</string>
-	<string name="unlock_set_unlock_biometric_weak_title">Face Unlock</string>
-	<string name="unlock_set_unlock_pattern_title">Pattern</string>
-	<string name="unlock_set_unlock_pin_title">PIN</string>
-	<string name="unlock_set_unlock_password_title">Password</string>
-	<string name="unlock_set_unlock_Fingerprint_title">Fingerprint</string>
-    
-    <string name="app_name">Finger Print</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    
-    <string name="apps_manager">Apps Manager</string>
-     <string name="fp_manager">Manager</string>
-    <string name="fp_instruction"></string>
-    <string name="pw_warnning">Please entry password.</string>
-   <string name="bt_unlock">Unlock.</string>
-   
-    <string name="fp_switch_name">FingerPrint list</string>
-    <string name="fp_prompt_str">No finger info.Please entry.</string>
-    <string name="fp_entry_button">Entry</string>
-     <string name="entry_finger_name">Entry finger name ,please.</string>
-     <string name="ok">OK</string>
-     <string name="cancel">Cancel</string>
-     <string name="enroll_finger_remove">Please remove your finger from fingerprint identifier.</string>
-     <string name="enroll_finger_put">Please put your finger in the fingerprint identification area. When the progress bar appears, remove your finger and touch the id area repeatedly until it was finished.</string>
-     <string name="enroll_success">Enroll success</string>
-     <string name="identify_success">Identify success</string>
-     <string name="identify_errol">Identify errol</string>
-     <string name="identify_fail">Identify fail</string>
-     <string name="identify_finger">Please identify finger</string>
-          <string name="finger_name_defualt">Finger:</string>
-     <string name="finger_count_full">Number of fingerprint is full</string>
-     <string name="allChecked">Select all</string>
-     
-     <string name="PassWord">PassWord</string>
-     <string name="identify">identify</string>
-     <string name="set_password">Please set the password</string>
-     <string name="calibration">Calibration</string>
-     <string name="rename">Rename</string>
-     <string name="delete">Delete</string>
-     <string name="maininfo">When set the finger unlock for the first time, please calibrate the fingerprint identification firstly</string>
+	<string name="app_name">Fingerprint</string>
+	<string name="enable_all">Enable all</string>
+	<string name="disable_all">Disable all</string>
+	<string name="fp_switch_name">Fingerprint list</string>
+	<string name="add_fingerprint">Add</string>
+	<string name="entry_finger_name">Input fingerprint name</string>
+	<string name="enroll_finger_remove">Please remove your finger from fingerprint identifier.</string>
+	<string name="enroll_finger_intro">Place finger on finerprint sensor, lift it off, then repeat. Move finger upwards/downwards slightly between attempts.</string>
+	<string name="enroll_finger_repeat">Now repeat.</string>
+	<string name="enroll_finger_continue">Place your finger on the fingerprint sensor then lift it off again.</string>
+	<string name="enroll_finger_success">Successfully added.</string>
+	<string name="identify_success">Identify success</string>
+	<string name="identify_errol">Identify errol</string>
+	<string name="identify_fail">Identify fail</string>
+	<string name="finger_name_defualt">Finger</string>
+	<string name="identify_error">Could not identify</string>
+	<string name="max_fingerprint_info">You can add only 5 fingerprints</string>
+	<string name="must_unlock_manually">You have to unlock your device manually</string>
+	<string name="try_again">Please, try again.</string>
+	<string name="calibration">Calibration</string>
+	<string name="rename">Rename</string>
+	<string name="delete">Delete</string>
+	<string name="maininfo">If you are adding fingerprint for the first time, please calibrate the fingerprint sensor firstly.</string>
 </resources>

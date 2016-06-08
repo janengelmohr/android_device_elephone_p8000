@@ -1,12 +1,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.silead.fp.MainActivity" >
+    tools:context="com.silead.fp.settings.Settings" >
 
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        />
+        android:id="@+id/add_fingerprint"
+        android:icon="@drawable/ic_plus"
+        android:title="@string/add_fingerprint"
+        android:showAsAction="ifRoom"/>
+
+	<item android:id="@+id/calibrate"
+          android:title="@string/calibration"
+          android:showAsAction="never"/>
+
+    <item android:id="@+id/enable_all"
+          android:title="@string/enable_all"
+          android:showAsAction="never"/>
+          
+    <item android:id="@+id/disable_all"
+          android:title="@string/disable_all"
+          android:showAsAction="never"/>
 
 </menu>

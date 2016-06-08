@@ -5,25 +5,23 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
-        android:targetSdkVersion="19" />
+        android:minSdkVersion="21"
+        android:targetSdkVersion="22" />
     
-<uses-permission android:name="android.permission.WAKE_LOCK" />
-<uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-<uses-permission android:name="android.permission.VIBRATE"/>
-<uses-permission android:name="android.permission.CONTROL_KEYGUARD" />
-
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.CONTROL_KEYGUARD" />
+	<uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.silead.fp.MainActivity"
             android:label="@string/app_name" 
-            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,29 +30,6 @@
               
             </intent-filter>
         </activity>
-          
-       <activity
-            android:name="com.silead.fp.FpManagerActivity"
-            android:label="@string/apps_manager"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="com.silead.fp.action.VIEW" />
-				<category android:name="com.silead.fp.category.appsmanager"/>
-				  <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.silead.fp.lockscreen.ErrorNotifyDialogActivity"
-            android:label="@string/apps_manager"
-            android:theme="@style/FullScreenTheme"
-            android:configChanges="orientation|screenSize"
-            >
-            <intent-filter>
-                <action android:name="com.silead.fp.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
         
        <service android:name="com.silead.fp.lockscreen.FpService" >
               <intent-filter>
@@ -63,28 +38,19 @@
               </intent-filter>
        </service>
         
-       <activity
-            android:name="com.silead.fp.lockscreen.LockScreen"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="com.silead.fp.lockscreen.action.VIEW" />
-				  <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        
         <activity
             android:name="com.silead.fp.setting.Settings"
-            android:theme="@android:style/Theme.Black.NoTitleBar" 
+            android:label="@string/fp_switch_name"
+            android:theme="@style/SettingsTheme" 
             android:screenOrientation="portrait"
             android:launchMode="standard"
             >
             <intent-filter>
                 <action android:name="com.silead.fp.setting.Settings.ACTION" />
-				  <category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 	    
-	</activity>
+		</activity>
 	     <receiver android:name="com.silead.fp.receiver.BootCompletedReceiver">
              <intent-filter>
                  <action android:name="android.intent.action.BOOT_COMPLETED"/>
@@ -96,7 +62,7 @@
 
          <activity
             android:name="com.silead.fp.setting.EnrollActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar" 
+            android:theme="@android:style/Theme.Material.Light.NoActionBar" 
             android:screenOrientation="portrait"
             android:launchMode="standard"
             >
@@ -105,7 +71,7 @@
 		 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-       
+
     </application>
 
 </manifest>
