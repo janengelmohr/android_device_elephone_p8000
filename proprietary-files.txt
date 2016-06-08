@@ -76,8 +76,8 @@ lib64/libcam1_utils.so
 lib/libcam1_utils.so
 lib/libcam3_app.so
 lib64/libcam3_app.so
-lib/libmeizucamera.so
-lib64/libmeizucamera.so
+lib/libmeizucamera.so # MODULE
+lib64/libmeizucamera.so # MODULE
 lib/libcam3_pipeline.so
 lib64/libcam3_pipeline.so
 lib/libcam3_utils.so
