@@ -233,6 +233,10 @@ bin/guiext-server
 bin/MtkCodecService
 bin/AcdApiDaemon
 
+# Charge mode
+bin/kpoc_charger
+lib/libshowlogo.so
+
 #xbin
 xbin/BGW
 xbin/mnld
