@@ -10,6 +10,7 @@ Currently broken features:
  * jianminglok
  * walter79
  * valascus
+ * Restorn
 
 
 ##How to compile:
