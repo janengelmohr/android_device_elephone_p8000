@@ -95,7 +95,11 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
             mErrorCount = 0;
             boolean isScreenOn = mPowerManager.isScreenOn();
             if (isScreenOn)
+		{
                 unLock();
+		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        	v.vibrate(100);
+		}
         } else if (result == FpControllerNative.IDENTIFY_ERR_MATCH) {
             onIdentifyError();
         }
@@ -185,7 +189,7 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
         timeoutWakeLock.acquire(5000);
 
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        long[] pattern = {0, 100, 200, 100};
+        long[] pattern = {0, 100, 100, 100, 100, 100};
         v.vibrate(pattern, -1);
 
         if (mErrorCount >= FpControllerNative.IDENTIFY_MAX) {
