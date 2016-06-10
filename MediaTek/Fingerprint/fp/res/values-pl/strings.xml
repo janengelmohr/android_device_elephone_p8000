@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Odcisk palca</string>
-	<string name="enable_all">Włącz wszystkie</string>
-	<string name="disable_all">Wyłącz wszystkie</string>
     <string name="fp_switch_name">Lista odcisków palców</string>
-    <string name="add_fingerprint">Dodaj</string>
-	<string name="entry_finger_name">Podaj nazwę odcisku</string>
+    <string name="add_fingerprint">Dodaj odcisk palca</string>
 	<string name="enroll_finger_remove">Zdejmij palec z czytnika.</string>
-	<string name="enroll_finger_intro">Połóż palec na czytniku linii papilarnych, podnieś go, a potem powtórz. Przesuń palec nieznacznie w górę/dół między próbami.</string>
-	<string name="enroll_finger_repeat">Teraz powtórz.</string>
-	<string name="enroll_finger_continue">Połóż palec na czytniku linii papilarnych, potem podnieś go ponownie.</string>
-	<string name="enroll_finger_success">Dodano pomyślnie.</string>
 	<string name="finger_name_defualt">Odcisk</string>
 	<string name="identify_error">Błąd identyfikacji</string>
-	<string name="max_fingerprint_info">Możesz dodać tylko 5 odcisków palców</string>
+	<string name="max_fingerprint_info">Możesz dodać do 5 odcisków palców</string>
 	<string name="must_unlock_manually">Musisz odblokować urządzenie manualnie</string>
 	<string name="try_again">Spróbuj ponownie</string>
 	<string name="calibration">Kalibracja</string>
-	<string name="rename">Zmień nazwę</string>
+	<string name="name">Nazwa</string>
 	<string name="delete">Usuń</string>
-	<string name="maininfo">Jeżeli dodajesz odcisk palca po raz pierwszy, skalibruj najpierw czytnik.</string>
+	<string name="calibration_info">Jeżeli dodajesz odcisk palca po raz pierwszy, skalibruj najpierw czytnik.</string>
+	<string name="add_another">Dodaj kolejny</string>
+	<string name="done">Gotowe</string>
+	<string name="enroll_finish_info">Odcisk palca został dodany pomyślnie.</string>
+	<string name="fingerprint_added">Odcisk palca dodany!</string>
+	<string name="enroll_start_title">Rozpocznij</string>
+	<string name="enroll_repeat_title">Powtórz czynność</string>
+	<string name="enroll_start_message">Przyłóż palec do czytnika. Podnieś go, gdy poczujesz wibracje.</string>
+	<string name="enroll_repeat_message">Obróć lekko palcem, by odcisk był bardziej dokładny.</string>
 </resources>

@@ -94,12 +94,11 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
         if (result == FpControllerNative.IDENTIFY_SUCCESS) {
             mErrorCount = 0;
             boolean isScreenOn = mPowerManager.isScreenOn();
-            if (isScreenOn)
-		{
-                unLock();
-		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        	v.vibrate(100);
-		}
+            if (isScreenOn) {
+				unLock();
+				Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+				v.vibrate(50);
+			}
         } else if (result == FpControllerNative.IDENTIFY_ERR_MATCH) {
             onIdentifyError();
         }
