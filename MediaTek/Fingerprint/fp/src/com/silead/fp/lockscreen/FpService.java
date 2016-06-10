@@ -189,7 +189,7 @@ public class FpService extends Service implements FpControllerNative.OnIdentifyR
         timeoutWakeLock.acquire(5000);
 
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        long[] pattern = {0, 100, 100, 100, 100, 100};
+        long[] pattern = {0, 100, 100, 100};
         v.vibrate(pattern, -1);
 
         if (mErrorCount >= FpControllerNative.IDENTIFY_MAX) {
