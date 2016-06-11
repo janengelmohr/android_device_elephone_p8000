@@ -7,7 +7,7 @@
 	<string name="add_fingerprint">Add</string>
 	<string name="entry_finger_name">Input fingerprint name</string>
 	<string name="enroll_finger_remove">Please remove your finger from fingerprint identifier.</string>
-	<string name="enroll_finger_intro">Place finger on finerprint sensor, lift it off, then repeat. Move finger upwards/downwards slightly between attempts.</string>
+	<string name="enroll_finger_intro">Place finger on fingerprint sensor, lift it off, then repeat. Move finger upwards/downwards slightly between attempts.</string>
 	<string name="enroll_finger_repeat">Now repeat.</string>
 	<string name="enroll_finger_continue">Place your finger on the fingerprint sensor then lift it off again.</string>
 	<string name="enroll_finger_success">Successfully added.</string>
