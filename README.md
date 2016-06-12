@@ -10,7 +10,7 @@ Initialize a repository with CyanogenMode:
 
 Optinally use a specific manifest (not a tip):
 
-    repo init -u git://github.com/divis1969/android.git -b meilan2 -m meilan2-cm-12.1-v0.10.xml
+    repo init -u git://github.com/divis1969/android.git -b meilan2 -m meilan2-cm-12.1-v0.11.xml
 
 Note: 6 more Cyanogen repositories were forked since v0.2, so if you will encounter an error while syncing on top
 of exiting tree, use the suggestion from the error log (sync those repos with --force-sync) 
@@ -50,6 +50,12 @@ All issues: https://github.com/divis1969/android_device_meizu_meilan2/issues
 
 Change log
 ----------
+
+### v0.11
+- Offline charging mode
+- Support for all the features of the Meizu camera
+- Disabled DHCP client link-local address
+- Upmerge to the tip of cm-12.1
 
 ### v0.10
 - Wake on double tap (ported Flyme GestureManager)
