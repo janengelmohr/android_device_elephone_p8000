@@ -165,4 +165,4 @@ persist.call_recording.enabled=true
 persist.call_recording.src=1
 
 # OTA
-cm.updater.uri=http://130.211.68.212/api
+cm.updater.uri=https://ota.cm.mkoas.de/api
