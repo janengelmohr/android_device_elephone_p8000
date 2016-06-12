@@ -52,7 +52,7 @@ public class FingerAdapter extends BaseAdapter {
         final TextView textView = (TextView) view.findViewById(R.id.name);
         String fp_name = mfingerlist.get(pos).getFingerName();
         textView.setText(fp_name);
-        CheckBox enableBox = (CheckBox) view.findViewById(R.id.enable);
+        /*CheckBox enableBox = (CheckBox) view.findViewById(R.id.enable);
         int enrollIndex = mfingerlist.get(pos).enrollIndex;
         if (mfingerlist.get(pos).getEnable() == 0 || !check.get(enrollIndex)) {
             enableBox.setChecked(false);
@@ -76,7 +76,7 @@ public class FingerAdapter extends BaseAdapter {
                     fpControllerNative.EnalbeCredential(enrollIndex, 0);
                 }
             }
-        });
+        });*/
 
         return view;
     }

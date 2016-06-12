@@ -68,7 +68,19 @@
             >
             <intent-filter>
                 <action android:name="com.silead.fp.setting.EnrollActivity.ACTION" />
-		 <category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+         <activity
+            android:name="com.silead.fp.setting.EnrollFinish"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar" 
+            android:screenOrientation="portrait"
+            android:launchMode="standard"
+            >
+            <intent-filter>
+                <action android:name="com.silead.fp.setting.EnrollFinish.ACTION" />
+				<category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 

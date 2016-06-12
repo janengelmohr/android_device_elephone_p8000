@@ -1,45 +1,62 @@
 package com.silead.fp.setting;
 
-import com.silead.fp.R;
-import com.silead.fp.utils.FpControllerNative;
-import com.silead.fp.utils.FpControllerNative.SLFpsvcIndex;
-
-import android.annotation.SuppressLint;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Intent;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.FrameLayout;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.TextSwitcher;
-import android.widget.ViewSwitcher.ViewFactory;
+
+import com.silead.fp.R;
+import com.silead.fp.utils.FpControllerNative;
+import com.silead.fp.utils.FpControllerNative.SLFpsvcIndex;
+
+;
 
 public class EnrollActivity extends Activity {
-
-    private ProgressBar circularProgress;
-    private ImageView fingerprintBg;
-    private ImageView fingerprintAnim;
-    private TextView progressPerc;
-    private TextSwitcher textSwitcher;
-
+    
     public int enrollIndex;
+    private ProgressBar mProgressBar;
+	private ImageView mFingerprintAnimator;
+	private TextView mStartMessage;
+	private TextView mRepeatMessage;
+	private Interpolator mFastOutSlowInInterpolator;
+	private Interpolator mLinearOutSlowInInterpolator;
+	private AnimatedVectorDrawable mIconAnimationDrawable;
+	private int mIndicatorBackgroundRestingColor;
+	private int mIndicatorBackgroundActivatedColor;
     private int progressNum = 0;
-
+    private Handler mHandler;
+    Runnable mAnimationStarter = new Runnable() {
+		@Override
+		public void run() {
+			try {
+				if(!mIconAnimationDrawable.isRunning()) {
+					mIconAnimationDrawable.start();
+				}
+			} finally {
+				mHandler.postDelayed(mAnimationStarter, 1000);
+			}	
+		}
+	};
     private boolean mIsEnrolling = false;
-
     private FpControllerNative mControllerNative;
     private EnrollHandler mEnrollHandler = new EnrollHandler();
     private SLFpsvcIndex fpsvcIndex;
@@ -48,44 +65,66 @@ public class EnrollActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_next_in, R.anim.slide_next_out);
         setContentView(R.layout.fp_enroll);
-        circularProgress = (ProgressBar) findViewById(R.id.progressBar);
-        fingerprintBg = (ImageView) findViewById(R.id.fingerprint_bg);
-        fingerprintAnim = (ImageView) findViewById(R.id.fingerprint_animator);
-        progressPerc = (TextView) findViewById(R.id.progress_perc);
-        progressPerc.setText("0%");
+        
+        getWindow().getDecorView().setSystemUiVisibility(
+			View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+			| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+			
+		getWindow().setStatusBarColor(Color.TRANSPARENT);
 
-        textSwitcher = (TextSwitcher) findViewById(R.id.textswitcher);
-        textSwitcher.setFactory(new ViewFactory() {
-            public View makeView() {
-                TextView myText = new TextView(EnrollActivity.this);
-                myText.setGravity(Gravity.CENTER);
+		mStartMessage = (TextView) findViewById(R.id.start_message);
+        mRepeatMessage = (TextView) findViewById(R.id.repeat_message);
+        mProgressBar = (ProgressBar) findViewById(R.id.fingerprint_progress_bar);
+        mFingerprintAnimator = (ImageView) findViewById(R.id.fingerprint_animator);
+        mIconAnimationDrawable = (AnimatedVectorDrawable) mFingerprintAnimator.getDrawable();
+        mFastOutSlowInInterpolator = AnimationUtils.loadInterpolator(
+                this, android.R.interpolator.fast_out_slow_in);
+        mLinearOutSlowInInterpolator = AnimationUtils.loadInterpolator(
+                this, android.R.interpolator.linear_out_slow_in);
+                
+		mIndicatorBackgroundRestingColor
+			= getResources().getColor(R.color.fingerprint_indicator_background_resting);
+        mIndicatorBackgroundActivatedColor
+			= getResources().getColor(R.color.fingerprint_indicator_background_activated);
 
-                FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
-                        LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT,
-                        Gravity.CENTER);
-                myText.setLayoutParams(params);
-
-                myText.setTextSize(20);
-                myText.setTextColor(Color.BLACK);
-                myText.setText(getString(R.string.enroll_finger_intro));
-                return myText;
-            }
-        });
-
+		mHandler = new Handler();
 
         initHandler();
         fpsvcIndex = mControllerNative.GetFpInfo();
+
         if (fpsvcIndex.max > 5) {
             fpsvcIndex.max = 5;
         }
         enrollStart();
     }
-
+    
     private void initHandler() {
         mControllerNative = FpControllerNative.getInstance();
         mControllerNative.setHandler(mEnrollHandler);
         mControllerNative.initFPSystem();
+    }
+
+    @Override
+    public void onEnterAnimationComplete() {
+        super.onEnterAnimationComplete();
+        startIconAnimation();
+    }
+    
+    private void startIconAnimation() {
+        mAnimationStarter.run(); 
+    }
+    
+    private void stopIconAnimation() {
+        mHandler.removeCallbacks(mAnimationStarter);
+        mIconAnimationDrawable.stop();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        stopIconAnimation();
     }
 
     @Override
@@ -122,37 +161,6 @@ public class EnrollActivity extends Activity {
         return index;
     }
 
-    @SuppressLint("HandlerLeak")
-    class EnrollHandler extends Handler {
-
-        @Override
-        public void handleMessage(Message msg) {
-            int msgwt = msg.what;
-            switch (msgwt) {
-                case FpControllerNative.IDENTIFY:
-                    int[] idetifyIntArray = (int[]) msg.obj;
-                    int idetifyIndex = idetifyIntArray[0];
-                    int idetifyResult = idetifyIntArray[1];
-                    identifyFinger(idetifyIndex, idetifyResult);
-                    break;
-                case FpControllerNative.ENROLL_CREDENTIAL_RSP:
-                    int[] intArray = (int[]) msg.obj;
-                    enrollIndex = intArray[0];
-                    int progress = intArray[1];
-                    int enrollResult = intArray[2];
-                    int area = intArray[3];
-                    enrollRSP(enrollIndex, progress, enrollResult, area);
-                    break;
-                case FpControllerNative.INIT_FP_FAIL:
-                    break;
-                case FpControllerNative.FP_GENERIC_CB:
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
@@ -182,31 +190,23 @@ public class EnrollActivity extends Activity {
 
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         v.vibrate(40);
-
-        ObjectAnimator fingerAnim = ObjectAnimator.ofFloat(fingerprintAnim, "alpha", 0.13f, 0.2f, 0.13f);
-        fingerAnim.setDuration(250);
-        fingerAnim.start();
+        
+        animateFlash();
 
         if (progressNum == 1) {
-            textSwitcher.setText(getString(R.string.enroll_finger_repeat));
-        } else if (progressNum == 2) {
-            textSwitcher.setText(getString(R.string.enroll_finger_continue));
+			TextView headerTextView = (TextView) findViewById(R.id.headerTextView);
+			headerTextView.setText(getString(R.string.enroll_repeat_title));
+			
+			mStartMessage.setVisibility(View.INVISIBLE);
+			mRepeatMessage.setVisibility(View.VISIBLE);
         }
 
-        progressPerc.setText(Integer.toString(progress) + "%");
-
         if (progress >= 0 && progress < 100) {
-            setDialogProgress(progress);
+            animateProgress(progress);
         } else {
             if (progress >= 100) {
-                setDialogProgress(100);
-
-                ObjectAnimator alphaAnim = ObjectAnimator.ofFloat(fingerprintBg, "alpha", 0f, 1f);
-                alphaAnim.setDuration(750);
-                alphaAnim.start();
+                animateProgress(100);
             }
-            textSwitcher.setText(getString(R.string.enroll_finger_success));
-
             final int ind = index;
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -214,18 +214,19 @@ public class EnrollActivity extends Activity {
                 public void run() {
                     enrollSuccess(ind);
                 }
-            }, 2000);
+            }, 500);
         }
     }
 
     private void enrollSuccess(final int index) {
         mIsEnrolling = false;
         progressNum = 0;
-        Intent intent = getIntent();
-        intent.putExtra("enrollIndex", index);
-        EnrollActivity.this.setResult(0, intent);
         createNewSLFpsvcFPInfo(index);
-        EnrollActivity.this.finish();
+
+        Intent intentFinish = new Intent(EnrollActivity.this, EnrollFinish.class);
+        startActivity(intentFinish);
+  
+        finish();
     }
 
     private void enrollError() {
@@ -244,7 +245,7 @@ public class EnrollActivity extends Activity {
             enrolling(enrollIndex, progress, area);
         } else {
             if (enrollResult == FpControllerNative.ENROLL_CANCLED) {
-                textSwitcher.setText(getString(R.string.enroll_finger_remove));
+                //textSwitcher.setText(getString(R.string.enroll_finger_remove));
             } else if (enrollResult == FpControllerNative.ENROLL_NOT_SUPPORT) {
                 enrollnotsupport();
             } else if (enrollResult == FpControllerNative.ENROLL_FAIL) {
@@ -255,12 +256,12 @@ public class EnrollActivity extends Activity {
 
     private void identifyFinger(int identifyIndex, int identifyResult) {
         if (identifyResult == FpControllerNative.IDENTIFY_SUCCESS) {
-            textSwitcher.setText(getString(R.string.identify_success));
+            //textSwitcher.setText(getString(R.string.identify_success));
         } else if (identifyResult == FpControllerNative.ENROLL_CANCLED) {
-            textSwitcher.setText(getString(R.string.identify_errol));
+            //textSwitcher.setText(getString(R.string.identify_errol));
             mControllerNative.destroyFPSystem();
         } else if (identifyResult == FpControllerNative.IDENTIFY_FAIL) {
-            textSwitcher.setText(getString(R.string.identify_fail));
+            //textSwitcher.setText(getString(R.string.identify_fail));
             mControllerNative.destroyFPSystem();
         }
     }
@@ -273,13 +274,41 @@ public class EnrollActivity extends Activity {
         mControllerNative.FpCancelOperation();
     }
 
-    private void setDialogProgress(int progress) {
-        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(circularProgress, "progress", circularProgress.getProgress(), progress * 100);
+    private void animateProgress(int progress) {
+        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(mProgressBar, "progress", mProgressBar.getProgress(), progress * 100);
         progressAnimator.setDuration(250);
-        progressAnimator.setInterpolator(new DecelerateInterpolator());
+        progressAnimator.setInterpolator(mFastOutSlowInInterpolator);
         progressAnimator.start();
     }
-
+    
+    private void animateFlash() {
+        ValueAnimator anim = ValueAnimator.ofArgb(mIndicatorBackgroundRestingColor,
+                mIndicatorBackgroundActivatedColor);
+        final ValueAnimator.AnimatorUpdateListener listener =
+                new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                mFingerprintAnimator.setBackgroundTintList(ColorStateList.valueOf(
+                        (Integer) animation.getAnimatedValue()));
+            }
+        };
+        anim.addUpdateListener(listener);
+        anim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                ValueAnimator anim = ValueAnimator.ofArgb(mIndicatorBackgroundActivatedColor,
+                        mIndicatorBackgroundRestingColor);
+                anim.addUpdateListener(listener);
+                anim.setDuration(300);
+                anim.setInterpolator(mLinearOutSlowInInterpolator);
+                anim.start();
+            }
+        });
+        anim.setInterpolator(mFastOutSlowInInterpolator);
+        anim.setDuration(300);
+        anim.start();
+    }
+    
     public void Mytoast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
@@ -292,5 +321,36 @@ public class EnrollActivity extends Activity {
         fpsvcIndex.FPInfo[index].setEnrollIndex(index);
         fpsvcIndex.setFPInfo(fpsvcIndex.FPInfo);
         mControllerNative.SetFpInfo(fpsvcIndex);
+    }
+
+    @SuppressLint("HandlerLeak")
+    class EnrollHandler extends Handler {
+
+        @Override
+        public void handleMessage(Message msg) {
+            int msgwt = msg.what;
+            switch (msgwt) {
+                case FpControllerNative.IDENTIFY:
+                    int[] idetifyIntArray = (int[]) msg.obj;
+                    int idetifyIndex = idetifyIntArray[0];
+                    int idetifyResult = idetifyIntArray[1];
+                    identifyFinger(idetifyIndex, idetifyResult);
+                    break;
+                case FpControllerNative.ENROLL_CREDENTIAL_RSP:
+                    int[] intArray = (int[]) msg.obj;
+                    enrollIndex = intArray[0];
+                    int progress = intArray[1];
+                    int enrollResult = intArray[2];
+                    int area = intArray[3];
+                    enrollRSP(enrollIndex, progress, enrollResult, area);
+                    break;
+                case FpControllerNative.INIT_FP_FAIL:
+                    break;
+                case FpControllerNative.FP_GENERIC_CB:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

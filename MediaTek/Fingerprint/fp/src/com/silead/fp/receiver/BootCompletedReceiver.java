@@ -15,8 +15,6 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         if (action.equals(Intent.ACTION_BOOT_COMPLETED)) {
             Intent intent = new Intent(arg0, FpService.class);
             arg0.startService(intent);
-        } else if (action.equals(Settings.ACTION_NONSUPPORT_LOCKSCREEN_ACTIVE)) {
-            Settings.DisableFp();
         }
     }
 }
