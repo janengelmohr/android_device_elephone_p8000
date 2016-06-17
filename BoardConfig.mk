@@ -108,7 +108,7 @@ TW_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brigh
 TW_MAX_BRIGHTNESS := 255
 
 # accept Lollipop SEPolicies
-POLICYVERS := 29
+#POLICYVERS := 26
 
 # do not check sensors for CM 13
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
