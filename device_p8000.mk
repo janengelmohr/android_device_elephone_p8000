@@ -95,6 +95,19 @@ PRODUCT_COPY_FILES += \
     	$(LOCAL_PATH)/configs/ecc_list.xml:system/etc/ecc_list.xml \
     	$(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml 
 
+
+PRODUCT_COPY_FILES += \
+    prebuilts/ndk/current/sources/cxx-stl/stlport/libs/arm64-v8a/libstlport_shared.so:system/lib64/libstlport.so \
+    prebuilts/ndk/current/sources/cxx-stl/stlport/libs/armeabi-v7a/libstlport_shared.so:system/lib/libstlport.so
+
+# Shims
+PRODUCT_PACKAGES += \
+    libshim_icu53 \
+    libshim_crypto \
+    libshim_ui \
+    libshim_gui \
+    libshim_binder \
+
 # Torch
 PRODUCT_PACKAGES += \
     	Torch
