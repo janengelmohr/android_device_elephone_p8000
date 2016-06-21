@@ -35,7 +35,6 @@ on early-init
 on init
     sysclktz 0
 
-    export LD_SHIM_LIBS /system/lib/libicuuc.so|libshim_icu53.so:/system/lib/libcrypto.so|libshim_crypto.so
     loglevel 1
 
     # Backward compatibility
