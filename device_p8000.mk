@@ -76,13 +76,13 @@ PRODUCT_PACKAGES += \
  	libxlog
 
 # Fingerprint support
-PRODUCT_PACKAGES += fp
-PRODUCT_PACKAGES += slfpcal
-PRODUCT_PACKAGES += libslfpjni
-PRODUCT_PACKAGES += libsileadinc_dev
+#PRODUCT_PACKAGES += fp
+#PRODUCT_PACKAGES += slfpcal
+#PRODUCT_PACKAGES += libslfpjni
+#PRODUCT_PACKAGES += libsileadinc_dev
 
-include device/elephone/p8000/MediaTek/Fingerprint/slfpcal/Android.mk
-include device/elephone/p8000/MediaTek/Fingerprint/fp/Android.mk
+#include device/elephone/p8000/MediaTek/Fingerprint/slfpcal/Android.mk
+#include device/elephone/p8000/MediaTek/Fingerprint/fp/Android.mk
 
 # Gralloc
 PRODUCT_PACKAGES += \
@@ -93,31 +93,31 @@ PRODUCT_PACKAGES += \
 	libbt-vendor
 
 # Wifi
-PRODUCT_PACKAGES += \
-    	lib_driver_cmd_mt66xx \
-    	libwifi-hal-mt66xx \
-    	wifi_hal \
-    	libwpa_client \
-    	hostapd \
-    	hostapd_cli \
-    	dhcpcd.conf \
-    	wpa_supplicant \
-    	wpa_supplicant.conf \
-	libnl_2
+#PRODUCT_PACKAGES += \
+#    	lib_driver_cmd_mt66xx \
+#    	libwifi-hal-mt66xx \
+#    	wifi_hal \
+#    	libwpa_client \
+#    	hostapd \
+#    	hostapd_cli \
+#    	dhcpcd.conf \
+#    	wpa_supplicant \
+#    	wpa_supplicant.conf \
+#	libnl_2
    	
 # Audio
-PRODUCT_PACKAGES += \
-    	audio.a2dp.default \
-    	audio_policy.default \
-    	audio_policy.stub \
-    	audio.r_submix.default \
-    	audio.usb.default \
-    	libaudio-resampler \
-    	tinymix \
-    	libtinyalsa \
-    	libtinycompress \
-    	librs_jni \
-	libtinyxml
+#PRODUCT_PACKAGES += \
+#    	audio.a2dp.default \
+#    	audio_policy.default \
+#    	audio_policy.stub \
+#    	audio.r_submix.default \
+#    	audio.usb.default \
+#    	libaudio-resampler \
+#    	tinymix \
+#    	libtinyalsa \
+#    	libtinycompress \
+#    	librs_jni \
+#	libtinyxml
 
 # Audio profiles used to address the correct audio devices for headset, etc.
 PRODUCT_COPY_FILES += \
@@ -197,7 +197,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.secure=0 \
 	ro.allow.mock.location=1 \
 	ro.debuggable=1 \
-	ro.adb.secure=1 \
+	ro.adb.secure=0 \
 	persist.service.acm.enable=0 \
 	ro.oem_unlock_supported=1 \
 	persist.sys.usb.config=mtp
