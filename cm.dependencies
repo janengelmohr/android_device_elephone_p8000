@@ -2,7 +2,12 @@
   {
     "repository": "android_packages_apps_Snap",
     "target_path": "packages/apps/Snap",
-    "branch": "cm-12.1"
+    "branch": "cm-13.0"
+  },
+  {
+    "repository": "android_external_stlport",
+    "target_path": "external/stlport",
+    "branch": "cm-13.0"
   },
   {
     "remote": "visi0nary"
