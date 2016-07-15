@@ -27,7 +27,6 @@ PRODUCT_COPY_FILES += \
 	device/elephone/p8000/rootdir/init.mt6735.rc:root/init.mt6735.rc \
 	device/elephone/p8000/rootdir/init.ssd.rc:root/init.ssd.rc \
 	device/elephone/p8000/rootdir/init.xlog.rc:root/init.xlog.rc \
-	device/elephone/p8000/rootdir/init.rc:root/init.rc \
 	device/elephone/p8000/rootdir/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
 	device/elephone/p8000/rootdir/init.recovery.mt6735.rc:root/init.recovery.mt6735.rc \
 	device/elephone/p8000/rootdir/init.project.rc:root/init.project.rc \
