@@ -1145,6 +1145,12 @@ service MtkCodecService /system/bin/MtkCodecService
     user system
     group audio media sdcard_r
 
+# GuiExt Server init
+service guiext-server /system/bin/guiext-server
+    class main
+    user system
+    group system graphics
+
 service kpoc_charger /system/bin/kpoc_charger
     class charger
 
