@@ -1,0 +1,48 @@
+From d6dad36eaa04fcaf481afad5807d31403ec865be Mon Sep 17 00:00:00 2001
+Message-Id: <d6dad36eaa04fcaf481afad5807d31403ec865be.1469614455.git.gzwalter79@gmail.com>
+From: walter79 <gzwalter79@gmail.com>
+Date: Wed, 27 Jul 2016 12:14:03 +0200
+Subject: [PATCH] Prevent MTK audio and silead fingerprint libs from spamming
+ in the log
+
+thanks to fire855
+---
+ liblog/logd_write.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/liblog/logd_write.c b/liblog/logd_write.c
+index 4b9c7c7..34fb9b1 100644
+--- a/liblog/logd_write.c
++++ b/liblog/logd_write.c
+@@ -457,6 +457,28 @@ int __android_log_write(int prio, const char *tag, const char *msg)
+     if (!tag)
+         tag = "";
+ 
++    // Prevent MTK audio and silead fingerprint libs from spamming in the log
++     if (!strcmp(tag, "AudioMTKFilterManager") ||
++         !strcmp(tag, "AudioMTKFilter") ||
++         !strcmp(tag, "AudioMTKStreamOut") ||
++         !strcmp(tag, "AudioVPWStreamIn") ||
++         !strcmp(tag, "AudioDigitalControl") ||
++         !strcmp(tag, "AudioLoopbackController") ||
++         !strcmp(tag, "AudioMTKVolumeController") ||
++         !strcmp(tag, "AudioDigitalControl") ||
++         !strcmp(tag, "AudioAnalogControl") ||
++         !strcmp(tag, "AudioAfeReg") ||
++         !strcmp(tag, "AudioAnalogReg") ||
++         !strcmp(tag, "AudioPlatformDevice") ||
++         !strcmp(tag, "AudioMachineDevice") ||
++         !strcmp(tag, "MtkAudioLoud") ||
++         !strcmp(tag, "LoopbackManager") ||
++         !strcmp(tag, "AudioInterConnection") ||
++         !strcmp(tag, "SLCODE")) {
++             return 0;
++     }
++ 
++
+     /* XXX: This needs to go! */
+     if (!strcmp(tag, "HTC_RIL") ||
+         !strncmp(tag, "RIL", 3) || /* Any log tag with "RIL" as the prefix */
+-- 
+1.9.1
+
