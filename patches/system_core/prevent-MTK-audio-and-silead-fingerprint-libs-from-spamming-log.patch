@@ -14,7 +14,7 @@ diff --git a/liblog/logd_write.c b/liblog/logd_write.c
 index 4b9c7c7..34fb9b1 100644
 --- a/liblog/logd_write.c
 +++ b/liblog/logd_write.c
-@@ -457,6 +457,28 @@ int __android_log_write(int prio, const char *tag, const char *msg)
+@@ -457,6 +457,30 @@ int __android_log_write(int prio, const char *tag, const char *msg)
      if (!tag)
          tag = "";
  
@@ -35,7 +35,9 @@ index 4b9c7c7..34fb9b1 100644
 +         !strcmp(tag, "MtkAudioLoud") ||
 +         !strcmp(tag, "LoopbackManager") ||
 +         !strcmp(tag, "AudioInterConnection") ||
-+         !strcmp(tag, "SLCODE")) {
++         !strcmp(tag, "SLCODE")) ||
++         !strcmp(tag, "ccci_fsd") ||
++         !strcmp(tag, "[BT3.0+HS]") {
 +             return 0;
 +     }
 + 
