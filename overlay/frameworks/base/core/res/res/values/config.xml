@@ -194,4 +194,6 @@
 
     <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
 
+    <bool name="config_user_notification_of_restrictied_mobile_access">false</bool>
+
 </resources>
