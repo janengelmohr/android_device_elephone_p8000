@@ -14,7 +14,7 @@ diff --git a/liblog/logd_write.c b/liblog/logd_write.c
 index 4b9c7c7..34fb9b1 100644
 --- a/liblog/logd_write.c
 +++ b/liblog/logd_write.c
-@@ -457,6 +457,30 @@ int __android_log_write(int prio, const char *tag, const char *msg)
+@@ -457,6 +457,42 @@ int __android_log_write(int prio, const char *tag, const char *msg)
      if (!tag)
          tag = "";
  
@@ -36,8 +36,20 @@ index 4b9c7c7..34fb9b1 100644
 +         !strcmp(tag, "LoopbackManager") ||
 +         !strcmp(tag, "AudioInterConnection") ||
 +         !strcmp(tag, "SLCODE") ||
-+         !strcmp(tag, "ccci_fsd") ||
-+         !strcmp(tag, "[BT3.0+HS]")) {
++	  (strstr(tag, "ccci") != NULL) ||
++	  (strstr(tag, "Eis") != NULL) ||
++	  (strstr(tag, "aaa") != NULL) ||
++	  (strstr(tag, "af_") != NULL) ||
++	  (strstr(tag, "ae_") != NULL) ||
++	  (strstr(tag, "IMem") != NULL) ||
++	  (strstr(tag, "iio") != NULL) ||
++	  (strstr(tag, "MDP") != NULL) ||
++	  (strstr(tag, "Iop") != NULL) ||
++	  (strstr(tag, "Isp") != NULL) ||
++	  (strstr(tag, "VDO") != NULL) ||
++	  (strstr(tag, "MtkOmx") != NULL) ||
++	  (strstr(tag, "MtkCam") != NULL) ||
++	  (strstr(tag, "BT3") != NULL)) {
 +             return 0;
 +     }
 + 
@@ -47,4 +59,3 @@ index 4b9c7c7..34fb9b1 100644
          !strncmp(tag, "RIL", 3) || /* Any log tag with "RIL" as the prefix */
 -- 
 1.9.1
-
