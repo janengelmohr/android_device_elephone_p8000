@@ -72,7 +72,8 @@ PRODUCT_PACKAGES += \
 
 # MTK's XLog needed for Engineer Mode
 PRODUCT_PACKAGES += \
- 	libxlog
+ 	libxlog \
+	libstlport
 
 # Fingerprint support
 #PRODUCT_PACKAGES += fp
