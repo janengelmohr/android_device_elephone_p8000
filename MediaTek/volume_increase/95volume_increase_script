@@ -1,4 +1,0 @@
-cp /system/AUXADC /nvdata/APCFG/APRDCL/AUXADC
-cp /system/Audio_ver1_Vol_custom /nvdata/APCFG/APRDCL/Audio_ver1_Vol_custom
-echo "MT6753 volume increase patch by visi0nary"
-echo "Your audio output is louder now :)"
