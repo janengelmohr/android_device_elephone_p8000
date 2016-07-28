@@ -14,7 +14,7 @@ diff --git a/liblog/logd_write.c b/liblog/logd_write.c
 index 4b9c7c7..34fb9b1 100644
 --- a/liblog/logd_write.c
 +++ b/liblog/logd_write.c
-@@ -457,6 +457,42 @@ int __android_log_write(int prio, const char *tag, const char *msg)
+@@ -457,6 +457,50 @@ int __android_log_write(int prio, const char *tag, const char *msg)
      if (!tag)
          tag = "";
  
@@ -43,6 +43,14 @@ index 4b9c7c7..34fb9b1 100644
 +	  (strstr(tag, "ae_") != NULL) ||
 +	  (strstr(tag, "IMem") != NULL) ||
 +	  (strstr(tag, "iio") != NULL) ||
++	  (strstr(tag, "Mdp") != NULL) ||
++	  (strstr(tag, "isp_tuning") != NULL) ||
++	  (strstr(tag, "Ae") != NULL) ||
++	  (strstr(tag, "flash") != NULL) ||
++	  (strstr(tag, "flicker_hal") != NULL) ||
++	  (strstr(tag, "NVRAM") != NULL) ||
++	  (strstr(tag, "Flicker") != NULL) ||
++	  (strstr(tag, "TuningMgr") != NULL) ||
 +	  (strstr(tag, "MDP") != NULL) ||
 +	  (strstr(tag, "Iop") != NULL) ||
 +	  (strstr(tag, "Isp") != NULL) ||
