@@ -164,5 +164,8 @@ ro.telephony.ril.config=fakeiccid
 persist.call_recording.enabled=true
 persist.call_recording.src=1
 
+# fix for LTE/mobile data on both SIMs
+persist.radio.mobile.data=0,0
+
 # OTA
 cm.updater.uri=https://ota.cm.mkoas.de/api
