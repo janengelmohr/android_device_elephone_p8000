@@ -121,3 +121,5 @@ COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE -DMTK_AOSP_ENHANCEMENT
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/meizu/meilan2/egl.cfg
 
+# CyanogenMod Hardware Hooks
+BOARD_HARDWARE_CLASS := device/meizu/meilan2/cmhw/
