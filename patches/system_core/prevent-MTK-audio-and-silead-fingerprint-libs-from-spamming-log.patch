@@ -14,7 +14,7 @@ diff --git a/liblog/logd_write.c b/liblog/logd_write.c
 index 4b9c7c7..34fb9b1 100644
 --- a/liblog/logd_write.c
 +++ b/liblog/logd_write.c
-@@ -457,6 +457,50 @@ int __android_log_write(int prio, const char *tag, const char *msg)
+@@ -457,6 +457,61 @@ int __android_log_write(int prio, const char *tag, const char *msg)
      if (!tag)
          tag = "";
  
@@ -57,6 +57,17 @@ index 4b9c7c7..34fb9b1 100644
 +	  (strstr(tag, "VDO") != NULL) ||
 +	  (strstr(tag, "MtkOmx") != NULL) ||
 +	  (strstr(tag, "MtkCam") != NULL) ||
++         (strstr(tag, "AfAlgo") != NULL) ||
++         (strstr(tag, "isp_mgr_") != NULL) ||
++         (strstr(tag, "SeninfDrvImp") != NULL) ||
++         (strstr(tag, "NormalPipe") != NULL) ||
++         (strstr(tag, "awb_state") != NULL) ||
++         (strstr(tag, "paramctrl_attributes") != NULL) ||
++         (strstr(tag, "LensMCU") != NULL) ||
++         (strstr(tag, "GraphicBuffer") != NULL) ||
++         (strstr(tag, "MALI") != NULL) ||
++         (strstr(tag, "GED") != NULL) ||
++         (strstr(tag, "SocketClient") != NULL) ||
 +	  (strstr(tag, "BT3") != NULL)) {
 +             return 0;
 +     }
