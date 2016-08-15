@@ -1,12 +1,6 @@
 # include proprietary libraries and binaries
 -include vendor/elephone/p8000/BoardConfigVendor.mk
 
-# use these headers 
-TARGET_SPECIFIC_HEADER_PATH := device/elephone/p8000/include
- 
-# Link against libxlog
-TARGET_LDPRELOAD += libxlog.so
- 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := Auxus_PRIME_201
 
@@ -35,11 +29,6 @@ BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_TAGS_OFFSET := 0x0df88000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_TAGS_OFFSET)
-MTK_APPENDED_DTB_SUPPORT := yes
-
-# Build an EXT4 ROM image
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_NO_FACTORYIMAGE := true
 
 # system.prop
 TARGET_SYSTEM_PROP := device/elephone/p8000/system.prop
