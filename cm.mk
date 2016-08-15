@@ -7,6 +7,15 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 # Inherit device configuration
 $(call inherit-product, device/elephone/p8000/device_p8000.mk)
 
+# Include generic Mediatek MT6753 part
+$(call inherit-product, device/mediatek/mt6753_common/BoardConfigMT6753_common.mk)
+
+# Include TWRP part
+$(call inherit-product, device/elephone/p8000/twrp.mk)
+
+# Include MultiROM part
+$(call inherit-product, device/elephone/p8000/multirom.mk)
+
 # Configure dalvik heap
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
 
