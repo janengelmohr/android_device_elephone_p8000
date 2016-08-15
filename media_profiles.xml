@@ -185,6 +185,20 @@
                    channels="2" />
         </EncoderProfile>
 
+<!-- Meizu camera is using profile #24 for its default quality.
+     We define it the same as 720p above -->
+        <EncoderProfile quality="meizu_vga" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                   bitRate="9000000"
+                   width="1280"
+                   height="720"
+                   frameRate="30" />
+            <Audio codec="aac"
+                   bitRate="128000"
+                   sampleRate="48000"
+                   channels="2" />
+        </EncoderProfile>
+
         <EncoderProfile quality="timelapselow" fileFormat="mp4" duration="30">
             <Video codec="h263"
                    bitRate="1000000"
