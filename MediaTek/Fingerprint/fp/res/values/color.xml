@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<color name="background_color">#FFFFFF</color>
-	<color name="color_primary">#263238</color>
-	<color name="color_primary_dark">#21272B</color>
-	<color name="fingerprint_indicator_background_resting">#12000000</color>
-	<color name="fingerprint_indicator_background_activated">#80009688</color>
-</resources>
