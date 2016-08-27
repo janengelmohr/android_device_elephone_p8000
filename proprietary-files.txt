@@ -204,7 +204,6 @@ system/lib/libcam_platform.so
 system/lib/libcam_utils.so
 system/lib/libcamalgo.so
 system/lib/libcamdrv.so
-system/lib/libcamera_client.so
 system/lib/libcamera_client_mtk.so
 system/lib/libcamera_metadata.so
 system/lib/libcameracustom.so
@@ -396,7 +395,6 @@ system/lib64/libcam_platform.so
 system/lib64/libcam_utils.so
 system/lib64/libcamalgo.so
 system/lib64/libcamdrv.so
-system/lib64/libcamera_client.so
 system/lib64/libcamera_client_mtk.so
 system/lib64/libcamera_metadata.so
 system/lib64/libcameracustom.so
@@ -562,8 +560,6 @@ system/lib/libslfpjni.so
 system/lib64/libsileadinc_dev.so
 system/lib64/libslfpjni.so
 system/lib64/libslfpauth.a
-system/lib/libcameraservice.so
-system/lib64/libcameraservice.so
 system/lib64/libMtkOmxAdpcmDec.so
 system/lib64/libMtkOmxAdpcmEnc.so
 system/lib64/libMtkOmxAlacDec.so
