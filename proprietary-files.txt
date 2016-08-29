@@ -495,3 +495,12 @@ lib64/libcfgdevparam.so # MODULE
 app/Camera/Camera.apk # MODULE
 app/Camera/lib/arm/libDocVfbEngineLib_m81.so # MODULE
 app/Camera/lib/arm/libpanorama.so # MODULE
+
+# thermal_manager dependencies and profiles
+lib/libmtcloader.so
+etc/.tp/thermal.conf
+etc/.tp/thermal.high.conf
+etc/.tp/thermal.mid.conf
+etc/.tp/thermal.low.conf
+etc/.tp/thermal.off.conf
+
