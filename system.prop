@@ -127,3 +127,5 @@ ro.mtk_perf_response_time=1
 # add by liujianbo@wind-mobi.com 20150629 end
 
 persist.sys.isUsbOtgEnabled=true
+
+ro.mtk_perfservice_support=1

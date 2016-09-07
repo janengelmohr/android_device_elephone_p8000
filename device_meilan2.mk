@@ -28,6 +28,7 @@ PRODUCT_COPY_FILES += \
 	device/meizu/meilan2/rootdir/init.aee.rc:root/init.aee.rc \
 	device/meizu/meilan2/rootdir/init.project.rc:root/init.project.rc \
 	device/meizu/meilan2/rootdir/init.modem.rc:root/init.modem.rc \
+	device/meizu/meilan2/rootdir/init.trace.rc:root/init.trace.rc \
 	device/meizu/meilan2/rootdir/fstab.mt6735:root/fstab.mt6735 \
 	device/meizu/meilan2/rootdir/ueventd.rc:root/ueventd.rc \
 	device/meizu/meilan2/etc/media_codecs.xml:system/etc/media_codecs.xml \

@@ -401,12 +401,17 @@ lib/libbwc.so
 lib64/libbwc.so
 lib/libgui_ext.so
 lib64/libgui_ext.so
+lib/libperfservice.so # MODULE
+lib64/libperfservice.so # MODULE
 lib/libperfservicenative.so
 lib64/libperfservicenative.so
 lib/libui_ext.so
 lib64/libui_ext.so
 lib/libui.so
 lib64/libui.so
+
+# PerfService settings
+etc/perfservscntbl.txt
 
 # Keys
 usr/keylayout/ACCDET.kl
