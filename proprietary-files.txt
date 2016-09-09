@@ -214,6 +214,7 @@ bin/permission_check
 bin/pppd
 bin/pppd_dt
 bin/program_binary_service
+bin/qmcX983d
 bin/s62xd
 bin/sn
 bin/terservice
