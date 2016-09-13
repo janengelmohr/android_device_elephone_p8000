@@ -367,6 +367,12 @@ lib/libem_usb_jni.so
 lib64/libem_usb_jni.so
 lib/libem_wifi_jni.so
 lib64/libem_wifi_jni.so
+lib/libbluetooth_relayer.so
+lib64/libbluetooth_relayer.so
+lib/libbtem.so
+lib64/libbtem.so
+lib/libextem.so
+lib64/libextem.so
 
 #OpenGL
 lib/libdpframework.so
