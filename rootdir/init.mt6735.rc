@@ -22,16 +22,16 @@ on init
     mkdir /nvdata 0777 system system
     
 # Temp Backward compatibility
-    symlink /dev/block/mmcblk0p7 /dev/bootimg 
-    symlink /dev/block/mmcblk0p8 /dev/recovery
-    symlink /dev/block/mmcblk0p13  /dev/sec_ro
-#    symlink /dev/block/platform/mtk-msdc.0/by-name/kb /dev/kb
-#    symlink /dev/block/platform/mtk-msdc.0/by-name/dkb /dev/dkb 
-    symlink /dev/block/mmcblk0p11 /dev/seccfg
-    symlink /dev/block/mmcblk0p1 /dev/pro_info 
-    symlink /dev/block/mmcblk0p2 /dev/nvram   
-    symlink /dev/block/mmcblk0p6 /dev/misc
-    symlink /dev/block/mmcblk0p9 /dev/logo 
+    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/11230000.MSDC0/by-name/boot /dev/bootimg 
+    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/11230000.MSDC0/by-name/recovery /dev/recovery
+    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/11230000.MSDC0/by-name/secro  /dev/sec_ro
+    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/11230000.MSDC0/by-name/kb /dev/kb
+    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/11230000.MSDC0/by-name/dkb /dev/dkb 
+    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/11230000.MSDC0/by-name/seccfg /dev/seccfg
+    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/11230000.MSDC0/by-name/proinfo /dev/pro_info 
+    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/11230000.MSDC0/by-name/nvram /dev/nvram   
+    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/11230000.MSDC0/by-name/para /dev/misc
+    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/11230000.MSDC0/by-name/logo /dev/logo 
     
 
 # Create CIP mount point
@@ -63,26 +63,26 @@ on fs
     exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/mmcblk0p23
 
     #change partition permissions
-    exec /system/bin/chmod 0640 /dev/block/mmcblk0p7
-    exec /system/bin/chown root:system /dev/block/mmcblk0p7
-    exec /system/bin/chmod 0640 /dev/block/mmcblk0p8
-    exec /system/bin/chown root:system /dev/block/mmcblk0p8
-    exec /system/bin/chmod 0640 /dev/block/mmcblk0p13
-    exec /system/bin/chown root:system /dev/block/mmcblk0p13
-    exec /system/bin/chmod 0660 /dev/block/mmcblk0p11
-    exec /system/bin/chown root:system /dev/block/mmcblk0p11
-    exec /system/bin/chmod 0660 /dev/block/mmcblk0p1
-    exec /system/bin/chown root:system /dev/block/mmcblk0p1
-  #  exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/otp
-   # exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/otp
-    exec /system/bin/chmod 0777 /dev/block/mmcblk0p2
-    exec /system/bin/chown root:system /dev/block/mmcblk0p2
-    exec /system/bin/chmod 0660 /dev/block/mmcblk0p6
-    exec /system/bin/chown root:system /dev/block/mmcblk0p6
-    exec /system/bin/chmod 0660 /dev/block/mmcblk0p9
-    exec /system/bin/chown root:system /dev/block/mmcblk0p9
-    exec /system/bin/chown root:system /dev/block/mmcblk0p18
-    exec /system/bin/chmod 0660 /dev/block/mmcblk0p18
+    exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/boot
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/boot
+    exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/recovery
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/recovery
+    exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/secro
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/secro
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/seccfg
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/seccfg
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/proinfo
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/proinfo
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/otp
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/otp
+    exec /system/bin/chmod 0777 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/nvram
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/nvram
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/para
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/para
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/logo
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/logo
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/frp
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/frp
     write /proc/bootprof "INIT:Mount_END"
 
 on fs
