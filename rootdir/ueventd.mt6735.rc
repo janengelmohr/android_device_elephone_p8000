@@ -202,7 +202,7 @@ subsystem adf
 /dev/ttyRB*     0660    radio   radio
 
 # Mali node
-/dev/mali                0666    system graphics
+/dev/mali0                0666    system graphics
 
 #touch
 /dev/touch              0660   root  system
