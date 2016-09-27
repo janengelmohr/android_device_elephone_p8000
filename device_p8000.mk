@@ -137,10 +137,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
       	charger_res_images
 
-# MTK Symbols
-PRODUCT_PACKAGES += \
-	libmtk_symbols
-
 # Live Display
 PRODUCT_PACKAGES += \
 	libjni_livedisplay
