@@ -6,6 +6,8 @@ TARGET_SPECIFIC_HEADER_PATH := device/elephone/p8000/include
  
 # Link against libxlog
 TARGET_LDPRELOAD += libxlog.so
+# Link against mtk symbols
+TARGET_LDPRELOAD += libmtk_symbols.so
  
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := Auxus_PRIME_201
