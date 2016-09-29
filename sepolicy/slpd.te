@@ -1,0 +1,4 @@
+type slpd_exec, exec_type, file_type;
+type slpd, domain;
+
+init_daemon_domain(slpd)

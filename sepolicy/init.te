@@ -1,0 +1,7 @@
+allow init ccci_device:chr_file { write ioctl };
+allow init devpts:chr_file ioctl;
+
+# Allow init to format formattable partitions…partitions
+allow init nvdata_device:blk_file write;
+allow init protect1_device:blk_file write;
+allow init protect2_device:blk_file write;

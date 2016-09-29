@@ -1,0 +1,17 @@
+# GPS
+allow system_server mnld:unix_dgram_socket sendto;
+allow system_server mnld_data_file:dir w_dir_perms;
+allow system_server mnld_data_file:sock_file create_file_perms;
+allow system_server mnld_data_file:file create_file_perms;
+
+# Persist
+allow system_server protect_s_data_file:dir r_dir_perms;
+
+# Sensors
+allow system_server hwmsensor_device:chr_file r_file_perms;
+
+# Wifi
+allow system_server wmtWifi_device:chr_file w_file_perms;
+
+# MTKLogger
+allow system_server mtklogger_data_file:dir { search getattr };

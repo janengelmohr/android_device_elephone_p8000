@@ -45,6 +45,9 @@ service muxreport-daemon /system/bin/muxreport
     disabled
     oneshot
 
+service_redefine ril-daemon /system/bin/mtkrild
+    disabled
+
 service ril-daemon-mtk /system/bin/mtkrild
     class core
     socket rild stream 660 root radio
@@ -99,11 +102,12 @@ service ccci_fsd /system/bin/ccci_fsd 0
     class core
     oneshot
 
-service ccci_mdinit /system/bin/ccci_mdinit 0
+service ccci_mdinit /system/xbin/strace -f -o /data/ccci_mdinit.strace.log /system/bin/ccci_mdinit 0
     user system
     group radio system
     class core
     oneshot
+    seclabel u:r:ccci_mdinit:s0
 
 service ccci_rpcd /system/bin/ccci_rpcd 0
     user radio

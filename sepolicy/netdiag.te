@@ -1,0 +1,28 @@
+type netdiag_exec , exec_type, file_type;
+type netdiag ,domain;
+
+init_daemon_domain(netdiag)
+
+allow netdiag self:packet_socket { write ioctl setopt read getopt create };
+
+allow netdiag fuse:dir create_dir_perms;
+allow netdiag fuse:file create_file_perms;
+allow netdiag storage_file:dir search;
+allow netdiag storage_file:lnk_file read;
+
+allow netdiag init:unix_stream_socket connectto;
+allow netdiag property_socket:sock_file write;
+allow netdiag debug_prop:property_service set;
+allow netdiag self:capability { setuid net_raw setgid net_admin };
+
+allow netdiag self:netlink_route_socket { write getattr setopt read bind create nlmsg_read };
+allow netdiag self:rawip_socket { getopt create };
+
+allow netdiag qtaguid_proc:file { read getattr open };
+
+allow netdiag net_data_file:file { read getattr open };
+allow netdiag net_data_file:dir search;
+
+# To run tcpdump... :/
+allow netdiag shell_exec:file { execute_no_trans read execute open };
+allow netdiag system_file:file execute_no_trans;

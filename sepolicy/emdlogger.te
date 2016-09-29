@@ -1,0 +1,24 @@
+type emdlogger_exec , exec_type, file_type;
+type emdlogger, domain;
+
+init_daemon_domain(emdlogger)
+
+binder_use(emdlogger)
+binder_service(emdlogger)
+
+allow emdlogger fuse:dir create_dir_perms;
+allow emdlogger fuse:file create_file_perms;
+allow emdlogger storage_file:dir search;
+allow emdlogger storage_file:lnk_file read;
+
+allow emdlogger ccci_device:chr_file { read write ioctl open };
+
+allow emdlogger mdlog_data_file:dir { write search read create open rmdir remove_name add_name relabelto getattr};
+allow emdlogger mdlog_data_file:fifo_file { read write open create setattr};
+allow emdlogger mdlog_data_file:file { write read create open rename unlink getattr setattr append};
+
+allow emdlogger mdlog_device:chr_file { read write open ioctl};
+
+allow emdlogger property_socket:sock_file write;
+allow emdlogger debug_prop:property_service set;
+allow emdlogger init:unix_stream_socket connectto;

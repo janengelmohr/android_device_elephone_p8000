@@ -1,0 +1,7 @@
+type af7133d_exec, exec_type, file_type;
+type af7133d, domain;
+
+init_daemon_domain(af7133d)
+
+allow af7133d msensor_device:chr_file rw_file_perms;
+allow af7133d gsensor_device:chr_file rw_file_perms;

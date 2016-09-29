@@ -28,13 +28,11 @@ on init
 
     export EXTERNAL_STORAGE /storage/emulated/legacy
 
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
+    #export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+    #export EMULATED_STORAGE_TARGET /storage/emulated
 
     export SECONDARY_STORAGE /storage/sdcard1
 
-    mount tmpfs tmpfs /storage/emulated mode=0755,uid=1023,gid=1023
-    
     # Support legacy paths
     symlink /storage/emulated/legacy /sdcard
     symlink /storage/emulated/legacy /mnt/sdcard

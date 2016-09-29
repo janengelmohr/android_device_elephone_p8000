@@ -1,0 +1,6 @@
+allow kernel nvdata_file:dir search;
+allow kernel nvdata_file:file r_file_perms;
+allow kernel self:capability dac_override;
+allow kernel wifi_data_file:dir search;
+allow kernel wifi_data_file:file r_file_perms;
+

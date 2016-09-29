@@ -1,0 +1,7 @@
+type permission_check_exec, exec_type, file_type;
+type permission_check, domain;
+
+init_daemon_domain(permission_check)
+
+#allow permission_check ctl_af7133d_prop:property_service set;
+#unix_socket_connect(permission_check, property, init)

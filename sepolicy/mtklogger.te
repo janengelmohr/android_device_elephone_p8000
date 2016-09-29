@@ -1,0 +1,22 @@
+type mtklogger_app, domain, mlstrustedsubject;
+type mtklogger_data_file, file_type, data_file_type;
+
+app_domain(mtklogger_app)
+binder_use(mtklogger_app)
+
+allow mtklogger_app mtklogger_data_file:file create_file_perms;
+allow mtklogger_app mtklogger_data_file:dir create_dir_perms;
+
+allow mtklogger_app netdiag_socket:sock_file write;
+allow mtklogger_app netdiag:unix_stream_socket connectto;
+allow mtklogger_app mobile_log_d:unix_stream_socket connectto;
+allow mtklogger_app emdlogger:unix_stream_socket connectto;
+allow mtklogger_app mnld:unix_stream_socket connectto;
+
+unix_socket_connect(mtklogger_app, netdiag, netdiag)
+allow mtklogger_app mobile_log_d:unix_stream_socket connectto;
+
+allow mtklogger_app mdlog_data_file:file rw_file_perms;
+allow mtklogger_app mdlog_data_file:dir rw_dir_perms;
+
+#allow mtklogger_app { service_manager_type -gatekeeper_service }:service_manager find;

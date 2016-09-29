@@ -1,40 +1,60 @@
-#!/bin/sh
+#!/bin/bash
 
-## usage: extract-files.sh $1 $2
-## $1 and $2 are optional
-## if $1 = image the files will be copied from the system image mounted at the folder specified by $2
-## if $1 = unzip the files will be extracted from zip file (if $1 = anything else 'adb pull' will be used
-## $2 specifies the folder where system image is mounted or zip file to extract from (default = ../../../${DEVICE}_update.zip)
+export DEVICE=meilan2
+export VENDOR=meizu
 
-VENDOR=meizu
-DEVICE=meilan2
+if [ $# -eq 0 ]; then
+  SRC=adb
+else
+  if [ $# -eq 1 ]; then
+    SRC=$1
+  else
+    echo "$0: bad number of arguments"
+    echo ""
+    echo "usage: $0 [PATH_TO_EXPANDED_ROM]"
+    echo ""
+    echo "If PATH_TO_EXPANDED_ROM is not specified, blobs will be extracted from"
+    echo "the device using adb pull."
+    exit 1
+  fi
+fi
+
+function extract() {
+    for FILE in $(eval echo `egrep -v '(^#|^$)' $1`); do
+      OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
+      FILE=`echo ${PARSING_ARRAY[0]} | sed -e "s/^-//g"`
+      DEST=${PARSING_ARRAY[1]}
+      if [ -z $DEST ]
+      then
+        DEST=$FILE
+      fi
+      DIR=`dirname $DEST`
+      if [ ! -d $BASE/$DIR ]; then
+        mkdir -p $BASE/$DIR
+      fi
+      # Try CM target first
+      if [ "$SRC" = "adb" ]; then
+        adb pull /system/$DEST $BASE/$DEST
+        # if file does not exist try OEM target
+        if [ "$?" != "0" ]; then
+            adb pull /system/$FILE $BASE/$DEST
+        fi
+      else
+        if [ -z $SRC/system/$DEST ]; then
+            echo ":: $DEST"
+            cp $SRC/system/$DEST $BASE/$DEST
+        else
+            echo ":: $FILE"
+            cp $SRC/system/$FILE $BASE/$DEST
+        fi
+      fi
+    done
+}
 
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
 
-if [ -z "$2" ]; then
-    ZIPFILE=../../../${DEVICE}_update.zip
-elif [ "$1" = "image" ]; then
-    SRCDIR=$2
-else
-    ZIPFILE=$2
-fi
+#extract ../../$VENDOR/$DEVICE/proprietary-files-mtk.txt $BASE
+extract ../../$VENDOR/$DEVICE/proprietary-files.txt $BASE
 
-if [ "$1" = "unzip" -a ! -e $ZIPFILE ]; then
-    echo $ZIPFILE does not exist.
-else
-    for FILE in `cat proprietary-files.txt | grep -v ^# | grep -v ^$ | cut -d '#' -f 1`; do
-        DIR=`dirname $FILE`
-	if [ ! -d $BASE/$DIR ]; then
-            mkdir -p $BASE/$DIR
-	fi
-	if [ "$1" = "unzip" ]; then
-            unzip -j -o $ZIPFILE system/$FILE -d $BASE/$DIR
-	elif [ "$1" = "image" ]; then
-            cp $SRCDIR/$FILE $BASE/$FILE
-	else
-            adb pull /system/$FILE $BASE/$FILE
-	fi
-    done
-fi
 ./setup-makefiles.sh

@@ -129,3 +129,5 @@ ro.mtk_perf_response_time=1
 persist.sys.isUsbOtgEnabled=true
 
 ro.mtk_perfservice_support=1
+
+persist.logd.logpersistd=logcatd

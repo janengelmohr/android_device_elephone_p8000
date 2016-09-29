@@ -1,0 +1,590 @@
+# Telephony
+bin/6620_launcher
+bin/ccci_fsd
+bin/ccci_mdinit
+bin/gsm0710muxd
+bin/md_ctrl
+bin/mtkrild
+bin/muxreport
+# NOTE: m2 did not have netdiag
+bin/netdiag
+bin/terservice
+lib{,64}/libaed.so
+lib{,64}/libccci_util.so
+# NOTE: m2 did not have libmdloggerrecycle.so
+lib{,64}/libmdloggerrecycle.so
+# NOTE: m2 did not have libmemoryDumpEncoder.so
+lib/libmemoryDumpEncoder.so
+# NOTE: m2 did not have libmrdump.so
+lib{,64}/libmrdump.so
+lib{,64}/librilmtk.so
+# NOTE: m2 did not have libterservice.so
+lib64/libterservice.so
+lib{,64}/mtk-ril.so
+# NOTE: m2 did not have ecc_list.xml
+etc/ecc_list.xml
+etc/firmware/catcher_filter_1_lwg_n.bin
+etc/firmware/dsp_1_lwg_n.bin
+# NOTE: m2 did not have dsp_1_lwg_n.bin_freeB28
+etc/firmware/dsp_1_lwg_n.bin_freeB28
+etc/firmware/modem_1_lwg_n.img
+# NOTE: m2 did not have modem_1_lwg_n.img_freeB28
+etc/firmware/modem_1_lwg_n.img_freeB28
+
+# Sensors
+# NOTE: m2 did not have af7133d
+bin/af7133d
+bin/akmd09911
+bin/akmd8963
+bin/akmd8975
+bin/ami304d
+bin/bmm050d
+bin/geomagneticd
+bin/mc6420d
+bin/memsicd
+bin/memsicd3416x
+bin/msensord
+bin/orientationd
+bin/s62xd
+lib{,64}/libhwm.so
+lib{,64}/hw/sensors.mt6735.so
+
+# GPS
+-app/YGPS/YGPS.apk
+bin/mtk_agpsd
+# NOTE: m2 did not have slpd
+bin/slpd
+bin/wifi2agps
+lib/libmnl.so
+# NOTE: m2 did not have gps.mt6735.so
+lib{,64}/hw/gps.mt6735.so
+xbin/mnld
+
+# Power / Thermal
+# NOTE: m2 did not have fuelgauged
+bin/fuelgauged
+bin/thermal_manager
+lib{,64}/libperfservicenative.so
+lib/libmtcloader.so
+# NOTE: m2 did not have libfgauge.so
+lib/libfgauge.so
+lib{,64}/libmtklimiter.so
+
+# NVRAM
+bin/nvram_daemon
+lib{,64}/libcustom_nvram.so
+lib{,64}/libnvramagentclient.so
+lib{,64}/libnvram_daemon_callback.so
+lib{,64}/libnvram_platform.so
+lib{,64}/libnvram_sec.so
+lib{,64}/libnvram.so
+
+# Display
+# NOTE: m2 did not have pq
+bin/pq
+lib{,64}/libblisrc32.so
+lib{,64}/libblisrc.so
+lib{,64}/libdpframework.so
+# NOTE: m2 did not have libgas.so
+lib{,64}/libgas.so
+lib{,64}/libged.so
+lib{,64}/libgralloc_extra.so
+lib{,64}/libgui_ext.so
+lib{,64}/libgpu_aux.so
+lib{,64}/libion_mtk.so
+# NOTE: m2 did not have libpq_cust.so
+lib64/libpq_cust.so
+lib{,64}/libpq_prot.so
+# NOTE: m2 did not have libpqservice.so
+lib{,64}/libpqservice.so
+lib{,64}/libui_ext.so
+lib{,64}/hw/gralloc.mt6735.so
+lib{,64}/hw/hwcomposer.mt6735.so
+lib{,64}/egl/libGLES_mali.so
+
+# WIFI / BT / FM
+bin/wmt_loader
+# NOTE: m2 did not have libbluetooth_mtk_pure.so
+lib{,64}/libbluetooth_mtk_pure.so
+lib/libbluetooth_mtk.so
+# NOTE: m2 did not have libbt-vendor.so
+lib/libbt-vendor.so
+# NOTE: m2 did not have libfmcust.so
+lib{,64}/libfmcust.so
+# NOTE: m2 did not have radio.fm.mt6735.so
+lib/hw/radio.fm.mt6735.so
+etc/firmware/mt6627/mt6627_fm_v1_coeff.bin
+etc/firmware/mt6627/mt6627_fm_v1_patch.bin
+etc/firmware/mt6627/mt6627_fm_v2_coeff.bin
+etc/firmware/mt6627/mt6627_fm_v2_patch.bin
+etc/firmware/mt6627/mt6627_fm_v3_coeff.bin
+etc/firmware/mt6627/mt6627_fm_v3_patch.bin
+etc/firmware/mt6627/mt6627_fm_v4_coeff.bin
+etc/firmware/mt6627/mt6627_fm_v4_patch.bin
+etc/firmware/mt6627/mt6627_fm_v5_coeff.bin
+etc/firmware/mt6627/mt6627_fm_v5_patch.bin
+# NOTE: m2 did not have mt6627_fm_cust.cfg
+etc/fmr/mt6627_fm_cust.cfg
+
+# Camera
+lib{,64}/lib3a_sample.so
+lib{,64}/lib3a.so
+lib{,64}/libcam1_utils.so
+lib{,64}/libcam3_app.so
+lib{,64}/libcam3_hwnode.so
+lib{,64}/libcam3_hwpipeline.so
+lib{,64}/libcam3_pipeline.so
+lib{,64}/libcam3_utils.so
+lib{,64}/libcamalgo.so
+lib{,64}/libcam.camadapter.so
+lib{,64}/libcam.camnode.so
+lib{,64}/libcam.camshot.so
+lib{,64}/libcam.client.so
+lib{,64}/libcam.device1.so
+lib{,64}/libcam.device3.so
+lib{,64}/libcamdrv.so
+lib{,64}/libcameracustom.so
+lib{,64}/libcam.exif.so
+lib{,64}/libcam.exif.v3.so
+lib{,64}/libcam.hal3a.v3.dng.so
+lib{,64}/libcam.hal3a.v3.so
+lib{,64}/libcam.halsensor.so
+lib{,64}/libcam_hwutils.so
+lib{,64}/libcam.iopipe.so
+lib{,64}/libcam.metadataprovider.so
+lib{,64}/libcam.metadata.so
+lib{,64}/libcam_mmp.so
+lib{,64}/libcam.paramsmgr.so
+lib{,64}/libcam_platform.so
+lib{,64}/libcam.utils.cpuctrl.so
+lib{,64}/libcam.utils.sensorlistener.so
+lib{,64}/libcam_utils.so
+lib{,64}/libdngop.so
+lib{,64}/libfeatureiodrv.so
+lib{,64}/libfeatureio.so
+lib{,64}/libfile_op.so
+lib{,64}/libimageio_plat_drv.so
+lib{,64}/libimageio.so
+# NOTE: m2 does have both 32/64 libJpgDecPipe.so
+lib/libJpgDecPipe.so
+# NOTE: m2 does have both 32/64 libSwJpgCodec.so
+lib/libSwJpgCodec.so
+lib{,64}/libJpgEncPipe.so
+# NOTE: m2 does have both 32/64 libmhalImageCodec.so
+lib/libmhalImageCodec.so
+# NOTE: m2 did not have libmtkcamera_client.so
+lib{,64}/libmtkcamera_client.so
+lib{,64}/libmtkjpeg.so
+lib{,64}/libn3d3a.so
+# NOTE: m2 did not have libSonyIMX230PdafLibrary.so
+lib{,64}/libSonyIMX230PdafLibrary.so
+lib{,64}/hw/camera.mt6735.so
+
+# Media
+# NOTE: m2 did not have 64bit libaudiocompensationfilter.so
+lib{,64}/libaudiocompensationfilter.so
+# NOTE: m2 did not have 64bit libaudiocomponentengine.so
+lib{,64}/libaudiocomponentengine.so
+# NOTE: m2 did not have 64bit libaudiocustparam.so
+lib{,64}/libaudiocustparam.so
+# NOTE: m2 did not have libaudiopolicymanagercustom.so
+lib{,64}/libaudiopolicymanagercustom.so
+# NOTE: m2 did not have (-)libaudiopolicymanager.so
+-lib{,64}/libaudiopolicymanager.so
+lib{,64}/libbessound_hd_mtk.so
+lib{,64}/libbwc.so
+lib{,64}/libcvsd_mtk.so
+lib{,64}/libdrmmtkutil.so
+lib{,64}/libdrmmtkwhitelist.so
+lib/libHEVCdec_sa.ca7.android.so
+lib{,64}/libm4u.so
+# NOTE: m2 did not have libmal.so
+lib{,64}/libmal.so
+lib{,64}/libmatv_cust.so
+# NOTE: m2 did not have libmdfx.so
+lib{,64}/libmdfx.so
+lib{,64}/libmmprofile.so
+lib{,64}/libmmsdkservice.feature.so
+lib{,64}/libmmsdkservice.so
+lib/libmp4enc_sa.ca7.so
+# NOTE: m2 did not have 64bit libmsbc_mtk.so
+lib{,64}/libmsbc_mtk.so
+lib{,64}/libmtk_drvb.so
+lib{,64}/libmtk_mmutils.so
+lib{,64}/libMtkOmxCore.so
+# NOTE: m2 did not have libMtkOmxVdecEx.so
+lib/libMtkOmxVdecEx.so
+lib/libMtkOmxVenc.so
+lib{,64}/libmtkshifter.so
+lib{,64}/libspeech_enh_lib.so
+lib{,64}/libstagefrighthw.so
+lib/libvc1dec_sa.ca7.so
+lib{,64}/libvcodecdrv.so
+# NOTE: m2 did not have 64bit libvcodec_oal.so
+lib{,64}/libvcodec_oal.so
+lib{,64}/libvcodec_utility.so
+lib/libvp8dec_sa.ca7.so
+lib/libvp9dec_sa.ca7.so
+lib{,64}/hw/audio.primary.mt6735.so
+# NOTE: m2 did not have AudioParamOptions.xml
+etc/audio_param/AudioParamOptions.xml
+
+# Meta Mode
+# NOTE: m2 did not have meta_tst
+bin/meta_tst
+
+# Factory Mode
+# NOTE: m2 did not have factory
+bin/factory
+# NOTE: m2 did not have factory.ini
+etc/factory.ini
+# NOTE: m2 did not have libminiui.so
+lib64/libminiui.so
+lib64/libacdk.so
+# NOTE: m2 did not have ringtone.wav
+res/sound/ringtone.wav
+
+# Misc
+# NOTE: m2 did not have lights.mt6735.so
+lib{,64}/hw/lights.mt6735.so
+lib{,64}/hw/memtrack.mt6735.so
+
+# MTKLogger
+# NOTE: m2 did not have (-)MTKLogger.apk
+-app/MTKLogger/MTKLogger.apk
+# NOTE: m2 did not have emdlogger1
+bin/emdlogger1
+bin/mdlogger
+# NOTE: m2 did not have mobile_log_d
+bin/mobile_log_d
+# NOTE: m2 did not have netdiag
+bin/netdiag
+
+# Wifi
+etc/firmware/ROMv2_lm_patch_1_0_hdr.bin
+etc/firmware/ROMv2_lm_patch_1_1_hdr.bin
+etc/firmware/WIFI_RAM_CODE_6735
+etc/firmware/WMT_SOC.cfg
+
+# WV DRM
+# NOTE: m2 did not have (-)com.google.widevine.software.drm.xml
+-etc/permissions/com.google.widevine.software.drm.xml
+# NOTE: m2 did not have (-)com.google.widevine.software.drm.jar
+-framework/com.google.widevine.software.drm.jar
+vendor/lib/libwvdrm_L3.so
+vendor/lib/libwvm.so
+vendor/lib/libWVStreamControlAPI_L3.so
+vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/mediadrm/libwvdrmengine.so
+
+#=================
+# ALL BELOW DOES NOT EXIST on Wileyfox Porridge!!
+#=================
+#Bluetooth
+#vendor/lib/hw/bluetooth.blueangel.so
+#lib/libsbccodec.so
+#lib/libbtcust.so
+#lib/libbtsession.so
+#lib/libbtcusttable.so
+#lib64/libbtcusttable.so
+#lib/libcustom_prop.so
+#lib64/libcustom_prop.so
+#lib/libbtstd.so
+#lib64/libbtstd.so
+#lib/libextsys.so
+#lib64/libextsys.so
+#app/MtkBt/MtkBt.apk
+#lib64/libbluetoothem_mtk.so
+#lib64/libbluetooth_mtk.so
+
+#lib/libbluetoothem_mtk.so
+#lib/libbluetoothdrv.so
+#lib64/libbluetoothdrv.so
+#bin/mtkbt
+#lib/libadpcm.so
+#lib/libpalsecurity.so
+#lib/libpalwlan_mtk.so
+#app/MtkBt/arm64/MtkBt.odex
+#app/MtkBt/arm/MtkBt.odex
+
+#Audio over Bluetooth
+#vendor/lib/hw/audio.a2dp.blueangel.so
+
+#Camera
+#vendor/pittpatt/models/recognition/face.face.y0-y0-71-N-tree_7-wmd.bin
+#vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/landmark_group_meta_data.bin
+#vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/left_eye-y0-yi45-p0-pi45-r0-ri20.lg_32-tree7-wmd.bin
+#vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/nose_base-y0-yi45-p0-pi45-r0-ri20.lg_32-tree7-wmd.bin
+#lib/libcamera_client_mtk.so
+#lib64/libcamera_client_mtk.so
+
+#lib/hw/mmsdk.default.so
+#lib64/hw/mmsdk.default.so
+
+#lib/libmeizucamera.so # MODULE
+#lib64/libmeizucamera.so # MODULE
+
+#lib/libcam.common.meizu.so
+#lib64/libcam.common.meizu.so
+
+#lib/libmpo.so
+#lib64/libmpo.so
+#lib/libmpoencoder.so
+#lib64/libmpoencoder.so
+
+#lib/libsfb.so
+#lib64/libsfb.so
+
+#lib/librender_engine.so
+#lib64/librender_engine.so
+#DRM
+
+#vendor/lib/mediadrm/libdrmclearkeyplugin.so
+#vendor/lib/mediadrm/libmockdrmcryptoplugin.so
+
+
+#GPS
+#lib/hw/gps.default.so
+#lib64/hw/gps.default.so
+
+#-app/LocationEM2/LocationEM2.apk
+
+#etc/agps_profiles_conf2.xml
+
+#Schedule Poweroff/On
+#app/SchedulePowerOnOff/SchedulePowerOnOff.apk
+#app/SchedulePowerOnOff/arm64/SchedulePowerOnOff.odex
+
+#Thermal
+#app/MTKThermalManager/MTKThermalManager.apk
+#app/MTKThermalManager/arm64/MTKThermalManager.odex
+
+#RIL
+
+#lib64/mtk-rilmd2.so
+#lib64/librilmtkmd2.so
+
+#lib/mtk-rilmd2.so
+#lib/librilmtkmd2.so
+
+#bin/mtkrildmd2
+
+#WiFi
+#!!! lib64/libwifi-service.so
+#etc/wifi/wpa_supplicant.conf
+#etc/wifi/wpa_supplicant_overlay.conf
+#etc/wifi/p2p_supplicant_overlay.conf
+
+#Misc MTK Stuff
+#lib64/libmtksqlite3_custom.so
+#lib64/libmtksqlite3_android.so
+
+#bin/mtk_setprop
+
+#Sound
+
+#lib/libbessurround_mtk.so
+#lib/libaudio-resampler.so
+
+#lib/libaudiodcrflt.so
+#lib/libaudiomtkdcremoval.so
+#lib/libaudiosetting.so
+#lib/libwebrtc_audio_preprocessing.so
+
+#lib/libtinyalsa.so
+#lib64/libtinyalsa.so
+#etc/audio_device.xml
+
+#bin
+#bin/6620_wmt_concurrency
+#bin/6620_wmt_lpbk
+#bin/aee
+
+#bin/dualmdlogger
+#bin/em_svr
+#bin/fsck_msdos_mtk
+
+#bin/gsm0710muxdmd2
+#bin/lcdc_screen_cap
+#bin/lsm303md
+
+#bin/memsicd3524x
+
+#bin/nvram_agent_binder
+
+#bin/permission_check
+#bin/pppd
+#bin/pppd_dt
+#bin/program_binary_service
+#bin/qmcX983d
+
+#bin/sn
+
+#bin/thermal
+#bin/thermald
+
+#bin/uiautomator
+
+#bin/xlog
+#bin/test/fpsvcd/auto_test.sh
+#bin/test/fpsvcd/fpsvcd_c
+#bin/test/fpsvcd/fpsvcd_s
+#bin/test/slcryption/sl_sec_encode
+#bin/test/slversion/slver
+#bin/guiext-server
+#bin/MtkCodecService
+#bin/AcdApiDaemon
+
+# Charge mode
+#bin/kpoc_charger
+#lib/libshowlogo.so
+
+#xbin
+#xbin/BGW
+
+#Testing
+
+##lib/hw/audio.primary.default.so
+
+##lib/hw/audio.r_submix.default.so
+##lib/hw/audio.usb.default.so
+##lib/hw/audio_policy.default.so
+##lib/hw/audio_policy.stub.so
+##lib/hw/bluetooth.default.so
+#lib/hw/gps.default.so
+#lib/hw/gralloc.default.so
+
+#lib/hw/keystore.default.so
+#lib/hw/lights.default.so
+#lib64/hw/lights.default.so
+#lib/hw/local_time.default.so
+#lib/hw/power.default.so
+
+#lib/hw/vibrator.default.so
+
+#lib/ssl/engines/libkeystore.so
+
+#etc/firmware/S_ANDRO_SFL.ini
+
+#lib/libtinycompress.so
+#lib64/libtinycompress.so
+
+#lib/libtinyxml.so
+#lib64/libtinyxml.so
+
+#lib/libcam.sdkclient.so
+#lib64/libcam.sdkclient.so
+
+#lib/libcam.utils.so
+#lib64/libcam.utils.so
+
+#lib/libcurl.so
+#lib64/libcurl.so
+#lib/libBnMtkCodec.so
+#lib64/libBnMtkCodec.so
+#lib/libem_support_jni.so
+#lib64/libem_support_jni.so
+
+# Engineering mode support lib
+#lib/libem_bt_jni.so
+#lib64/libem_bt_jni.so
+#lib/libem_gpio_jni.so
+#lib64/libem_gpio_jni.so
+#lib/libem_lte_jni.so
+#lib64/libem_lte_jni.so
+#lib/libem_modem_jni.so
+#lib64/libem_modem_jni.so
+#lib/libem_sensor_jni.so
+#lib64/libem_sensor_jni.so
+#lib/libem_support_jni.so
+#lib64/libem_support_jni.so
+#lib/libem_usb_jni.so
+#lib64/libem_usb_jni.so
+#lib/libem_wifi_jni.so
+#lib64/libem_wifi_jni.so
+#lib/libbluetooth_relayer.so
+#lib64/libbluetooth_relayer.so
+#lib/libbtem.so
+#lib64/libbtem.so
+#lib/libextem.so
+#lib64/libextem.so
+
+#OpenGL
+
+#generated 64 bit
+##lib64/libEGL.so
+##lib64/libGLES_trace.so
+##lib64/libGLESv1_CM.so
+##lib64/libGLESv2.so
+##lib64/libGLESv3.so
+
+#lib/libion.so
+#lib64/libion.so
+
+#lib/libperfservice.so # MODULE
+#lib64/libperfservice.so # MODULE
+
+#lib/libui.so
+##lib64/libui.so
+
+# PerfService settings
+#etc/perfservscntbl.txt
+
+# Keys
+#usr/keylayout/ACCDET.kl
+#usr/keylayout/AW9201_ts.kl
+#usr/keylayout/mtk-kpd.kl
+#usr/keylayout/mtk-tpd.kl
+
+# nvram_daemon depends on
+
+#etc/audio_policy.conf
+
+#etc/mtk_omx_core.cfg
+
+#lib/libMtkOmxAdpcmDec.so
+#lib/libMtkOmxAdpcmEnc.so
+#lib/libMtkOmxAlacDec.so
+#lib/libMtkOmxApeDec.so
+#lib/libMtkOmxCore.so
+#lib/libMtkOmxFlacDec.so
+#lib/libMtkOmxG711Dec.so
+#lib/libMtkOmxGsmDec.so
+#lib/libMtkOmxMp3Dec.so
+#lib/libMtkOmxRawDec.so
+#lib/libMtkOmxVdec.so
+
+#lib/libMtkOmxVorbisEnc.so
+#lib64/libMtkOmxAdpcmDec.so
+#lib64/libMtkOmxAdpcmEnc.so
+#lib64/libMtkOmxAlacDec.so
+#lib64/libMtkOmxApeDec.so
+#lib64/libMtkOmxCore.so
+#lib64/libMtkOmxG711Dec.so
+#lib64/libMtkOmxGsmDec.so
+#lib64/libMtkOmxMp3Dec.so
+#lib64/libMtkOmxRawDec.so
+#lib64/libMtkOmxVorbisEnc.so
+
+#lib/libGdmaScalerPipe.so
+#lib64/libGdmaScalerPipe.so
+
+#lib/libh264enc_sa.ca7.so
+
+#lib/libvp8enc_sa.ca7.so
+
+#lib/libcfgdevparam.so # MODULE
+#lib64/libcfgdevparam.so # MODULE
+
+#app/Camera/Camera.apk # MODULE
+#app/Camera/lib/arm/libDocVfbEngineLib_m81.so # MODULE
+#app/Camera/lib/arm/libpanorama.so # MODULE
+
+# thermal_manager dependencies and profiles
+
+#etc/.tp/thermal.conf
+#etc/.tp/thermal.high.conf
+#etc/.tp/thermal.mid.conf
+#etc/.tp/thermal.low.conf
+#etc/.tp/thermal.off.conf
+

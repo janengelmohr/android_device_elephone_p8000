@@ -1,0 +1,4 @@
+allow vold nvdata_device:blk_file rw_file_perms;
+allow vold cache_block_device:blk_file rw_file_perms;
+allow vold protect1_device:blk_file rw_file_perms;
+allow vold protect2_device:blk_file rw_file_perms;

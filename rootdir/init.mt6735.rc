@@ -42,36 +42,50 @@ on init
 # mount different fs start
 
 on charger
-    mount ext4 /dev/block/platform/mtk-msdc.0/by-name/system /system ro wait
+    mount ext4 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/system /system ro wait
     start kpoc_charger
     start servicemanager
 
 on fs
     write /proc/bootprof "INIT:Mount_START"
     mount_all /fstab.mt6735
-    exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/mtk-msdc.0/by-name/userdata
+    #exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/userdata
+
+    # Workaround for old nvram blobs
+    mkdir /dev/block/platform/mtk-msdc.0/by-name 0770 root system
+    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/nvram /dev/block/platform/mtk-msdc.0/by-name/nvram
+    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/proinfo /dev/block/platform/mtk-msdc.0/by-name/proinfo
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/nvram
+    exec /system/bin/chmod 0770 /dev/block/platform/mtk-msdc.0/by-name/nvram
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/proinfo
+    exec /system/bin/chmod 0770 /dev/block/platform/mtk-msdc.0/by-name/proinfo
+
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/secro
+    exec /system/bin/chmod 0770 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/secro
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/seccfg
+    exec /system/bin/chmod 0770 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/seccfg
 
     #change partition permissions
-    exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/boot
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/boot
-    exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/recovery
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/recovery
-    exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/secro
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/secro
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/seccfg
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/seccfg
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/proinfo
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/proinfo
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/otp
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/otp
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/nvram
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/nvram
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/para
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/para
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/logo
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/logo
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/frp
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/frp
+    #exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/boot
+    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/boot
+    #exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/recovery
+    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/recovery
+    #exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/secro
+    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/secro
+    #exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/seccfg
+    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/seccfg
+    #exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/proinfo
+    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/proinfo
+    #exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/otp
+    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/otp
+    #exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/nvram
+    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/nvram
+    #exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/para
+    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/para
+    #exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/logo
+    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/logo
+    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/frp
+    #exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/frp
     write /proc/bootprof "INIT:Mount_END"
 
 on fs
@@ -1158,13 +1172,15 @@ service pppd_gprs /system/bin/pppd_dt /dev/ttyACM0 debug noauth refuse-eap usepe
 #    class main
 #    oneshot
 
-service agpsd /system/bin/mtk_agpsd
-    class main
-    socket agpsd stream 660 gps system
-    socket agpsd2 stream 660 gps inet
-    socket agpsd3 stream 660 gps inet
-    user gps
-    group gps radio inet sdcard_r sdcard_rw misc
+# divis1969: disabled temporarily
+# while bringing up cm-14
+#service agpsd /system/bin/mtk_agpsd
+#    class main
+#    socket agpsd stream 660 gps system
+#    socket agpsd2 stream 660 gps inet
+#    socket agpsd3 stream 660 gps inet
+#    user gps
+#    group gps radio inet sdcard_r sdcard_rw misc
 
 service wifi2agps /system/bin/wifi2agps
     class main

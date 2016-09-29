@@ -1,25 +1,37 @@
+DEVICE_PATH := device/meizu/meilan2
+VENDOR_PATH := vendor/meizu/meilan2
+
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/meizu/meilan2/BoardConfigVendor.mk
-#64 bit
-TARGET_ARCH := arm64
-TARGET_NO_BOOTLOADER := true
-TARGET_BOARD_PLATFORM := mt6735
-TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 := 
-TARGET_ARCH_VARIANT := armv8-a
-TARGET_CPU_VARIANT := generic
-TARGET_CPU_CORTEX_A53 := true
+-include $(VENDOR_PATH)/BoardConfigVendor.mk
 
-#32 bit
+TARGET_BOARD_PLATFORM := mt6735
+
+# Architecture
+ifeq ($(FORCE_32_BIT),true)
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_VARIANT := cortex-a53
+else
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_ABI2 :=
+TARGET_CPU_VARIANT := cortex-a53
+
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
+endif
 
+TARGET_NO_BOOTLOADER := true
 TARGET_CPU_SMP := true
+
 ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_HAVE_NEON := true
 ARCH_ARM_HAVE_VFP := true
@@ -55,15 +67,15 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 -
 # end of commented lines
 
 #for now lets use prebuilt
-TARGET_PREBUILT_KERNEL := device/meizu/meilan2/prebuilt/Image.gz-dtb
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz-dtb
 BOARD_HAS_NO_SELECT_BUTTON := true
 #recovery
-#TARGET_RECOVERY_INITRC := device/meizu/meilan2/recovery/init.mt6753.rc
-TARGET_RECOVERY_FSTAB := device/meizu/meilan2/recovery/root/fstab.mt6735
+#TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/init.mt6753.rc
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/fstab.mt6735
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness\"
 
 #system.prop
-TARGET_SYSTEM_PROP := device/meizu/meilan2/system.prop
+TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 
 # WiFi
 WPA_SUPPLICANT_VERSION := VER_0_8_X
@@ -118,12 +130,20 @@ TW_MAX_BRIGHTNESS := 255
 #Mediatek flags
 BOARD_HAS_MTK_HARDWARE := true
 MTK_HARDWARE := true
-COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE -DMTK_AOSP_ENHANCEMENT
-COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE -DMTK_AOSP_ENHANCEMENT
+#COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE -DMTK_AOSP_ENHANCEMENT
+#COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE -DMTK_AOSP_ENHANCEMENT
 
 #EGL settings
 USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := device/meizu/meilan2/egl.cfg
+BOARD_EGL_CFG := $(DEVICE_PATH)/egl.cfg
 
 # CyanogenMod Hardware Hooks
-BOARD_HARDWARE_CLASS := device/meizu/meilan2/cmhw/
+BOARD_HARDWARE_CLASS := $(DEVICE_PATH)/cmhw/
+
+# RIL
+BOARD_RIL_CLASS := ../../../$(DEVICE_PATH)/ril
+
+BOARD_SEPOLICY_DIRS := $(DEVICE_PATH)/sepolicy
+
+TARGET_LDPRELOAD += libxlog.so:libmtk_symbols.so
+

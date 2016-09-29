@@ -1,0 +1,117 @@
+# Services
+/system/bin/6620_launcher                                       u:object_r:conn_launcher_exec:s0
+/system/bin/af7133d                                             u:object_r:af7133d_exec:s0
+/system/bin/ccci_fsd                                            u:object_r:ccci_fsd_exec:s0
+/system/bin/ccci_mdinit                                         u:object_r:ccci_mdinit_exec:s0
+/system/bin/md_ctrl                                             u:object_r:md_ctrl_exec:s0
+/system/bin/emdlogger[0-9]+                                     u:object_r:emdlogger_exec:s0
+/system/bin/fuelgauged                                          u:object_r:fuelgauged_exec:s0
+/system/bin/gsm0710muxd                                         u:object_r:gsm0710muxd_exec:s0
+/system/xbin/mnld                                               u:object_r:mnld_exec:s0
+/system/bin/muxreport                                           u:object_r:muxreport_exec:s0
+/system/bin/msensord                                            u:object_r:msensord_exec:s0
+/system/bin/mtk_agpsd                                           u:object_r:agpsd_exec:s0
+/system/bin/nvram_daemon                                        u:object_r:nvram_daemon_exec:s0
+/system/bin/pq                                                  u:object_r:pq_exec:s0
+/system/bin/ril-daemon-mtk                                      u:object_r:ril-daemon-mtk_exec:s0
+/system/bin/slpd                                                u:object_r:slpd_exec:s0
+/system/bin/terservice                                          u:object_r:terservice_exec:s0
+/system/bin/thermal_manager                                     u:object_r:thermal_manager_exec:s0
+/system/bin/mtkrild                                             u:object_r:ril-daemon-mtk_exec:s0
+/system/bin/wifi2agps                                           u:object_r:wifi2agps_exec:s0
+/system/bin/wmt_loader                                          u:object_r:wmt_loader_exec:s0
+/system/bin/mobile_log_d                                        u:object_r:mobile_log_d_exec:s0
+/system/bin/netdiag                                             u:object_r:netdiag_exec:s0
+/system/bin/permission_check                                    u:object_r:permission_check_exec:s0
+
+# Meta mode
+/sbin/multi_init                                                u:object_r:init_exec:s0
+/system/bin/meta_tst                                            u:object_r:meta_tst_exec:s0
+/system/bin/factory                                             u:object_r:factory_exec:s0
+
+# Files from firmware/nv partitions
+/protect_f(/.*)?                                                u:object_r:protect_f_data_file:s0
+/protect_s(/.*)?                                                u:object_r:protect_s_data_file:s0
+/nvdata(/.*)?                                                   u:object_r:nvdata_file:s0
+/protect_s/properties(/.*)?                                     u:object_r:persist_property_file:s0
+
+# Hardware nodes
+/dev/accdet                                                     u:object_r:accdet_device:s0
+/dev/devmap                                                     u:object_r:devmap_device:s0
+/dev/ttyC2                                                      u:object_r:gps_device:s0
+/dev/ttyGS0                                                     u:object_r:serial_device:s0
+/dev/gps(/.*)?                                                  u:object_r:gps_device:s0
+/dev/mali.*                                                     u:object_r:gpu_device:s0
+/dev/mtk_disp.*                                                 u:object_r:graphics_device:s0
+/dev/sw_sync                                                    u:object_r:graphics_device:s0
+/dev/stpbt(/.*)?                                                u:object_r:stpbt_device:s0
+/dev/hwmsensor(/.*)?                                            u:object_r:hwmsensor_device:s0
+/dev/wmtWifi(/.*)?                                              u:object_r:wmtWifi_device:s0
+/dev/camera-isp                                                 u:object_r:camera_device:s0
+/dev/camera-fdvt                                                u:object_r:camera_device:s0
+/dev/kd_camera_hw                                               u:object_r:camera_device:s0
+/dev/kd_camera_flashlight                                       u:object_r:camera_device:s0
+/dev/MAINAF                                                     u:object_r:camera_device:s0
+/dev/MTK_SMI                                                    u:object_r:camera_device:s0
+/dev/MT_pmic_adc_cali                                           u:object_r:pmic_adc_device:s0
+/dev/als_ps(/.*)?                                               u:object_r:als_ps_device:s0
+/dev/mtk-adc-cali(/.*)?                                         u:object_r:mtk-adc-cali_device:s0
+/dev/ccci.*                                                     u:object_r:ccci_device:s0
+/dev/gsensor(/.*)?                                              u:object_r:gsensor_device:s0
+/dev/msensor(/.*)?                                              u:object_r:msensor_device:s0
+/dev/stpgps(/.*)?                                               u:object_r:stpgps_device:s0
+/dev/stpwmt(/.*)?                                               u:object_r:stpwmt_device:s0
+/dev/wmtdetect                                                  u:object_r:wmtdetect_device:s0
+/dev/ttyC0                                                      u:object_r:gsm0710muxd_device:s0
+/dev/ttyC1                                                      u:object_r:mdlog_device:s0
+/dev/radio(/.*)?                                                u:object_r:radio_device:s0
+/dev/fm                                                         u:object_r:fm_device:s0
+/dev/Vcodec                                                     u:object_r:Vcodec_device:s0
+
+# Sockets
+/dev/socket/netdiag(/.*)?                                       u:object_r:netdiag_socket:s0
+/dev/socket/rild[2-4]                                           u:object_r:rild_socket:s0
+/dev/socket/rild-atci                                           u:object_r:rild_socket:s0
+/dev/socket/rild-ims                                            u:object_r:rild_socket:s0
+/dev/socket/rild-mtk-modem                                      u:object_r:rild_socket:s0
+/dev/socket/rild-mtk-ut                                         u:object_r:rild_socket:s0
+/dev/socket/rild-mtk-ut-2                                       u:object_r:rild_socket:s0
+/dev/socket/rild-oem                                            u:object_r:rild_socket:s0
+/dev/socket/agpsd                                               u:object_r:agpsd_socket:s0
+/dev/socket/agpsd[2-3]                                          u:object_r:agpsd_socket:s0
+/dev/socket/mnld                                                u:object_r:mnld_socket:s0
+
+# Block devices
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/boot      u:object_r:boot_block_device:s0
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/proinfo   u:object_r:proinfo_device:s0
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvram     u:object_r:nvram_device:s0
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvdata    u:object_r:nvdata_device:s0
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/protect1  u:object_r:protect1_device:s0
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/protect2  u:object_r:protect2_device:s0
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/userdata  u:object_r:userdata_block_device:s0
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/cache     u:object_r:cache_block_device:s0
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/recovery  u:object_r:recovery_block_device:s0
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/frp       u:object_r:frp_block_device:s0
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/metadata  u:object_r:metadata_block_device:s0
+/dev/block/mmcblk1                                              u:object_r:mmc_device:s0
+/dev/block/zram0                                                u:object_r:swap_block_device:s0
+
+# Sysfs nodes
+/sys/devices/virtual/gpsdrv(/.*)?                               u:object_r:sysfs_gps_file:s0
+/sys/kernel/ccci/boot                                           u:object_r:sysfs_ccci:s0
+/sys/devices/platform/mtk_disp_mgr.0/rgb                        u:object_r:livedisplay_sysfs:s0
+
+# Config/Runtime files
+/data/agps_supl(/.*)?                                           u:object_r:agpsd_data_file:s0
+/data/app/cache.dat                                             u:object_r:mnld_data_file:s0
+/data/gps_mnl(/.*)?                                             u:object_r:mnld_data_file:s0
+/data/misc/gps(/.*)?                                            u:object_r:mnld_data_file:s0
+/data/misc/GPS_CHIP.cfg                                         u:object_r:mnld_data_file:s0
+/data/misc/gps.conf                                             u:object_r:mnld_data_file:s0
+/data/misc/mnl_nlp.dat                                          u:object_r:mnld_data_file:s0
+/data/misc/mblog(/.*)?                                          u:object_r:logmisc_data_file:s0
+/data/log_temp(/.*)?                                            u:object_r:logmisc_data_file:s0
+/data/mdlog(/.*)?                                               u:object_r:mdlog_data_file:s0
+/data/mdl(/.*)?                                                 u:object_r:mdlog_data_file:s0
+/data/ccci_cfg(/.*)?                                            u:object_r:ccci_cfg_file:s0
+/data/.tp(/.*)?                                                 u:object_r:thermal_manager_data_file:s0
