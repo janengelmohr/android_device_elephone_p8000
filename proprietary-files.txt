@@ -1,5 +1,5 @@
 #Bluetooth
-vendor/lib/hw/bluetooth.blueangel.so
+#vendor/lib/hw/bluetooth.blueangel.so
 lib/libsbccodec.so
 lib/libbtcust.so
 lib/libbtsession.so
@@ -8,8 +8,9 @@ lib{,64}/libcustom_prop.so
 lib{,64}/libbtstd.so
 lib{,64}/libextsys.so
 #app/MtkBt/MtkBt.apk
+lib/libbt-vendor.so
 lib{,64}/libbluetoothem_mtk.so
-lib{,64}/libbluetooth_mtk.so
+lib/libbluetooth_mtk.so
 lib{,64}/libbluetoothdrv.so
 bin/mtkbt
 lib/libadpcm.so
@@ -74,7 +75,7 @@ vendor/lib/mediadrm/libmockdrmcryptoplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 
 #GPS
-lib{,64}/hw/gps.default.so
+lib{,64}/hw/gps.mt6735.so
 app/YGPS/YGPS.apk
 #-app/LocationEM2/LocationEM2.apk
 bin/mtk_agpsd

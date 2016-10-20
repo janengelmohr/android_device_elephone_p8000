@@ -24,6 +24,8 @@ on post-fs-data
     restorecon_recursive /protect_f
     restorecon_recursive /protect_s
     
+    setprop vold.post_fs_data_done 1
+
 service gsm0710muxd /system/bin/gsm0710muxd -s /dev/ttyC0 -f 512 -n 8 -m basic
     class core
     user root
@@ -102,7 +104,7 @@ service ccci_fsd /system/bin/ccci_fsd 0
     class core
     oneshot
 
-service ccci_mdinit /system/xbin/strace -f -o /data/ccci_mdinit.strace.log /system/bin/ccci_mdinit 0
+service ccci_mdinit /system/bin/ccci_mdinit 0
     user system
     group radio system
     class core

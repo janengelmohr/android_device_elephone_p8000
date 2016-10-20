@@ -12,6 +12,7 @@ import init.volte.rc
 import init.epdg.rc
 import init.trustonic.rc
 import init.modem.rc
+import init.target.rc
 
 on init
     export USBOTG_STORAGE /storage/usbotg
@@ -55,37 +56,37 @@ on fs
     mkdir /dev/block/platform/mtk-msdc.0/by-name 0770 root system
     symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/nvram /dev/block/platform/mtk-msdc.0/by-name/nvram
     symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/proinfo /dev/block/platform/mtk-msdc.0/by-name/proinfo
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/nvram
-    exec /system/bin/chmod 0770 /dev/block/platform/mtk-msdc.0/by-name/nvram
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/proinfo
-    exec /system/bin/chmod 0770 /dev/block/platform/mtk-msdc.0/by-name/proinfo
+    chown root system /dev/block/platform/mtk-msdc.0/by-name/nvram
+    chmod 0770 /dev/block/platform/mtk-msdc.0/by-name/nvram
+    chown root system /dev/block/platform/mtk-msdc.0/by-name/proinfo
+    chmod 0770 /dev/block/platform/mtk-msdc.0/by-name/proinfo
 
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/secro
-    exec /system/bin/chmod 0770 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/secro
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/seccfg
-    exec /system/bin/chmod 0770 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/seccfg
+    chown root system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/secro
+    chmod 0770 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/secro
+    chown root system /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/seccfg
+    chmod 0770 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/seccfg
 
     #change partition permissions
-    #exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/boot
-    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/boot
-    #exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/recovery
-    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/recovery
-    #exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/secro
-    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/secro
-    #exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/seccfg
-    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/seccfg
-    #exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/proinfo
-    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/proinfo
-    #exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/otp
-    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/otp
-    #exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/nvram
-    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/nvram
-    #exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/para
-    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/para
-    #exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/logo
-    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/logo
-    #exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/frp
-    #exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/frp
+    #chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/boot
+    #chown root system /dev/block/platform/mtk-msdc.0/by-name/boot
+    #chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/recovery
+    #chown root system /dev/block/platform/mtk-msdc.0/by-name/recovery
+    #chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/secro
+    #chown root system /dev/block/platform/mtk-msdc.0/by-name/secro
+    #chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/seccfg
+    #chown root system /dev/block/platform/mtk-msdc.0/by-name/seccfg
+    #chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/proinfo
+    #chown root system /dev/block/platform/mtk-msdc.0/by-name/proinfo
+    #chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/otp
+    #chown root system /dev/block/platform/mtk-msdc.0/by-name/otp
+    #chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/nvram
+    #chown root system /dev/block/platform/mtk-msdc.0/by-name/nvram
+    #chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/para
+    #chown root system /dev/block/platform/mtk-msdc.0/by-name/para
+    #chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/logo
+    #chown root system /dev/block/platform/mtk-msdc.0/by-name/logo
+    #chown root system /dev/block/platform/mtk-msdc.0/by-name/frp
+    #chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/frp
     write /proc/bootprof "INIT:Mount_END"
 
 on fs
@@ -830,18 +831,6 @@ service mobile_log_d /system/bin/mobile_log_d
 
 service met_log_d /system/bin/met_log_d
     class main
-    # Refer to http://source.android.com/devices/tech/storage/index.html
-    # It said, "Starting in Android 4.4, multiple external storage devices are surfaced to developers through
-    #           Context.getExternalFilesDirs(), Context.getExternalCacheDirs(), and Context.getObbDirs().
-    #           External storage devices surfaced through these APIs must be a semi-permanent part of the device (such as an SD card slot in a battery compartment).
-    #           Developers expect data stored in these locations to be available over long periods of time."
-    # Therefore, if the target has the SD card slot in a battery compartment, we need to specify SECONDARY_STORAGE (*** UN-Comment the following command ***)
-    #
-    # export SECONDARY_STORAGE /storage/sdcard1
-
-service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
-    class late_start
-    disabled
 
 # bugreport is triggered by holding down volume down, volume up and power
 service bugreport /system/bin/dumpstate -d -p -B \
@@ -1109,7 +1098,6 @@ service cmmb /system/bin/cmmbsp
 service enableswap /system/bin/sh /enableswap.sh
     class late_start
     oneshot
-    seclabel u:r:enableswap:s0
 
 service swapoff_action /system/bin/sh /disableswap.sh
     class main
@@ -1172,15 +1160,13 @@ service pppd_gprs /system/bin/pppd_dt /dev/ttyACM0 debug noauth refuse-eap usepe
 #    class main
 #    oneshot
 
-# divis1969: disabled temporarily
-# while bringing up cm-14
-#service agpsd /system/bin/mtk_agpsd
-#    class main
-#    socket agpsd stream 660 gps system
-#    socket agpsd2 stream 660 gps inet
-#    socket agpsd3 stream 660 gps inet
-#    user gps
-#    group gps radio inet sdcard_r sdcard_rw misc
+service agpsd /system/bin/mtk_agpsd
+    class main
+    socket agpsd stream 660 gps system
+    socket agpsd2 stream 660 gps inet
+    socket agpsd3 stream 660 gps inet
+    user gps
+    group gps radio inet sdcard_r sdcard_rw misc
 
 service wifi2agps /system/bin/wifi2agps
     class main

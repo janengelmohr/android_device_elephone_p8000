@@ -4,7 +4,8 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := \
     mtk_gui.cpp \
     mtk_ui.cpp \
-    mtk_omx.cpp
+    mtk_omx.cpp \
+    icu55.c
 
 # only for 32bit libraries
 LOCAL_SRC_FILES_32 := mtk_string.cpp

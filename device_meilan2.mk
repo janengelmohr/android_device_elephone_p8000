@@ -23,7 +23,7 @@ TARGET_PROVIDES_INIT_RC := true
 
 PRODUCT_COPY_FILES += \
     device/meizu/meilan2/rootdir/init.rc:root/init.rc \
-    device/meizu/meilan2/rootdir/enableswap.sh:root/enableswap.sh \
+    device/meizu/meilan2/rootdir/init.target.rc:root/init.target.rc \
     device/meizu/meilan2/rootdir/init.mt6735.rc:root/init.mt6735.rc \
     device/meizu/meilan2/rootdir/init.ssd.rc:root/init.ssd.rc \
     device/meizu/meilan2/rootdir/init.xlog.rc:root/init.xlog.rc \
@@ -34,10 +34,15 @@ PRODUCT_COPY_FILES += \
     device/meizu/meilan2/rootdir/init.modem.rc:root/init.modem.rc \
     device/meizu/meilan2/rootdir/init.trace.rc:root/init.trace.rc \
     device/meizu/meilan2/rootdir/fstab.mt6735:root/fstab.mt6735 \
+    device/meizu/meilan2/rootdir/fstab.swap:root/fstab.swap \
     device/meizu/meilan2/rootdir/ueventd.rc:root/ueventd.rc \
     device/meizu/meilan2/etc/media_codecs.xml:system/etc/media_codecs.xml \
+    device/meizu/meilan2/etc/init/audioserver.rc:system/etc/init/audioserver.rc \
     device/meizu/meilan2/etc/init/rild.rc:system/etc/init/rild.rc \
     device/meizu/meilan2/media_profiles.xml:system/etc/media_profiles.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
     frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml \
     frameworks/native/data/etc/android.hardware.audio.output.xml:system/etc/permissions/android.hardware.audio.output.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
@@ -130,7 +135,6 @@ persist.sys.usb.config=mtp \
 ro.mount.fs=EXT4 \
 debug.hwui.render_dirty_regions=false \
 ro.sf.lcd_density=320 \
-ro.hardware.bluetooth=blueangel \
 persist.radio.multisim.config=dsds \
 ro.mtk_lte_support=1 \
 ro.telephony.ril_class=MT6735 \

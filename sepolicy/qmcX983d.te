@@ -1,0 +1,6 @@
+type qmcX983d_exec, exec_type, file_type;
+type qmcX983d, domain;
+
+init_daemon_domain(qmcX983d)
+
+#unix_socket_connect(qmcX983d, property, init)

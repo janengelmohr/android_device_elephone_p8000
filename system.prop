@@ -131,3 +131,5 @@ persist.sys.isUsbOtgEnabled=true
 ro.mtk_perfservice_support=1
 
 persist.logd.logpersistd=logcatd
+
+ro.telephony.default_network=9

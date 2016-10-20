@@ -1,0 +1,6 @@
+type memsicd3416x_exec, exec_type, file_type;
+type memsicd3416x, domain;
+
+init_daemon_domain(memsicd3416x)
+
+#unix_socket_connect(memsicd3416x, property, init)

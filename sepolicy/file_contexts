@@ -23,6 +23,11 @@
 /system/bin/mobile_log_d                                        u:object_r:mobile_log_d_exec:s0
 /system/bin/netdiag                                             u:object_r:netdiag_exec:s0
 /system/bin/permission_check                                    u:object_r:permission_check_exec:s0
+/system/bin/memsicdx                                            u:object_r:memsicd_exec:s0
+/system/bin/memsicd3416x                                        u:object_r:memsicd3416x_exec:s0
+/system/bin/memsicd3524x                                        u:object_r:memsicd3524x_exec:s0
+/system/bin/qmcX983d                                            u:object_r:qmcX983d_exec:s0
+#/system/bin/guiext-server                                       u:object_r:guiext-server_exec:s0
 
 # Meta mode
 /sbin/multi_init                                                u:object_r:init_exec:s0

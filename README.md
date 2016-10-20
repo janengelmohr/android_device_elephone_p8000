@@ -10,7 +10,7 @@ Initialize a repository with CyanogenMode:
 
 Optinally use a specific manifest (not a tip):
 
-    repo init -u git://github.com/divis1969/android.git -b meilan2 -m cm-14.0-meilan2-v0.1.xml
+    repo init -u git://github.com/divis1969/android.git -b meilan2 -m cm-14.0-meilan2-v0.2.xml
 
 Build the code:
 
@@ -27,23 +27,35 @@ Current state
 - Cyanogen boots
 - Touch, screen, keyboard, central key are working
 - Wifi is working
-- Audio is partially working
-- Telephony is partially working
+- Audio is partially working (see Known Issues)
+- Telephony is working (see Known Issues)
     - USIM (3G) supported
     - Incoming/outgoung call
     - SMS, USSD
+    - Data connectivity
+- GPS
+- Bluetooth (pairing only testes so far)
+- Sensors
 
 Known Issues
 -------------
-- No ringing audio
-- No GPS
-- No BT
-- No mobile data connectivity
+- Microphone (recording) is not working
+- Telephony crashes eventually on call ringing (both incoming/outgoing) 
+- Hardware OMX codecs are not working
+- Camera is not working
 
 All issues: https://github.com/divis1969/android_device_meizu_meilan2/issues
 
 Change log
 ----------
+
+### v0.2
+- Meilan 2 bringup on Cyanogen 14 (continued)
+  GPS bringup
+  BT bringup
+  Media codecs bringup (software only)
+  External storage fix
+  Magnetometer fix
 
 ### v0.1
 - Meilan 2 bringup on Cyanogen 14
