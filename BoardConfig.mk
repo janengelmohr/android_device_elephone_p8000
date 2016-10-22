@@ -4,6 +4,9 @@
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := Auxus_PRIME_201
 
+# Specify MT6753 variant
+TARGET_IS_MT6753 := true
+
 # needed for mass storage mode
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
   
