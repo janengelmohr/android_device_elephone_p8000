@@ -51,6 +51,3 @@ TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/devices/platform/leds-mt65xx/leds/l
 
 # use power button for selections in recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
-
-# Include generic Mediatek MT6753 part
-$(call inherit-product, device/mediatek/mt6753_common/BoardConfigMT6753_common.mk)
