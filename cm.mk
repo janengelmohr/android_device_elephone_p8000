@@ -1,6 +1,9 @@
 # Release name
 PRODUCT_RELEASE_NAME := p8000
 
+# Specify MT6753 variant
+TARGET_IS_MT6753 := true
+
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
