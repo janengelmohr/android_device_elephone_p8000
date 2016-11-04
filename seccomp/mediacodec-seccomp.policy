@@ -1,0 +1,3 @@
+sched_getparam: 1
+sched_getscheduler: 1
+fsync: 1

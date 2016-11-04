@@ -38,6 +38,8 @@ PRODUCT_COPY_FILES += \
     device/meizu/meilan2/rootdir/ueventd.rc:root/ueventd.rc \
     device/meizu/meilan2/etc/media_codecs.xml:system/etc/media_codecs.xml \
     device/meizu/meilan2/etc/init/audioserver.rc:system/etc/init/audioserver.rc \
+    device/meizu/meilan2/etc/init/mediacodec.rc:system/etc/init/mediacodec.rc \
+    device/meizu/meilan2/etc/init/cameraserver.rc:system/etc/init/cameraserver.rc \
     device/meizu/meilan2/etc/init/rild.rc:system/etc/init/rild.rc \
     device/meizu/meilan2/media_profiles.xml:system/etc/media_profiles.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
