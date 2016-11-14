@@ -6,11 +6,11 @@ Getting Started
 
 Initialize a repository with CyanogenMode:
 
-    repo init -u git://github.com/divis1969/android.git -b cm-14.0-meilan2
+    repo init -u git://github.com/divis1969/android.git -b cm-14.1-meilan2
 
 Optinally use a specific manifest (not a tip):
 
-    repo init -u git://github.com/divis1969/android.git -b cm-14.0-meilan2 -m cm-14.0-meilan2-v0.3.xml
+    repo init -u git://github.com/divis1969/android.git -b cm-14.1-meilan2 -m cm-14.1-meilan2-v0.1.xml
 
 Build the code:
 
@@ -50,20 +50,6 @@ All issues: https://github.com/divis1969/android_device_meizu_meilan2/issues
 Change log
 ----------
 
-### v0.3
-- Meilan 2 bringup on Cyanogen 14 (continued):
-  Camera bringup
-  Audio fix for in-call state
-  Microphone fix
-
-### v0.2
-- Meilan 2 bringup on Cyanogen 14 (continued):
-  GPS bringup
-  BT bringup
-  Media codecs bringup (software only)
-  External storage fix
-  Magnetometer fix
-
 ### v0.1
-- Meilan 2 bringup on Cyanogen 14
+- Initial port from cm-14.0 (v0.3) to cm-14.1
 

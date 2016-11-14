@@ -293,7 +293,7 @@ lib{,64}/libgui_ext.so
 -lib{,64}/libperfservice.so
 #lib{,64}/libperfservicenative.so
 lib{,64}/libui_ext.so
-lib{,64}/libui.so
+#lib{,64}/libui.so
 
 # PerfService settings
 etc/perfservscntbl.txt
