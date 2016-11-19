@@ -1,0 +1,6 @@
+# Proximity sensor calibration
+service ps_calibrate /system/bin/meizupshelper c
+    class main
+    user root
+    group root
+    oneshot

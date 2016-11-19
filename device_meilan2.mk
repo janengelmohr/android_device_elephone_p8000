@@ -85,6 +85,8 @@ PRODUCT_PACKAGES += \
     libperfservicenative \
     libcurl
 
+PRODUCT_PACKAGES += meizupshelper
+
 # Wifi
 PRODUCT_PACKAGES += \
     libwpa_client \

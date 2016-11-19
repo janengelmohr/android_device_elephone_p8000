@@ -28,6 +28,7 @@
 /system/bin/memsicd3524x                                        u:object_r:memsicd3524x_exec:s0
 /system/bin/qmcX983d                                            u:object_r:qmcX983d_exec:s0
 #/system/bin/guiext-server                                       u:object_r:guiext-server_exec:s0
+/system/bin/meizupshelper                                       u:object_r:meizupshelper_exec:s0
 
 # Meta mode
 /sbin/multi_init                                                u:object_r:init_exec:s0
@@ -120,3 +121,5 @@
 /data/mdl(/.*)?                                                 u:object_r:mdlog_data_file:s0
 /data/ccci_cfg(/.*)?                                            u:object_r:ccci_cfg_file:s0
 /data/.tp(/.*)?                                                 u:object_r:thermal_manager_data_file:s0
+
+/sys/devices/virtual/meizu/ps/ps_calibration                    u:object_r:meizu_ps_calibration_trigger:s0
