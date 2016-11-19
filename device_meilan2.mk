@@ -87,6 +87,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += meizupshelper
 
+PRODUCT_PACKAGES += power.mt6735
+
 # Wifi
 PRODUCT_PACKAGES += \
     libwpa_client \

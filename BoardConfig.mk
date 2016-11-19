@@ -150,3 +150,5 @@ TARGET_LDPRELOAD += libxlog.so:libmtk_symbols.so
 
 BOARD_SECCOMP_POLICY := $(DEVICE_PATH)/seccomp
 
+TARGET_TAP_TO_WAKE_NODE := /sys/devices/mx_tsp/gesture_control
+

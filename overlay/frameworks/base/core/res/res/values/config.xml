@@ -165,4 +165,6 @@
     <string name="config_perf_profile_default_entry" translatable="false">1</string>
     -->
 
+    <bool name="config_supportDoubleTapWake">true</bool>
+
 </resources>
