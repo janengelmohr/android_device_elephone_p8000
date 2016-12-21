@@ -44,6 +44,10 @@ on init
 
 on charger
     mount ext4 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/system /system ro wait
+    mkdir /dev/block/platform/mtk-msdc.0/by-name 0770 root system
+    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/logo /dev/block/platform/mtk-msdc.0/by-name/logo
+    chown root system /dev/block/platform/mtk-msdc.0/by-name/logo
+    chmod 0770 /dev/block/platform/mtk-msdc.0/by-name/logo
     start kpoc_charger
     start servicemanager
 

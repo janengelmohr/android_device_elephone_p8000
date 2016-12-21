@@ -29,6 +29,7 @@
 /system/bin/qmcX983d                                            u:object_r:qmcX983d_exec:s0
 #/system/bin/guiext-server                                       u:object_r:guiext-server_exec:s0
 /system/bin/meizupshelper                                       u:object_r:meizupshelper_exec:s0
+/system/bin/kpoc_charger                                        u:object_r:kpoc_charger_exec:s0
 
 # Meta mode
 /sbin/multi_init                                                u:object_r:init_exec:s0

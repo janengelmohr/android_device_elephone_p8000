@@ -1,0 +1,4 @@
+# kpoc_charger
+type kpoc_charger_exec, exec_type, file_type;
+type kpoc_charger, domain;
+init_daemon_domain(kpoc_charger)
