@@ -18,7 +18,7 @@ TARGET_SCREEN_WIDTH := 720
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := meilan2
-PRODUCT_NAME := cm_meilan2
+PRODUCT_NAME := lineage_meilan2
 PRODUCT_BRAND := Meizu
 PRODUCT_MODEL := M2 Mini
 PRODUCT_MANUFACTURER := Meizu
