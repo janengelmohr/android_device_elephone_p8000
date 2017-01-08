@@ -167,4 +167,4 @@ persist.call_recording.src=1
 persist.radio.mobile.data=0,0
 
 # OTA
-cm.updater.uri=https://ota.cm.mkoas.de/api
+cm.updater.uri=https://visi0nary.de/api
