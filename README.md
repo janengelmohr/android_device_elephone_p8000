@@ -10,7 +10,7 @@ Initialize a repository with LineageOS:
 
 Optinally use a specific manifest (not a tip):
 
-    repo init -u git://github.com/divis1969/android.git -b los-14.1-meilan2 -m los-14.1-meilan2-v0.2.xml
+    repo init -u git://github.com/divis1969/android.git -b los-14.1-meilan2 -m los-14.1-meilan2-v0.3.xml
 
 Build the code:
 
@@ -46,6 +46,11 @@ All issues: https://github.com/divis1969/android_device_meizu_meilan2/issues
 
 Change log
 ----------
+
+### v0.3 (LineageOS)
+- Backport LiveDisplay support in kernel from 3.18
+- Enable LiveDisplay in HAL
+- Upmerge to the LineageOS cm-14.1 branch tip
 
 ### v0.2 (LineageOS)
 - Build kernel from source code (3.10.65)
