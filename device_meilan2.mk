@@ -100,16 +100,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/meizu/meilan2/rootdir/etc/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
 
-# Audio componets from source
+# Audio
 PRODUCT_PACKAGES += \
+    audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default
 
-# BT A2DP
-PRODUCT_COPY_FILES += \
-    vendor/meizu/meilan2/proprietary/vendor/lib/hw/audio.a2dp.blueangel.so:system/vendor/lib/hw/audio.a2dp.mt6735.so
-
-# Audio components from source
+# Supplementary/Addon
 PRODUCT_PACKAGES += \
     EngineerMode \
     MtkCamera libDocVfbEngineLib_m81 libpanorama

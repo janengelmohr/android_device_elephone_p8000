@@ -20,7 +20,8 @@ lib/libpalwlan_mtk.so
 #app/MtkBt/arm/MtkBt.odex
 
 #Audio over Bluetooth
-vendor/lib/hw/audio.a2dp.blueangel.so
+#(not needed on Android 7)
+-vendor/lib/hw/audio.a2dp.blueangel.so
 
 #Camera
 #vendor/pittpatt/models/recognition/face.face.y0-y0-71-N-tree_7-wmd.bin
