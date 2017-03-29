@@ -10,7 +10,7 @@ Initialize a repository with LineageOS:
 
 Optinally use a specific manifest (not a tip):
 
-    repo init -u git://github.com/divis1969/android.git -b los-14.1-meilan2 -m los-14.1-meilan2-v0.3.xml
+    repo init -u git://github.com/divis1969/android.git -b los-14.1-meilan2 -m los-14.1-meilan2-v0.4.xml
 
 Build the code:
 
@@ -31,21 +31,25 @@ Current state
     - SMS, USSD
     - Data connectivity
 - GPS
-- Bluetooth (pairing only testes so far)
+- Bluetooth
 - Sensors
 - Camera
 
 Known Issues
 -------------
-- Android Camera App is not stable (hangs) ex. with location enabled
 - Meizu Camera App is crasing when switching to front camera
-- Telephony crashes eventually on location request from camera. 
+- Android Camera App is crasing when recording video begins
 - Hardware OMX codecs are not working
 
 All issues: https://github.com/divis1969/android_device_meizu_meilan2/issues
 
 Change log
 ----------
+
+### v0.4 (LineageOS)
+- Fix A2DP
+- Remove Engineering app for now
+- Upmerge to the LineageOS cm-14.1 branch tip
 
 ### v0.3 (LineageOS)
 - Backport LiveDisplay support in kernel from 3.18
