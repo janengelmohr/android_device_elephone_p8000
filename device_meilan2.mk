@@ -108,9 +108,9 @@ PRODUCT_PACKAGES += \
 
 # Supplementary/Addon
 PRODUCT_PACKAGES += \
-    EngineerMode \
     MtkCamera libDocVfbEngineLib_m81 libpanorama
 
+#    EngineerMode \
 #libmeizucamera
 
 #PRODUCT_PACKAGES += stlport_shared
