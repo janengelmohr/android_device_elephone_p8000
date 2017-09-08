@@ -10,7 +10,7 @@ Initialize a repository with LineageOS:
 
 Optinally use a specific manifest (not a tip):
 
-    repo init -u git://github.com/divis1969/android.git -b los-14.1-meilan2 -m los-14.1-meilan2-v0.5.xml
+    repo init -u git://github.com/divis1969/android.git -b los-14.1-meilan2 -m los-14.1-meilan2-v0.6.xml
 
 Build the code:
 
@@ -45,6 +45,11 @@ All issues: https://github.com/divis1969/android_device_meizu_meilan2/issues
 
 Change log
 ----------
+
+### v0.6 (LineageOS)
+- Upmerge to the LineageOS cm-14.1 branch tip (based on android-7.1.2_r29)
+- Fix for Power HAL (Battery Saver mode)
+- Restore SELinux policy version 30
 
 ### v0.5 (LineageOS)
 - Upmerge to the LineageOS cm-14.1 branch tip
